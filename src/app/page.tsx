@@ -1,101 +1,127 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Hero from "@/components/Hero";
+import SectionHeading from "@/components/SectionHeading";
+import TimelineBar from "@/components/TimelineBar";
+import ScenarioBlock from "@/components/ScenarioBlock";
+import AuctionSimulation from "@/components/AuctionSimulation";
+import SurfaceGrid from "@/components/SurfaceGrid";
+import SplitPanel from "@/components/SplitPanel";
+import ScrollReveal from "@/components/ScrollReveal";
+import {
+  ROBOT_TYPES_2030,
+  KITCHEN_AUCTION_STEPS,
+  AUCTION_BIDS,
+  NEW_AD_SURFACES,
+} from "@/lib/constants";
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      {/* Hero */}
+      <Hero
+        headline="When Robots Make Decisions, Revenue Moves With Them."
+        subtext="Kovio is the programmatic auction infrastructure for the robot economy. Every time a robot makes a commercial decision: what to buy, where to go, what to recommend. There's an auction. We run it."
+        ctas={[
+          { label: "For Manufacturers", href: "/for-manufacturers" },
+          {
+            label: "For Advertisers",
+            href: "/for-advertisers",
+            variant: "secondary",
+          },
+        ]}
+      />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* The Inevitable Shift */}
+      <section className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <SectionHeading
+          title="The Inevitable Shift"
+          subtitle="Every major platform shift created a new advertising paradigm. Physical AI is next."
+          className="mb-10 sm:mb-16"
+        />
+        <TimelineBar />
+
+        {/* Robot Types Grid */}
+        <div className="mt-12 sm:mt-20">
+          <ScrollReveal>
+            <h3 className="text-xl font-semibold text-foreground text-center mb-8">
+              By 2030, robots will be everywhere
+            </h3>
+          </ScrollReveal>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {ROBOT_TYPES_2030.map((robot, i) => (
+              <ScrollReveal key={robot.name} delay={i * 0.08}>
+                <div className="glass border border-border-glow rounded-lg p-4 text-center corner-accents hover:shadow-glow-sm transition-all">
+                  <div className="text-2xl mb-2">{robot.icon}</div>
+                  <div className="font-mono text-accent text-sm mb-1">
+                    {robot.count}
+                  </div>
+                  <div className="text-xs text-muted">{robot.name}</div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* The Kitchen Decision */}
+      <section className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <SectionHeading
+          title={`"The Kitchen Decision"`}
+          subtitle="Your home robot notices you're out of milk. What happens next is a billion-dollar question."
+          className="mb-10 sm:mb-16"
+        />
+
+        <div className="grid lg:grid-cols-2 gap-8 items-start">
+          <ScenarioBlock steps={KITCHEN_AUCTION_STEPS} title="How It Works" />
+          <AuctionSimulation bids={AUCTION_BIDS} title="Milk Restock Auction" />
+        </div>
+      </section>
+
+      {/* The New Ad Format */}
+      <section className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <SectionHeading
+          title="Decision-Based Monetization"
+          subtitle="Forget impressions. Forget clicks. The new currency is decisions. Every time a robot chooses, brands compete."
+          className="mb-12"
+        />
+        <SurfaceGrid items={NEW_AD_SURFACES} />
+      </section>
+
+      {/* Two Sides, One Infrastructure */}
+      <section className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <SectionHeading
+          title="Two Sides, One Infrastructure"
+          subtitle="Whether you build robots or sell products, Kovio is your bridge to the robot economy."
+          className="mb-12"
+        />
+        <SplitPanel
+          left={{
+            title: "For Manufacturers",
+            description:
+              "Turn every robot you build into a revenue-generating platform.",
+            points: [
+              "Unlock recurring revenue from deployed robots",
+              "Drop-in SDK. Three lines of code",
+              "70% revenue share on all auctions",
+              "Zero impact on user experience",
+            ],
+            cta: { label: "Learn More", href: "/for-manufacturers" },
+          }}
+          right={{
+            title: "For Advertisers",
+            description:
+              "Reach consumers at the exact moment decisions are being made.",
+            points: [
+              "Bid on robot decision moments",
+              "94% decision-to-action rate",
+              "First-mover advantage in a new channel",
+              "Transparent, measurable ROI",
+            ],
+            cta: { label: "Learn More", href: "/for-advertisers" },
+          }}
+        />
+      </section>
+    </>
   );
 }
