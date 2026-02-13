@@ -44,7 +44,7 @@ export default function GrowthChart() {
   return (
     <div
       ref={ref}
-      className="glass border border-border-glow rounded-xl p-4 sm:p-6 scanlines shadow-neon-border"
+      className="glass border border-border-glow rounded-xl p-4 sm:p-6 scanlines shadow-neon-border h-full"
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-4">

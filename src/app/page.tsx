@@ -70,11 +70,11 @@ export default function HomePage() {
         </div>
 
         {/* Growth Chart + Milestones */}
-        <div className="mt-12 sm:mt-16 grid lg:grid-cols-2 gap-6 items-start">
-          <ScrollReveal>
+        <div className="mt-12 sm:mt-16 grid lg:grid-cols-2 gap-6">
+          <ScrollReveal className="h-full">
             <GrowthChart />
           </ScrollReveal>
-          <ScrollReveal delay={0.15}>
+          <ScrollReveal className="h-full" delay={0.15}>
             <MarketMilestones />
           </ScrollReveal>
         </div>

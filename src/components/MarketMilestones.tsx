@@ -11,7 +11,7 @@ export default function MarketMilestones() {
   return (
     <div
       ref={ref}
-      className="glass border border-border-glow rounded-xl p-4 sm:p-6 scanlines shadow-neon-border"
+      className="glass border border-border-glow rounded-xl p-4 sm:p-6 scanlines shadow-neon-border h-full"
     >
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
