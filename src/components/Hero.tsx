@@ -9,13 +9,20 @@ interface HeroCTA {
   variant?: "primary" | "secondary";
 }
 
+interface HeroBadge {
+  value: string;
+  label: string;
+}
+
 interface HeroProps {
   headline: string;
   subtext: string;
   ctas?: HeroCTA[];
+  badges?: HeroBadge[];
+  eyebrow?: string;
 }
 
-export default function Hero({ headline, subtext, ctas = [] }: HeroProps) {
+export default function Hero({ headline, subtext, ctas = [], badges, eyebrow }: HeroProps) {
   return (
     <section className="relative min-h-[80vh] sm:min-h-[90vh] flex items-center justify-center pt-16">
       {/* Multi-layer gradient background */}
@@ -26,6 +33,19 @@ export default function Hero({ headline, subtext, ctas = [] }: HeroProps) {
       </div>
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Eyebrow badge */}
+        {eyebrow && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 text-xs font-mono text-accent bg-accent/10 px-3 py-1.5 rounded-full mb-6 border border-accent/20"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse" />
+            {eyebrow}
+          </motion.div>
+        )}
+
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -55,6 +75,26 @@ export default function Hero({ headline, subtext, ctas = [] }: HeroProps) {
               <CTAButton key={i} href={cta.href} variant={cta.variant || "primary"}>
                 {cta.label}
               </CTAButton>
+            ))}
+          </motion.div>
+        )}
+
+        {/* Stat badges below CTAs */}
+        {badges && badges.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
+            className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-10 sm:mt-12"
+          >
+            {badges.map((badge, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 text-sm"
+              >
+                <span className="font-mono text-accent font-bold">{badge.value}</span>
+                <span className="text-muted text-xs">{badge.label}</span>
+              </div>
             ))}
           </motion.div>
         )}

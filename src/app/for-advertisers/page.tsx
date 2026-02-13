@@ -46,7 +46,7 @@ export default function ForAdvertisersPage() {
       <Hero
         headline="Soon, You Won't Just Market to Humans. You'll Market to Robots."
         subtext="The next generation of consumers won't browse, click, or scroll. They'll delegate decisions to robots. Kovio gives you a seat at the table when those decisions are made."
-        ctas={[{ label: "Get in Touch", href: "mailto:hello@kovio.ai" }]}
+        ctas={[{ label: "Get in Touch", href: "/contact" }]}
       />
 
       {/* The Shift */}
@@ -171,7 +171,7 @@ export default function ForAdvertisersPage() {
                 </ScrollReveal>
               ))}
             </div>
-            <CTAButton href="mailto:hello@kovio.ai">
+            <CTAButton href="/contact">
               Start the Conversation
             </CTAButton>
           </ScrollReveal>

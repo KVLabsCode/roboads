@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
+import KovioLogo from "./KovioLogo";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -16,6 +17,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
+            <KovioLogo size={28} />
             <span className="text-xl font-bold text-gradient-cyan">{SITE_NAME}</span>
           </Link>
 
@@ -35,7 +37,7 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="mailto:hello@kovio.ai"
+              href="/contact"
               className="px-4 py-2 cta-glow-primary text-black text-sm font-medium rounded-lg transition-colors"
             >
               Get in Touch
@@ -97,7 +99,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <Link
-                href="mailto:hello@kovio.ai"
+                href="/contact"
                 onClick={() => setMobileOpen(false)}
                 className="px-4 py-2 bg-accent text-black text-sm font-medium rounded-lg text-center"
               >

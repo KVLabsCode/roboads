@@ -14,7 +14,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-6">
             <Link
-              href="mailto:hello@kovio.ai"
+              href="/contact"
               className="text-sm text-muted hover:text-foreground transition-colors"
             >
               Contact

@@ -22,7 +22,7 @@ export default function ForManufacturersPage() {
       <Hero
         headline="Turn Every Robot Into a Revenue Engine"
         subtext="You spent years building incredible hardware. Kovio helps you monetize every commercial decision your robots make, without compromising user experience."
-        ctas={[{ label: "Get in Touch", href: "mailto:hello@kovio.ai" }]}
+        ctas={[{ label: "Get in Touch", href: "/contact" }]}
       />
 
       {/* The Problem */}
@@ -146,7 +146,7 @@ export default function ForManufacturersPage() {
                 </ScrollReveal>
               ))}
             </div>
-            <CTAButton href="mailto:hello@kovio.ai">
+            <CTAButton href="/contact">
               Start the Conversation
             </CTAButton>
           </ScrollReveal>

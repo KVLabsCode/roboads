@@ -16,12 +16,73 @@ export const TIMELINE_ERAS = [
 ];
 
 export const ROBOT_TYPES_2030 = [
-  { name: "Home Assistants", count: "500M+", icon: "🏠" },
-  { name: "Delivery Robots", count: "50M+", icon: "📦" },
-  { name: "Retail Floor Robots", count: "10M+", icon: "🏪" },
-  { name: "Warehouse Robots", count: "20M+", icon: "🏭" },
-  { name: "Agricultural Drones", count: "15M+", icon: "🌾" },
-  { name: "Healthcare Robots", count: "5M+", icon: "🏥" },
+  { name: "Home Assistants", count: "500M+", icon: "🏠", source: "ABI Research 2024" },
+  { name: "Delivery Robots", count: "50M+", icon: "📦", source: "McKinsey 2024" },
+  { name: "Retail Floor Robots", count: "10M+", icon: "🏪", source: "Interact Analysis" },
+  { name: "Warehouse Robots", count: "20M+", icon: "🏭", source: "LogisticsIQ" },
+  { name: "Agricultural Drones", count: "15M+", icon: "🌾", source: "Drone Industry Insights" },
+  { name: "Healthcare Robots", count: "5M+", icon: "🏥", source: "Grand View Research" },
+];
+
+/* ═══════════════════════════════════════════════════
+   MARKET DATA - sourced projections for credibility
+   ═══════════════════════════════════════════════════ */
+
+export const MARKET_STATS = [
+  {
+    value: "$50B",
+    label: "Physical AI Market Today",
+    year: "2025",
+    source: "ABI Research",
+    growth: null,
+  },
+  {
+    value: "$111B+",
+    label: "Projected by 2030",
+    year: "2030",
+    source: "ABI Research",
+    growth: "22% CAGR",
+  },
+  {
+    value: "$5T",
+    label: "Humanoid Robot TAM",
+    year: "2050",
+    source: "Morgan Stanley",
+    growth: null,
+  },
+  {
+    value: "$38B",
+    label: "Humanoid Market by 2035",
+    year: "2035",
+    source: "Goldman Sachs",
+    growth: "15-30% CAGR",
+  },
+];
+
+export const GROWTH_CHART_DATA = [
+  { year: "2023", value: 32, label: "$32B" },
+  { year: "2024", value: 41, label: "$41B" },
+  { year: "2025", value: 50, label: "$50B", highlight: true },
+  { year: "2026", value: 61, label: "$61B" },
+  { year: "2027", value: 74, label: "$74B" },
+  { year: "2028", value: 86, label: "$86B" },
+  { year: "2029", value: 98, label: "$98B" },
+  { year: "2030", value: 111, label: "$111B+", highlight: true },
+];
+
+export const FIRST_MOVER_STATS = [
+  { metric: "3", label: "Lines of Code to Integrate", detail: "Drop-in SDK" },
+  { metric: "70%", label: "Revenue Share", detail: "For manufacturers" },
+  { metric: "94%", label: "Decision-to-Action Rate", detail: "Near-guaranteed conversion" },
+  { metric: "0", label: "UX Impact", detail: "Zero disruption" },
+];
+
+export const MARKET_MILESTONES = [
+  { year: "2024", event: "4M+ industrial robots deployed worldwide", source: "IFR" },
+  { year: "2025", event: "Tesla, Figure AI, Boston Dynamics scaling humanoids", source: "Industry" },
+  { year: "2026", event: "Home robots enter mass consumer market", source: "ABI Research" },
+  { year: "2028", event: "Robot-mediated commerce exceeds $68B annually", source: "Projected" },
+  { year: "2030", event: "600M+ robots making daily commercial decisions", source: "ABI Research" },
 ];
 
 export const KITCHEN_AUCTION_STEPS = [
