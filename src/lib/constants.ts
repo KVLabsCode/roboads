@@ -3,8 +3,8 @@ export const SITE_TAGLINE = "The Monetization Layer for the Robot Economy";
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "For Manufacturers", href: "/for-manufacturers" },
-  { label: "For Advertisers", href: "/for-advertisers" },
+  { label: "For Brands", href: "/for-advertisers" },
+  { label: "For Robot Companies", href: "/for-manufacturers" },
 ];
 
 export const TIMELINE_ERAS = [
@@ -71,10 +71,10 @@ export const GROWTH_CHART_DATA = [
 ];
 
 export const FIRST_MOVER_STATS = [
-  { metric: "3", label: "Lines of Code to Integrate", detail: "Drop-in SDK" },
-  { metric: "70%", label: "Revenue Share", detail: "For manufacturers" },
-  { metric: "94%", label: "Decision-to-Action Rate", detail: "Near-guaranteed conversion" },
-  { metric: "0", label: "UX Impact", detail: "Zero disruption" },
+  { metric: "Any", label: "Robot Fleet", detail: "Hardware-agnostic" },
+  { metric: "70%", label: "Revenue Share", detail: "For robot companies" },
+  { metric: "100%", label: "Closed Loop", detail: "Full attribution" },
+  { metric: "0", label: "Extra Hardware", detail: "Software layer only" },
 ];
 
 export const MARKET_MILESTONES = [
@@ -285,4 +285,128 @@ export const TARGET_WALMART_BIDS = [
   { brand: "Target", bid: 0.65, color: "#ff6b6b" },
   { brand: "Costco", bid: 0.58, color: "#00ff88" },
   { brand: "Amazon", bid: 0.52, color: "#ffd93d" },
+];
+
+export const HOW_IT_WORKS_STEPS = [
+  {
+    step: 1,
+    icon: "monitor",
+    title: "Brand Launches Campaign",
+    description:
+      "Brand uploads creative, sets targeting by robot type, environment, and context, and sets budget in Kovio's dashboard.",
+  },
+  {
+    step: 2,
+    icon: "share",
+    title: "Kovio Routes It",
+    description:
+      "Kovio delivers the campaign to the right robots across any fleet — retail, hotel, airport, or healthcare — in real time.",
+  },
+  {
+    step: 3,
+    icon: "wifi",
+    title: "Robot Delivers Campaign",
+    description:
+      "The robot surfaces the campaign to a consumer: a screen prompt, a spoken recommendation, or a contextual moment.",
+  },
+  {
+    step: 4,
+    icon: "check",
+    title: "Purchase Attributed",
+    description:
+      "Conversion data is matched back to the robot interaction. Kovio shows the brand exactly what drove the sale.",
+  },
+];
+
+export const CONSUMER_ROBOT_ENVIRONMENTS = [
+  {
+    env: "Retail",
+    icon: "cart",
+    description: "Shelf-scanning, shopper assist, out-of-stock alerts",
+  },
+  {
+    env: "Hospitality",
+    icon: "building",
+    description: "Concierge, check-in, and room delivery robots",
+  },
+  {
+    env: "Airport",
+    icon: "plane",
+    description: "Navigation, information, and wayfinding robots",
+  },
+  {
+    env: "Healthcare",
+    icon: "activity",
+    description: "Patient guidance and facility wayfinding robots",
+  },
+  {
+    env: "Food & Beverage",
+    icon: "utensils",
+    description: "Tableside service and order delivery robots",
+  },
+  {
+    env: "Public Space",
+    icon: "globe",
+    description: "Information kiosks and interactive public robots",
+  },
+];
+
+export const RETAIL_SCENARIO_STEPS = [
+  {
+    step: 1,
+    title: "Brand Sets Up Campaign",
+    description:
+      "A brand launches a campaign in Kovio: targeting consumers near the dairy aisle, with a contextual product promotion and budget.",
+  },
+  {
+    step: 2,
+    title: "Kovio Routes to Fleet",
+    description:
+      "Kovio delivers the campaign to retail robots operating in the right stores and aisles in real time.",
+  },
+  {
+    step: 3,
+    title: "Robot Interacts With Shopper",
+    description:
+      "The retail robot surfaces the brand campaign to a nearby shopper — a screen prompt, product highlight, or spoken recommendation.",
+  },
+  {
+    step: 4,
+    title: "Purchase Attributed at Checkout",
+    description:
+      "The shopper's purchase is matched to the robot interaction. Kovio delivers the brand a complete attribution report.",
+  },
+];
+
+export const KOVIO_CAMPAIGN_SURFACES = [
+  {
+    title: "Screen Promotions",
+    description:
+      "Brand creative displayed on robot screens at the right moment and location.",
+  },
+  {
+    title: "Spoken Recommendations",
+    description:
+      "Robots recommend products verbally during live shopper interactions.",
+  },
+  {
+    title: "Contextual Triggers",
+    description:
+      "Campaigns fire based on real-time location, aisle, or product proximity.",
+  },
+  {
+    title: "Checkout Attribution",
+    description:
+      "Measure whether robot interactions drove actual purchases at checkout.",
+  },
+  {
+    title: "Campaign Analytics",
+    description:
+      "Full dashboard visibility into reach, interactions, and conversion lift.",
+  },
+  {
+    title: "Multi-Fleet Targeting",
+    description:
+      "Run one campaign across multiple robot fleets and environments simultaneously.",
+  },
 ];

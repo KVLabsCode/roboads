@@ -38,10 +38,10 @@ export default function FirstMoverBanner() {
             <span className="text-gradient-cyan">Now.</span>
           </h3>
           <p className="text-muted text-sm sm:text-base max-w-2xl mb-8">
-            The robot decision auction market is nascent. No one owns it yet.
-            Kovio is the bridge for manufacturers to monetize deployed robots
-            and for advertisers to bid on decisions, not impressions.
-            First-mover advantage is everything.
+            Consumer-facing robots are already in stores, hotels, airports, and healthcare
+            facilities — interacting with millions of people every day. No one has built
+            the monetization and attribution layer for these interactions yet. Kovio is
+            that layer. First-mover advantage is everything.
           </p>
 
           {/* Stats grid */}
@@ -68,10 +68,10 @@ export default function FirstMoverBanner() {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-start gap-3">
             <CTAButton href="/contact">
-              Integrate Today. Auctions Start Tomorrow
+              Get Early Access
             </CTAButton>
             <CTAButton href="/for-manufacturers" variant="secondary">
-              Claim Your Revenue Share Before 2030 Scale
+              Partner Your Robot Fleet
             </CTAButton>
           </div>
         </div>

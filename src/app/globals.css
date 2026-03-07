@@ -291,6 +291,44 @@ body::before {
 }
 
 /* ═══════════════════════════════════════════════════
+   FLOWING DOTS (HeroDiagram)
+   ═══════════════════════════════════════════════════ */
+
+@keyframes flow-right {
+  0%   { left: -8px; opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { left: calc(100% + 8px); opacity: 0; }
+}
+
+@keyframes flow-left {
+  0%   { left: calc(100% + 8px); opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { left: -8px; opacity: 0; }
+}
+
+.dot-flow-right {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00d4ff;
+  box-shadow: 0 0 8px #00d4ff, 0 0 16px rgba(0, 212, 255, 0.4);
+  animation: flow-right linear infinite;
+}
+
+.dot-flow-left {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 8px #00ff88, 0 0 16px rgba(0, 255, 136, 0.4);
+  animation: flow-left linear infinite;
+}
+
+/* ═══════════════════════════════════════════════════
    SCROLLBAR
    ═══════════════════════════════════════════════════ */
 
