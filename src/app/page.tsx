@@ -254,129 +254,452 @@ const robotIllustrations: Record<string, React.FC> = {
 
 function HeroPanorama() {
   return (
-    <div className="relative w-full max-w-5xl mx-auto h-[280px] sm:h-[340px] md:h-[400px]">
+    <div className="relative w-full max-w-5xl mx-auto h-[320px] sm:h-[400px] md:h-[480px]">
       <svg
-        viewBox="0 0 1000 400"
+        viewBox="0 0 1000 480"
         fill="none"
         className="w-full h-full"
         preserveAspectRatio="xMidYMid meet"
       >
-        {/* Sky gradient */}
         <defs>
-          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="400">
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="480">
             <stop offset="0%" stopColor="#FBF4E4" />
-            <stop offset="100%" stopColor="#FAF8F5" />
+            <stop offset="50%" stopColor="#FAF8F5" />
+            <stop offset="100%" stopColor="#F5F1EC" />
           </linearGradient>
-          <linearGradient id="ground" x1="0" y1="300" x2="0" y2="400">
+          <linearGradient id="ground" x1="0" y1="340" x2="0" y2="480">
             <stop offset="0%" stopColor="#F0EBE3" />
             <stop offset="100%" stopColor="#E8E2D9" />
           </linearGradient>
+          <linearGradient id="road" x1="0" y1="0" x2="1000" y2="0">
+            <stop offset="0%" stopColor="#E8E2D9" />
+            <stop offset="50%" stopColor="#DDD7CC" />
+            <stop offset="100%" stopColor="#E8E2D9" />
+          </linearGradient>
+          <radialGradient id="beacon-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#C4993D" stopOpacity="0.35" />
+            <stop offset="50%" stopColor="#C4993D" stopOpacity="0.08" />
+            <stop offset="100%" stopColor="#C4993D" stopOpacity="0" />
+          </radialGradient>
+          <filter id="soft-glow">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
-        <rect width="1000" height="400" fill="url(#sky)" />
 
-        {/* Ground plane */}
-        <rect y="310" width="1000" height="90" fill="url(#ground)" />
-        <line x1="0" y1="310" x2="1000" y2="310" stroke="#E8E2D9" strokeWidth="1" />
+        {/* ═══ SKY ═══ */}
+        <rect width="1000" height="480" fill="url(#sky)" />
 
-        {/* Buildings - background cityscape */}
-        <rect x="60" y="120" width="80" height="190" rx="4" fill="#E8E2D9" />
-        <rect x="65" y="130" width="14" height="10" rx="2" fill="#D4CFC6" />
-        <rect x="85" y="130" width="14" height="10" rx="2" fill="#D4CFC6" />
-        <rect x="105" y="130" width="14" height="10" rx="2" fill="#D4CFC6" />
-        <rect x="65" y="150" width="14" height="10" rx="2" fill="#D4CFC6" />
-        <rect x="85" y="150" width="14" height="10" rx="2" fill="#D4CFC6" />
-        <rect x="105" y="150" width="14" height="10" rx="2" fill="#D4CFC6" />
+        {/* Subtle clouds */}
+        <ellipse cx="160" cy="38" rx="55" ry="10" fill="#FFFFFF" opacity="0.35" />
+        <ellipse cx="185" cy="35" rx="35" ry="8" fill="#FFFFFF" opacity="0.22" />
+        <ellipse cx="720" cy="48" rx="65" ry="12" fill="#FFFFFF" opacity="0.3" />
+        <ellipse cx="695" cy="44" rx="40" ry="8" fill="#FFFFFF" opacity="0.18" />
+        <ellipse cx="430" cy="28" rx="45" ry="8" fill="#FFFFFF" opacity="0.2" />
 
-        <rect x="160" y="160" width="60" height="150" rx="4" fill="#E8E2D9" />
-        <rect x="165" y="168" width="10" height="8" rx="1" fill="#D4CFC6" />
-        <rect x="180" y="168" width="10" height="8" rx="1" fill="#D4CFC6" />
-        <rect x="195" y="168" width="10" height="8" rx="1" fill="#D4CFC6" />
+        {/* ═══ KOVIO BEACON — central network hub ═══ */}
+        <circle cx="500" cy="75" r="55" fill="url(#beacon-glow)" className="beacon-glow-animated" />
+        <circle cx="500" cy="75" r="20" fill="#2C2418" filter="url(#soft-glow)" />
+        <circle cx="500" cy="75" r="20" fill="none" stroke="#C4993D" strokeWidth="1.5" className="kovio-border-animated" opacity="0.7" />
+        <text x="500" y="73" textAnchor="middle" fill="#C4993D" fontSize="7.5" fontWeight="700" fontFamily="sans-serif" letterSpacing="1">KOVIO</text>
+        <text x="500" y="83" textAnchor="middle" fill="#D4CFC6" fontSize="5" fontFamily="sans-serif">network</text>
+        {/* Outer pulse rings */}
+        <circle cx="500" cy="75" r="28" fill="none" stroke="#C4993D" strokeWidth="0.5" opacity="0.15">
+          <animate attributeName="r" values="28;48;28" dur="4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.2;0;0.2" dur="4s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="500" cy="75" r="36" fill="none" stroke="#C4993D" strokeWidth="0.3" opacity="0.1">
+          <animate attributeName="r" values="36;60;36" dur="4s" begin="2s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.12;0;0.12" dur="4s" begin="2s" repeatCount="indefinite" />
+        </circle>
 
-        <rect x="720" y="100" width="90" height="210" rx="4" fill="#E8E2D9" />
-        <rect x="725" y="108" width="12" height="10" rx="2" fill="#D4CFC6" />
-        <rect x="743" y="108" width="12" height="10" rx="2" fill="#D4CFC6" />
-        <rect x="761" y="108" width="12" height="10" rx="2" fill="#D4CFC6" />
+        {/* ═══ CONNECTION LINES from beacon to each robot ═══ */}
+        {/* Beacon → Retail robot (store) */}
+        <path d="M 488 93 Q 415 180 325 290" stroke="#C4993D" strokeWidth="1.2" className="flow-line-animated" opacity="0.25" fill="none" />
+        {/* Beacon → Hotel robot */}
+        <path d="M 500 95 Q 505 195 516 300" stroke="#C4993D" strokeWidth="1.2" className="flow-line-animated" opacity="0.25" fill="none" />
+        {/* Beacon → Cleaning robot */}
+        <path d="M 515 92 Q 598 185 670 290" stroke="#C4993D" strokeWidth="1.2" className="flow-line-animated" opacity="0.22" fill="none" />
+        {/* Beacon → Delivery robot */}
+        <path d="M 482 93 Q 310 250 165 405" stroke="#C4993D" strokeWidth="1" className="flow-line-animated" opacity="0.18" fill="none" />
+        {/* Beacon → Humanoid robot */}
+        <path d="M 518 92 Q 655 255 760 400" stroke="#C4993D" strokeWidth="1" className="flow-line-animated" opacity="0.18" fill="none" />
+        {/* Beacon → Hospital robot */}
+        <path d="M 522 90 Q 695 175 840 325" stroke="#C4993D" strokeWidth="0.8" className="flow-line-animated" opacity="0.15" fill="none" />
+        {/* Beacon → Warehouse */}
+        <path d="M 482 90 Q 310 125 155 210" stroke="#C4993D" strokeWidth="0.8" className="flow-line-animated" opacity="0.12" fill="none" />
 
-        <rect x="830" y="180" width="70" height="130" rx="4" fill="#E8E2D9" />
-        <rect x="835" y="188" width="10" height="8" rx="1" fill="#D4CFC6" />
-        <rect x="850" y="188" width="10" height="8" rx="1" fill="#D4CFC6" />
+        {/* Animated pulse dots traveling along beacon connections */}
+        <circle r="3" fill="#C4993D" opacity="0.6">
+          <animateMotion dur="3.5s" repeatCount="indefinite" path="M 488 93 Q 415 180 325 290" />
+        </circle>
+        <circle r="3" fill="#C4993D" opacity="0.55">
+          <animateMotion dur="3s" repeatCount="indefinite" path="M 500 95 Q 505 195 516 300" begin="0.5s" />
+        </circle>
+        <circle r="2.5" fill="#C4993D" opacity="0.5">
+          <animateMotion dur="4s" repeatCount="indefinite" path="M 515 92 Q 598 185 670 290" begin="1s" />
+        </circle>
+        <circle r="2.5" fill="#C4993D" opacity="0.45">
+          <animateMotion dur="4.5s" repeatCount="indefinite" path="M 482 93 Q 310 250 165 405" begin="1.5s" />
+        </circle>
+        <circle r="2.5" fill="#C4993D" opacity="0.45">
+          <animateMotion dur="4.2s" repeatCount="indefinite" path="M 518 92 Q 655 255 760 400" begin="2s" />
+        </circle>
+        <circle r="2" fill="#C4993D" opacity="0.35">
+          <animateMotion dur="5s" repeatCount="indefinite" path="M 522 90 Q 695 175 840 325" begin="2.5s" />
+        </circle>
 
-        {/* Store front */}
-        <rect x="240" y="230" width="120" height="80" rx="4" fill="#FFFFFF" stroke="#E8E2D9" />
-        <rect x="255" y="240" width="35" height="40" rx="2" fill="#FBF4E4" />
-        <rect x="298" y="240" width="35" height="40" rx="2" fill="#FBF4E4" />
-        <text x="280" y="226" textAnchor="middle" fill="#9C9488" fontSize="10" fontFamily="sans-serif">STORE</text>
+        {/* ═══ BACKGROUND LAYER — tall buildings, warehouse, hospital ═══ */}
 
-        {/* Hospital cross */}
-        <rect x="550" y="190" width="100" height="120" rx="4" fill="#FFFFFF" stroke="#E8E2D9" />
-        <rect x="590" y="198" width="20" height="20" rx="2" fill="#F5F1EC" />
-        <rect x="596" y="201" width="8" height="14" rx="1" fill="#7D8C6E" opacity="0.5" />
-        <rect x="593" y="205" width="14" height="6" rx="1" fill="#7D8C6E" opacity="0.5" />
+        {/* Tall office building — far left */}
+        <rect x="20" y="60" width="70" height="280" rx="4" fill="#E8E2D9" />
+        {[80, 100, 120, 140, 160, 180, 200, 220, 240].map((y) => (
+          <g key={`bldg1-${y}`}>
+            <rect x="28" y={y} width="10" height="8" rx="1.5" fill="#D4CFC6" />
+            <rect x="44" y={y} width="10" height="8" rx="1.5" fill="#D4CFC6" />
+            <rect x="60" y={y} width="10" height="8" rx="1.5" fill="#D4CFC6" />
+          </g>
+        ))}
 
-        {/* ── Robot 1: Retail robot in store ── */}
+        {/* Warehouse building — far left mid */}
+        <rect x="110" y="140" width="90" height="200" rx="4" fill="#E8E2D9" />
+        <rect x="115" y="145" width="80" height="30" rx="3" fill="#D4CFC6" opacity="0.5" />
+        <text x="155" y="165" textAnchor="middle" fill="#B8A898" fontSize="8" fontFamily="sans-serif">WAREHOUSE</text>
+        {/* Warehouse robot visible through large window */}
+        <rect x="120" y="185" width="70" height="50" rx="3" fill="#F5F1EC" />
+        <rect x="135" y="200" width="30" height="14" rx="4" fill="#2C2418" opacity="0.7" />
+        <rect x="140" y="203" width="20" height="3" rx="1" fill="#C4993D" opacity="0.3" />
+        <rect x="138" y="192" width="18" height="8" rx="2" fill="#B8734A" opacity="0.2" />
+        {/* Shelving */}
+        <rect x="120" y="245" width="70" height="50" rx="3" fill="#F5F1EC" />
+        <rect x="126" y="250" width="14" height="8" rx="1" fill="#D4CFC6" />
+        <rect x="144" y="250" width="14" height="8" rx="1" fill="#D4CFC6" />
+        <rect x="162" y="250" width="14" height="8" rx="1" fill="#D4CFC6" />
+        <rect x="126" y="262" width="14" height="8" rx="1" fill="#D4CFC6" />
+        <rect x="144" y="262" width="14" height="8" rx="1" fill="#D4CFC6" />
+        <rect x="162" y="262" width="14" height="8" rx="1" fill="#D4CFC6" />
+
+        {/* Hospital — background right */}
+        <rect x="780" y="80" width="100" height="260" rx="4" fill="#E8E2D9" />
+        <rect x="810" y="90" width="40" height="30" rx="3" fill="#F5F1EC" />
+        {/* Cross */}
+        <rect x="824" y="96" width="12" height="18" rx="2" fill="#7D8C6E" opacity="0.4" />
+        <rect x="821" y="102" width="18" height="6" rx="2" fill="#7D8C6E" opacity="0.4" />
+        {/* Hospital windows */}
+        {[130, 155, 180, 205, 230, 255].map((y) => (
+          <g key={`hosp-${y}`}>
+            <rect x="788" y={y} width="14" height="10" rx="2" fill="#D4CFC6" />
+            <rect x="808" y={y} width="14" height="10" rx="2" fill="#D4CFC6" />
+            <rect x="828" y={y} width="14" height="10" rx="2" fill="#D4CFC6" />
+            <rect x="848" y={y} width="14" height="10" rx="2" fill="#D4CFC6" />
+          </g>
+        ))}
+        {/* Hospital robot visible in lower window */}
+        <rect x="830" y="270" width="30" height="20" rx="3" fill="#F5F1EC" />
+        <rect x="836" y="275" width="18" height="12" rx="3" fill="#2C2418" opacity="0.6" />
+        <circle cx="842" cy="280" r="1.5" fill="#7D8C6E" opacity="0.5" />
+        <circle cx="848" cy="280" r="1.5" fill="#7D8C6E" opacity="0.5" />
+
+        {/* Mid-rise building — background center-left */}
+        <rect x="215" y="130" width="65" height="210" rx="4" fill="#E8E2D9" />
+        {[148, 170, 192, 214, 236].map((y) => (
+          <g key={`mid1-${y}`}>
+            <rect x="222" y={y} width="10" height="8" rx="1" fill="#D4CFC6" />
+            <rect x="238" y={y} width="10" height="8" rx="1" fill="#D4CFC6" />
+            <rect x="254" y={y} width="10" height="8" rx="1" fill="#D4CFC6" />
+          </g>
+        ))}
+
+        {/* Apartment building — background center-right */}
+        <rect x="700" y="110" width="60" height="230" rx="4" fill="#E8E2D9" />
+        {[125, 148, 171, 194, 217, 240].map((y) => (
+          <g key={`apt-${y}`}>
+            <rect x="706" y={y} width="10" height="10" rx="1.5" fill="#D4CFC6" />
+            <rect x="722" y={y} width="10" height="10" rx="1.5" fill="#D4CFC6" />
+            <rect x="738" y={y} width="10" height="10" rx="1.5" fill="#D4CFC6" />
+          </g>
+        ))}
+
+        {/* ═══ MIDGROUND LAYER — shops, hotel, public spaces ═══ */}
+
+        {/* Sidewalk / ground plane */}
+        <rect y="340" width="1000" height="120" fill="url(#ground)" />
+        {/* Road */}
+        <rect y="365" width="1000" height="30" fill="url(#road)" />
+        <line x1="0" y1="380" x2="1000" y2="380" stroke="#D4CFC6" strokeWidth="1" strokeDasharray="12 8" />
+        {/* Sidewalk edge lines */}
+        <line x1="0" y1="340" x2="1000" y2="340" stroke="#E8E2D9" strokeWidth="1" />
+        <line x1="0" y1="395" x2="1000" y2="395" stroke="#E8E2D9" strokeWidth="0.5" />
+        {/* Crosswalk */}
+        <g opacity="0.25">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <rect key={`cw-${i}`} x={448 + i * 14} y="365" width="8" height="30" rx="1" fill="#FFFFFF" />
+          ))}
+        </g>
+
+        {/* ── STORE with retail robot + shopper ── */}
+        <rect x="290" y="220" width="140" height="120" rx="5" fill="#FFFFFF" stroke="#E8E2D9" strokeWidth="1" />
+        {/* Awning */}
+        <rect x="285" y="215" width="150" height="12" rx="3" fill="#C4993D" opacity="0.15" />
+        <text x="360" y="210" textAnchor="middle" fill="#9C9488" fontSize="9" fontFamily="sans-serif">GROCERY</text>
+        {/* Store window with shelves */}
+        <rect x="298" y="238" width="50" height="55" rx="3" fill="#FBF4E4" />
+        <rect x="303" y="244" width="18" height="6" rx="1" fill="#E8E2D9" />
+        <rect x="325" y="244" width="18" height="6" rx="1" fill="#E8E2D9" />
+        <rect x="303" y="254" width="18" height="6" rx="1" fill="#C4993D" opacity="0.15" />
+        <rect x="325" y="254" width="18" height="6" rx="1" fill="#C4993D" opacity="0.15" />
+        <rect x="303" y="264" width="18" height="6" rx="1" fill="#E8E2D9" />
+        <rect x="325" y="264" width="18" height="6" rx="1" fill="#E8E2D9" />
+        {/* Store door */}
+        <rect x="370" y="255" width="40" height="85" rx="3" fill="#F5F1EC" />
+        <circle cx="405" cy="300" r="2" fill="#D4CFC6" />
+
+        {/* Retail robot INSIDE store — helping a shopper */}
         <g className="animate-float-slow" style={{ animationDelay: "0s" }}>
-          <rect x="275" y="270" width="30" height="36" rx="6" fill="#2C2418" />
-          <rect x="279" y="275" width="22" height="12" rx="3" fill="#C4993D" opacity="0.3" />
-          <circle cx="286" cy="280" r="1.5" fill="#C4993D" />
-          <circle cx="294" cy="280" r="1.5" fill="#C4993D" />
-          <circle cx="282" cy="308" r="3" fill="#5C5346" />
-          <circle cx="298" cy="308" r="3" fill="#5C5346" />
+          {/* Robot body */}
+          <rect x="310" y="280" width="26" height="32" rx="6" fill="#2C2418" />
+          <rect x="314" y="285" width="18" height="10" rx="3" fill="#C4993D" opacity="0.3" />
+          <circle cx="320" cy="289" r="1.5" fill="#C4993D" />
+          <circle cx="328" cy="289" r="1.5" fill="#C4993D" />
+          {/* Robot arm pointing at shelf */}
+          <line x1="336" y1="290" x2="345" y2="258" stroke="#2C2418" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="345" cy="257" r="3" fill="#C4993D" opacity="0.4" />
+          <circle cx="310" cy="314" r="3" fill="#5C5346" />
+          <circle cx="330" cy="314" r="3" fill="#5C5346" />
         </g>
 
-        {/* ── Robot 2: Delivery bot on sidewalk ── */}
-        <g className="animate-float-slow" style={{ animationDelay: "1s" }}>
-          <rect x="420" y="280" width="50" height="26" rx="8" fill="#2C2418" />
-          <rect x="427" y="274" width="36" height="8" rx="4" fill="#3D3224" />
-          <circle cx="435" cy="290" r="3" fill="#C4993D" opacity="0.5" />
-          <circle cx="457" cy="290" r="3" fill="#C4993D" opacity="0.5" />
-          <circle cx="430" cy="308" r="4" fill="#5C5346" />
-          <circle cx="460" cy="308" r="4" fill="#5C5346" />
-          {/* Flag */}
-          <line x1="460" y1="258" x2="460" y2="274" stroke="#5C5346" strokeWidth="1" />
-          <rect x="460" y="258" width="12" height="8" rx="1" fill="#C4993D" opacity="0.4" />
+        {/* Shopper in store — person looking at robot */}
+        <circle cx="365" cy="280" r="7" fill="#D4CFC6" />
+        <rect x="360" y="288" width="10" height="16" rx="3" fill="#D4CFC6" />
+        <rect x="356" y="304" width="7" height="12" rx="2" fill="#D4CFC6" />
+        <rect x="367" y="304" width="7" height="12" rx="2" fill="#D4CFC6" />
+        {/* Speech bubble */}
+        <rect x="346" y="262" width="38" height="14" rx="4" fill="#FFFFFF" stroke="#E8E2D9" strokeWidth="0.5" />
+        <text x="365" y="272" textAnchor="middle" fill="#5C5346" fontSize="6" fontFamily="sans-serif">Aisle 3?</text>
+
+        {/* ── HOTEL with service robot greeting guest ── */}
+        <rect x="480" y="200" width="120" height="140" rx="5" fill="#FFFFFF" stroke="#E8E2D9" strokeWidth="1" />
+        {/* Hotel sign */}
+        <rect x="500" y="205" width="80" height="14" rx="3" fill="#2C2418" />
+        <text x="540" y="215" textAnchor="middle" fill="#C4993D" fontSize="7" fontWeight="500" fontFamily="sans-serif">HOTEL</text>
+        {/* Hotel windows */}
+        <rect x="490" y="228" width="18" height="14" rx="2" fill="#FBF4E4" />
+        <rect x="514" y="228" width="18" height="14" rx="2" fill="#FBF4E4" />
+        <rect x="538" y="228" width="18" height="14" rx="2" fill="#FBF4E4" />
+        <rect x="562" y="228" width="18" height="14" rx="2" fill="#FBF4E4" />
+        <rect x="490" y="250" width="18" height="14" rx="2" fill="#FBF4E4" />
+        <rect x="514" y="250" width="18" height="14" rx="2" fill="#FBF4E4" />
+        <rect x="538" y="250" width="18" height="14" rx="2" fill="#FBF4E4" />
+        <rect x="562" y="250" width="18" height="14" rx="2" fill="#FBF4E4" />
+        {/* Hotel entrance */}
+        <rect x="515" y="280" width="50" height="60" rx="3" fill="#F5F1EC" />
+        <rect x="520" y="282" width="18" height="58" rx="2" fill="#F0EBE3" />
+        <rect x="542" y="282" width="18" height="58" rx="2" fill="#F0EBE3" />
+
+        {/* Hotel service robot — greeting traveler */}
+        <g className="animate-float-slow" style={{ animationDelay: "0.8s" }}>
+          <rect x="505" y="300" width="22" height="34" rx="7" fill="#2C2418" />
+          <circle cx="516" cy="295" r="8" fill="#2C2418" />
+          <circle cx="513" cy="293" r="1.5" fill="#C4993D" />
+          <circle cx="519" cy="293" r="1.5" fill="#C4993D" />
+          {/* Welcoming arm */}
+          <line x1="504" y1="308" x2="496" y2="300" stroke="#3D3224" strokeWidth="3" strokeLinecap="round" />
+          <ellipse cx="516" cy="336" rx="8" ry="3" fill="#5C5346" />
         </g>
 
-        {/* ── Robot 3: Hospital robot ── */}
-        <g className="animate-float-slow" style={{ animationDelay: "2s" }}>
-          <rect x="575" y="260" width="30" height="44" rx="8" fill="#2C2418" />
-          <rect x="579" y="265" width="22" height="12" rx="3" fill="#7D8C6E" opacity="0.2" />
-          <polyline points="583,271 586,268 589,273 592,270 596,271" stroke="#7D8C6E" strokeWidth="1" fill="none" opacity="0.5" />
-          <ellipse cx="590" cy="306" rx="12" ry="3" fill="#5C5346" />
-        </g>
+        {/* Traveler with suitcase */}
+        <circle cx="490" cy="296" r="7" fill="#B8734A" opacity="0.5" />
+        <rect x="485" y="304" width="10" height="18" rx="3" fill="#B8734A" opacity="0.4" />
+        <rect x="481" y="322" width="7" height="12" rx="2" fill="#B8734A" opacity="0.4" />
+        <rect x="492" y="322" width="7" height="12" rx="2" fill="#B8734A" opacity="0.4" />
+        {/* Suitcase */}
+        <rect x="475" y="316" width="8" height="14" rx="2" fill="#D4CFC6" />
+        <line x1="479" y1="314" x2="479" y2="316" stroke="#B8A898" strokeWidth="1" />
 
-        {/* ── Robot 4: Humanoid on street ── */}
-        <g className="animate-float-slow" style={{ animationDelay: "0.5s" }}>
-          {/* Head */}
-          <ellipse cx="680" cy="252" rx="10" ry="11" fill="#2C2418" />
-          <circle cx="676" cy="250" r="2" fill="#C4993D" opacity="0.5" />
-          <circle cx="684" cy="250" r="2" fill="#C4993D" opacity="0.5" />
-          {/* Body */}
-          <rect x="670" y="263" width="20" height="24" rx="4" fill="#2C2418" />
-          <circle cx="680" cy="272" r="3" fill="#C4993D" opacity="0.2" />
-          {/* Arms */}
-          <rect x="662" y="265" width="8" height="18" rx="4" fill="#3D3224" />
-          <rect x="690" y="265" width="8" height="18" rx="4" fill="#3D3224" />
-          {/* Legs */}
-          <rect x="672" y="287" width="7" height="18" rx="3" fill="#3D3224" />
-          <rect x="681" y="287" width="7" height="18" rx="3" fill="#3D3224" />
-          <ellipse cx="675" cy="306" rx="5" ry="2" fill="#5C5346" />
-          <ellipse cx="685" cy="306" rx="5" ry="2" fill="#5C5346" />
-        </g>
+        {/* ── MALL / PUBLIC SPACE — cleaning robot ── */}
+        <rect x="630" y="240" width="80" height="100" rx="5" fill="#FFFFFF" stroke="#E8E2D9" strokeWidth="1" />
+        <text x="670" y="254" textAnchor="middle" fill="#9C9488" fontSize="8" fontFamily="sans-serif">MALL</text>
+        <rect x="640" y="260" width="60" height="50" rx="3" fill="#F5F1EC" />
 
-        {/* ── Robot 5: Warehouse AMR ── */}
+        {/* Cleaning robot inside — disc shape with water trail */}
         <g className="animate-float-slow" style={{ animationDelay: "1.5s" }}>
-          <rect x="850" y="285" width="40" height="18" rx="5" fill="#2C2418" />
-          <rect x="855" y="289" width="30" height="4" rx="2" fill="#C4993D" opacity="0.3" />
-          <rect x="858" y="275" width="24" height="10" rx="2" fill="#B8734A" opacity="0.25" />
-          <circle cx="858" cy="305" r="4" fill="#5C5346" />
-          <circle cx="882" cy="305" r="4" fill="#5C5346" />
+          <ellipse cx="670" cy="292" rx="18" ry="7" fill="#2C2418" />
+          <ellipse cx="670" cy="289" rx="14" ry="5" fill="#3D3224" />
+          <circle cx="664" cy="289" r="2" fill="#C4993D" opacity="0.5" />
+          <circle cx="676" cy="289" r="2" fill="#C4993D" opacity="0.5" />
+          {/* Clean trail sparkles */}
+          <circle cx="652" cy="298" r="1.5" fill="#7D8C6E" opacity="0.25" />
+          <circle cx="646" cy="295" r="1" fill="#7D8C6E" opacity="0.2" />
+          <circle cx="656" cy="302" r="1" fill="#7D8C6E" opacity="0.2" />
         </g>
 
-        {/* Kovio connection lines — animated */}
-        <path d="M 300 290 Q 360 250 430 290" stroke="#C4993D" strokeWidth="1.5" className="flow-line-animated" opacity="0.3" fill="none" />
-        <path d="M 460 290 Q 520 250 580 280" stroke="#C4993D" strokeWidth="1.5" className="flow-line-animated" opacity="0.3" fill="none" />
-        <path d="M 600 280 Q 640 250 675 270" stroke="#C4993D" strokeWidth="1.5" className="flow-line-animated" opacity="0.3" fill="none" />
-        <path d="M 695 280 Q 770 250 855 290" stroke="#C4993D" strokeWidth="1.5" className="flow-line-animated" opacity="0.3" fill="none" />
+        {/* ═══ FOREGROUND LAYER — street robots and people ═══ */}
+
+        {/* ── Delivery robot on sidewalk → delivering to home ── */}
+        <g className="animate-float-slow" style={{ animationDelay: "0.3s" }}>
+          {/* Delivery bot */}
+          <rect x="140" y="400" width="44" height="24" rx="7" fill="#2C2418" />
+          <rect x="146" y="394" width="32" height="8" rx="4" fill="#3D3224" />
+          <circle cx="155" cy="410" r="3" fill="#C4993D" opacity="0.5" />
+          <circle cx="173" cy="410" r="3" fill="#C4993D" opacity="0.5" />
+          <circle cx="150" cy="426" r="4" fill="#5C5346" />
+          <circle cx="174" cy="426" r="4" fill="#5C5346" />
+          <circle cx="150" cy="426" r="2" fill="#3D3224" />
+          <circle cx="174" cy="426" r="2" fill="#3D3224" />
+          {/* Flag */}
+          <line x1="175" y1="380" x2="175" y2="394" stroke="#5C5346" strokeWidth="1.2" />
+          <rect x="175" y="380" width="14" height="8" rx="1.5" fill="#C4993D" opacity="0.4" />
+          {/* Grocery bag on top */}
+          <rect x="152" y="386" width="16" height="10" rx="2" fill="#7D8C6E" opacity="0.25" />
+        </g>
+
+        {/* Home doorstep — delivery destination */}
+        <rect x="85" y="395" width="45" height="45" rx="4" fill="#FFFFFF" stroke="#E8E2D9" strokeWidth="0.8" />
+        <rect x="98" y="400" width="18" height="35" rx="2" fill="#F5F1EC" />
+        <circle cx="113" cy="418" r="1.5" fill="#D4CFC6" />
+        {/* Person at door receiving delivery */}
+        <circle cx="105" cy="398" r="5" fill="#D4CFC6" />
+        <rect x="101" y="404" width="8" height="12" rx="2.5" fill="#D4CFC6" />
+
+        {/* ── Parent + child walking, delivery bot passing ── */}
+        {/* Parent */}
+        <circle cx="218" cy="404" r="7" fill="#B8734A" opacity="0.4" />
+        <rect x="213" y="412" width="10" height="20" rx="3" fill="#B8734A" opacity="0.35" />
+        <rect x="210" y="432" width="6" height="10" rx="2" fill="#B8734A" opacity="0.35" />
+        <rect x="220" y="432" width="6" height="10" rx="2" fill="#B8734A" opacity="0.35" />
+        {/* Child — smaller */}
+        <circle cx="234" cy="416" r="5" fill="#D4A843" opacity="0.35" />
+        <rect x="230" y="422" width="8" height="14" rx="2.5" fill="#D4A843" opacity="0.3" />
+        <rect x="229" y="436" width="4" height="8" rx="1.5" fill="#D4A843" opacity="0.3" />
+        <rect x="236" y="436" width="4" height="8" rx="1.5" fill="#D4A843" opacity="0.3" />
+        {/* Parent holding child hand */}
+        <line x1="223" y1="420" x2="230" y2="424" stroke="#C4993D" strokeWidth="0.8" opacity="0.3" />
+
+        {/* ── Humanoid robot helping carry bags for a person ── */}
+        <g className="animate-float-slow" style={{ animationDelay: "1.2s" }}>
+          {/* Humanoid */}
+          <ellipse cx="760" cy="392" rx="9" ry="10" fill="#2C2418" />
+          <circle cx="756" cy="390" r="2" fill="#C4993D" opacity="0.5" />
+          <circle cx="764" cy="390" r="2" fill="#C4993D" opacity="0.5" />
+          <rect x="752" y="402" width="16" height="22" rx="4" fill="#2C2418" />
+          <circle cx="760" cy="410" r="2.5" fill="#C4993D" opacity="0.2" />
+          {/* Arms — one carrying bag */}
+          <rect x="744" y="404" width="7" height="16" rx="3.5" fill="#3D3224" />
+          <rect x="769" y="404" width="7" height="16" rx="3.5" fill="#3D3224" />
+          {/* Shopping bag in left hand */}
+          <rect x="740" y="418" width="10" height="12" rx="2" fill="#C4993D" opacity="0.25" />
+          <line x1="742" y1="418" x2="748" y2="416" stroke="#C4993D" strokeWidth="0.8" opacity="0.3" />
+          {/* Legs */}
+          <rect x="754" y="424" width="6" height="16" rx="3" fill="#3D3224" />
+          <rect x="762" y="424" width="6" height="16" rx="3" fill="#3D3224" />
+          <ellipse cx="757" cy="441" rx="5" ry="2" fill="#5C5346" />
+          <ellipse cx="765" cy="441" rx="5" ry="2" fill="#5C5346" />
+        </g>
+
+        {/* Person walking WITH humanoid robot */}
+        <circle cx="785" cy="398" r="7" fill="#D4CFC6" />
+        <rect x="780" y="406" width="10" height="18" rx="3" fill="#D4CFC6" />
+        <rect x="778" y="424" width="6" height="12" rx="2" fill="#D4CFC6" />
+        <rect x="787" y="424" width="6" height="12" rx="2" fill="#D4CFC6" />
+
+        {/* ── Hospital robot exiting hospital — transporting supplies ── */}
+        <g className="animate-float-slow" style={{ animationDelay: "2s" }}>
+          <rect x="830" y="320" width="24" height="36" rx="7" fill="#2C2418" />
+          <rect x="834" y="325" width="16" height="10" rx="3" fill="#7D8C6E" opacity="0.25" />
+          <circle cx="839" cy="329" r="1.5" fill="#7D8C6E" opacity="0.5" />
+          <circle cx="847" cy="329" r="1.5" fill="#7D8C6E" opacity="0.5" />
+          {/* Supplies tray on top */}
+          <rect x="826" y="314" width="32" height="6" rx="2" fill="#C4993D" opacity="0.2" />
+          <rect x="830" y="308" width="8" height="6" rx="1.5" fill="#7D8C6E" opacity="0.2" />
+          <rect x="842" y="308" width="8" height="6" rx="1.5" fill="#7D8C6E" opacity="0.2" />
+          <ellipse cx="842" cy="358" rx="10" ry="3" fill="#5C5346" />
+        </g>
+
+        {/* ── Trees and urban elements ── */}
+        {/* Tree left */}
+        <rect x="250" y="380" width="4" height="20" fill="#B8734A" opacity="0.25" />
+        <circle cx="252" cy="372" r="14" fill="#7D8C6E" opacity="0.15" />
+        <circle cx="246" cy="368" r="10" fill="#7D8C6E" opacity="0.12" />
+        <circle cx="258" cy="366" r="11" fill="#7D8C6E" opacity="0.12" />
+
+        {/* Tree center */}
+        <rect x="458" y="395" width="4" height="18" fill="#B8734A" opacity="0.25" />
+        <circle cx="460" cy="388" r="12" fill="#7D8C6E" opacity="0.15" />
+        <circle cx="454" cy="384" r="9" fill="#7D8C6E" opacity="0.12" />
+        <circle cx="466" cy="383" r="10" fill="#7D8C6E" opacity="0.12" />
+
+        {/* Tree right */}
+        <rect x="720" y="390" width="4" height="18" fill="#B8734A" opacity="0.25" />
+        <circle cx="722" cy="383" r="13" fill="#7D8C6E" opacity="0.15" />
+        <circle cx="716" cy="379" r="9" fill="#7D8C6E" opacity="0.12" />
+
+        {/* Bench */}
+        <rect x="440" y="428" width="30" height="4" rx="2" fill="#D4CFC6" />
+        <rect x="443" y="432" width="3" height="8" fill="#D4CFC6" />
+        <rect x="464" y="432" width="3" height="8" fill="#D4CFC6" />
+
+        {/* Street lamp */}
+        <line x1="620" y1="360" x2="620" y2="400" stroke="#D4CFC6" strokeWidth="2" />
+        <ellipse cx="620" cy="358" rx="8" ry="3" fill="#D4CFC6" />
+        <circle cx="620" cy="356" r="3" fill="#D4A843" opacity="0.15" />
+
+        {/* ═══ INTER-ROBOT MESH — subtle peer connections ═══ */}
+
+        {/* Store ↔ Hotel */}
+        <path d="M 335 300 Q 420 260 510 310" stroke="#C4993D" strokeWidth="0.8" strokeDasharray="4 4" opacity="0.12" fill="none" />
+        {/* Hotel ↔ Cleaning */}
+        <path d="M 525 310 Q 600 275 665 295" stroke="#C4993D" strokeWidth="0.8" strokeDasharray="4 4" opacity="0.12" fill="none" />
+        {/* Cleaning ↔ Hospital */}
+        <path d="M 685 292 Q 760 270 835 325" stroke="#C4993D" strokeWidth="0.8" strokeDasharray="4 4" opacity="0.1" fill="none" />
+        {/* Delivery ↔ Store */}
+        <path d="M 175 405 Q 245 360 315 295" stroke="#C4993D" strokeWidth="0.8" strokeDasharray="4 4" opacity="0.1" fill="none" />
+        {/* Humanoid ↔ Hotel */}
+        <path d="M 760 405 Q 660 370 525 318" stroke="#C4993D" strokeWidth="0.8" strokeDasharray="4 4" opacity="0.1" fill="none" />
+
+        {/* Signal symbols near active robots */}
+        {/* Near store robot */}
+        <g opacity="0.3">
+          <path d="M 340 272 Q 344 268 348 272" stroke="#C4993D" strokeWidth="0.8" fill="none" />
+          <path d="M 338 268 Q 344 262 350 268" stroke="#C4993D" strokeWidth="0.8" fill="none" />
+        </g>
+        {/* Near hotel robot */}
+        <g opacity="0.3">
+          <path d="M 520 288 Q 524 284 528 288" stroke="#C4993D" strokeWidth="0.8" fill="none" />
+          <path d="M 518 284 Q 524 278 530 284" stroke="#C4993D" strokeWidth="0.8" fill="none" />
+        </g>
+        {/* Near humanoid robot */}
+        <g opacity="0.3">
+          <path d="M 770 386 Q 774 382 778 386" stroke="#C4993D" strokeWidth="0.8" fill="none" />
+          <path d="M 768 382 Q 774 376 780 382" stroke="#C4993D" strokeWidth="0.8" fill="none" />
+        </g>
+        {/* Near delivery robot */}
+        <g opacity="0.3">
+          <path d="M 185 392 Q 189 388 193 392" stroke="#C4993D" strokeWidth="0.8" fill="none" />
+          <path d="M 183 388 Q 189 382 195 388" stroke="#C4993D" strokeWidth="0.8" fill="none" />
+        </g>
+        {/* Near cleaning robot */}
+        <g opacity="0.25">
+          <path d="M 684 278 Q 688 274 692 278" stroke="#C4993D" strokeWidth="0.8" fill="none" />
+          <path d="M 682 274 Q 688 268 694 274" stroke="#C4993D" strokeWidth="0.8" fill="none" />
+        </g>
+        {/* Near humanoid */}
+        <g opacity="0.3">
+          <path d="M 770 386 Q 774 382 778 386" stroke="#C4993D" strokeWidth="0.8" fill="none" />
+          <path d="M 768 382 Q 774 376 780 382" stroke="#C4993D" strokeWidth="0.8" fill="none" />
+        </g>
+
+        {/* ═══ URBAN DETAILS ═══ */}
+        {/* Planter box near store */}
+        <rect x="436" y="332" width="16" height="8" rx="2" fill="#D4CFC6" />
+        <circle cx="440" cy="330" r="4" fill="#7D8C6E" opacity="0.15" />
+        <circle cx="448" cy="329" r="5" fill="#7D8C6E" opacity="0.12" />
+        {/* Planter box near hotel */}
+        <rect x="606" y="332" width="16" height="8" rx="2" fill="#D4CFC6" />
+        <circle cx="610" cy="330" r="4" fill="#7D8C6E" opacity="0.15" />
+        <circle cx="618" cy="329" r="5" fill="#7D8C6E" opacity="0.12" />
       </svg>
     </div>
   );
@@ -457,43 +780,127 @@ function TransformationDiagram() {
 
 function ArchitectureFlow() {
   return (
-    <div className="max-w-4xl mx-auto">
-      <svg viewBox="0 0 800 200" fill="none" className="w-full" preserveAspectRatio="xMidYMid meet">
-        {/* Brands node */}
-        <rect x="20" y="60" width="140" height="80" rx="12" fill="#FFFFFF" stroke="#E8E2D9" strokeWidth="1.5" />
-        <text x="90" y="92" textAnchor="middle" fill="#2C2418" fontSize="15" fontWeight="600" fontFamily="sans-serif">Brands</text>
-        <text x="90" y="112" textAnchor="middle" fill="#5C5346" fontSize="11" fontFamily="sans-serif">Campaigns &amp; budgets</text>
+    <div className="max-w-5xl mx-auto">
+      <svg viewBox="0 0 900 560" fill="none" className="w-full" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <radialGradient id="eco-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#C4993D" stopOpacity="0.1" />
+            <stop offset="100%" stopColor="#C4993D" stopOpacity="0" />
+          </radialGradient>
+          <marker id="arrow-gold" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0,0 10,3.5 0,7" fill="#C4993D" opacity="0.8" />
+          </marker>
+        </defs>
 
-        {/* Arrow 1 */}
-        <line x1="165" y1="100" x2="260" y2="100" stroke="#C4993D" strokeWidth="2" className="flow-line-animated" />
-        <polygon points="255,94 268,100 255,106" fill="#C4993D" />
+        {/* Central glow */}
+        <circle cx="450" cy="268" r="130" fill="url(#eco-glow)" />
 
-        {/* Kovio node */}
-        <rect x="270" y="50" width="160" height="100" rx="14" fill="#2C2418" />
-        <rect x="270" y="50" width="160" height="100" rx="14" fill="none" stroke="#C4993D" strokeWidth="1.5" className="kovio-border-animated" opacity="0.6" />
-        <text x="350" y="92" textAnchor="middle" fill="#C4993D" fontSize="16" fontWeight="700" fontFamily="sans-serif">Kovio</text>
-        <text x="350" y="112" textAnchor="middle" fill="#D4CFC6" fontSize="11" fontFamily="sans-serif">Economic layer</text>
+        {/* ═══ FLOW ARROWS ═══ */}
 
-        {/* Arrow 2 */}
-        <line x1="435" y1="100" x2="530" y2="100" stroke="#C4993D" strokeWidth="2" className="flow-line-animated" />
-        <polygon points="525,94 538,100 525,106" fill="#C4993D" />
+        {/* 1. Brands → Kovio */}
+        <path d="M 275 140 C 315 165, 340 200, 368 238" stroke="#C4993D" strokeWidth="2" className="flow-line-animated" opacity="0.45" fill="none" markerEnd="url(#arrow-gold)" />
+        {/* 2. Kovio → Robot Fleets */}
+        <path d="M 532 238 C 560 200, 585 165, 625 140" stroke="#C4993D" strokeWidth="2" className="flow-line-animated" opacity="0.45" fill="none" markerEnd="url(#arrow-gold)" />
+        {/* 3. Robot Fleets → Interactions */}
+        <path d="M 748 175 C 764 260, 764 340, 748 400" stroke="#C4993D" strokeWidth="2" className="flow-line-animated" opacity="0.45" fill="none" markerEnd="url(#arrow-gold)" />
+        {/* 4. Interactions → Insights */}
+        <path d="M 618 455 C 510 490, 390 490, 282 455" stroke="#C4993D" strokeWidth="2" className="flow-line-animated" opacity="0.45" fill="none" markerEnd="url(#arrow-gold)" />
+        {/* 5. Insights → Brands */}
+        <path d="M 152 400 C 136 340, 136 225, 152 175" stroke="#C4993D" strokeWidth="2" className="flow-line-animated" opacity="0.45" fill="none" markerEnd="url(#arrow-gold)" />
 
-        {/* Robot Fleets node */}
-        <rect x="540" y="60" width="160" height="80" rx="12" fill="#FFFFFF" stroke="#E8E2D9" strokeWidth="1.5" />
-        <text x="620" y="92" textAnchor="middle" fill="#2C2418" fontSize="15" fontWeight="600" fontFamily="sans-serif">Robot Fleets</text>
-        <text x="620" y="112" textAnchor="middle" fill="#5C5346" fontSize="11" fontFamily="sans-serif">Deliver interactions</text>
+        {/* Animated pulse dots */}
+        <circle r="4" fill="#C4993D" opacity="0.6">
+          <animateMotion dur="3s" repeatCount="indefinite" path="M 275 140 C 315 165, 340 200, 368 238" />
+        </circle>
+        <circle r="4" fill="#C4993D" opacity="0.6">
+          <animateMotion dur="3s" repeatCount="indefinite" path="M 532 238 C 560 200, 585 165, 625 140" begin="0.6s" />
+        </circle>
+        <circle r="4" fill="#C4993D" opacity="0.6">
+          <animateMotion dur="3s" repeatCount="indefinite" path="M 748 175 C 764 260, 764 340, 748 400" begin="1.2s" />
+        </circle>
+        <circle r="4" fill="#C4993D" opacity="0.6">
+          <animateMotion dur="3s" repeatCount="indefinite" path="M 618 455 C 510 490, 390 490, 282 455" begin="1.8s" />
+        </circle>
+        <circle r="4" fill="#C4993D" opacity="0.6">
+          <animateMotion dur="3s" repeatCount="indefinite" path="M 152 400 C 136 340, 136 225, 152 175" begin="2.4s" />
+        </circle>
 
-        {/* Arrow 3 */}
-        <path d="M 620 145 L 620 165" stroke="#C4993D" strokeWidth="2" className="flow-line-animated" />
-        <polygon points="614,160 620,173 626,160" fill="#C4993D" />
+        {/* ═══ ARROW LABELS — clean, horizontal ═══ */}
+        <text x="305" y="185" fill="#5C5346" fontSize="10" fontWeight="500" fontFamily="sans-serif">Fund campaigns</text>
+        <text x="563" y="185" fill="#5C5346" fontSize="10" fontWeight="500" fontFamily="sans-serif">Route to fleets</text>
+        <text x="778" y="290" fill="#5C5346" fontSize="10" fontWeight="500" fontFamily="sans-serif">Engage</text>
+        <text x="450" y="508" fill="#5C5346" fontSize="10" fontWeight="500" fontFamily="sans-serif" textAnchor="middle">Generate data</text>
+        <text x="118" y="290" fill="#5C5346" fontSize="10" fontWeight="500" fontFamily="sans-serif" textAnchor="end">Measure</text>
 
-        {/* Interactions node */}
-        <rect x="555" y="175" width="130" height="22" rx="6" fill="#FBF4E4" />
-        <text x="620" y="190" textAnchor="middle" fill="#A67C2E" fontSize="10" fontWeight="500" fontFamily="sans-serif">Real-world interactions</text>
+        {/* ═══ NODE: BRANDS — top left ═══ */}
+        <rect x="65" y="70" width="210" height="100" rx="14" fill="#FFFFFF" stroke="#E8E2D9" strokeWidth="1.5" />
+        {/* Icons */}
+        <rect x="85" y="92" width="22" height="18" rx="3" fill="#FBF4E4" stroke="#E8E2D9" strokeWidth="0.8" />
+        <rect x="90" y="88" width="12" height="5" rx="1" fill="#C4993D" opacity="0.35" />
+        <rect x="116" y="102" width="5" height="8" rx="1" fill="#C4993D" opacity="0.25" />
+        <rect x="124" y="98" width="5" height="12" rx="1" fill="#C4993D" opacity="0.3" />
+        <rect x="132" y="93" width="5" height="17" rx="1" fill="#C4993D" opacity="0.4" />
+        <text x="155" y="103" fill="#2C2418" fontSize="18" fontWeight="700" fontFamily="sans-serif">Brands</text>
+        <text x="85" y="134" fill="#3D3224" fontSize="11" fontFamily="sans-serif">Campaigns &amp; marketing budgets</text>
+        <text x="85" y="152" fill="#A67C2E" fontSize="9.5" fontWeight="600" fontFamily="sans-serif">$ Fund robot interactions</text>
 
-        {/* Feedback loop */}
-        <path d="M 620 10 Q 350 0 90 55" stroke="#C4993D" strokeWidth="1.5" className="flow-line-animated" opacity="0.4" fill="none" />
-        <text x="350" y="18" textAnchor="middle" fill="#5C5346" fontSize="10" fontWeight="500" fontFamily="sans-serif">Attribution &amp; insights</text>
+        {/* ═══ NODE: ROBOT FLEETS — top right ═══ */}
+        <rect x="625" y="70" width="210" height="108" rx="14" fill="#FFFFFF" stroke="#E8E2D9" strokeWidth="1.5" />
+        {/* Mini robots */}
+        <rect x="645" y="95" width="18" height="11" rx="3" fill="#2C2418" opacity="0.8" />
+        <circle cx="651" cy="99" r="1.5" fill="#C4993D" opacity="0.6" />
+        <circle cx="659" cy="99" r="1.5" fill="#C4993D" opacity="0.6" />
+        <circle cx="649" cy="108" r="2" fill="#5C5346" />
+        <circle cx="659" cy="108" r="2" fill="#5C5346" />
+        <rect x="670" y="90" width="14" height="18" rx="5" fill="#2C2418" opacity="0.75" />
+        <circle cx="674" cy="96" r="1.5" fill="#C4993D" opacity="0.6" />
+        <circle cx="680" cy="96" r="1.5" fill="#C4993D" opacity="0.6" />
+        <ellipse cx="700" cy="104" rx="10" ry="4" fill="#2C2418" opacity="0.65" />
+        <circle cx="697" cy="102" r="1.5" fill="#C4993D" opacity="0.5" />
+        <circle cx="703" cy="102" r="1.5" fill="#C4993D" opacity="0.5" />
+        <text x="720" y="102" fill="#2C2418" fontSize="16" fontWeight="700" fontFamily="sans-serif">Robot</text>
+        <text x="720" y="118" fill="#2C2418" fontSize="16" fontWeight="700" fontFamily="sans-serif">Fleets</text>
+        <text x="645" y="140" fill="#3D3224" fontSize="10.5" fontFamily="sans-serif">Deliver interactions across</text>
+        <text x="645" y="153" fill="#3D3224" fontSize="10.5" fontFamily="sans-serif">all environments</text>
+        <text x="645" y="166" fill="#A67C2E" fontSize="9.5" fontWeight="600" fontFamily="sans-serif">$ Earn revenue share</text>
+
+        {/* ═══ NODE: KOVIO — center ═══ */}
+        <rect x="350" y="228" width="200" height="80" rx="16" fill="#2C2418" />
+        <rect x="350" y="228" width="200" height="80" rx="16" fill="none" stroke="#C4993D" strokeWidth="2" className="kovio-border-animated" opacity="0.65" />
+        <text x="450" y="262" textAnchor="middle" fill="#C4993D" fontSize="24" fontWeight="800" fontFamily="sans-serif">Kovio</text>
+        <text x="450" y="282" textAnchor="middle" fill="#FAF8F5" fontSize="11.5" fontFamily="sans-serif">Economic interaction layer</text>
+        <text x="450" y="298" textAnchor="middle" fill="#9C9488" fontSize="9" fontFamily="sans-serif">Connecting brands to robots at scale</text>
+
+        {/* ═══ NODE: INTERACTIONS — bottom right ═══ */}
+        <rect x="618" y="400" width="218" height="110" rx="14" fill="#FBF4E4" stroke="#C4993D" strokeWidth="1.2" />
+        {/* Monetizable badge inside card */}
+        <rect x="636" y="410" width="90" height="20" rx="10" fill="#C4993D" opacity="0.15" />
+        <text x="681" y="424" textAnchor="middle" fill="#A67C2E" fontSize="8.5" fontWeight="700" fontFamily="sans-serif">$ Monetizable</text>
+        {/* Person */}
+        <circle cx="650" cy="452" r="7" fill="#D4CFC6" />
+        <rect x="645" y="460" width="10" height="13" rx="3" fill="#D4CFC6" />
+        {/* Robot */}
+        <rect x="668" y="448" width="18" height="22" rx="6" fill="#2C2418" opacity="0.8" />
+        <circle cx="674" cy="455" r="2" fill="#C4993D" opacity="0.6" />
+        <circle cx="680" cy="455" r="2" fill="#C4993D" opacity="0.6" />
+        {/* Spark */}
+        <circle cx="662" cy="458" r="4" fill="#C4993D" opacity="0.12" />
+        <text x="698" y="452" fill="#2C2418" fontSize="14" fontWeight="700" fontFamily="sans-serif">Real-world</text>
+        <text x="698" y="469" fill="#2C2418" fontSize="14" fontWeight="700" fontFamily="sans-serif">Interactions</text>
+        <text x="636" y="494" fill="#3D3224" fontSize="10.5" fontFamily="sans-serif">Branded robot moments</text>
+
+        {/* ═══ NODE: INSIGHTS — bottom left ═══ */}
+        <rect x="65" y="400" width="218" height="110" rx="14" fill="#FFFFFF" stroke="#E8E2D9" strokeWidth="1.5" />
+        {/* Chart icon */}
+        <rect x="85" y="422" width="46" height="30" rx="3" fill="#FBF4E4" />
+        <polyline points="92,446 100,436 108,440 116,430 124,434" stroke="#C4993D" strokeWidth="1.8" fill="none" opacity="0.6" />
+        <rect x="92" y="448" width="5" height="4" rx="1" fill="#C4993D" opacity="0.25" />
+        <rect x="100" y="446" width="5" height="6" rx="1" fill="#C4993D" opacity="0.3" />
+        <rect x="108" y="444" width="5" height="8" rx="1" fill="#C4993D" opacity="0.35" />
+        <rect x="116" y="441" width="5" height="11" rx="1" fill="#C4993D" opacity="0.45" />
+        <text x="148" y="438" fill="#2C2418" fontSize="14" fontWeight="700" fontFamily="sans-serif">Insights &amp;</text>
+        <text x="148" y="456" fill="#2C2418" fontSize="14" fontWeight="700" fontFamily="sans-serif">Attribution</text>
+        <text x="85" y="490" fill="#3D3224" fontSize="10.5" fontFamily="sans-serif">Measure engagement &amp; ROI</text>
       </svg>
     </div>
   );

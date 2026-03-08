@@ -201,3 +201,39 @@ html {
   stroke-dasharray: 6 4;
   animation: dash-orbit 3s linear infinite;
 }
+
+/* ═══════════════════════════════════════════════════
+   BEACON PULSE — hero Kovio hub
+   ═══════════════════════════════════════════════════ */
+
+@keyframes beacon-glow {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.08); }
+}
+
+.beacon-glow-animated {
+  animation: beacon-glow 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.animate-float-slow {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════
+   PULSE SOFT — for connection dots
+   ═══════════════════════════════════════════════════ */
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.2; r: 3; }
+  50% { opacity: 0.5; r: 4.5; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2.5s ease-in-out infinite;
+}
