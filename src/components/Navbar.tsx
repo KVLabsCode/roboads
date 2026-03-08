@@ -28,10 +28,12 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
-              <span className="text-white font-bold text-sm">K</span>
+            <div className="w-8 h-8 rounded-lg bg-foreground flex items-center justify-center">
+              <span className="text-background font-bold text-sm">K</span>
             </div>
-            <span className="text-lg font-semibold text-foreground">{SITE_NAME}</span>
+            <span className="text-lg font-semibold text-foreground">
+              {SITE_NAME}
+            </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
@@ -41,7 +43,7 @@ export default function Navbar() {
                 href={link.href}
                 className={`text-sm font-medium transition-colors duration-200 ${
                   pathname === link.href
-                    ? "text-accent"
+                    ? "text-foreground"
                     : "text-text-body hover:text-foreground"
                 }`}
               >
@@ -61,11 +63,26 @@ export default function Navbar() {
             className="md:hidden text-foreground p-2"
             aria-label="Toggle menu"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               {mobileOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
@@ -87,7 +104,9 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={`text-sm font-medium ${
-                    pathname === link.href ? "text-accent" : "text-text-body"
+                    pathname === link.href
+                      ? "text-foreground"
+                      : "text-text-body"
                   }`}
                 >
                   {link.label}

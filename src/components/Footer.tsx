@@ -7,22 +7,33 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8 py-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <div className="w-6 h-6 rounded-md bg-accent flex items-center justify-center">
-              <span className="text-white font-bold text-xs">K</span>
+            <div className="w-6 h-6 rounded-md bg-foreground flex items-center justify-center">
+              <span className="text-background font-bold text-xs">K</span>
             </div>
-            <span className="text-sm font-semibold text-foreground">{SITE_NAME}</span>
+            <span className="text-sm font-semibold text-foreground">
+              {SITE_NAME}
+            </span>
             <span className="text-text-muted text-sm">
               &copy; {new Date().getFullYear()}
             </span>
           </div>
           <div className="flex items-center gap-6">
-            <Link href="/for-advertisers" className="text-sm text-text-body hover:text-foreground transition-colors">
-              For Brands
+            <Link
+              href="/brands"
+              className="text-sm text-text-body hover:text-foreground transition-colors"
+            >
+              Brands
             </Link>
-            <Link href="/for-manufacturers" className="text-sm text-text-body hover:text-foreground transition-colors">
-              For Robot Companies
+            <Link
+              href="/oem"
+              className="text-sm text-text-body hover:text-foreground transition-colors"
+            >
+              OEMs
             </Link>
-            <Link href="/contact" className="text-sm text-text-body hover:text-foreground transition-colors">
+            <Link
+              href="/contact"
+              className="text-sm text-text-body hover:text-foreground transition-colors"
+            >
               Contact
             </Link>
           </div>

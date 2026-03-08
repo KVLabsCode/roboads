@@ -17,9 +17,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Kovio | The Monetization Layer for Autonomous Robots",
+  title: "Kovio | Activating the Robot Economy",
   description:
-    "We help robot fleets generate revenue by connecting brands to real-world interaction moments. AdSense for robots.",
+    "Kovio is the economic layer for autonomous robots — connecting brands to real-world robot interactions at scale.",
 };
 
 export default function RootLayout({

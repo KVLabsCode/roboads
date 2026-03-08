@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #0F172A;
-  --accent: #6366F1;
-  --accent-light: #EEF2FF;
-  --text-body: #475569;
-  --text-muted: #94A3B8;
+  --background: #FAF8F5;
+  --foreground: #2C2418;
+  --accent: #C4993D;
+  --accent-light: #FBF4E4;
+  --text-body: #5C5346;
+  --text-muted: #9C9488;
+  --border: #E8E2D9;
 }
 
 body {
@@ -17,13 +18,9 @@ body {
 }
 
 ::selection {
-  background: rgba(99, 102, 241, 0.15);
-  color: #0F172A;
+  background: rgba(196, 153, 61, 0.18);
+  color: #2C2418;
 }
-
-/* ═══════════════════════════════════════════════════
-   SMOOTH SCROLLING
-   ═══════════════════════════════════════════════════ */
 
 html {
   scroll-behavior: smooth;
@@ -34,15 +31,15 @@ html {
    ═══════════════════════════════════════════════════ */
 
 .bg-section-alt {
-  background: #F8FAFC;
+  background: #F5F1EC;
 }
 
 .bg-section-warm {
-  background: linear-gradient(180deg, #FFFBF5 0%, #FFFFFF 100%);
+  background: linear-gradient(180deg, #F0EBE3 0%, #FAF8F5 100%);
 }
 
 .bg-section-accent {
-  background: linear-gradient(180deg, #EEF2FF 0%, #FFFFFF 100%);
+  background: linear-gradient(180deg, #FBF4E4 0%, #FAF8F5 100%);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -50,14 +47,14 @@ html {
    ═══════════════════════════════════════════════════ */
 
 .text-gradient-primary {
-  background: linear-gradient(135deg, #6366F1, #8B5CF6, #A78BFA);
+  background: linear-gradient(135deg, #C4993D, #D4A843, #A67C2E);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-warm {
-  background: linear-gradient(135deg, #0F172A, #475569);
+  background: linear-gradient(135deg, #2C2418, #5C5346);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -68,7 +65,7 @@ html {
    ═══════════════════════════════════════════════════ */
 
 .glass-light {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(250, 248, 245, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
@@ -78,29 +75,29 @@ html {
    ═══════════════════════════════════════════════════ */
 
 .btn-primary {
-  background: #6366F1;
-  color: white;
-  box-shadow: 0 1px 3px rgba(99, 102, 241, 0.3), 0 4px 12px rgba(99, 102, 241, 0.15);
+  background: #2C2418;
+  color: #FAF8F5;
+  box-shadow: 0 1px 3px rgba(44, 36, 24, 0.2), 0 4px 12px rgba(44, 36, 24, 0.1);
   transition: all 0.2s ease;
 }
 
 .btn-primary:hover {
-  background: #4338CA;
-  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.4), 0 8px 20px rgba(99, 102, 241, 0.2);
+  background: #3D3224;
+  box-shadow: 0 2px 6px rgba(44, 36, 24, 0.3), 0 8px 20px rgba(44, 36, 24, 0.12);
   transform: translateY(-1px);
 }
 
 .btn-secondary {
-  background: white;
-  color: #0F172A;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  background: #FFFFFF;
+  color: #2C2418;
+  border: 1px solid #E8E2D9;
+  box-shadow: 0 1px 3px rgba(44, 36, 24, 0.04);
   transition: all 0.2s ease;
 }
 
 .btn-secondary:hover {
-  border-color: #CBD5E1;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border-color: #D4CFC6;
+  box-shadow: 0 4px 12px rgba(44, 36, 24, 0.06);
   transform: translateY(-1px);
 }
 
@@ -109,20 +106,63 @@ html {
    ═══════════════════════════════════════════════════ */
 
 .card-soft {
-  background: white;
-  border: 1px solid #F1F5F9;
+  background: #FFFFFF;
+  border: 1px solid #E8E2D9;
   border-radius: 1.25rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px rgba(44, 36, 24, 0.04);
   transition: all 0.3s ease;
 }
 
 .card-soft:hover {
-  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 25px -3px rgba(44, 36, 24, 0.06), 0 4px 6px -4px rgba(44, 36, 24, 0.04);
   transform: translateY(-2px);
 }
 
 /* ═══════════════════════════════════════════════════
-   FLOW PIPELINE ANIMATION
+   DECORATIVE GRADIENT ORBS
+   ═══════════════════════════════════════════════════ */
+
+.orb-accent {
+  background: radial-gradient(circle, rgba(196, 153, 61, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orb-warm {
+  background: radial-gradient(circle, rgba(212, 168, 67, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orb-terra {
+  background: radial-gradient(circle, rgba(184, 115, 74, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F1EC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4CFC6;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9C9488;
+}
+
+/* ═══════════════════════════════════════════════════
+   FLOW ANIMATION
    ═══════════════════════════════════════════════════ */
 
 @keyframes flow-pulse {
@@ -137,7 +177,7 @@ html {
 }
 
 .flow-dot {
-  animation: flow-pulse 2s ease-in-out infinite;
+  animation: flow-pulse 2.5s ease-in-out infinite;
 }
 
 @keyframes dash-flow {
@@ -148,67 +188,16 @@ html {
 
 .flow-line-animated {
   stroke-dasharray: 8 6;
-  animation: dash-flow 1.5s linear infinite;
+  animation: dash-flow 2s linear infinite;
 }
 
-/* ═══════════════════════════════════════════════════
-   DECORATIVE GRADIENT ORBS
-   ═══════════════════════════════════════════════════ */
-
-.orb-accent {
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.orb-teal {
-  background: radial-gradient(circle, rgba(20, 184, 166, 0.06) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.orb-warm {
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-/* ═══════════════════════════════════════════════════
-   SCROLLBAR (clean, minimal)
-   ═══════════════════════════════════════════════════ */
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #F8FAFC;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
-}
-
-/* ═══════════════════════════════════════════════════
-   STAT NUMBER ANIMATION
-   ═══════════════════════════════════════════════════ */
-
-@keyframes count-up {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
+@keyframes dash-orbit {
   to {
-    opacity: 1;
-    transform: translateY(0);
+    stroke-dashoffset: -40;
   }
 }
 
-.stat-animate {
-  animation: count-up 0.8s ease-out forwards;
+.kovio-border-animated {
+  stroke-dasharray: 6 4;
+  animation: dash-orbit 3s linear infinite;
 }
