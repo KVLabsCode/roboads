@@ -17,17 +17,15 @@ export default function CTAButton({
   className = "",
 }: CTAButtonProps) {
   const base =
-    "inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium text-sm transition-all duration-200";
+    "inline-flex items-center justify-center px-7 py-3 rounded-full font-medium text-sm transition-all duration-200";
   const variants = {
-    primary:
-      "cta-glow-primary text-black",
-    secondary:
-      "cta-glow-secondary bg-surface text-foreground hover:text-accent",
+    primary: "btn-primary",
+    secondary: "btn-secondary",
   };
 
   return (
     <motion.div
-      whileHover={{ scale: 1.03 }}
+      whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       className="inline-block"
     >

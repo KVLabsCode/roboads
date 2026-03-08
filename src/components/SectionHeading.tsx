@@ -17,11 +17,11 @@ export default function SectionHeading({
 
   return (
     <ScrollReveal className={`${alignment} ${className}`}>
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gradient-cyan-white mb-4 accent-line-center">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
         {title}
       </h2>
       {subtitle && (
-        <p className="text-muted text-base sm:text-lg md:text-xl max-w-3xl mx-auto">
+        <p className="text-text-body text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
           {subtitle}
         </p>
       )}

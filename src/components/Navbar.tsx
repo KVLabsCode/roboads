@@ -2,35 +2,47 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
-import KovioLogo from "./KovioLogo";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-strong border-b border-border-glow shadow-glow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "glass-light border-b border-border shadow-soft-sm"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <KovioLogo size={28} />
-            <span className="text-xl font-bold text-gradient-cyan">{SITE_NAME}</span>
+          <Link href="/" className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
+              <span className="text-white font-bold text-sm">K</span>
+            </div>
+            <span className="text-lg font-semibold text-foreground">{SITE_NAME}</span>
           </Link>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm transition-colors duration-200 ${
+                className={`text-sm font-medium transition-colors duration-200 ${
                   pathname === link.href
                     ? "text-accent"
-                    : "text-muted hover:text-foreground"
+                    : "text-text-body hover:text-foreground"
                 }`}
               >
                 {link.label}
@@ -38,61 +50,44 @@ export default function Navbar() {
             ))}
             <Link
               href="/contact"
-              className="px-4 py-2 cta-glow-primary text-black text-sm font-medium rounded-lg transition-colors"
+              className="btn-primary px-5 py-2.5 text-sm font-medium rounded-full"
             >
               Get in Touch
             </Link>
           </div>
 
-          {/* Mobile menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden text-foreground p-2"
             aria-label="Toggle menu"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-strong border-b border-border-glow overflow-hidden"
+            className="md:hidden glass-light border-b border-border overflow-hidden"
           >
-            <div className="px-4 py-4 flex flex-col gap-4">
+            <div className="px-5 py-5 flex flex-col gap-4">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className={`text-sm ${
-                    pathname === link.href ? "text-accent" : "text-muted"
+                  className={`text-sm font-medium ${
+                    pathname === link.href ? "text-accent" : "text-text-body"
                   }`}
                 >
                   {link.label}
@@ -101,7 +96,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="px-4 py-2 bg-accent text-black text-sm font-medium rounded-lg text-center"
+                className="btn-primary px-5 py-2.5 text-sm font-medium rounded-full text-center mt-1"
               >
                 Get in Touch
               </Link>

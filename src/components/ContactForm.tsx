@@ -52,31 +52,19 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="glass border border-accent-green/30 rounded-2xl p-8 sm:p-12 text-center shadow-neon-border">
-        <div className="w-16 h-16 rounded-full bg-accent-green/20 flex items-center justify-center mx-auto mb-6">
-          <svg
-            className="w-8 h-8 text-accent-green"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5 13l4 4L19 7"
-            />
+      <div className="card-soft p-8 sm:p-12 text-center">
+        <div className="w-16 h-16 rounded-full bg-soft-green-light flex items-center justify-center mx-auto mb-6">
+          <svg className="w-8 h-8 text-soft-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-xl font-bold text-foreground mb-2">
-          Message Sent!
-        </h3>
-        <p className="text-muted text-sm max-w-md mx-auto">
+        <h3 className="text-xl font-bold text-foreground mb-2">Message Sent!</h3>
+        <p className="text-text-body text-sm max-w-md mx-auto">
           Thanks for reaching out. We&apos;ll get back to you within 24 hours.
         </p>
         <button
           onClick={() => setStatus("idle")}
-          className="mt-6 text-sm text-accent hover:text-accent/80 transition-colors"
+          className="mt-6 text-sm text-accent hover:text-accent-dark transition-colors"
         >
           Send another message
         </button>
@@ -85,32 +73,18 @@ export default function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="glass border border-border-glow rounded-2xl p-6 sm:p-8 shadow-neon-border"
-    >
-      {/* Honeypot */}
-      <input
-        type="checkbox"
-        name="botcheck"
-        className="hidden"
-        tabIndex={-1}
-        autoComplete="off"
-      />
+    <form onSubmit={handleSubmit} className="card-soft p-6 sm:p-8">
+      <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
 
       {status === "error" && (
-        <div className="mb-6 p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+        <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm">
           {errorMsg}
         </div>
       )}
 
-      {/* Name */}
       <div className="mb-5">
-        <label
-          htmlFor="name"
-          className="block text-sm font-medium text-foreground mb-2"
-        >
-          Name <span className="text-red-400">*</span>
+        <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+          Name <span className="text-red-500">*</span>
         </label>
         <input
           id="name"
@@ -119,17 +93,13 @@ export default function ContactForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Your name"
-          className="w-full px-4 py-3 rounded-lg bg-surface border border-border-glow text-foreground placeholder:text-muted/50 text-sm focus:outline-none focus:border-accent/50 focus:shadow-glow-sm transition-all"
+          className="w-full px-4 py-3 rounded-xl bg-white border border-border text-foreground placeholder:text-text-muted text-sm focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all"
         />
       </div>
 
-      {/* Email */}
       <div className="mb-5">
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-foreground mb-2"
-        >
-          Email <span className="text-red-400">*</span>
+        <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+          Email <span className="text-red-500">*</span>
         </label>
         <input
           id="email"
@@ -138,47 +108,40 @@ export default function ContactForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@company.com"
-          className="w-full px-4 py-3 rounded-lg bg-surface border border-border-glow text-foreground placeholder:text-muted/50 text-sm focus:outline-none focus:border-accent/50 focus:shadow-glow-sm transition-all"
+          className="w-full px-4 py-3 rounded-xl bg-white border border-border text-foreground placeholder:text-text-muted text-sm focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all"
         />
       </div>
 
-      {/* Type toggle cards */}
       <div className="mb-5">
-        <label className="block text-sm font-medium text-foreground mb-2">
-          I am a...
-        </label>
+        <label className="block text-sm font-medium text-foreground mb-2">I am a...</label>
         <div className="grid grid-cols-2 gap-3">
           <button
             type="button"
             onClick={() => setType("manufacturer")}
-            className={`p-4 rounded-lg border text-sm font-medium transition-all duration-200 ${
+            className={`p-4 rounded-xl border text-sm font-medium transition-all duration-200 ${
               type === "manufacturer"
-                ? "border-accent/50 bg-accent/10 text-accent shadow-glow-sm"
-                : "border-border-glow bg-surface text-muted hover:border-accent/30 hover:text-foreground"
+                ? "border-accent bg-accent-light text-accent"
+                : "border-border bg-white text-text-body hover:border-accent/30"
             }`}
           >
-            Manufacturer
+            Robot Company
           </button>
           <button
             type="button"
             onClick={() => setType("advertiser")}
-            className={`p-4 rounded-lg border text-sm font-medium transition-all duration-200 ${
+            className={`p-4 rounded-xl border text-sm font-medium transition-all duration-200 ${
               type === "advertiser"
-                ? "border-accent/50 bg-accent/10 text-accent shadow-glow-sm"
-                : "border-border-glow bg-surface text-muted hover:border-accent/30 hover:text-foreground"
+                ? "border-accent bg-accent-light text-accent"
+                : "border-border bg-white text-text-body hover:border-accent/30"
             }`}
           >
-            Advertiser
+            Brand / Advertiser
           </button>
         </div>
       </div>
 
-      {/* Message */}
       <div className="mb-6">
-        <label
-          htmlFor="message"
-          className="block text-sm font-medium text-foreground mb-2"
-        >
+        <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
           Message
         </label>
         <textarea
@@ -187,36 +150,20 @@ export default function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Tell us about your robots or your campaign goals..."
-          className="w-full px-4 py-3 rounded-lg bg-surface border border-border-glow text-foreground placeholder:text-muted/50 text-sm focus:outline-none focus:border-accent/50 focus:shadow-glow-sm transition-all resize-none"
+          className="w-full px-4 py-3 rounded-xl bg-white border border-border text-foreground placeholder:text-text-muted text-sm focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/10 transition-all resize-none"
         />
       </div>
 
-      {/* Submit */}
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full px-6 py-3 rounded-lg font-medium text-sm cta-glow-primary text-black transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full btn-primary px-6 py-3 rounded-xl font-medium text-sm disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         {status === "submitting" ? (
           <>
-            <svg
-              className="w-4 h-4 animate-spin"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-              />
+            <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
             </svg>
             Sending...
           </>

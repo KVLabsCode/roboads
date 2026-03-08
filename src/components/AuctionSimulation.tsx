@@ -84,30 +84,28 @@ export default function AuctionSimulation({
   return (
     <div
       ref={ref}
-      className="glass border border-border-glow rounded-xl p-4 sm:p-6 font-mono scanlines shadow-neon-border"
+      className="card-soft p-4 sm:p-6 font-mono"
     >
-      {/* Header */}
       <div className="flex items-center justify-between mb-4 sm:mb-6 gap-2">
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <div
             className={`w-2 h-2 rounded-full flex-shrink-0 ${
               auctionPhase === "bidding"
-                ? "bg-accent-green animate-pulse shadow-glow-green-sm"
+                ? "bg-soft-green animate-pulse"
                 : auctionPhase === "sold"
-                ? "bg-accent shadow-glow-sm"
-                : "bg-muted"
+                ? "bg-accent"
+                : "bg-text-muted"
             }`}
           />
-          <span className="text-xs sm:text-sm text-muted truncate">{title}</span>
+          <span className="text-xs sm:text-sm text-text-body truncate">{title}</span>
         </div>
-        <span className="text-[10px] sm:text-xs text-muted uppercase tracking-wider flex-shrink-0">
+        <span className="text-[10px] sm:text-xs text-text-muted uppercase tracking-wider flex-shrink-0">
           {auctionPhase === "waiting" && "Initializing..."}
           {auctionPhase === "bidding" && "Bids Active"}
           {auctionPhase === "sold" && "Auction Complete"}
         </span>
       </div>
 
-      {/* Bids */}
       <div className="space-y-3">
         {currentBids.map((bid, i) => (
           <motion.div
@@ -124,7 +122,7 @@ export default function AuctionSimulation({
                   <motion.span
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="text-[10px] bg-accent text-black px-1.5 py-0.5 rounded font-sans font-medium"
+                    className="text-[10px] bg-accent text-white px-1.5 py-0.5 rounded font-sans font-medium"
                   >
                     WINNER
                   </motion.span>
@@ -135,14 +133,10 @@ export default function AuctionSimulation({
               </span>
             </div>
 
-            {/* Bar */}
-            <div className="h-2 bg-background rounded-full overflow-hidden">
+            <div className="h-2 bg-bg-soft rounded-full overflow-hidden">
               <motion.div
                 className="h-full rounded-full"
-                style={{
-                  backgroundColor: bid.color,
-                  boxShadow: `0 0 10px ${bid.color}60, 0 0 20px ${bid.color}30`,
-                }}
+                style={{ backgroundColor: bid.color }}
                 initial={{ width: "0%" }}
                 animate={{
                   width: `${(bid.bid / maxBid) * 100}%`,
@@ -154,16 +148,15 @@ export default function AuctionSimulation({
         ))}
       </div>
 
-      {/* Footer */}
       {auctionPhase === "sold" && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="mt-6 pt-4 border-t border-border-subtle flex items-center justify-between"
+          className="mt-6 pt-4 border-t border-border flex items-center justify-between"
         >
-          <span className="text-xs text-muted">Auction resolved in 2.4s</span>
-          <span className="text-xs text-accent" style={{ filter: "drop-shadow(0 0 6px rgba(0, 212, 255, 0.6))" }}>Revenue captured</span>
+          <span className="text-xs text-text-muted">Auction resolved in 2.4s</span>
+          <span className="text-xs text-accent font-medium">Revenue captured</span>
         </motion.div>
       )}
     </div>

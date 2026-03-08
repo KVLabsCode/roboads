@@ -3,33 +3,27 @@ import { SITE_NAME } from "@/lib/constants";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border-glow bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="border-t border-border">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-lg font-bold text-gradient-cyan">{SITE_NAME}</span>
-            <span className="text-muted text-sm">
+          <div className="flex items-center gap-2.5">
+            <div className="w-6 h-6 rounded-md bg-accent flex items-center justify-center">
+              <span className="text-white font-bold text-xs">K</span>
+            </div>
+            <span className="text-sm font-semibold text-foreground">{SITE_NAME}</span>
+            <span className="text-text-muted text-sm">
               &copy; {new Date().getFullYear()}
             </span>
           </div>
           <div className="flex items-center gap-6">
-            <Link
-              href="/contact"
-              className="text-sm text-muted hover:text-foreground transition-colors"
-            >
+            <Link href="/for-advertisers" className="text-sm text-text-body hover:text-foreground transition-colors">
+              For Brands
+            </Link>
+            <Link href="/for-manufacturers" className="text-sm text-text-body hover:text-foreground transition-colors">
+              For Robot Companies
+            </Link>
+            <Link href="/contact" className="text-sm text-text-body hover:text-foreground transition-colors">
               Contact
-            </Link>
-            <Link
-              href="/for-manufacturers"
-              className="text-sm text-muted hover:text-foreground transition-colors"
-            >
-              Manufacturers
-            </Link>
-            <Link
-              href="/for-advertisers"
-              className="text-sm text-muted hover:text-foreground transition-colors"
-            >
-              Advertisers
             </Link>
           </div>
         </div>

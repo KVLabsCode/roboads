@@ -17,9 +17,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Kovio | The Monetization Layer for the Robot Economy",
+  title: "Kovio | The Monetization Layer for Autonomous Robots",
   description:
-    "Programmatic auction infrastructure for robot-driven commercial decisions. Turn every robot into a revenue engine.",
+    "We help robot fleets generate revenue by connecting brands to real-world interaction moments. AdSense for robots.",
 };
 
 export default function RootLayout({
@@ -28,9 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
-        className={`${inter.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground bg-grid-pattern`}
+        className={`${inter.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground`}
       >
         <Navbar />
         <main>{children}</main>
