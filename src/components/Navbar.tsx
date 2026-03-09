@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -129,9 +130,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-foreground flex items-center justify-center">
-              <span className="text-background font-bold text-sm">K</span>
-            </div>
+            <Image src="/logo.png" alt="Kovio" width={40} height={40} className="w-10 h-10 rounded-lg" />
             <span className="text-lg font-semibold text-foreground">
               {SITE_NAME}
             </span>

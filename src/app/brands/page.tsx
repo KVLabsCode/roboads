@@ -15,53 +15,68 @@ function RetailHeroScene() {
         {/* Store interior */}
         <rect width="600" height="320" rx="12" fill="#F5F1EC" />
 
-        {/* Ceiling lights */}
-        <rect x="100" y="10" width="80" height="4" rx="2" fill="#E8E2D9" />
-        <rect x="260" y="10" width="80" height="4" rx="2" fill="#E8E2D9" />
-        <rect x="420" y="10" width="80" height="4" rx="2" fill="#E8E2D9" />
+        {/* Ceiling lights with warm glow */}
+        <rect x="100" y="10" width="80" height="4" rx="2" fill="#F5E6C0" />
+        <ellipse cx="140" cy="16" rx="50" ry="18" fill="#F5E6C0" opacity="0.15" />
+        <rect x="260" y="10" width="80" height="4" rx="2" fill="#F5E6C0" />
+        <ellipse cx="300" cy="16" rx="50" ry="18" fill="#F5E6C0" opacity="0.15" />
+        <rect x="420" y="10" width="80" height="4" rx="2" fill="#F5E6C0" />
+        <ellipse cx="460" cy="16" rx="50" ry="18" fill="#F5E6C0" opacity="0.15" />
 
         {/* Aisle shelves — left */}
         <rect x="30" y="40" width="100" height="180" rx="4" fill="#FFFFFF" stroke="#E8E2D9" />
-        <rect x="38" y="52" width="30" height="12" rx="2" fill="#FBF4E4" />
-        <rect x="74" y="52" width="30" height="12" rx="2" fill="#FBF4E4" />
-        <rect x="38" y="72" width="30" height="12" rx="2" fill="#FBF4E4" />
-        <rect x="74" y="72" width="30" height="12" rx="2" fill="#FBF4E4" />
-        <rect x="38" y="92" width="30" height="12" rx="2" fill="#FBF4E4" />
-        <rect x="74" y="92" width="30" height="12" rx="2" fill="#FBF4E4" />
-        <rect x="38" y="112" width="30" height="12" rx="2" fill="#C4993D" opacity="0.15" />
-        <rect x="74" y="112" width="30" height="12" rx="2" fill="#C4993D" opacity="0.15" />
-        <rect x="38" y="132" width="30" height="12" rx="2" fill="#FBF4E4" />
-        <rect x="74" y="132" width="30" height="12" rx="2" fill="#FBF4E4" />
+        <rect x="38" y="52" width="30" height="12" rx="2" fill="#E8544E" opacity="0.75" />
+        <rect x="74" y="52" width="30" height="12" rx="2" fill="#4A9E4A" opacity="0.7" />
+        <rect x="38" y="72" width="30" height="12" rx="2" fill="#5B8ECC" opacity="0.7" />
+        <rect x="74" y="72" width="30" height="12" rx="2" fill="#E8A44E" opacity="0.75" />
+        <rect x="38" y="92" width="30" height="12" rx="2" fill="#4A9E4A" opacity="0.65" />
+        <rect x="74" y="92" width="30" height="12" rx="2" fill="#E8544E" opacity="0.7" />
+        {/* Promoted products — gold highlight */}
+        <rect x="38" y="112" width="30" height="12" rx="2" fill="#C4993D" opacity="0.35" />
+        <rect x="36" y="110" width="34" height="16" rx="3" fill="#C4993D" opacity="0.1" />
+        <rect x="74" y="112" width="30" height="12" rx="2" fill="#C4993D" opacity="0.35" />
+        <rect x="72" y="110" width="34" height="16" rx="3" fill="#C4993D" opacity="0.1" />
+        <rect x="38" y="132" width="30" height="12" rx="2" fill="#5B8ECC" opacity="0.65" />
+        <rect x="74" y="132" width="30" height="12" rx="2" fill="#E8A44E" opacity="0.7" />
 
         {/* Aisle shelves — right */}
         <rect x="470" y="40" width="100" height="180" rx="4" fill="#FFFFFF" stroke="#E8E2D9" />
-        <rect x="478" y="52" width="30" height="12" rx="2" fill="#FBF4E4" />
-        <rect x="514" y="52" width="30" height="12" rx="2" fill="#FBF4E4" />
-        <rect x="478" y="72" width="30" height="12" rx="2" fill="#FBF4E4" />
-        <rect x="514" y="72" width="30" height="12" rx="2" fill="#FBF4E4" />
-        <rect x="478" y="92" width="30" height="12" rx="2" fill="#FBF4E4" />
-        <rect x="514" y="92" width="30" height="12" rx="2" fill="#FBF4E4" />
+        <rect x="478" y="52" width="30" height="12" rx="2" fill="#E8A44E" opacity="0.75" />
+        <rect x="514" y="52" width="30" height="12" rx="2" fill="#5B8ECC" opacity="0.7" />
+        <rect x="478" y="72" width="30" height="12" rx="2" fill="#E8544E" opacity="0.7" />
+        <rect x="514" y="72" width="30" height="12" rx="2" fill="#4A9E4A" opacity="0.7" />
+        {/* Promoted products — gold highlight */}
+        <rect x="478" y="92" width="30" height="12" rx="2" fill="#C4993D" opacity="0.35" />
+        <rect x="476" y="90" width="34" height="16" rx="3" fill="#C4993D" opacity="0.1" />
+        <rect x="514" y="92" width="30" height="12" rx="2" fill="#E8544E" opacity="0.65" />
 
-        {/* Floor */}
-        <rect x="0" y="260" width="600" height="60" fill="#F0EBE3" />
-        <line x1="0" y1="260" x2="600" y2="260" stroke="#E8E2D9" strokeWidth="1" />
+        {/* Floor — warm wood tone */}
+        <rect x="0" y="260" width="600" height="60" fill="#E8DFD2" />
+        <line x1="0" y1="260" x2="600" y2="260" stroke="#D4CFC6" strokeWidth="1" />
+        {/* Subtle wood grain lines */}
+        <line x1="0" y1="280" x2="600" y2="280" stroke="#DDD5C8" strokeWidth="0.5" opacity="0.5" />
+        <line x1="0" y1="300" x2="600" y2="300" stroke="#DDD5C8" strokeWidth="0.5" opacity="0.3" />
 
-        {/* Shopper figure — simple silhouette */}
-        <circle cx="220" cy="170" r="10" fill="#D4CFC6" />
-        <rect x="213" y="182" width="14" height="24" rx="4" fill="#D4CFC6" />
-        <rect x="210" y="206" width="8" height="16" rx="3" fill="#D4CFC6" />
-        <rect x="222" y="206" width="8" height="16" rx="3" fill="#D4CFC6" />
+        {/* Shopper figure — with skin and clothing */}
+        <circle cx="220" cy="170" r="10" fill="#B8734A" />
+        <rect x="213" y="182" width="14" height="24" rx="4" fill="#5B8ECC" opacity="0.6" />
+        <rect x="210" y="206" width="8" height="16" rx="3" fill="#4A6A8A" />
+        <rect x="222" y="206" width="8" height="16" rx="3" fill="#4A6A8A" />
         {/* Shopping cart */}
-        <rect x="236" y="196" width="24" height="16" rx="3" fill="#E8E2D9" />
-        <circle cx="240" cy="216" r="3" fill="#D4CFC6" />
-        <circle cx="256" cy="216" r="3" fill="#D4CFC6" />
+        <rect x="236" y="196" width="24" height="16" rx="3" fill="#C8C4BC" stroke="#B0ACA4" strokeWidth="0.5" />
+        {/* Colored items in cart */}
+        <rect x="239" y="198" width="7" height="6" rx="1" fill="#E8544E" opacity="0.7" />
+        <rect x="248" y="198" width="7" height="6" rx="1" fill="#4A9E4A" opacity="0.7" />
+        <circle cx="240" cy="216" r="3" fill="#908A82" />
+        <circle cx="256" cy="216" r="3" fill="#908A82" />
 
         {/* Robot — retail assistant */}
         <rect x="320" y="190" width="50" height="65" rx="12" fill="#2C2418" />
-        {/* Screen face */}
-        <rect x="328" y="198" width="34" height="22" rx="5" fill="#C4993D" opacity="0.25" />
-        <circle cx="339" cy="208" r="3" fill="#C4993D" />
-        <circle cx="353" cy="208" r="3" fill="#C4993D" />
+        {/* Screen face — brighter gold */}
+        <rect x="328" y="198" width="34" height="22" rx="5" fill="#C4993D" opacity="0.4" />
+        <rect x="330" y="200" width="30" height="18" rx="4" fill="#D4A843" opacity="0.15" />
+        <circle cx="339" cy="208" r="3" fill="#D4A843" />
+        <circle cx="353" cy="208" r="3" fill="#D4A843" />
         {/* Wheels */}
         <circle cx="333" cy="258" r="5" fill="#5C5346" />
         <circle cx="357" cy="258" r="5" fill="#5C5346" />
@@ -71,9 +86,12 @@ function RetailHeroScene() {
 
         {/* Campaign bubble above robot */}
         <rect x="300" y="145" width="90" height="36" rx="8" fill="#FFFFFF" stroke="#C4993D" strokeWidth="1" opacity="0.8" />
-        <text x="345" y="160" textAnchor="middle" fill="#A67C2E" fontSize="8" fontWeight="500" fontFamily="sans-serif">Campaign active</text>
+        {/* Green checkmark indicator */}
+        <circle cx="314" cy="158" r="5" fill="#4A9E4A" opacity="0.2" />
+        <path d="M311 158 L313 160 L317 155" stroke="#4A9E4A" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="350" y="160" textAnchor="middle" fill="#A67C2E" fontSize="8" fontWeight="500" fontFamily="sans-serif">Campaign active</text>
         <rect x="316" y="167" width="58" height="6" rx="3" fill="#C4993D" opacity="0.2" />
-        <rect x="316" y="167" width="38" height="6" rx="3" fill="#C4993D" opacity="0.4" />
+        <rect x="316" y="167" width="38" height="6" rx="3" fill="#4A9E4A" opacity="0.5" />
 
         {/* Kovio label */}
         <rect x="240" y="280" width="120" height="24" rx="6" fill="#2C2418" />
@@ -128,43 +146,49 @@ function CampaignFlow() {
           {/* Top bar */}
           <rect x="0" y="0" width="700" height="40" rx="10" fill="#FAF8F5" />
           <rect x="0" y="30" width="700" height="10" fill="#FAF8F5" />
-          <circle cx="20" cy="20" r="5" fill="#E8E2D9" />
-          <circle cx="36" cy="20" r="5" fill="#E8E2D9" />
-          <circle cx="52" cy="20" r="5" fill="#E8E2D9" />
+          <circle cx="20" cy="20" r="5" fill="#E8544E" />
+          <circle cx="36" cy="20" r="5" fill="#E8A44E" />
+          <circle cx="52" cy="20" r="5" fill="#4A9E4A" />
           <text x="350" y="24" textAnchor="middle" fill="#9C9488" fontSize="10" fontFamily="sans-serif">Kovio Brand Dashboard</text>
 
           {/* Sidebar */}
           <rect x="0" y="40" width="140" height="240" fill="#F5F1EC" />
           <rect x="16" y="56" width="80" height="8" rx="2" fill="#E8E2D9" />
-          <rect x="16" y="76" width="96" height="8" rx="2" fill="#C4993D" opacity="0.3" />
+          <rect x="10" y="72" width="120" height="16" rx="4" fill="#C4993D" opacity="0.12" />
+          <rect x="16" y="76" width="96" height="8" rx="2" fill="#C4993D" opacity="0.6" />
           <rect x="16" y="96" width="72" height="8" rx="2" fill="#E8E2D9" />
           <rect x="16" y="116" width="88" height="8" rx="2" fill="#E8E2D9" />
           <rect x="16" y="136" width="64" height="8" rx="2" fill="#E8E2D9" />
 
-          {/* Stats cards */}
-          <rect x="160" y="56" width="120" height="60" rx="8" fill="#FBF4E4" />
-          <text x="176" y="76" fill="#9C9488" fontSize="9" fontFamily="sans-serif">Interactions</text>
+          {/* Stats cards — distinct tints */}
+          <rect x="160" y="56" width="120" height="60" rx="8" fill="#EDF3FA" />
+          <text x="176" y="76" fill="#6B8BAE" fontSize="9" fontFamily="sans-serif">Interactions</text>
           <text x="176" y="100" fill="#2C2418" fontSize="18" fontWeight="700" fontFamily="sans-serif">12,847</text>
 
-          <rect x="295" y="56" width="120" height="60" rx="8" fill="#FBF4E4" />
-          <text x="311" y="76" fill="#9C9488" fontSize="9" fontFamily="sans-serif">Conversion</text>
+          <rect x="295" y="56" width="120" height="60" rx="8" fill="#EDF5ED" />
+          <text x="311" y="76" fill="#5A8A5A" fontSize="9" fontFamily="sans-serif">Conversion</text>
           <text x="311" y="100" fill="#2C2418" fontSize="18" fontWeight="700" fontFamily="sans-serif">8.3%</text>
 
           <rect x="430" y="56" width="120" height="60" rx="8" fill="#FBF4E4" />
           <text x="446" y="76" fill="#9C9488" fontSize="9" fontFamily="sans-serif">Revenue Lift</text>
           <text x="446" y="100" fill="#C4993D" fontSize="18" fontWeight="700" fontFamily="sans-serif">+24%</text>
 
-          <rect x="565" y="56" width="120" height="60" rx="8" fill="#FBF4E4" />
-          <text x="581" y="76" fill="#9C9488" fontSize="9" fontFamily="sans-serif">Active Robots</text>
+          <rect x="565" y="56" width="120" height="60" rx="8" fill="#F0EDF5" />
+          <text x="581" y="76" fill="#8A7BAE" fontSize="9" fontFamily="sans-serif">Active Robots</text>
           <text x="581" y="100" fill="#2C2418" fontSize="18" fontWeight="700" fontFamily="sans-serif">342</text>
 
           {/* Chart area */}
           <rect x="160" y="130" width="525" height="130" rx="8" fill="#FAF8F5" />
           <text x="176" y="150" fill="#9C9488" fontSize="9" fontFamily="sans-serif">Interactions over time</text>
-          {/* Chart bars */}
+          {/* Chart bars — gradient from blue through green to gold */}
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => {
             const heights = [40, 55, 48, 65, 72, 60, 80, 90, 85, 95, 88, 100];
             const h = heights[i];
+            const barColors = [
+              "#5B8ECC", "#5B8ECC", "#4A9EAA", "#4A9E8A",
+              "#4A9E6A", "#4A9E4A", "#6A9E4A", "#8A9E3D",
+              "#A69A3D", "#C4993D", "#C4993D", "#D4A843",
+            ];
             return (
               <rect
                 key={i}
@@ -173,8 +197,8 @@ function CampaignFlow() {
                 width="24"
                 height={h}
                 rx="4"
-                fill="#C4993D"
-                opacity={0.2 + (i / 11) * 0.5}
+                fill={barColors[i]}
+                opacity={0.5 + (i / 11) * 0.4}
               />
             );
           })}
@@ -201,21 +225,32 @@ function RetailSceneCard({ name, desc, index }: { name: string; desc: string; in
       <svg viewBox="0 0 100 80" fill="none" className="w-20 h-16 mb-3">
         {/* Mini store scene */}
         <rect width="100" height="80" rx="6" fill="#F5F1EC" />
+        {/* Colored floor tinted to accent */}
+        <rect x="0" y="64" width="100" height="16" rx="0" fill={color} opacity="0.07" />
+        <clipPath id={`floor-clip-${index}`}>
+          <rect x="0" y="64" width="100" height="16" rx="6" />
+        </clipPath>
         {/* Shelf */}
         <rect x="8" y="10" width="30" height="50" rx="3" fill="#FFFFFF" stroke="#E8E2D9" />
-        <rect x="12" y="16" width="10" height="6" rx="1" fill={color} opacity="0.2" />
-        <rect x="24" y="16" width="10" height="6" rx="1" fill={color} opacity="0.15" />
-        <rect x="12" y="26" width="10" height="6" rx="1" fill={color} opacity="0.15" />
-        <rect x="24" y="26" width="10" height="6" rx="1" fill={color} opacity="0.2" />
+        <rect x="12" y="16" width="10" height="6" rx="1" fill={color} opacity="0.4" />
+        <rect x="24" y="16" width="10" height="6" rx="1" fill={color} opacity="0.3" />
+        <rect x="12" y="26" width="10" height="6" rx="1" fill={color} opacity="0.3" />
+        <rect x="24" y="26" width="10" height="6" rx="1" fill={color} opacity="0.4" />
+        {/* Person silhouette next to robot */}
+        <circle cx="46" cy="40" r="4" fill="#B8734A" />
+        <rect x="43" y="45" width="6" height="12" rx="2" fill="#5B8ECC" opacity="0.55" />
+        <rect x="42" y="57" width="3.5" height="7" rx="1.5" fill="#4A6A8A" />
+        <rect x="47" y="57" width="3.5" height="7" rx="1.5" fill="#4A6A8A" />
         {/* Robot */}
-        <rect x="55" y="30" width="24" height="30" rx="6" fill="#2C2418" />
-        <rect x="59" y="35" width="16" height="8" rx="2" fill={color} opacity="0.3" />
-        <circle cx="64" cy="39" r="1.5" fill={color} />
-        <circle cx="72" cy="39" r="1.5" fill={color} />
-        <circle cx="62" cy="62" r="3" fill="#5C5346" />
-        <circle cx="74" cy="62" r="3" fill="#5C5346" />
-        {/* Interaction dot */}
-        <circle cx="50" cy="42" r="2.5" fill={color} opacity="0.4" />
+        <rect x="60" y="30" width="24" height="30" rx="6" fill="#2C2418" />
+        <rect x="64" y="35" width="16" height="8" rx="2" fill={color} opacity="0.4" />
+        <circle cx="69" cy="39" r="1.5" fill={color} />
+        <circle cx="77" cy="39" r="1.5" fill={color} />
+        <circle cx="67" cy="62" r="3" fill="#5C5346" />
+        <circle cx="79" cy="62" r="3" fill="#5C5346" />
+        {/* Interaction dot — bigger and brighter */}
+        <circle cx="53" cy="38" r="4" fill={color} opacity="0.2" />
+        <circle cx="53" cy="38" r="2.5" fill={color} opacity="0.55" />
       </svg>
       <h3 className="text-sm font-semibold text-foreground mb-1">{name}</h3>
       <p className="text-xs text-text-muted leading-relaxed">{desc}</p>

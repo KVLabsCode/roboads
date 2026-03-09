@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SITE_NAME } from "@/lib/constants";
 
 export default function Footer() {
@@ -7,9 +8,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8 py-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <div className="w-6 h-6 rounded-md bg-foreground flex items-center justify-center">
-              <span className="text-background font-bold text-xs">K</span>
-            </div>
+            <Image src="/logo.png" alt="Kovio" width={32} height={32} className="w-8 h-8 rounded-md" />
             <span className="text-sm font-semibold text-foreground">
               {SITE_NAME}
             </span>

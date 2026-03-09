@@ -13,13 +13,30 @@ import CTAButton from "@/components/CTAButton";
 function RobotIcon({ gold }: { gold?: boolean }) {
   return (
     <svg viewBox="0 0 48 48" className="w-12 h-12" fill="none">
-      <rect x="10" y="6" width="28" height="22" rx="6" fill={gold ? "#2C2418" : "#D4CFC6"} />
-      <circle cx="20" cy="17" r="3" fill={gold ? "#C4993D" : "#B8B0A6"} />
-      <circle cx="28" cy="17" r="3" fill={gold ? "#C4993D" : "#B8B0A6"} />
-      <rect x="16" y="30" width="16" height="6" rx="2" fill={gold ? "#3D3224" : "#D4CFC6"} />
-      <rect x="14" y="38" width="6" height="4" rx="1.5" fill={gold ? "#5C5346" : "#D4CFC6"} />
-      <rect x="28" y="38" width="6" height="4" rx="1.5" fill={gold ? "#5C5346" : "#D4CFC6"} />
-      {gold && <circle cx="24" cy="17" r="18" fill="none" stroke="#C4993D" strokeWidth="1" opacity="0.25" />}
+      {gold && (
+        <>
+          <defs>
+            <radialGradient id="robotGlow" cx="50%" cy="40%" r="50%">
+              <stop offset="0%" stopColor="#C4993D" stopOpacity="0.15" />
+              <stop offset="100%" stopColor="#C4993D" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <circle cx="24" cy="20" r="20" fill="url(#robotGlow)" />
+        </>
+      )}
+      <rect x="10" y="6" width="28" height="22" rx="6" fill={gold ? "#2C2418" : "#B8B0A6"} />
+      <circle cx="20" cy="17" r="3" fill={gold ? "#D4A84B" : "#9C9488"} />
+      <circle cx="28" cy="17" r="3" fill={gold ? "#D4A84B" : "#9C9488"} />
+      {gold && (
+        <>
+          <circle cx="20" cy="17" r="4.5" fill="none" stroke="#C4993D" strokeWidth="0.5" opacity="0.4" />
+          <circle cx="28" cy="17" r="4.5" fill="none" stroke="#C4993D" strokeWidth="0.5" opacity="0.4" />
+        </>
+      )}
+      <rect x="16" y="30" width="16" height="6" rx="2" fill={gold ? "#3D3224" : "#B8B0A6"} />
+      <rect x="14" y="38" width="6" height="4" rx="1.5" fill={gold ? "#5C5346" : "#B8B0A6"} />
+      <rect x="28" y="38" width="6" height="4" rx="1.5" fill={gold ? "#5C5346" : "#B8B0A6"} />
+      {gold && <circle cx="24" cy="17" r="18" fill="none" stroke="#C4993D" strokeWidth="1.2" opacity="0.3" />}
     </svg>
   );
 }
@@ -153,21 +170,33 @@ function MultipurposeVisual() {
       type: "Retail",
       primary: "Scans shelves",
       unlocked: "Scans shelves + drives product discovery",
+      eyeColor: "#4A9E4A",
+      bgColor: "#E8F5E8",
+      ringColor: "#4A9E4A",
     },
     {
       type: "Hospitality",
       primary: "Serves guests",
       unlocked: "Serves guests + surfaces curated experiences",
+      eyeColor: "#A62D68",
+      bgColor: "#F5E8EF",
+      ringColor: "#A62D68",
     },
     {
       type: "Cleaning",
       primary: "Cleans floors",
       unlocked: "Cleans floors + captures foot traffic data",
+      eyeColor: "#5B8ECC",
+      bgColor: "#E8F0FA",
+      ringColor: "#5B8ECC",
     },
     {
       type: "Humanoid",
       primary: "Assists customers",
       unlocked: "Assists customers + delivers brand moments",
+      eyeColor: "#8B6BB8",
+      bgColor: "#F0E8F5",
+      ringColor: "#8B6BB8",
     },
   ];
 
@@ -177,13 +206,15 @@ function MultipurposeVisual() {
         <div key={r.type} className="card-soft p-6 group">
           {/* Robot icon */}
           <svg viewBox="0 0 56 56" className="w-14 h-14 mb-4" fill="none">
+            {/* Colored environment background */}
+            <rect x="4" y="4" width="48" height="48" rx="12" fill={r.bgColor} opacity="0.6" />
             <rect x="12" y="8" width="32" height="24" rx="6" fill="#2C2418" />
-            <circle cx="22" cy="20" r="3.5" fill="#C4993D" />
-            <circle cx="34" cy="20" r="3.5" fill="#C4993D" />
+            <circle cx="22" cy="20" r="3.5" fill={r.eyeColor} />
+            <circle cx="34" cy="20" r="3.5" fill={r.eyeColor} />
             <rect x="18" y="34" width="20" height="8" rx="3" fill="#3D3224" />
             <rect x="16" y="44" width="8" height="5" rx="2" fill="#5C5346" />
             <rect x="32" y="44" width="8" height="5" rx="2" fill="#5C5346" />
-            <circle cx="28" cy="20" r="22" fill="none" stroke="#C4993D" strokeWidth="1" opacity="0.2" className="kovio-border-animated" />
+            <circle cx="28" cy="20" r="22" fill="none" stroke={r.ringColor} strokeWidth="1" opacity="0.3" className="kovio-border-animated" />
           </svg>
 
           <p className="text-sm font-semibold text-foreground mb-2">{r.type} Robot</p>
@@ -211,22 +242,29 @@ function InteractionDashboard() {
         <rect width="700" height="340" rx="12" fill="#FFFFFF" />
 
         {/* Header */}
-        <rect x="0" y="0" width="700" height="46" rx="12" fill="#2C2418" />
+        <defs>
+          <linearGradient id="headerGrad" x1="0" y1="0" x2="700" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#2C2418" />
+            <stop offset="100%" stopColor="#3D3224" />
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="700" height="46" rx="12" fill="url(#headerGrad)" />
         <rect x="0" y="30" width="700" height="16" fill="#2C2418" />
+        <rect x="0" y="45" width="700" height="1.5" fill="#C4993D" opacity="0.5" />
         <text x="24" y="30" fill="#C4993D" fontSize="12" fontWeight="700" fontFamily="sans-serif">Kovio Fleet Overview</text>
         <circle cx="664" cy="24" r="4" fill="#7D8C6E" />
         <text x="656" y="28" textAnchor="end" fill="#7D8C6E" fontSize="8" fontFamily="sans-serif">Live</text>
 
         {/* Top metric cards */}
-        <rect x="20" y="62" width="155" height="70" rx="8" fill="#FBF4E4" />
+        <rect x="20" y="62" width="155" height="70" rx="8" fill="#EDF5ED" />
         <text x="36" y="84" fill="#5C5346" fontSize="9" fontFamily="sans-serif">Monthly Fleet Revenue</text>
         <text x="36" y="112" fill="#2C2418" fontSize="24" fontWeight="700" fontFamily="sans-serif">$42.3K</text>
 
-        <rect x="190" y="62" width="155" height="70" rx="8" fill="#FBF4E4" />
+        <rect x="190" y="62" width="155" height="70" rx="8" fill="#EDF3FA" />
         <text x="206" y="84" fill="#5C5346" fontSize="9" fontFamily="sans-serif">Interactions This Month</text>
         <text x="206" y="112" fill="#2C2418" fontSize="24" fontWeight="700" fontFamily="sans-serif">284K</text>
 
-        <rect x="360" y="62" width="155" height="70" rx="8" fill="#FBF4E4" />
+        <rect x="360" y="62" width="155" height="70" rx="8" fill="#FFF5EB" />
         <text x="376" y="84" fill="#5C5346" fontSize="9" fontFamily="sans-serif">Active Campaigns</text>
         <text x="376" y="112" fill="#2C2418" fontSize="24" fontWeight="700" fontFamily="sans-serif">47</text>
 
@@ -243,6 +281,12 @@ function InteractionDashboard() {
         <text x="42" y="262" fill="#9C9488" fontSize="7" fontFamily="sans-serif">$10K</text>
         <text x="42" y="294" fill="#9C9488" fontSize="7" fontFamily="sans-serif">$0</text>
 
+        {/* Horizontal grid lines */}
+        <line x1="66" y1="195" x2="440" y2="195" stroke="#E8E2D9" strokeWidth="0.5" />
+        <line x1="66" y1="227" x2="440" y2="227" stroke="#E8E2D9" strokeWidth="0.5" />
+        <line x1="66" y1="259" x2="440" y2="259" stroke="#E8E2D9" strokeWidth="0.5" />
+        <line x1="66" y1="291" x2="440" y2="291" stroke="#E8E2D9" strokeWidth="0.5" />
+
         <polyline
           points="66,290 96,286 126,280 156,272 186,265 216,256 246,244 276,230 306,215 336,200 366,184 396,170 426,156"
           stroke="#C4993D"
@@ -254,14 +298,14 @@ function InteractionDashboard() {
         <polygon
           points="66,290 96,286 126,280 156,272 186,265 216,256 246,244 276,230 306,215 336,200 366,184 396,170 426,156 426,298 66,298"
           fill="#C4993D"
-          opacity="0.06"
+          opacity="0.1"
         />
         {[
           [66, 290], [96, 286], [126, 280], [156, 272], [186, 265],
           [216, 256], [246, 244], [276, 230], [306, 215], [336, 200],
           [366, 184], [396, 170], [426, 156],
         ].map(([cx, cy], i) => (
-          <circle key={i} cx={cx} cy={cy} r="3" fill="#C4993D" opacity={0.5 + i * 0.04} />
+          <circle key={i} cx={cx} cy={cy} r="4" fill="#C4993D" opacity={0.6 + i * 0.03} />
         ))}
 
         {/* Right panel — top performing robots */}
@@ -269,16 +313,19 @@ function InteractionDashboard() {
         <text x="496" y="174" fill="#5C5346" fontSize="9" fontWeight="500" fontFamily="sans-serif">Top Revenue by Robot Type</text>
 
         {[
-          { name: "Retail Fleet (24 units)", rev: "$18,200" },
-          { name: "Delivery Fleet (31 units)", rev: "$12,400" },
-          { name: "Hotel Fleet (12 units)", rev: "$7,800" },
-          { name: "Cleaning Fleet (8 units)", rev: "$3,900" },
+          { name: "Retail Fleet (24 units)", rev: "$18,200", color: "#4A9E4A", pct: 100 },
+          { name: "Delivery Fleet (31 units)", rev: "$12,400", color: "#FF3008", pct: 68 },
+          { name: "Hotel Fleet (12 units)", rev: "$7,800", color: "#A62D68", pct: 43 },
+          { name: "Cleaning Fleet (8 units)", rev: "$3,900", color: "#5B8ECC", pct: 21 },
         ].map((c, i) => (
           <g key={i}>
-            <circle cx="502" cy={195 + i * 34} r="3" fill="#C4993D" opacity={0.8 - i * 0.15} />
+            <circle cx="502" cy={195 + i * 34} r="3.5" fill={c.color} />
             <text x="512" y={198 + i * 34} fill="#2C2418" fontSize="9" fontFamily="sans-serif">{c.name}</text>
-            <text x="664" y={198 + i * 34} textAnchor="end" fill="#A67C2E" fontSize="9" fontWeight="600" fontFamily="sans-serif">{c.rev}</text>
-            {i < 3 && <line x1="496" y1={207 + i * 34} x2="664" y2={207 + i * 34} stroke="#E8E2D9" strokeWidth="0.5" />}
+            <text x="664" y={198 + i * 34} textAnchor="end" fill={c.color} fontSize="9" fontWeight="600" fontFamily="sans-serif">{c.rev}</text>
+            {/* Progress bar */}
+            <rect x="496" y={203 + i * 34} width="168" height="3" rx="1.5" fill="#E8E2D9" opacity="0.5" />
+            <rect x="496" y={203 + i * 34} width={168 * c.pct / 100} height="3" rx="1.5" fill={c.color} opacity="0.3" />
+            {i < 3 && <line x1="496" y1={209 + i * 34} x2="664" y2={209 + i * 34} stroke="#E8E2D9" strokeWidth="0.5" />}
           </g>
         ))}
       </svg>
