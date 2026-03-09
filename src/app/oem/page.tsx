@@ -387,7 +387,7 @@ export default function OEMPage() {
                 Join the robot companies already turning interactions into income. Let&apos;s explore what Kovio can do for your fleet.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <CTAButton href="mailto:hello@kovio.dev">
+                <CTAButton href="/contact">
                   Talk to Us
                 </CTAButton>
                 <CTAButton href="/brands" variant="secondary">

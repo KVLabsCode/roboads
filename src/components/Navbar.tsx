@@ -8,74 +8,77 @@ import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
 
 /* Dropdown items for the "Brands" nav link */
 const BRANDS_DROPDOWN = [
-  {
-    label: "Retail Robots",
-    href: "/brands",
-    enabled: true,
-  },
-  {
-    label: "More environments coming soon",
-    href: "#",
-    enabled: false,
-  },
+  { label: "Retail Robots", href: "/brands", enabled: true, icon: "retail" },
+  { label: "Delivery Robots", href: "#", enabled: false, icon: "delivery" },
+  { label: "Humanoid Robots", href: "#", enabled: false, icon: "humanoid" },
+  { label: "Cleaning Robots", href: "#", enabled: false, icon: "cleaning" },
 ];
 
 /* Small chevron-down icon */
 function ChevronDown({ className = "" }: { className?: string }) {
   return (
-    <svg
-      className={className}
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M3 4.5L6 7.5L9 4.5"
-      />
+    <svg className={className} width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4.5L6 7.5L9 4.5" />
     </svg>
   );
 }
 
-/* Small robot icon for the Retail Robots item */
-function RobotIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke="currentColor"
-      className="shrink-0"
-    >
-      <rect
-        x="4"
-        y="6"
-        width="8"
-        height="7"
-        rx="1.5"
-        strokeWidth={1.3}
-      />
-      <rect
-        x="5.5"
-        y="3"
-        width="5"
-        height="3.5"
-        rx="1"
-        strokeWidth={1.3}
-      />
-      <circle cx="7" cy="5" r="0.6" fill="currentColor" stroke="none" />
-      <circle cx="9" cy="5" r="0.6" fill="currentColor" stroke="none" />
-      <line x1="8" y1="1.5" x2="8" y2="3" strokeWidth={1.3} strokeLinecap="round" />
-      <circle cx="8" cy="1.2" r="0.7" fill="currentColor" stroke="none" />
-      <line x1="2.5" y1="9" x2="4" y2="9" strokeWidth={1.3} strokeLinecap="round" />
-      <line x1="12" y1="9" x2="13.5" y2="9" strokeWidth={1.3} strokeLinecap="round" />
-    </svg>
-  );
+/* Distinct icons per robot type */
+function DropdownIcon({ type }: { type: string }) {
+  const cls = "w-5 h-5 shrink-0";
+  switch (type) {
+    case "retail":
+      return (
+        <svg className={cls} viewBox="0 0 20 20" fill="none">
+          <rect x="3" y="5" width="14" height="10" rx="2.5" fill="currentColor" opacity="0.15" />
+          <rect x="5" y="7" width="10" height="6" rx="1.5" fill="currentColor" opacity="0.8" />
+          <circle cx="8" cy="10" r="1" fill="#C4993D" />
+          <circle cx="12" cy="10" r="1" fill="#C4993D" />
+          <line x1="10" y1="3" x2="10" y2="5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+          <circle cx="10" cy="2.5" r="0.8" fill="currentColor" />
+        </svg>
+      );
+    case "delivery":
+      return (
+        <svg className={cls} viewBox="0 0 20 20" fill="none">
+          <rect x="4" y="8" width="12" height="6" rx="2" fill="currentColor" opacity="0.8" />
+          <rect x="5" y="6" width="10" height="3" rx="1.5" fill="currentColor" opacity="0.4" />
+          <circle cx="7" cy="10.5" r="0.8" fill="#C4993D" />
+          <circle cx="13" cy="10.5" r="0.8" fill="#C4993D" />
+          <circle cx="7" cy="15" r="1.5" fill="currentColor" opacity="0.6" />
+          <circle cx="13" cy="15" r="1.5" fill="currentColor" opacity="0.6" />
+          <line x1="14" y1="4" x2="14" y2="6" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+          <rect x="14" y="3" width="3" height="2" rx="0.5" fill="#C4993D" opacity="0.5" />
+        </svg>
+      );
+    case "humanoid":
+      return (
+        <svg className={cls} viewBox="0 0 20 20" fill="none">
+          <ellipse cx="10" cy="4" rx="3" ry="3.5" fill="currentColor" opacity="0.8" />
+          <circle cx="8.5" cy="3.5" r="0.7" fill="#C4993D" />
+          <circle cx="11.5" cy="3.5" r="0.7" fill="#C4993D" />
+          <rect x="8" y="7.5" width="4" height="6" rx="1.5" fill="currentColor" opacity="0.8" />
+          <rect x="5" y="8" width="3" height="5" rx="1.5" fill="currentColor" opacity="0.5" />
+          <rect x="12" y="8" width="3" height="5" rx="1.5" fill="currentColor" opacity="0.5" />
+          <rect x="8.5" y="13.5" width="1.5" height="4" rx="0.7" fill="currentColor" opacity="0.5" />
+          <rect x="10" y="13.5" width="1.5" height="4" rx="0.7" fill="currentColor" opacity="0.5" />
+        </svg>
+      );
+    case "cleaning":
+      return (
+        <svg className={cls} viewBox="0 0 20 20" fill="none">
+          <ellipse cx="10" cy="11" rx="6" ry="2.5" fill="currentColor" opacity="0.8" />
+          <ellipse cx="10" cy="9.5" rx="5" ry="2" fill="currentColor" opacity="0.5" />
+          <circle cx="8" cy="9.5" r="0.8" fill="#C4993D" />
+          <circle cx="12" cy="9.5" r="0.8" fill="#C4993D" />
+          <path d="M6 14 L5 15.5" stroke="#C4993D" strokeWidth="0.8" strokeLinecap="round" opacity="0.4" />
+          <path d="M10 14 L10 15.5" stroke="#C4993D" strokeWidth="0.8" strokeLinecap="round" opacity="0.4" />
+          <path d="M14 14 L15 15.5" stroke="#C4993D" strokeWidth="0.8" strokeLinecap="round" opacity="0.4" />
+        </svg>
+      );
+    default:
+      return <span className="w-5 h-5 shrink-0" />;
+  }
 }
 
 export default function Navbar() {
@@ -170,29 +173,30 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -4 }}
                         transition={{ duration: 0.18, ease: "easeOut" }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-60 rounded-xl border border-[#E8E2D9] bg-[#FBF8F3] shadow-lg overflow-hidden"
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 rounded-xl border border-[#E8E2D9] bg-[#FBF8F3] shadow-lg overflow-hidden"
                       >
-                        <div className="py-2">
+                        <div className="py-1.5">
                           {BRANDS_DROPDOWN.map((item) =>
                             item.enabled ? (
                               <Link
                                 key={item.label}
                                 href={item.href}
                                 onClick={() => setBrandsOpen(false)}
-                                className="flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium text-text-body hover:text-foreground hover:bg-[#F3EDE3] transition-colors duration-150"
+                                className="flex items-center gap-2.5 px-4 py-2 text-sm font-medium text-text-body hover:text-foreground hover:bg-[#F3EDE3] transition-colors duration-150"
                               >
-                                <RobotIcon />
+                                <DropdownIcon type={item.icon} />
                                 {item.label}
                               </Link>
                             ) : (
                               <span
                                 key={item.label}
-                                className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-text-body/50 cursor-default select-none"
+                                className="flex items-center justify-between px-4 py-2 cursor-default select-none"
                               >
-                                <span className="w-4 h-4 flex items-center justify-center text-text-body/30">
-                                  &bull;
+                                <span className="flex items-center gap-2.5 text-sm text-text-body/40">
+                                  <DropdownIcon type={item.icon} />
+                                  {item.label}
                                 </span>
-                                {item.label}
+                                <span className="text-[10px] font-medium text-text-muted bg-[#F0EBE3] px-1.5 py-0.5 rounded">Soon</span>
                               </span>
                             )
                           )}
@@ -274,7 +278,7 @@ export default function Navbar() {
                       {link.label}
                     </span>
                     {/* Sub-items indented */}
-                    <div className="flex flex-col gap-2 pl-4 border-l-2 border-[#E8E2D9]">
+                    <div className="flex flex-col gap-1.5 pl-4 border-l-2 border-[#E8E2D9]">
                       {BRANDS_DROPDOWN.map((item) =>
                         item.enabled ? (
                           <Link
@@ -287,18 +291,19 @@ export default function Navbar() {
                                 : "text-text-body"
                             }`}
                           >
-                            <RobotIcon />
+                            <DropdownIcon type={item.icon} />
                             {item.label}
                           </Link>
                         ) : (
                           <span
                             key={item.label}
-                            className="flex items-center gap-2 text-sm text-text-body/50"
+                            className="flex items-center justify-between text-sm text-text-body/40"
                           >
-                            <span className="w-4 h-4 flex items-center justify-center text-text-body/30">
-                              &bull;
+                            <span className="flex items-center gap-2">
+                              <DropdownIcon type={item.icon} />
+                              {item.label}
                             </span>
-                            {item.label}
+                            <span className="text-[10px] font-medium text-text-muted bg-[#F0EBE3] px-1.5 py-0.5 rounded">Soon</span>
                           </span>
                         )
                       )}
