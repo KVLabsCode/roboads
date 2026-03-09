@@ -415,14 +415,6 @@ function HeroPanorama() {
         {/* To Mall (center ~707, top ~195) */}
         <path d="M 520 110 Q 620 170 707 225" stroke="#C4993D" strokeWidth="2" strokeDasharray="6 4" opacity="0.28" fill="none" />
         <circle cx="615" cy="168" r="3" fill="#C4993D" opacity="0.2" />
-        {/* To Delivery robot */}
-        <path d="M 475 110 Q 280 260 105 430" stroke="#C4993D" strokeWidth="1.5" strokeDasharray="6 4" opacity="0.22" fill="none" />
-        <circle cx="290" cy="258" r="2.5" fill="#C4993D" opacity="0.18" />
-        {/* To Humanoid */}
-        <path d="M 528 108 Q 690 270 840 420" stroke="#C4993D" strokeWidth="1.5" strokeDasharray="6 4" opacity="0.22" fill="none" />
-        <circle cx="680" cy="262" r="2.5" fill="#C4993D" opacity="0.18" />
-        {/* To Hospital robot */}
-        <path d="M 534 102 Q 730 200 925 320" stroke="#C4993D" strokeWidth="1.2" strokeDasharray="6 4" opacity="0.18" fill="none" />
 
         {/* Animated pulse dots */}
         <circle r="3.5" fill="#C4993D" opacity="0.65">
@@ -433,15 +425,6 @@ function HeroPanorama() {
         </circle>
         <circle r="3" fill="#C4993D" opacity="0.55">
           <animateMotion dur="4s" repeatCount="indefinite" path="M 520 110 Q 620 170 707 225" begin="1s" />
-        </circle>
-        <circle r="3" fill="#C4993D" opacity="0.5">
-          <animateMotion dur="4.5s" repeatCount="indefinite" path="M 475 110 Q 280 260 105 430" begin="1.5s" />
-        </circle>
-        <circle r="3" fill="#C4993D" opacity="0.5">
-          <animateMotion dur="4.2s" repeatCount="indefinite" path="M 528 108 Q 690 270 840 420" begin="2s" />
-        </circle>
-        <circle r="2.5" fill="#C4993D" opacity="0.4">
-          <animateMotion dur="5s" repeatCount="indefinite" path="M 534 102 Q 730 200 925 320" begin="2.5s" />
         </circle>
 
         {/* ═══ BACKGROUND BUILDINGS ═══ */}
@@ -556,17 +539,13 @@ function HeroPanorama() {
         <rect x="319" y="326" width="10" height="12" rx="2" fill="#4A9E4A" opacity="0.35" />
 
         {/* Grocery Speech Bubble */}
-        <rect x="300" y="250" width="96" height="40" rx="6" fill="#FFFFFF" stroke="#D4CFC6" strokeWidth="0.8" />
-        <text x="348" y="265" textAnchor="middle" fill="#3D3224" fontSize="7" fontWeight="700" fontFamily="sans-serif">Looking for drinks?</text>
-        <text x="348" y="276" textAnchor="middle" fill="#E61A27" fontSize="6.5" fontWeight="600" fontFamily="sans-serif">Coca-Cola 20% off</text>
-        <text x="348" y="287" textAnchor="middle" fill="#9C9488" fontSize="5" fontFamily="sans-serif">Sponsored · Aisle 3</text>
-        <polygon points="325,290 331,290 328,296" fill="#FFFFFF" />
-
-        {/* Revenue tag */}
-        <g opacity="0.9">
-          <rect x="234" y="356" width="72" height="16" rx="8" fill="#C4993D" opacity="0.18" />
-          <text x="270" y="367" textAnchor="middle" fill="#8B6B2A" fontSize="7" fontWeight="700" fontFamily="sans-serif">+$0.55 interaction</text>
-        </g>
+        <rect x="282" y="245" width="96" height="52" rx="6" fill="#FFFFFF" stroke="#D4CFC6" strokeWidth="0.8" />
+        <text x="330" y="259" textAnchor="middle" fill="#3D3224" fontSize="7" fontWeight="700" fontFamily="sans-serif">Looking for drinks?</text>
+        <text x="330" y="270" textAnchor="middle" fill="#E61A27" fontSize="6.5" fontWeight="600" fontFamily="sans-serif">Coca-Cola 20% off</text>
+        <text x="330" y="280" textAnchor="middle" fill="#9C9488" fontSize="5" fontFamily="sans-serif">Sponsored · Aisle 3</text>
+        <line x1="290" y1="285" x2="370" y2="285" stroke="#E8E2D9" strokeWidth="0.6" opacity="0.6" />
+        <text x="330" y="293" textAnchor="middle" fill="#8B6B2A" fontSize="5.5" fontWeight="700" fontFamily="sans-serif">+$0.55 interaction</text>
+        <polygon points="307,297 313,297 310,303" fill="#FFFFFF" />
 
         {/* ═══ HOTEL — bigger, centered ═══ */}
         <g filter="url(#shadow-sm)">
@@ -603,17 +582,13 @@ function HeroPanorama() {
         <rect x="582" y="343" width="8" height="4" rx="1" fill="#8B6B3E" opacity="0.4" />
 
         {/* Hotel Speech Bubble */}
-        <rect x="540" y="270" width="86" height="38" rx="6" fill="#FFFFFF" stroke="#D4CFC6" strokeWidth="0.8" />
-        <text x="583" y="284" textAnchor="middle" fill="#3D3224" fontSize="7" fontWeight="700" fontFamily="sans-serif">Hungry?</text>
-        <text x="583" y="295" textAnchor="middle" fill="#A81612" fontSize="6.5" fontWeight="600" fontFamily="sans-serif">Chipotle: 10% off</text>
-        <text x="583" y="305" textAnchor="middle" fill="#9C9488" fontSize="5" fontFamily="sans-serif">Sponsored · Guest offer</text>
-        <polygon points="556,308 562,308 559,314" fill="#FFFFFF" />
-
-        {/* Revenue tag */}
-        <g opacity="0.9">
-          <rect x="473" y="356" width="64" height="16" rx="8" fill="#C4993D" opacity="0.18" />
-          <text x="505" y="367" textAnchor="middle" fill="#8B6B2A" fontSize="7" fontWeight="700" fontFamily="sans-serif">+$0.45 referral</text>
-        </g>
+        <rect x="520" y="250" width="86" height="52" rx="6" fill="#FFFFFF" stroke="#D4CFC6" strokeWidth="0.8" />
+        <text x="563" y="264" textAnchor="middle" fill="#3D3224" fontSize="7" fontWeight="700" fontFamily="sans-serif">Hungry?</text>
+        <text x="563" y="275" textAnchor="middle" fill="#A81612" fontSize="6.5" fontWeight="600" fontFamily="sans-serif">Chipotle: 10% off</text>
+        <text x="563" y="285" textAnchor="middle" fill="#9C9488" fontSize="5" fontFamily="sans-serif">Sponsored · Guest offer</text>
+        <line x1="528" y1="290" x2="606" y2="290" stroke="#E8E2D9" strokeWidth="0.6" opacity="0.6" />
+        <text x="563" y="298" textAnchor="middle" fill="#8B6B2A" fontSize="5.5" fontWeight="700" fontFamily="sans-serif">+$0.45 referral</text>
+        <polygon points="536,302 542,302 539,308" fill="#FFFFFF" />
 
         {/* ═══ MALL — bigger, spread right ═══ */}
         <g filter="url(#shadow-sm)">
@@ -627,25 +602,27 @@ function HeroPanorama() {
         <rect x="641" y="244" width="12" height="14" rx="1" fill="#E8544E" opacity="0.25" /><rect x="657" y="244" width="12" height="14" rx="1" fill="#5B8ECC" opacity="0.25" /><rect x="673" y="244" width="12" height="14" rx="1" fill="#D4A843" opacity="0.25" />
         <rect x="711" y="244" width="12" height="14" rx="1" fill="#D4A843" opacity="0.3" /><rect x="727" y="244" width="12" height="14" rx="1" fill="#4A9E4A" opacity="0.25" /><rect x="743" y="244" width="12" height="14" rx="1" fill="#E8544E" opacity="0.25" />
 
-        {/* Cleaning robot */}
+        {/* Mall service robot — upright, clearly visible */}
         <g className="animate-float-slow" style={{ animationDelay: "1.5s" }}>
-          <ellipse cx="707" cy="318" rx="22" ry="9" fill="#1A1208" />
-          <ellipse cx="707" cy="314" rx="18" ry="7" fill="#2C1E10" />
-          <circle cx="697" cy="314" r="3" fill="#C4993D" opacity="0.6" /><circle cx="717" cy="314" r="3" fill="#C4993D" opacity="0.6" />
-          <circle cx="683" cy="322" r="2.5" fill="#5B8ECC" opacity="0.2" /><circle cx="673" cy="320" r="2" fill="#5B8ECC" opacity="0.15" />
+          <rect x="635" y="300" width="28" height="36" rx="7" fill="#1A1208" />
+          <rect x="640" y="306" width="18" height="12" rx="3" fill="#C4993D" opacity="0.3" />
+          <circle cx="647" cy="311" r="2.5" fill="#C4993D" /><circle cx="655" cy="311" r="2.5" fill="#C4993D" />
+          <rect x="627" y="310" width="8" height="18" rx="4" fill="#2C1E10" />
+          <rect x="663" y="310" width="8" height="18" rx="4" fill="#2C1E10" />
+          <circle cx="640" cy="339" r="4.5" fill="#3D3224" /><circle cx="658" cy="339" r="4.5" fill="#3D3224" />
         </g>
+        {/* Mall shopper */}
+        <circle cx="688" cy="301" r="9" fill="#D4A843" opacity="0.65" />
+        <rect x="682" y="311" width="12" height="22" rx="3.5" fill="#D4A843" opacity="0.6" />
+        <rect x="678" y="333" width="8" height="12" rx="2.5" fill="#D4A843" opacity="0.5" /><rect x="690" y="333" width="8" height="12" rx="2.5" fill="#D4A843" opacity="0.5" />
 
         {/* Mall Speech Bubble */}
-        <rect x="720" y="296" width="80" height="30" rx="6" fill="#FFFFFF" stroke="#D4CFC6" strokeWidth="0.8" />
-        <text x="760" y="309" textAnchor="middle" fill="#111111" fontSize="6.5" fontWeight="700" fontFamily="sans-serif">Nike: new drop!</text>
-        <text x="760" y="321" textAnchor="middle" fill="#9C9488" fontSize="5.5" fontFamily="sans-serif">Want directions? →</text>
-        <polygon points="736,326 742,326 739,332" fill="#FFFFFF" />
-
-        {/* Revenue tag */}
-        <g opacity="0.85">
-          <rect x="673" y="340" width="68" height="16" rx="8" fill="#C4993D" opacity="0.18" />
-          <text x="707" y="351" textAnchor="middle" fill="#8B6B2A" fontSize="7" fontWeight="700" fontFamily="sans-serif">+$0.30 promotion</text>
-        </g>
+        <rect x="669" y="252" width="84" height="52" rx="6" fill="#FFFFFF" stroke="#D4CFC6" strokeWidth="0.8" />
+        <text x="711" y="266" textAnchor="middle" fill="#111111" fontSize="7" fontWeight="700" fontFamily="sans-serif">Nike: new drop!</text>
+        <text x="711" y="277" textAnchor="middle" fill="#9C9488" fontSize="5.5" fontFamily="sans-serif">Want directions? →</text>
+        <line x1="677" y1="282" x2="745" y2="282" stroke="#E8E2D9" strokeWidth="0.6" opacity="0.6" />
+        <text x="711" y="292" textAnchor="middle" fill="#8B6B2A" fontSize="5.5" fontWeight="700" fontFamily="sans-serif">+$0.30 promotion</text>
+        <polygon points="695,304 701,304 698,310" fill="#FFFFFF" />
 
         {/* ═══ STREET LEVEL ═══ */}
         {/* Delivery robot — far left */}
@@ -660,15 +637,12 @@ function HeroPanorama() {
         </g>
 
         {/* Delivery Speech Bubble */}
-        <rect x="60" y="386" width="90" height="30" rx="6" fill="#FFFFFF" stroke="#D4CFC6" strokeWidth="0.8" />
-        <text x="105" y="399" textAnchor="middle" fill="#FF3008" fontSize="6.5" fontWeight="700" fontFamily="sans-serif">DoorDash special!</text>
-        <text x="105" y="411" textAnchor="middle" fill="#3D3224" fontSize="6" fontFamily="sans-serif">Free drink with order</text>
-        <polygon points="100,416 106,416 103,422" fill="#FFFFFF" />
-        {/* Revenue tag */}
-        <g opacity="0.85">
-          <rect x="72" y="466" width="62" height="14" rx="7" fill="#C4993D" opacity="0.18" />
-          <text x="103" y="476" textAnchor="middle" fill="#8B6B2A" fontSize="6.5" fontWeight="700" fontFamily="sans-serif">+$0.40 upsell</text>
-        </g>
+        <rect x="60" y="382" width="90" height="44" rx="6" fill="#FFFFFF" stroke="#D4CFC6" strokeWidth="0.8" />
+        <text x="105" y="396" textAnchor="middle" fill="#FF3008" fontSize="6.5" fontWeight="700" fontFamily="sans-serif">DoorDash special!</text>
+        <text x="105" y="407" textAnchor="middle" fill="#3D3224" fontSize="6" fontFamily="sans-serif">Free drink with order</text>
+        <line x1="68" y1="412" x2="142" y2="412" stroke="#E8E2D9" strokeWidth="0.6" opacity="0.6" />
+        <text x="105" y="421" textAnchor="middle" fill="#8B6B2A" fontSize="5.5" fontWeight="700" fontFamily="sans-serif">+$0.40 upsell</text>
+        <polygon points="100,426 106,426 103,432" fill="#FFFFFF" />
 
         {/* Receiving person — bigger */}
         <circle cx="48" cy="436" r="10" fill="#B8734A" opacity="0.7" />
@@ -697,19 +671,16 @@ function HeroPanorama() {
         <text x="840" y="417" textAnchor="middle" fill="#C4993D" fontSize="6.5" fontWeight="700" fontFamily="sans-serif">KOVIO</text>
 
         {/* Humanoid Speech Bubble */}
-        <rect x="860" y="400" width="84" height="30" rx="6" fill="#FFFFFF" stroke="#D4CFC6" strokeWidth="0.8" />
-        <text x="902" y="413" textAnchor="middle" fill="#3D3224" fontSize="7" fontWeight="700" fontFamily="sans-serif">Need coffee?</text>
-        <text x="902" y="425" textAnchor="middle" fill="#00704A" fontSize="6" fontWeight="600" fontFamily="sans-serif">Starbucks — 2 min away</text>
-        <polygon points="872,430 878,430 875,436" fill="#FFFFFF" />
-        {/* Revenue tag */}
-        <g opacity="0.85">
-          <rect x="856" y="434" width="88" height="14" rx="7" fill="#C4993D" opacity="0.18" />
-          <text x="900" y="444" textAnchor="middle" fill="#8B6B2A" fontSize="6.5" fontWeight="700" fontFamily="sans-serif">+$0.35 recommendation</text>
-        </g>
+        <rect x="858" y="382" width="92" height="44" rx="6" fill="#FFFFFF" stroke="#D4CFC6" strokeWidth="0.8" />
+        <text x="904" y="396" textAnchor="middle" fill="#3D3224" fontSize="7" fontWeight="700" fontFamily="sans-serif">Need coffee?</text>
+        <text x="904" y="407" textAnchor="middle" fill="#00704A" fontSize="6" fontWeight="600" fontFamily="sans-serif">Starbucks — 2 min away</text>
+        <line x1="866" y1="412" x2="942" y2="412" stroke="#E8E2D9" strokeWidth="0.6" opacity="0.6" />
+        <text x="904" y="421" textAnchor="middle" fill="#8B6B2A" fontSize="5.5" fontWeight="700" fontFamily="sans-serif">+$0.35 recommendation</text>
+        <polygon points="870,426 876,426 873,432" fill="#FFFFFF" />
 
-        {/* Person next to humanoid — bigger */}
-        <circle cx="880" cy="452" r="10" fill="#5B8ECC" opacity="0.6" />
-        <rect x="874" y="464" width="12" height="22" rx="3.5" fill="#5B8ECC" opacity="0.55" />
+        {/* Person next to humanoid — positioned clear of robot */}
+        <circle cx="878" cy="452" r="10" fill="#5B8ECC" opacity="0.6" />
+        <rect x="872" y="464" width="12" height="22" rx="3.5" fill="#5B8ECC" opacity="0.55" />
 
         {/* Hospital robot */}
         <g className="animate-float-slow" style={{ animationDelay: "2s" }}>
@@ -729,9 +700,9 @@ function HeroPanorama() {
         <circle cx="617" cy="371" r="11" fill="#3E8C2E" opacity="0.4" /><circle cx="611" cy="367" r="8" fill="#52A83E" opacity="0.35" /><circle cx="623" cy="366" r="9" fill="#2E7A22" opacity="0.32" />
 
         {/* Street lamps */}
-        <line x1="142" y1="380" x2="142" y2="430" stroke="#C4BEB4" strokeWidth="2.5" />
-        <ellipse cx="142" cy="378" rx="9" ry="3.5" fill="#C4BEB4" />
-        <circle cx="142" cy="377" r="3" fill="#F0D89A" opacity="0.3" />
+        <line x1="160" y1="380" x2="160" y2="430" stroke="#C4BEB4" strokeWidth="2.5" />
+        <ellipse cx="160" cy="378" rx="9" ry="3.5" fill="#C4BEB4" />
+        <circle cx="160" cy="377" r="3" fill="#F0D89A" opacity="0.3" />
         <line x1="617" y1="380" x2="617" y2="430" stroke="#C4BEB4" strokeWidth="2.5" />
         <ellipse cx="617" cy="378" rx="9" ry="3.5" fill="#C4BEB4" />
         <circle cx="617" cy="377" r="3" fill="#F0D89A" opacity="0.3" />
