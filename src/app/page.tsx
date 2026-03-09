@@ -254,7 +254,7 @@ const robotIllustrations: Record<string, React.FC> = {
 
 function HeroPanorama() {
   return (
-    <div className="relative w-full max-w-5xl mx-auto h-[320px] sm:h-[400px] md:h-[480px]">
+    <div className="relative w-full max-w-5xl mx-auto h-[220px] sm:h-[400px] md:h-[480px]">
       <svg
         viewBox="0 0 1000 480"
         fill="none"
@@ -282,7 +282,7 @@ function HeroPanorama() {
             <stop offset="100%" stopColor="#C4993D" stopOpacity="0" />
           </radialGradient>
           <filter id="soft-glow">
-            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feGaussianBlur stdDeviation="3" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -301,55 +301,55 @@ function HeroPanorama() {
         <ellipse cx="430" cy="28" rx="45" ry="8" fill="#FFFFFF" opacity="0.2" />
 
         {/* ═══ KOVIO BEACON — central network hub ═══ */}
-        <circle cx="500" cy="75" r="55" fill="url(#beacon-glow)" className="beacon-glow-animated" />
-        <circle cx="500" cy="75" r="20" fill="#2C2418" filter="url(#soft-glow)" />
-        <circle cx="500" cy="75" r="20" fill="none" stroke="#C4993D" strokeWidth="1.5" className="kovio-border-animated" opacity="0.7" />
-        <text x="500" y="73" textAnchor="middle" fill="#C4993D" fontSize="7.5" fontWeight="700" fontFamily="sans-serif" letterSpacing="1">KOVIO</text>
-        <text x="500" y="83" textAnchor="middle" fill="#D4CFC6" fontSize="5" fontFamily="sans-serif">network</text>
+        <circle cx="500" cy="75" r="80" fill="url(#beacon-glow)" className="beacon-glow-animated" />
+        <circle cx="500" cy="75" r="32" fill="#2C2418" filter="url(#soft-glow)" />
+        <circle cx="500" cy="75" r="32" fill="none" stroke="#C4993D" strokeWidth="1.5" className="kovio-border-animated" opacity="0.7" />
+        <text x="500" y="74" textAnchor="middle" fill="#C4993D" fontSize="11" fontWeight="700" fontFamily="sans-serif" letterSpacing="1.5">KOVIO</text>
+        <text x="500" y="86" textAnchor="middle" fill="#D4CFC6" fontSize="7" fontFamily="sans-serif">network</text>
         {/* Outer pulse rings */}
-        <circle cx="500" cy="75" r="28" fill="none" stroke="#C4993D" strokeWidth="0.5" opacity="0.15">
-          <animate attributeName="r" values="28;48;28" dur="4s" repeatCount="indefinite" />
+        <circle cx="500" cy="75" r="42" fill="none" stroke="#C4993D" strokeWidth="0.5" opacity="0.15">
+          <animate attributeName="r" values="42;72;42" dur="4s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.2;0;0.2" dur="4s" repeatCount="indefinite" />
         </circle>
-        <circle cx="500" cy="75" r="36" fill="none" stroke="#C4993D" strokeWidth="0.3" opacity="0.1">
-          <animate attributeName="r" values="36;60;36" dur="4s" begin="2s" repeatCount="indefinite" />
+        <circle cx="500" cy="75" r="54" fill="none" stroke="#C4993D" strokeWidth="0.3" opacity="0.1">
+          <animate attributeName="r" values="54;90;54" dur="4s" begin="2s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.12;0;0.12" dur="4s" begin="2s" repeatCount="indefinite" />
         </circle>
 
         {/* ═══ CONNECTION LINES from beacon to each robot ═══ */}
         {/* Beacon → Retail robot (store) */}
-        <path d="M 488 93 Q 415 180 325 290" stroke="#C4993D" strokeWidth="1.2" className="flow-line-animated" opacity="0.25" fill="none" />
+        <path d="M 476 100 Q 415 180 325 290" stroke="#C4993D" strokeWidth="1.2" className="flow-line-animated" opacity="0.25" fill="none" />
         {/* Beacon → Hotel robot */}
-        <path d="M 500 95 Q 505 195 516 300" stroke="#C4993D" strokeWidth="1.2" className="flow-line-animated" opacity="0.25" fill="none" />
+        <path d="M 500 107 Q 505 195 516 300" stroke="#C4993D" strokeWidth="1.2" className="flow-line-animated" opacity="0.25" fill="none" />
         {/* Beacon → Cleaning robot */}
-        <path d="M 515 92 Q 598 185 670 290" stroke="#C4993D" strokeWidth="1.2" className="flow-line-animated" opacity="0.22" fill="none" />
+        <path d="M 526 100 Q 598 185 670 290" stroke="#C4993D" strokeWidth="1.2" className="flow-line-animated" opacity="0.22" fill="none" />
         {/* Beacon → Delivery robot */}
-        <path d="M 482 93 Q 310 250 165 405" stroke="#C4993D" strokeWidth="1" className="flow-line-animated" opacity="0.18" fill="none" />
+        <path d="M 472 98 Q 310 250 165 405" stroke="#C4993D" strokeWidth="1" className="flow-line-animated" opacity="0.18" fill="none" />
         {/* Beacon → Humanoid robot */}
-        <path d="M 518 92 Q 655 255 760 400" stroke="#C4993D" strokeWidth="1" className="flow-line-animated" opacity="0.18" fill="none" />
+        <path d="M 528 98 Q 655 255 760 400" stroke="#C4993D" strokeWidth="1" className="flow-line-animated" opacity="0.18" fill="none" />
         {/* Beacon → Hospital robot */}
-        <path d="M 522 90 Q 695 175 840 325" stroke="#C4993D" strokeWidth="0.8" className="flow-line-animated" opacity="0.15" fill="none" />
+        <path d="M 530 95 Q 695 175 840 325" stroke="#C4993D" strokeWidth="0.8" className="flow-line-animated" opacity="0.15" fill="none" />
         {/* Beacon → Warehouse */}
-        <path d="M 482 90 Q 310 125 155 210" stroke="#C4993D" strokeWidth="0.8" className="flow-line-animated" opacity="0.12" fill="none" />
+        <path d="M 470 95 Q 310 125 155 210" stroke="#C4993D" strokeWidth="0.8" className="flow-line-animated" opacity="0.12" fill="none" />
 
         {/* Animated pulse dots traveling along beacon connections */}
         <circle r="3" fill="#C4993D" opacity="0.6">
-          <animateMotion dur="3.5s" repeatCount="indefinite" path="M 488 93 Q 415 180 325 290" />
+          <animateMotion dur="3.5s" repeatCount="indefinite" path="M 476 100 Q 415 180 325 290" />
         </circle>
         <circle r="3" fill="#C4993D" opacity="0.55">
-          <animateMotion dur="3s" repeatCount="indefinite" path="M 500 95 Q 505 195 516 300" begin="0.5s" />
+          <animateMotion dur="3s" repeatCount="indefinite" path="M 500 107 Q 505 195 516 300" begin="0.5s" />
         </circle>
         <circle r="2.5" fill="#C4993D" opacity="0.5">
-          <animateMotion dur="4s" repeatCount="indefinite" path="M 515 92 Q 598 185 670 290" begin="1s" />
+          <animateMotion dur="4s" repeatCount="indefinite" path="M 526 100 Q 598 185 670 290" begin="1s" />
         </circle>
         <circle r="2.5" fill="#C4993D" opacity="0.45">
-          <animateMotion dur="4.5s" repeatCount="indefinite" path="M 482 93 Q 310 250 165 405" begin="1.5s" />
+          <animateMotion dur="4.5s" repeatCount="indefinite" path="M 472 98 Q 310 250 165 405" begin="1.5s" />
         </circle>
         <circle r="2.5" fill="#C4993D" opacity="0.45">
-          <animateMotion dur="4.2s" repeatCount="indefinite" path="M 518 92 Q 655 255 760 400" begin="2s" />
+          <animateMotion dur="4.2s" repeatCount="indefinite" path="M 528 98 Q 655 255 760 400" begin="2s" />
         </circle>
         <circle r="2" fill="#C4993D" opacity="0.35">
-          <animateMotion dur="5s" repeatCount="indefinite" path="M 522 90 Q 695 175 840 325" begin="2.5s" />
+          <animateMotion dur="5s" repeatCount="indefinite" path="M 530 95 Q 695 175 840 325" begin="2.5s" />
         </circle>
 
         {/* ═══ BACKGROUND LAYER — tall buildings, warehouse, hospital ═══ */}
@@ -705,74 +705,6 @@ function HeroPanorama() {
   );
 }
 
-/* ═══════════════════════════════════════════════════════════
-   SECTION 3 — Before/After Transformation Diagram
-   ═══════════════════════════════════════════════════════════ */
-
-function TransformationDiagram() {
-  return (
-    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-      {/* WITHOUT KOVIO */}
-      <div className="card-soft p-8 text-center">
-        <p className="text-sm font-medium text-text-muted uppercase tracking-wider mb-6">
-          Without Kovio
-        </p>
-        <svg viewBox="0 0 240 180" fill="none" className="w-full max-w-[240px] mx-auto mb-4">
-          {/* Robot */}
-          <rect x="90" y="20" width="60" height="50" rx="10" fill="#E8E2D9" />
-          <circle cx="110" cy="40" r="4" fill="#D4CFC6" />
-          <circle cx="130" cy="40" r="4" fill="#D4CFC6" />
-          {/* Arrow down */}
-          <line x1="120" y1="80" x2="120" y2="120" stroke="#D4CFC6" strokeWidth="2" />
-          <polygon points="114,115 120,128 126,115" fill="#D4CFC6" />
-          {/* Single task box */}
-          <rect x="70" y="135" width="100" height="30" rx="6" fill="#F0EBE3" />
-          <text x="120" y="154" textAnchor="middle" fill="#9C9488" fontSize="11" fontFamily="sans-serif">One task. No value.</text>
-        </svg>
-        <p className="text-text-muted text-sm">Robots do one job. No revenue beyond the sale.</p>
-      </div>
-
-      {/* WITH KOVIO */}
-      <div className="card-soft p-8 text-center border-accent/20">
-        <p className="text-sm font-medium text-accent uppercase tracking-wider mb-6">
-          With Kovio
-        </p>
-        <svg viewBox="0 0 240 180" fill="none" className="w-full max-w-[240px] mx-auto mb-4">
-          {/* Robot */}
-          <rect x="90" y="10" width="60" height="40" rx="10" fill="#2C2418" />
-          <circle cx="110" cy="26" r="3" fill="#C4993D" />
-          <circle cx="130" cy="26" r="3" fill="#C4993D" />
-          {/* Arrows branching out */}
-          <line x1="120" y1="55" x2="120" y2="75" stroke="#C4993D" strokeWidth="2" />
-          {/* Kovio layer */}
-          <rect x="75" y="75" width="90" height="24" rx="6" fill="#C4993D" opacity="0.15" />
-          <rect x="75" y="75" width="90" height="24" rx="6" fill="none" stroke="#C4993D" strokeWidth="1" className="kovio-border-animated" opacity="0.6" />
-          <text x="120" y="91" textAnchor="middle" fill="#C4993D" fontSize="10" fontWeight="600" fontFamily="sans-serif">KOVIO</text>
-          {/* Four output branches */}
-          <line x1="85" y1="99" x2="35" y2="128" stroke="#C4993D" strokeWidth="1.5" className="flow-line-animated" opacity="0.6" />
-          <line x1="107" y1="99" x2="88" y2="128" stroke="#C4993D" strokeWidth="1.5" className="flow-line-animated" opacity="0.6" />
-          <line x1="133" y1="99" x2="152" y2="128" stroke="#C4993D" strokeWidth="1.5" className="flow-line-animated" opacity="0.6" />
-          <line x1="155" y1="99" x2="205" y2="128" stroke="#C4993D" strokeWidth="1.5" className="flow-line-animated" opacity="0.6" />
-          {/* Value nodes */}
-          <rect x="10" y="128" width="50" height="24" rx="6" fill="#FBF4E4" />
-          <text x="35" y="143" textAnchor="middle" fill="#A67C2E" fontSize="7.5" fontFamily="sans-serif">Interacts</text>
-          <rect x="65" y="128" width="50" height="24" rx="6" fill="#FBF4E4" />
-          <text x="90" y="143" textAnchor="middle" fill="#A67C2E" fontSize="7.5" fontFamily="sans-serif">Revenue</text>
-          <rect x="127" y="128" width="50" height="24" rx="6" fill="#FBF4E4" />
-          <text x="152" y="143" textAnchor="middle" fill="#A67C2E" fontSize="7.5" fontFamily="sans-serif">Attribution</text>
-          <rect x="182" y="128" width="50" height="24" rx="6" fill="#FBF4E4" />
-          <text x="207" y="143" textAnchor="middle" fill="#A67C2E" fontSize="7.5" fontFamily="sans-serif">Scales</text>
-          {/* Glow dots */}
-          <circle cx="35" cy="163" r="3" fill="#C4993D" opacity="0.3" />
-          <circle cx="90" cy="163" r="3" fill="#C4993D" opacity="0.3" />
-          <circle cx="152" cy="163" r="3" fill="#C4993D" opacity="0.3" />
-          <circle cx="207" cy="163" r="3" fill="#C4993D" opacity="0.3" />
-        </svg>
-        <p className="text-text-body text-sm">Every robot becomes a revenue-generating platform.</p>
-      </div>
-    </div>
-  );
-}
 
 /* ═══════════════════════════════════════════════════════════
    SECTION 4 — Architecture Flow Diagram
@@ -940,16 +872,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTION 2: ROBOTS ARE ENTERING THE REAL WORLD ── */}
+      {/* ── SECTION 2: ROBOTS ARE BECOMING PART OF EVERYDAY LIFE ── */}
       <section className="py-20 md:py-28 bg-section-alt">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <ScrollReveal>
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                Robots are entering the real world.
+                Robots are becoming part of everyday life.
               </h2>
-              <p className="text-text-body text-lg max-w-lg mx-auto">
-                Seven environments. Millions of daily interactions. Zero monetization — until now.
+              <p className="text-text-body text-lg max-w-2xl mx-auto">
+                From grocery stores to hospitals, autonomous robots are entering every environment — creating millions of daily interactions with no economic infrastructure.
               </p>
             </div>
           </ScrollReveal>
@@ -977,43 +909,153 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTION 3: THE MISSING ECONOMIC LAYER ── */}
+      {/* ── WHY KOVIO ── */}
       <section className="py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <ScrollReveal>
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                The missing economic layer.
+                Why Kovio?
               </h2>
-              <p className="text-text-body text-lg max-w-lg mx-auto">
-                Robots are powerful but single-purpose. Kovio makes every interaction count.
+              <p className="text-text-body text-lg max-w-2xl mx-auto">
+                Robots interact with millions of people every day — in stores, hotels, hospitals, streets. None of it is monetised. Kovio changes that.
               </p>
             </div>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.15}>
-            <TransformationDiagram />
-          </ScrollReveal>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {[
+              {
+                title: "An untapped channel",
+                desc: "Every robot interaction is an opportunity for brands to reach consumers in the physical world. No one has built the economic layer — until now.",
+                icon: (
+                  <svg viewBox="0 0 40 40" className="w-10 h-10" fill="none">
+                    <circle cx="20" cy="20" r="18" fill="#FBF4E4" />
+                    <rect x="12" y="14" width="16" height="12" rx="3" fill="#2C2418" />
+                    <circle cx="17" cy="20" r="2" fill="#C4993D" />
+                    <circle cx="23" cy="20" r="2" fill="#C4993D" />
+                    <path d="M20 30 L20 36" stroke="#C4993D" strokeWidth="1.5" strokeLinecap="round" />
+                    <circle cx="20" cy="37" r="1.5" fill="#C4993D" opacity="0.4" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Revenue for robot companies",
+                desc: "Your fleet already reaches people. Kovio adds a monetisation layer so every greeting, scan, or delivery becomes a revenue moment.",
+                icon: (
+                  <svg viewBox="0 0 40 40" className="w-10 h-10" fill="none">
+                    <circle cx="20" cy="20" r="18" fill="#FBF4E4" />
+                    <text x="20" y="25" textAnchor="middle" fill="#C4993D" fontSize="16" fontWeight="700" fontFamily="sans-serif">$</text>
+                  </svg>
+                ),
+              },
+              {
+                title: "Attribution for brands",
+                desc: "Brands get measurable, real-world engagement — not impressions on a screen, but physical interactions they can track and optimise.",
+                icon: (
+                  <svg viewBox="0 0 40 40" className="w-10 h-10" fill="none">
+                    <circle cx="20" cy="20" r="18" fill="#FBF4E4" />
+                    <rect x="11" y="16" width="18" height="12" rx="2" fill="#2C2418" />
+                    <polyline points="14,24 18,20 22,22 26,18" stroke="#C4993D" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+                  </svg>
+                ),
+              },
+            ].map((item) => (
+              <ScrollReveal key={item.title} delay={0.1}>
+                <div className="card-soft p-6 md:p-7 h-full">
+                  <div className="mb-4">{item.icon}</div>
+                  <h3 className="text-base font-semibold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-sm text-text-body leading-relaxed">{item.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── SECTION 4: TWO ECOSYSTEMS CONNECTED ── */}
+      {/* ── SECTION 4: ONE PLATFORM. TWO ECOSYSTEMS. INFINITE VALUE. ── */}
       <section className="py-20 md:py-28 bg-section-warm">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <ScrollReveal>
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                Two ecosystems, connected.
+                One platform. Two ecosystems. Infinite value.
               </h2>
-              <p className="text-text-body text-lg max-w-lg mx-auto">
-                Brands fund campaigns. Robots deliver interactions. Kovio connects them.
+              <p className="text-text-body text-lg max-w-2xl mx-auto">
+                Brands fund real-world interactions. Robot fleets deliver them. Kovio connects both sides and measures everything.
               </p>
             </div>
           </ScrollReveal>
 
+          {/* Desktop: full SVG diagram */}
           <ScrollReveal delay={0.15}>
-            <ArchitectureFlow />
+            <div className="hidden md:block">
+              <ArchitectureFlow />
+            </div>
           </ScrollReveal>
+
+          {/* Mobile: simplified card version */}
+          <div className="md:hidden space-y-4">
+            <ScrollReveal delay={0.1}>
+              <div className="card-soft p-5 flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-[#FBF4E4] flex items-center justify-center shrink-0">
+                  <svg viewBox="0 0 20 20" className="w-5 h-5" fill="none"><rect x="4" y="6" width="12" height="8" rx="2" fill="#2C2418" /><polyline points="6,12 8,10 10,11 14,8" stroke="#C4993D" strokeWidth="1.2" fill="none" /></svg>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-1">Brands</p>
+                  <p className="text-xs text-text-body">Fund campaigns and marketing budgets that reach consumers through robots.</p>
+                </div>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={0.15}>
+              <div className="flex justify-center">
+                <svg viewBox="0 0 20 20" className="w-5 h-5 text-[#C4993D]" fill="none"><path d="M10 4v12M5 11l5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <div className="rounded-xl bg-[#2C2418] p-5 flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-[#C4993D]/15 flex items-center justify-center shrink-0">
+                  <span className="text-sm font-bold text-[#C4993D]">K</span>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-[#C4993D] mb-1">Kovio</p>
+                  <p className="text-xs text-[#D4CFC6]">Economic interaction layer connecting brands to robot fleets at scale.</p>
+                </div>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={0.25}>
+              <div className="flex justify-center">
+                <svg viewBox="0 0 20 20" className="w-5 h-5 text-[#C4993D]" fill="none"><path d="M10 4v12M5 11l5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={0.3}>
+              <div className="card-soft p-5 flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-[#FBF4E4] flex items-center justify-center shrink-0">
+                  <svg viewBox="0 0 20 20" className="w-5 h-5" fill="none"><rect x="4" y="6" width="12" height="8" rx="3" fill="#2C2418" /><circle cx="8" cy="10" r="1.5" fill="#C4993D" /><circle cx="12" cy="10" r="1.5" fill="#C4993D" /></svg>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-1">Robot Fleets</p>
+                  <p className="text-xs text-text-body">Deliver interactions across all environments and earn revenue share.</p>
+                </div>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={0.35}>
+              <div className="flex justify-center">
+                <svg viewBox="0 0 20 20" className="w-5 h-5 text-[#C4993D]" fill="none"><path d="M10 4v12M5 11l5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={0.4}>
+              <div className="rounded-xl bg-[#FBF4E4] border border-[#C4993D]/20 p-5 flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shrink-0">
+                  <svg viewBox="0 0 20 20" className="w-5 h-5" fill="none"><circle cx="7" cy="10" r="3" fill="#D4CFC6" /><rect x="11" y="8" width="6" height="8" rx="2" fill="#2C2418" /><circle cx="13" cy="11" r="1" fill="#C4993D" /><circle cx="15" cy="11" r="1" fill="#C4993D" /></svg>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-1">Real-world Interactions</p>
+                  <p className="text-xs text-text-body">Branded robot moments measured with full attribution.</p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
 
           <ScrollReveal delay={0.3}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-14">
