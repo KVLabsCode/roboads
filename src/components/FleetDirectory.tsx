@@ -40,7 +40,11 @@ export function FleetDirectory() {
                 <span className="flex-1 border-t border-line ml-4" aria-hidden />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div
+                className={`grid grid-cols-1 sm:grid-cols-2 gap-6 ${
+                  cat.fleets.length <= 2 ? "lg:grid-cols-2 max-w-2xl" : "lg:grid-cols-4"
+                }`}
+              >
                 {cat.fleets.map((f, i) => (
                   <motion.div
                     key={f.name}

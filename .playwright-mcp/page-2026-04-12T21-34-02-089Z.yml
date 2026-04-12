@@ -1,0 +1,182 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "KovioKovio" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Kovio" [ref=e6]
+        - text: Kovio
+      - generic [ref=e7]:
+        - button "Brands" [ref=e9]:
+          - text: Brands
+          - img [ref=e10]
+        - link "OEMs" [ref=e12] [cursor=pointer]:
+          - /url: /oem
+        - link "Get in Touch" [ref=e13] [cursor=pointer]:
+          - /url: /contact
+      - button "Toggle menu" [ref=e14]:
+        - img
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e19]:
+        - generic [ref=e21]:
+          - heading "The monetization layer for autonomous robots." [level=1] [ref=e22]:
+            - text: The monetization layer for
+            - text: autonomous robots.
+          - paragraph [ref=e23]: Enabling robot fleets to generate revenue from real-world interaction signals.
+          - link "See how it works" [ref=e25] [cursor=pointer]:
+            - /url: /brands
+        - img [ref=e28]:
+          - generic [ref=e47]: Starbucks
+          - generic [ref=e53]: Nike
+          - generic [ref=e59]: Coca-Cola
+          - generic [ref=e65]: DoorDash
+          - generic [ref=e71]: Chipotle
+          - generic [ref=e77]: Sephora
+          - generic [ref=e82]: KOVIO
+          - generic [ref=e83]: network
+          - generic [ref=e337]: Fresh Mart
+          - generic [ref=e372]: Looking for drinks?
+          - generic [ref=e373]: Coca-Cola 20% off
+          - generic [ref=e374]: Sponsored · Aisle 3
+          - generic [ref=e378]: +$0.55 interaction
+          - generic [ref=e384]: HOTEL
+          - generic [ref=e429]: Hungry?
+          - generic [ref=e430]: "Chipotle: 10% off"
+          - generic [ref=e431]: Sponsored · Guest offer
+          - generic [ref=e435]: +$0.45 referral
+          - generic [ref=e440]: CITY MALL
+          - generic [ref=e457]: "Nike: new drop!"
+          - generic [ref=e458]: Want directions? →
+          - generic [ref=e462]: +$0.30 promotion
+          - generic [ref=e473]: DoorDash special!
+          - generic [ref=e474]: Free drink with order
+          - generic [ref=e478]: +$0.40 upsell
+          - generic [ref=e502]: KOVIO
+          - generic [ref=e504]: Need coffee?
+          - generic [ref=e505]: Starbucks — 2 min away
+          - generic [ref=e509]: +$0.35 recommendation
+      - generic [ref=e533]:
+        - generic [ref=e535]:
+          - heading "Robots are becoming part of everyday life." [level=2] [ref=e536]
+          - paragraph [ref=e537]: From grocery stores to hospitals, autonomous robots are entering every environment — creating millions of daily interactions with no economic infrastructure.
+        - generic [ref=e538]:
+          - generic [ref=e540]:
+            - img [ref=e542]
+            - heading "Retail" [level=3] [ref=e558]
+            - paragraph [ref=e559]: Shelf-scanning and shopper-assist robots in stores.
+          - generic [ref=e561]:
+            - img [ref=e563]
+            - heading "Delivery" [level=3] [ref=e576]
+            - paragraph [ref=e577]: Last-mile sidewalk and aerial delivery robots.
+          - generic [ref=e579]:
+            - img [ref=e581]
+            - heading "Hospitality" [level=3] [ref=e598]
+            - paragraph [ref=e599]: Concierge and room-service robots in hotels.
+          - generic [ref=e601]:
+            - img [ref=e603]
+            - heading "Cleaning" [level=3] [ref=e625]
+            - paragraph [ref=e626]: Autonomous floor-cleaning robots in commercial spaces.
+          - generic [ref=e628]:
+            - img [ref=e630]
+            - heading "Warehouse" [level=3] [ref=e646]
+            - paragraph [ref=e647]: Pick-and-pack and inventory robots in fulfillment.
+          - generic [ref=e649]:
+            - img [ref=e651]
+            - heading "Healthcare" [level=3] [ref=e662]
+            - paragraph [ref=e663]: Patient guidance and delivery robots in hospitals.
+          - generic [ref=e665]:
+            - img [ref=e667]
+            - heading "Humanoid" [level=3] [ref=e685]
+            - paragraph [ref=e686]: General-purpose humanoid robots in any environment.
+          - generic [ref=e688]:
+            - img [ref=e690]
+            - heading "Restaurant" [level=3] [ref=e711]
+            - paragraph [ref=e712]: Tableside service and order delivery robots in dining.
+      - generic [ref=e714]:
+        - generic [ref=e716]:
+          - heading "Why Kovio?" [level=2] [ref=e717]
+          - paragraph [ref=e718]: Robots interact with millions of people every day — in stores, hotels, hospitals, streets. None of it is monetised. Kovio changes that.
+        - generic [ref=e719]:
+          - generic [ref=e721]:
+            - img [ref=e723]
+            - heading "An untapped channel" [level=3] [ref=e729]
+            - paragraph [ref=e730]: Every robot interaction is an opportunity for brands to reach consumers in the physical world. No one has built the economic layer — until now.
+          - generic [ref=e732]:
+            - img [ref=e734]:
+              - generic [ref=e736]: $
+            - heading "Revenue for robot companies" [level=3] [ref=e737]
+            - paragraph [ref=e738]: Your fleet already reaches people. Kovio adds a monetisation layer so every greeting, scan, or delivery becomes a revenue moment.
+          - generic [ref=e740]:
+            - img [ref=e742]
+            - heading "Attribution for brands" [level=3] [ref=e746]
+            - paragraph [ref=e747]: Brands get measurable, real-world engagement — not impressions on a screen, but physical interactions they can track and optimise.
+      - generic [ref=e749]:
+        - generic [ref=e751]:
+          - heading "One platform. Two ecosystems. Infinite value." [level=2] [ref=e752]
+          - paragraph [ref=e753]: Brands fund real-world interactions. Robot fleets deliver them. Kovio connects both sides and measures everything.
+        - img [ref=e757]:
+          - generic [ref=e769]: Fund campaigns
+          - generic [ref=e770]: Route to fleets
+          - generic [ref=e771]: Engage
+          - generic [ref=e772]: Generate data
+          - generic [ref=e773]: Measure
+          - generic [ref=e780]: Brands
+          - generic [ref=e781]: Campaigns & marketing budgets
+          - generic [ref=e782]: $ Fund robot interactions
+          - generic [ref=e795]: Robot
+          - generic [ref=e796]: Fleets
+          - generic [ref=e797]: Deliver interactions across
+          - generic [ref=e798]: all environments
+          - generic [ref=e799]: $ Earn revenue share
+          - generic [ref=e802]: Kovio
+          - generic [ref=e803]: Economic interaction layer
+          - generic [ref=e804]: Connecting brands to robots at scale
+          - generic [ref=e807]: $ Monetizable
+          - generic [ref=e814]: Real-world
+          - generic [ref=e815]: Interactions
+          - generic [ref=e816]: Branded robot moments
+          - generic [ref=e824]: Insights &
+          - generic [ref=e825]: Attribution
+          - generic [ref=e826]: Measure engagement & ROI
+        - generic [ref=e827]:
+          - generic [ref=e829]:
+            - img [ref=e831]
+            - generic [ref=e834]:
+              - paragraph [ref=e835]: Brands
+              - paragraph [ref=e836]: Fund campaigns and marketing budgets that reach consumers through robots.
+          - img [ref=e839]
+          - generic [ref=e842]:
+            - img "Kovio" [ref=e843]
+            - generic [ref=e844]:
+              - paragraph [ref=e845]: Kovio
+              - paragraph [ref=e846]: Economic interaction layer connecting brands to robot fleets at scale.
+          - img [ref=e849]
+          - generic [ref=e852]:
+            - img [ref=e854]
+            - generic [ref=e858]:
+              - paragraph [ref=e859]: Robot Fleets
+              - paragraph [ref=e860]: Deliver interactions across all environments and earn revenue share.
+          - img [ref=e863]
+          - generic [ref=e866]:
+            - img [ref=e868]
+            - generic [ref=e873]:
+              - paragraph [ref=e874]: Real-world Interactions
+              - paragraph [ref=e875]: Branded robot moments measured with full attribution.
+        - generic [ref=e877]:
+          - link "For Brands" [ref=e879] [cursor=pointer]:
+            - /url: /brands
+          - link "For OEMs" [ref=e881] [cursor=pointer]:
+            - /url: /oem
+  - contentinfo [ref=e882]:
+    - generic [ref=e884]:
+      - generic [ref=e885]:
+        - img "Kovio" [ref=e886]
+        - text: Kovio
+        - generic [ref=e887]: © 2026
+      - generic [ref=e888]:
+        - link "Brands" [ref=e889] [cursor=pointer]:
+          - /url: /brands
+        - link "OEMs" [ref=e890] [cursor=pointer]:
+          - /url: /oem
+        - link "Contact" [ref=e891] [cursor=pointer]:
+          - /url: /contact

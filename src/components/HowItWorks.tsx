@@ -62,7 +62,7 @@ export function HowItWorks() {
                 className="relative"
               >
                 <div
-                  className="absolute -top-10 left-0 font-display italic text-[7rem] leading-none text-line select-none pointer-events-none"
+                  className="absolute -top-14 left-0 font-display italic text-[8rem] leading-none text-gold/30 select-none pointer-events-none"
                   aria-hidden
                 >
                   {s.n}

@@ -1,0 +1,203 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "Kovio" [ref=e4] [cursor=pointer]:
+        - /url: "#top"
+      - button "Start a campaign" [ref=e5] [cursor=pointer]
+  - main [ref=e6]:
+    - generic [ref=e8]:
+      - heading "The world’s robots are now advertising." [level=1] [ref=e9]:
+        - generic [ref=e10]: The world’s robots
+        - generic [ref=e11]: are now
+        - generic [ref=e12]: advertising.
+      - paragraph [ref=e13]: Kovio is the first programmatic ad platform for autonomous robot fleets. One brief, every fleet, full attribution.
+      - generic [ref=e14]:
+        - button "Start a campaign" [ref=e15] [cursor=pointer]
+        - link "See how it works" [ref=e16] [cursor=pointer]:
+          - /url: "#how"
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - generic [ref=e19]: 40,000+
+          - generic [ref=e20]: Active units
+        - generic [ref=e21]:
+          - generic [ref=e22]: "18"
+          - generic [ref=e23]: Cities
+        - generic [ref=e24]:
+          - generic [ref=e25]: "12"
+          - generic [ref=e26]: Fleet operators
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - paragraph [ref=e30]: // Why Kovio
+        - heading "Why robots outperform every other OOH format." [level=2] [ref=e31]
+      - generic [ref=e32]:
+        - article [ref=e33]:
+          - img [ref=e34]
+          - heading "Eye-level, not rooftop" [level=3] [ref=e37]
+          - paragraph [ref=e38]: Robot screens sit at chest height, not up on a roof rack. Pedestrians actually look at them. We see 3x higher dwell time than taxi-top inventory.
+        - article [ref=e39]:
+          - img [ref=e40]
+          - heading "Programmable placement" [level=3] [ref=e44]
+          - paragraph [ref=e45]: Unlike a taxi that follows the driver, robots can be directed to a specific street corner or venue at a specific time. You bid on where, when, and who.
+        - article [ref=e46]:
+          - img [ref=e47]
+          - heading "Tap to convert" [level=3] [ref=e52]
+          - paragraph [ref=e53]: A haptic touch layer lets passers-by tap for coupons, QR codes, or product pages. That unlocks CPC and CPA pricing, not just CPM.
+        - article [ref=e54]:
+          - img [ref=e55]
+          - heading "Verified impressions" [level=3] [ref=e58]
+          - paragraph [ref=e59]: Onboard edge AI measures crowd density and dwell time locally. Every impression is verified by the device, not estimated from a panel.
+        - article [ref=e60]:
+          - img [ref=e61]
+          - heading "One buy, all fleets" [level=3] [ref=e67]
+          - paragraph [ref=e68]: A single campaign brief reaches delivery robots, humanoids, autonomous vehicles, and retail bots through one platform. One creative, every form factor.
+        - article [ref=e69]:
+          - img [ref=e70]
+          - heading "Full attribution" [level=3] [ref=e77]
+          - paragraph [ref=e78]: Impression to tap to purchase, tracked end to end. DSP-compatible reporting plugs into the rest of your stack.
+    - generic [ref=e80]:
+      - generic [ref=e81]:
+        - paragraph [ref=e82]: // How it Works
+        - heading "Launch a campaign in four steps." [level=2] [ref=e83]
+      - generic [ref=e85]:
+        - generic [ref=e86]:
+          - generic: "01"
+          - generic [ref=e87]:
+            - heading "Define your audience" [level=3] [ref=e89]
+            - paragraph [ref=e90]: Set geography, time of day, demographic, and robot category. Bid as granular as you want.
+        - generic [ref=e91]:
+          - generic: "02"
+          - generic [ref=e92]:
+            - heading "Choose your fleets" [level=3] [ref=e94]
+            - paragraph [ref=e95]: Pick from delivery robots, humanoids, autonomous vehicles, retail bots, and aerial drones.
+        - generic [ref=e96]:
+          - generic: "03"
+          - generic [ref=e97]:
+            - heading "Upload your creative" [level=3] [ref=e99]
+            - paragraph [ref=e100]: 16:9 video or static image. One spec runs across every fleet in the buy.
+        - generic [ref=e101]:
+          - generic: "04"
+          - generic [ref=e102]:
+            - heading "Measure and optimise" [level=3] [ref=e104]
+            - paragraph [ref=e105]: Real-time dashboard with verified impressions, tap-through rate, and full attribution.
+      - button "Start your first campaign" [ref=e107] [cursor=pointer]
+    - generic [ref=e109]:
+      - generic [ref=e110]:
+        - paragraph [ref=e111]: // Fleet Directory
+        - heading "Robot fleets available today." [level=2] [ref=e112]
+        - paragraph [ref=e113]: Click any fleet to start a campaign.
+      - generic [ref=e114]:
+        - generic [ref=e115]:
+          - generic [ref=e118]: Delivery Robots
+          - generic [ref=e120]:
+            - button "Starship Technologies robot Starship Technologies US · UK · EU · 6,000+ units" [ref=e122] [cursor=pointer]:
+              - img "Starship Technologies robot" [ref=e124]
+              - generic [ref=e125]:
+                - heading "Starship Technologies" [level=3] [ref=e126]
+                - paragraph [ref=e127]: US · UK · EU · 6,000+ units
+            - button "Serve Robotics robot Serve Robotics Los Angeles · 2,000+ units" [ref=e129] [cursor=pointer]:
+              - img "Serve Robotics robot" [ref=e131]
+              - generic [ref=e132]:
+                - heading "Serve Robotics" [level=3] [ref=e133]
+                - paragraph [ref=e134]: Los Angeles · 2,000+ units
+            - button "Kiwibot robot Kiwibot US campuses · 1,000+ units" [ref=e136] [cursor=pointer]:
+              - img "Kiwibot robot" [ref=e138]
+              - generic [ref=e139]:
+                - heading "Kiwibot" [level=3] [ref=e140]
+                - paragraph [ref=e141]: US campuses · 1,000+ units
+            - button "Coco robot Coco US cities · 800+ units" [ref=e143] [cursor=pointer]:
+              - img "Coco robot" [ref=e145]
+              - generic [ref=e146]:
+                - heading "Coco" [level=3] [ref=e147]
+                - paragraph [ref=e148]: US cities · 800+ units
+        - generic [ref=e149]:
+          - generic [ref=e152]: Autonomous Vehicles
+          - generic [ref=e154]:
+            - button "Waymo robot Waymo SF · Phoenix · 700+ vehicles" [ref=e156] [cursor=pointer]:
+              - img "Waymo robot" [ref=e158]
+              - generic [ref=e159]:
+                - heading "Waymo" [level=3] [ref=e160]
+                - paragraph [ref=e161]: SF · Phoenix · 700+ vehicles
+            - button "Nuro robot Nuro TX · CA · 500+ units" [ref=e163] [cursor=pointer]:
+              - img "Nuro robot" [ref=e165]
+              - generic [ref=e166]:
+                - heading "Nuro" [level=3] [ref=e167]
+                - paragraph [ref=e168]: TX · CA · 500+ units
+        - generic [ref=e169]:
+          - generic [ref=e172]: Humanoid Robots
+          - generic [ref=e174]:
+            - button "Unitree Robotics robot Unitree Robotics Global · 10,000+ units" [ref=e176] [cursor=pointer]:
+              - img "Unitree Robotics robot" [ref=e178]
+              - generic [ref=e179]:
+                - heading "Unitree Robotics" [level=3] [ref=e180]
+                - paragraph [ref=e181]: Global · 10,000+ units
+            - button "Toborlife robot Design Partner Toborlife US · Asia · 500+ units" [ref=e183] [cursor=pointer]:
+              - generic [ref=e184]:
+                - img "Toborlife robot" [ref=e185]
+                - generic [ref=e186]: Design Partner
+              - generic [ref=e187]:
+                - heading "Toborlife" [level=3] [ref=e188]
+                - paragraph [ref=e189]: US · Asia · 500+ units
+            - button "Agility Robotics robot Agility Robotics US · 300+ units" [ref=e191] [cursor=pointer]:
+              - img "Agility Robotics robot" [ref=e193]
+              - generic [ref=e194]:
+                - heading "Agility Robotics" [level=3] [ref=e195]
+                - paragraph [ref=e196]: US · 300+ units
+            - button "Simba Robotics robot Simba Robotics Global · Emerging" [ref=e198] [cursor=pointer]:
+              - img "Simba Robotics robot" [ref=e200]
+              - generic [ref=e201]:
+                - heading "Simba Robotics" [level=3] [ref=e202]
+                - paragraph [ref=e203]: Global · Emerging
+        - generic [ref=e204]:
+          - generic [ref=e207]: Retail & Cleaning Robots
+          - generic [ref=e209]:
+            - button "Badger Technologies robot Badger Technologies US grocery · 800+ units" [ref=e211] [cursor=pointer]:
+              - img "Badger Technologies robot" [ref=e213]
+              - generic [ref=e214]:
+                - heading "Badger Technologies" [level=3] [ref=e215]
+                - paragraph [ref=e216]: US grocery · 800+ units
+            - button "Brain Corp robot Brain Corp US retail (Walmart +) · 15,000+ units" [ref=e218] [cursor=pointer]:
+              - img "Brain Corp robot" [ref=e220]
+              - generic [ref=e221]:
+                - heading "Brain Corp" [level=3] [ref=e222]
+                - paragraph [ref=e223]: US retail (Walmart +) · 15,000+ units
+            - button "Bossa Nova Robotics robot Bossa Nova Robotics US retail · Shelf-scanning" [ref=e225] [cursor=pointer]:
+              - img "Bossa Nova Robotics robot" [ref=e227]
+              - generic [ref=e228]:
+                - heading "Bossa Nova Robotics" [level=3] [ref=e229]
+                - paragraph [ref=e230]: US retail · Shelf-scanning
+            - button "Aethon robot Aethon US hospitals · logistics · Enterprise" [ref=e232] [cursor=pointer]:
+              - img "Aethon robot" [ref=e234]
+              - generic [ref=e235]:
+                - heading "Aethon" [level=3] [ref=e236]
+                - paragraph [ref=e237]: US hospitals · logistics · Enterprise
+        - generic [ref=e238]:
+          - generic [ref=e241]: Aerial
+          - generic [ref=e243]:
+            - button "Zipline robot Zipline US · Africa · 1,000+ drones" [ref=e245] [cursor=pointer]:
+              - img "Zipline robot" [ref=e247]
+              - generic [ref=e248]:
+                - heading "Zipline" [level=3] [ref=e249]
+                - paragraph [ref=e250]: US · Africa · 1,000+ drones
+            - button "Wing (Google) robot Wing (Google) US · AU · Finland · 600+ drones" [ref=e252] [cursor=pointer]:
+              - img "Wing (Google) robot" [ref=e254]
+              - generic [ref=e255]:
+                - heading "Wing (Google)" [level=3] [ref=e256]
+                - paragraph [ref=e257]: US · AU · Finland · 600+ drones
+    - generic [ref=e259]:
+      - blockquote [ref=e260]: “The next generation of out-of-home advertising doesn’t wait for an audience to walk past. It goes to them.”
+      - paragraph [ref=e261]: — Kovio, 2025
+    - generic [ref=e263]:
+      - heading "Ready to put your brand in motion?" [level=2] [ref=e264]
+      - paragraph [ref=e265]: No minimum spend. Campaign live in 48 hours.
+      - generic [ref=e266]:
+        - button "Start a campaign" [ref=e267] [cursor=pointer]
+        - paragraph [ref=e268]:
+          - link "team@kovio.dev" [ref=e269] [cursor=pointer]:
+            - /url: mailto:team@kovio.dev
+  - contentinfo [ref=e270]:
+    - generic [ref=e271]:
+      - link "Kovio" [ref=e272] [cursor=pointer]:
+        - /url: "#top"
+      - paragraph [ref=e273]: The monetisation layer for autonomous robot fleets.
+      - paragraph [ref=e274]: © 2026 Kovio
+  - alert [ref=e275]
