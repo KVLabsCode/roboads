@@ -11,7 +11,7 @@ export function QuoteStrip() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.9 }}
-          className="font-display italic text-4xl md:text-5xl leading-[1.15] text-bg"
+          className="font-display font-medium italic text-4xl md:text-5xl leading-[1.15] text-bg"
         >
           &ldquo;The next generation of out-of-home advertising doesn&rsquo;t
           wait for an audience to walk past. It goes to them.&rdquo;
@@ -21,7 +21,7 @@ export function QuoteStrip() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="mt-10 text-[11px] uppercase tracking-[0.25em] text-gold"
+          className="mt-10 text-[11px] uppercase tracking-[0.25em] text-gold font-semibold"
         >
           — Kovio, 2025
         </motion.p>

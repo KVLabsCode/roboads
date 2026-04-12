@@ -14,13 +14,13 @@ export function FleetDirectory() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-[11px] uppercase tracking-[0.25em] text-gold">
+          <p className="text-[11px] uppercase tracking-[0.25em] text-gold font-medium">
             {"// Fleet Directory"}
           </p>
-          <h2 className="mt-4 font-display italic text-5xl md:text-6xl text-ink max-w-3xl leading-[1.05]">
+          <h2 className="mt-4 font-display font-semibold italic text-5xl md:text-6xl text-ink max-w-3xl leading-[1.02]">
             Robot fleets available today.
           </h2>
-          <p className="mt-6 text-mute text-[14px]">
+          <p className="mt-6 text-mute text-[15px]">
             Click any fleet to start a campaign.
           </p>
         </motion.div>
@@ -34,7 +34,7 @@ export function FleetDirectory() {
                   style={{ background: cat.dotColor }}
                   aria-hidden
                 />
-                <span className="text-[11px] uppercase tracking-[0.25em] text-ink">
+                <span className="text-[11px] uppercase tracking-[0.25em] text-ink font-semibold">
                   {cat.label}
                 </span>
                 <span className="flex-1 border-t border-line ml-4" aria-hidden />

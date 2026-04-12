@@ -40,10 +40,10 @@ export function FleetCard({ fleet }: Props) {
         )}
       </div>
       <div className="p-5">
-        <h3 className="font-display text-lg text-ink leading-snug">
+        <h3 className="font-display font-bold text-[19px] text-ink leading-snug">
           {fleet.name}
         </h3>
-        <p className="mt-1 text-[10px] uppercase tracking-widest text-mute">
+        <p className="mt-1.5 text-[10px] uppercase tracking-widest text-mute font-medium">
           {fleet.coverage} · {fleet.fleetSize}
         </p>
       </div>

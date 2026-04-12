@@ -1,6 +1,6 @@
 type IconProps = { className?: string };
 
-const base = "w-8 h-8";
+const base = "w-10 h-10";
 
 export function EyeLevelIcon({ className }: IconProps) {
   return (
@@ -9,7 +9,7 @@ export function EyeLevelIcon({ className }: IconProps) {
       viewBox="0 0 32 32"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.9"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -29,7 +29,7 @@ export function ProgrammableIcon({ className }: IconProps) {
       viewBox="0 0 32 32"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.9"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -47,7 +47,7 @@ export function TapToConvertIcon({ className }: IconProps) {
       viewBox="0 0 32 32"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.9"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -66,7 +66,7 @@ export function VerifiedImpressionsIcon({ className }: IconProps) {
       viewBox="0 0 32 32"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.9"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -83,7 +83,7 @@ export function OneBuyIcon({ className }: IconProps) {
       viewBox="0 0 32 32"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.9"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -104,7 +104,7 @@ export function FullAttributionIcon({ className }: IconProps) {
       viewBox="0 0 32 32"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.9"
       strokeLinecap="round"
       strokeLinejoin="round"
     >

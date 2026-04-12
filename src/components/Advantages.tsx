@@ -59,10 +59,10 @@ export function Advantages() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-[11px] uppercase tracking-[0.25em] text-gold">
+          <p className="text-[11px] uppercase tracking-[0.25em] text-gold font-medium">
             {"// Why Kovio"}
           </p>
-          <h2 className="mt-4 font-display italic text-5xl md:text-6xl text-ink max-w-3xl leading-[1.05]">
+          <h2 className="mt-4 font-display font-semibold italic text-5xl md:text-6xl text-ink max-w-3xl leading-[1.02]">
             Why robots outperform every other OOH format.
           </h2>
         </motion.div>
@@ -77,11 +77,11 @@ export function Advantages() {
               transition={{ duration: 0.6, delay: i * 0.06 }}
               className="group bg-cream border border-line p-8 transition-all duration-200 hover:border-gold hover:-translate-y-0.5"
             >
-              <a.Icon className="text-ink group-hover:text-gold transition-colors" />
-              <h3 className="mt-6 font-display text-2xl text-ink leading-tight">
+              <a.Icon className="w-9 h-9 text-ink group-hover:text-gold transition-colors" />
+              <h3 className="mt-6 font-display font-bold text-[26px] text-ink leading-[1.15]">
                 {a.title}
               </h3>
-              <p className="mt-3 text-[13px] text-mute leading-relaxed">
+              <p className="mt-4 text-[14px] text-mute leading-[1.65]">
                 {a.body}
               </p>
             </motion.article>

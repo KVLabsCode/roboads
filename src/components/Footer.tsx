@@ -5,10 +5,10 @@ export default function Footer() {
         <a href="#top" className="font-display text-xl tracking-tight">
           Ko<span className="text-gold italic">v</span>io
         </a>
-        <p className="text-[11px] uppercase tracking-[0.2em] text-mute text-center">
+        <p className="text-[11px] uppercase tracking-[0.2em] text-mute font-medium text-center">
           The monetisation layer for autonomous robot fleets.
         </p>
-        <p className="text-[11px] uppercase tracking-[0.2em] text-mute">
+        <p className="text-[11px] uppercase tracking-[0.2em] text-mute font-medium">
           © 2026 Kovio
         </p>
       </div>

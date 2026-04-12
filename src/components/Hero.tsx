@@ -24,7 +24,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="font-display text-[clamp(2.75rem,8vw,7rem)] leading-[0.95] tracking-tight text-ink"
+          className="font-display font-semibold text-[clamp(2.75rem,8vw,7rem)] leading-[0.92] tracking-tight text-ink"
         >
           <span className="italic block">The world&rsquo;s robots</span>
           <span className="block">are now</span>
@@ -35,7 +35,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="mt-10 max-w-xl text-mute text-[15px] leading-relaxed"
+          className="mt-10 max-w-xl text-mute text-[16px] leading-[1.65]"
         >
           Kovio is the first programmatic ad platform for autonomous robot
           fleets. One brief, every fleet, full attribution.
@@ -70,8 +70,10 @@ export function Hero() {
         >
           {stats.map((stat) => (
             <div key={stat.label}>
-              <div className="font-display text-5xl text-ink">{stat.value}</div>
-              <div className="mt-2 text-[10px] uppercase tracking-[0.2em] text-mute">
+              <div className="font-display font-bold text-[56px] leading-none text-ink">
+                {stat.value}
+              </div>
+              <div className="mt-3 text-[10px] uppercase tracking-[0.22em] text-mute font-semibold">
                 {stat.label}
               </div>
             </div>

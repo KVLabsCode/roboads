@@ -26,14 +26,14 @@ export function Nav() {
         <a href="#top" className="font-display text-2xl tracking-tight">
           Ko<span className="text-gold italic">v</span>io
         </a>
-        <div className="hidden md:flex items-center gap-10 text-[11px] uppercase tracking-[0.2em] text-mute">
-          <a href="#why" className="hover:text-ink transition-colors">
+        <div className="hidden md:flex items-center gap-10 text-[11px] uppercase tracking-[0.2em] text-ink font-semibold">
+          <a href="#why" className="hover:text-gold transition-colors">
             Why Kovio
           </a>
-          <a href="#how" className="hover:text-ink transition-colors">
+          <a href="#how" className="hover:text-gold transition-colors">
             How it Works
           </a>
-          <a href="#fleets" className="hover:text-ink transition-colors">
+          <a href="#fleets" className="hover:text-gold transition-colors">
             Robot Fleets
           </a>
         </div>

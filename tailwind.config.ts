@@ -14,8 +14,8 @@ const config: Config = {
         ink: "#0E0D0A",
         gold: "#C9920A",
         "gold-deep": "#A67A08",
-        line: "#E0D8CC",
-        mute: "#6B6258",
+        line: "#D6CBB8",
+        mute: "#3A3228",
         dark: "#16130E",
       },
       fontFamily: {

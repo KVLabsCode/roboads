@@ -14,7 +14,7 @@ export function BottomCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7 }}
-          className="font-display text-5xl md:text-6xl italic text-ink leading-[1.05]"
+          className="font-display font-semibold text-5xl md:text-6xl italic text-ink leading-[1.02]"
         >
           Ready to put your brand in motion?
         </motion.h2>
@@ -23,7 +23,7 @@ export function BottomCTA() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="mt-8 text-mute text-[14px]"
+          className="mt-8 text-mute text-[16px]"
         >
           No minimum spend. Campaign live in 48 hours.
         </motion.p>
