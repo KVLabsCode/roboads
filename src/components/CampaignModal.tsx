@@ -98,7 +98,7 @@ export function CampaignModal({ isOpen, fleetName, onClose }: Props) {
                 </h2>
                 {fleetName && (
                   <p className="mt-1 text-xs uppercase tracking-widest text-gold">
-                    // {fleetName}
+                    {`// ${fleetName}`}
                   </p>
                 )}
 
