@@ -3,237 +3,62 @@
 @tailwind utilities;
 
 :root {
-  --background: #FAF8F5;
-  --foreground: #2C2418;
-  --accent: #C4993D;
-  --accent-light: #FBF4E4;
-  --text-body: #5C5346;
-  --text-muted: #9C9488;
-  --border: #E8E2D9;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-}
-
-::selection {
-  background: rgba(196, 153, 61, 0.18);
-  color: #2C2418;
+  --color-bg: #F5F0E8;
+  --color-ink: #0E0D0A;
+  --color-gold: #C9920A;
+  --color-line: #E0D8CC;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* ═══════════════════════════════════════════════════
-   SECTION BACKGROUNDS
-   ═══════════════════════════════════════════════════ */
-
-.bg-section-alt {
-  background: #F5F1EC;
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-.bg-section-warm {
-  background: linear-gradient(180deg, #F0EBE3 0%, #FAF8F5 100%);
+::selection {
+  background: rgba(201, 146, 10, 0.25);
+  color: #0E0D0A;
 }
 
-.bg-section-accent {
-  background: linear-gradient(180deg, #FBF4E4 0%, #FAF8F5 100%);
-}
-
-/* ═══════════════════════════════════════════════════
-   GRADIENT TEXT
-   ═══════════════════════════════════════════════════ */
-
-.text-gradient-primary {
-  background: linear-gradient(135deg, #C4993D, #D4A843, #A67C2E);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-warm {
-  background: linear-gradient(135deg, #2C2418, #5C5346);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ═══════════════════════════════════════════════════
-   SOFT GLASS
-   ═══════════════════════════════════════════════════ */
-
-.glass-light {
-  background: rgba(250, 248, 245, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-/* ═══════════════════════════════════════════════════
-   BUTTONS
-   ═══════════════════════════════════════════════════ */
-
-.btn-primary {
-  background: #2C2418;
-  color: #FAF8F5;
-  box-shadow: 0 1px 3px rgba(44, 36, 24, 0.2), 0 4px 12px rgba(44, 36, 24, 0.1);
-  transition: all 0.2s ease;
-}
-
-.btn-primary:hover {
-  background: #3D3224;
-  box-shadow: 0 2px 6px rgba(44, 36, 24, 0.3), 0 8px 20px rgba(44, 36, 24, 0.12);
-  transform: translateY(-1px);
-}
-
-.btn-secondary {
-  background: #FFFFFF;
-  color: #2C2418;
-  border: 1px solid #E8E2D9;
-  box-shadow: 0 1px 3px rgba(44, 36, 24, 0.04);
-  transition: all 0.2s ease;
-}
-
-.btn-secondary:hover {
-  border-color: #D4CFC6;
-  box-shadow: 0 4px 12px rgba(44, 36, 24, 0.06);
-  transform: translateY(-1px);
-}
-
-/* ═══════════════════════════════════════════════════
-   CARD STYLES
-   ═══════════════════════════════════════════════════ */
-
-.card-soft {
-  background: #FFFFFF;
-  border: 1px solid #E8E2D9;
-  border-radius: 1.25rem;
-  box-shadow: 0 1px 3px rgba(44, 36, 24, 0.04);
-  transition: all 0.3s ease;
-}
-
-.card-soft:hover {
-  box-shadow: 0 10px 25px -3px rgba(44, 36, 24, 0.06), 0 4px 6px -4px rgba(44, 36, 24, 0.04);
-  transform: translateY(-2px);
-}
-
-/* ═══════════════════════════════════════════════════
-   DECORATIVE GRADIENT ORBS
-   ═══════════════════════════════════════════════════ */
-
-.orb-accent {
-  background: radial-gradient(circle, rgba(196, 153, 61, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, #E0D8CC 1px, transparent 1px),
+    linear-gradient(to bottom, #E0D8CC 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse at center top, black 0%, transparent 75%);
+          mask-image: radial-gradient(ellipse at center top, black 0%, transparent 75%);
+  opacity: 0.38;
   pointer-events: none;
 }
 
-.orb-warm {
-  background: radial-gradient(circle, rgba(212, 168, 67, 0.06) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #F5F0E8; }
+::-webkit-scrollbar-thumb { background: #E0D8CC; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #C9BBA8; }
+
+*:focus-visible {
+  outline: 2px solid #C9920A;
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
-.orb-terra {
-  background: radial-gradient(circle, rgba(184, 115, 74, 0.06) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-/* ═══════════════════════════════════════════════════
-   SCROLLBAR
-   ═══════════════════════════════════════════════════ */
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #F5F1EC;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #D4CFC6;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #9C9488;
-}
-
-/* ═══════════════════════════════════════════════════
-   FLOW ANIMATION
-   ═══════════════════════════════════════════════════ */
-
-@keyframes flow-pulse {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(0.8);
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.flow-dot {
-  animation: flow-pulse 2.5s ease-in-out infinite;
-}
-
-@keyframes dash-flow {
-  to {
-    stroke-dashoffset: -20;
-  }
-}
-
-.flow-line-animated {
-  stroke-dasharray: 8 6;
-  animation: dash-flow 2s linear infinite;
-}
-
-@keyframes dash-orbit {
-  to {
-    stroke-dashoffset: -40;
-  }
-}
-
-.kovio-border-animated {
-  stroke-dasharray: 6 4;
-  animation: dash-orbit 3s linear infinite;
-}
-
-/* ═══════════════════════════════════════════════════
-   BEACON PULSE — hero Kovio hub
-   ═══════════════════════════════════════════════════ */
-
-@keyframes beacon-glow {
-  0%, 100% { opacity: 0.25; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.08); }
-}
-
-.beacon-glow-animated {
-  animation: beacon-glow 3s ease-in-out infinite;
-  transform-origin: center;
-}
-
-@keyframes float-gentle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-
-.animate-float-slow {
-  animation: float-gentle 4s ease-in-out infinite;
-}
-
-/* ═══════════════════════════════════════════════════
-   PULSE SOFT — for connection dots
-   ═══════════════════════════════════════════════════ */
-
-@keyframes pulse-soft {
-  0%, 100% { opacity: 0.2; r: 3; }
-  50% { opacity: 0.5; r: 4.5; }
-}
-
-.animate-pulse-soft {
-  animation: pulse-soft 2.5s ease-in-out infinite;
 }

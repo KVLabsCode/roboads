@@ -1,40 +1,38 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { Playfair_Display, DM_Mono } from "next/font/google";
+import { ModalProvider } from "@/components/ModalProvider";
 import "./globals.css";
 
-const inter = Inter({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-display",
+  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["300", "400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Kovio | Activating the Robot Economy",
+  title: "Kovio | Programmatic advertising for autonomous robot fleets",
   description:
-    "Kovio is the economic layer for autonomous robots — connecting brands to real-world robot interactions at scale.",
+    "The first programmatic ad platform for autonomous robot fleets. One brief, every fleet, full attribution.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${playfair.variable} ${dmMono.variable} bg-bg text-ink font-mono antialiased`}
       >
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <ModalProvider>{children}</ModalProvider>
       </body>
     </html>
   );
