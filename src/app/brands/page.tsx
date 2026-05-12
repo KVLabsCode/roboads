@@ -88,26 +88,6 @@ export default function BrandsPage() {
           >
             Request a brand seat →
           </Link>
-          <Link
-            href="/docs"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 10,
-              padding: '14px 20px',
-              background: 'transparent',
-              color: p.fg,
-              fontFamily: fonts.mono,
-              fontSize: 13,
-              letterSpacing: '0.03em',
-              fontWeight: 500,
-              borderRadius: 999,
-              textDecoration: 'none',
-              border: `1px solid ${p.lineStrong}`,
-            }}
-          >
-            See the API
-          </Link>
         </div>
       </section>
 
@@ -266,26 +246,6 @@ export default function BrandsPage() {
               }}
             >
               Request access →
-            </Link>
-            <Link
-              href="/docs"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 10,
-                padding: '14px 22px',
-                background: 'transparent',
-                color: p.accentInk,
-                fontFamily: fonts.mono,
-                fontSize: 13,
-                fontWeight: 500,
-                letterSpacing: '0.03em',
-                borderRadius: 999,
-                textDecoration: 'none',
-                border: '1px solid rgba(241,237,226,0.45)',
-              }}
-            >
-              Read API docs
             </Link>
           </div>
         </div>

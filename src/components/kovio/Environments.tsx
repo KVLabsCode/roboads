@@ -18,17 +18,16 @@ const ENVIRONMENTS: {
   num: string
   name: string
   desc: string
-  stat: string
   icon: EnvIconKind
 }[] = [
-  { num: '01', name: 'Retail', desc: 'Shelf-scanning and shopper-assist robots in stores.', stat: '1.2K units', icon: 'retail' },
-  { num: '02', name: 'Delivery', desc: 'Last-mile sidewalk and aerial delivery robots.', stat: '880 units', icon: 'delivery' },
-  { num: '03', name: 'Home', desc: 'Household robots making natural product recommendations.', stat: "Q3 '26", icon: 'home' },
-  { num: '04', name: 'Hospitality', desc: 'Concierge and room-service robots in hotels.', stat: '420 units', icon: 'hotel' },
-  { num: '05', name: 'Healthcare', desc: 'Patient guidance and delivery robots in hospitals.', stat: '290 units', icon: 'health' },
-  { num: '06', name: 'Humanoid', desc: 'General-purpose humanoid robots in consumer settings.', stat: '180 units', icon: 'humanoid' },
-  { num: '07', name: 'Restaurant', desc: 'Tableside service and order delivery robots in dining.', stat: '640 units', icon: 'restaurant' },
-  { num: '08', name: 'Cleaning', desc: 'Autonomous floor-cleaning robots in consumer spaces.', stat: '3.4K units', icon: 'clean' },
+  { num: '01', name: 'Retail', desc: 'Shelf-scanning and shopper-assist robots in stores.', icon: 'retail' },
+  { num: '02', name: 'Delivery', desc: 'Last-mile sidewalk and aerial delivery robots.', icon: 'delivery' },
+  { num: '03', name: 'Home', desc: 'Household robots making natural product recommendations.', icon: 'home' },
+  { num: '04', name: 'Hospitality', desc: 'Concierge and room-service robots in hotels.', icon: 'hotel' },
+  { num: '05', name: 'Healthcare', desc: 'Patient guidance and delivery robots in hospitals.', icon: 'health' },
+  { num: '06', name: 'Humanoid', desc: 'General-purpose humanoid robots in consumer settings.', icon: 'humanoid' },
+  { num: '07', name: 'Restaurant', desc: 'Tableside service and order delivery robots in dining.', icon: 'restaurant' },
+  { num: '08', name: 'Cleaning', desc: 'Autonomous floor-cleaning robots in consumer spaces.', icon: 'clean' },
 ]
 
 export default function Environments() {
@@ -128,7 +127,7 @@ function EnvCell({
         borderRight: edgeR ? `1px solid ${p.line}` : 'none',
         borderBottom: edgeB ? `1px solid ${p.line}` : 'none',
         transition: 'background .25s',
-        minHeight: 240,
+        minHeight: 200,
         cursor: 'default',
       }}
     >
@@ -170,32 +169,10 @@ function EnvCell({
           fontSize: 13.5,
           lineHeight: 1.45,
           margin: 0,
-          marginBottom: 16,
         }}
       >
         {env.desc}
       </p>
-      <div
-        style={{
-          position: 'absolute',
-          left: 24,
-          right: 24,
-          bottom: 18,
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
-        <span style={{ fontFamily: fonts.mono, fontSize: 11, color: p.fgMute }}>NETWORK</span>
-        <span
-          style={{
-            fontFamily: fonts.mono,
-            fontSize: 11,
-            color: active ? p.accent : p.fgDim,
-          }}
-        >
-          {env.stat}
-        </span>
-      </div>
     </div>
   )
 }

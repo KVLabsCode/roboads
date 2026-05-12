@@ -59,7 +59,7 @@ export default function Hero() {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 28 }}>
             <Tag>
-              <LiveDot /> Live · 14 fleets · 312 robots online
+              <LiveDot /> Live · Network online
             </Tag>
           </div>
           <h1

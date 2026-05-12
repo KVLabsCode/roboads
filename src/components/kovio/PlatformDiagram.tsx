@@ -129,10 +129,10 @@ function FlowDiagram({ step }: { step: number }) {
         title="Robot Fleets"
         sub="Deliver interactions"
         items={[
-          { name: 'Bear Robotics', spend: '412 units', color: p.cool },
-          { name: 'Starship', spend: '880 units', color: p.warm },
-          { name: '1X Tech', spend: '180 units', color: p.accent },
-          { name: 'Avidbots', spend: '320 units', color: p.fg },
+          { name: 'Bear Robotics', spend: '', color: p.cool },
+          { name: 'Starship', spend: '', color: p.warm },
+          { name: '1X Tech', spend: '', color: p.accent },
+          { name: 'Avidbots', spend: '', color: p.fg },
         ]}
         right
         active={step >= 2}
@@ -315,7 +315,9 @@ function FlowColumn({
             >
               {it.name}
             </span>
-            <span style={{ fontFamily: fonts.mono, fontSize: 11, color: p.fgMute }}>{it.spend}</span>
+            {it.spend && (
+              <span style={{ fontFamily: fonts.mono, fontSize: 11, color: p.fgMute }}>{it.spend}</span>
+            )}
           </div>
         ))}
       </div>
