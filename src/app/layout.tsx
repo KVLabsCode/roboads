@@ -1,41 +1,36 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import "./globals.css";
+import type { Metadata } from 'next'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
+import { Instrument_Serif } from 'next/font/google'
+import './globals.css'
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const instrumentSerif = Instrument_Serif({
+  weight: '400',
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: "Kovio | Activating the Robot Economy",
+  title: 'Kovio · The monetization layer for autonomous robots',
   description:
-    "Kovio is the economic layer for autonomous robots — connecting brands to real-world robot interactions at scale.",
-};
+    'Kovio is the economic interaction layer for autonomous robots. Every real-world robot moment becomes a measurable, revenue-generating interaction.',
+  openGraph: {
+    title: 'Kovio · The monetization layer for autonomous robots',
+    description:
+      'The economic infrastructure for physical AI. Activating the robot economy.',
+    url: 'https://kovio.dev',
+  },
+}
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground`}
-      >
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-      </body>
+    <html
+      lang="en"
+      className={`${GeistSans.variable} ${GeistMono.variable} ${instrumentSerif.variable}`}
+    >
+      <body className="bg-paper text-ink antialiased">{children}</body>
     </html>
-  );
+  )
 }

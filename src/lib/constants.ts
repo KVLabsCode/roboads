@@ -1,50 +1,52 @@
 export const SITE_NAME = "Kovio";
-export const SITE_TAGLINE = "Activating the robot economy.";
+export const SITE_TAGLINE = "The economic infrastructure for physical AI.";
 
 export const NAV_LINKS = [
   { label: "Brands", href: "/brands" },
-  { label: "OEMs", href: "/oem" },
+  { label: "Robot Companies", href: "/oem" },
+  { label: "Platform", href: "/platform" },
+  { label: "Company", href: "/contact" },
 ];
 
 export const ROBOT_ENVIRONMENTS = [
   {
     name: "Retail",
-    description: "Shelf-scanning and shopper-assist robots in stores.",
+    description: "Brand commerce, CPG promotions, and shopper behavior data sold to retailers.",
     icon: "retail",
   },
   {
     name: "Delivery",
-    description: "Last-mile sidewalk and aerial delivery robots.",
+    description: "Transaction fees, last-mile brand moments, and location intelligence.",
     icon: "delivery",
   },
   {
     name: "Hospitality",
-    description: "Concierge and room-service robots in hotels.",
+    description: "Venue partnerships, local referral fees, and guest behavior data.",
     icon: "hotel",
   },
   {
     name: "Cleaning",
-    description: "Autonomous floor-cleaning robots in commercial spaces.",
+    description: "Foot traffic analytics, space utilization data, and operational insights.",
     icon: "cleaning",
   },
   {
     name: "Warehouse",
-    description: "Pick-and-pack and inventory robots in fulfillment.",
+    description: "Operational data, fleet optimization insights, and AI training datasets.",
     icon: "warehouse",
   },
   {
     name: "Healthcare",
-    description: "Patient guidance and delivery robots in hospitals.",
+    description: "Longitudinal health data licensed to pharma and insurers, care coordination fees.",
     icon: "hospital",
   },
   {
     name: "Humanoid",
-    description: "General-purpose humanoid robots in any environment.",
+    description: "General commerce surface and machine-to-machine transaction layer.",
     icon: "humanoid",
   },
   {
     name: "Restaurant",
-    description: "Tableside service and order delivery robots in dining.",
+    description: "Upsell commerce, loyalty integration, and dining behavior data.",
     icon: "restaurant",
   },
 ];

@@ -137,7 +137,7 @@ export default function Navbar() {
           </Link>
 
           {/* ── Desktop nav ── */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {NAV_LINKS.map((link) =>
               link.label === "Brands" ? (
                 /* Brands link with dropdown */

@@ -1,42 +1,60 @@
-"use client";
-
-import { motion } from "framer-motion";
-import ScrollReveal from "@/components/ScrollReveal";
-import ContactForm from "@/components/ContactForm";
+import Nav from '@/components/kovio/Nav'
+import Footer from '@/components/kovio/Footer'
+import ContactForm from '@/components/ContactForm'
+import { palette as p, fonts } from '@/components/kovio/palette'
+import { Tag } from '@/components/kovio/primitives'
 
 export default function ContactPage() {
   return (
-    <>
-      <section className="relative min-h-[45vh] flex items-center justify-center pt-20">
-        <div className="absolute top-20 right-[20%] w-[400px] h-[400px] orb-accent" />
-
-        <div className="relative max-w-3xl mx-auto px-5 sm:px-8 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight mb-6"
+    <main style={{ background: p.bg, color: p.fg, minHeight: '100vh' }}>
+      <Nav />
+      <section
+        className="kovio-section"
+        style={{
+          position: 'relative',
+          maxWidth: 1320,
+          margin: '0 auto',
+          padding: '80px 32px 24px',
+        }}
+      >
+        <div style={{ maxWidth: 720 }}>
+          <Tag>SECTION 06 / Contact</Tag>
+          <h1
+            style={{
+              fontFamily: fonts.display,
+              fontSize: 'clamp(40px, 5vw, 72px)',
+              lineHeight: 0.98,
+              letterSpacing: '-0.03em',
+              margin: '16px 0 24px',
+              color: p.fg,
+              fontWeight: 500,
+              textWrap: 'balance',
+            }}
           >
-            Get in Touch
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="text-lg text-text-body max-w-2xl mx-auto leading-relaxed"
-          >
-            Whether you&apos;re a robot company looking to monetize or a
-            brand ready to reach the robot economy, we&apos;d love to hear
-            from you.
-          </motion.p>
+            Get in{' '}
+            <span style={{ fontFamily: fonts.serif, fontStyle: 'italic', fontWeight: 400 }}>
+              touch
+            </span>
+            .
+          </h1>
+          <p style={{ color: p.fgDim, fontSize: 18, lineHeight: 1.5, maxWidth: 560 }}>
+            Whether you&apos;re a robot company looking to monetize or a brand ready to reach the
+            robot economy, we&apos;d love to hear from you.
+          </p>
         </div>
       </section>
 
-      <section className="pb-20 sm:pb-28 px-5 sm:px-8 max-w-xl mx-auto">
-        <ScrollReveal>
-          <ContactForm />
-        </ScrollReveal>
+      <section
+        className="kovio-section"
+        style={{
+          maxWidth: 640,
+          margin: '0 auto',
+          padding: '24px 32px 120px',
+        }}
+      >
+        <ContactForm />
       </section>
-    </>
-  );
+      <Footer />
+    </main>
+  )
 }

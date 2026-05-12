@@ -4,23 +4,24 @@ import Footer from '@/components/kovio/Footer'
 import { palette as p, fonts } from '@/components/kovio/palette'
 import { LiveDot, Tag } from '@/components/kovio/primitives'
 import {
-  ActivityFeed,
-  CampaignsTable,
-  DashboardFrame,
-  DashboardHeader,
-  EnvironmentList,
-  MetricsRow,
-  OEMBreakdown,
-  PerformanceChart,
-} from '@/components/kovio/BrandsDashboard'
+  CampaignApprovals,
+  ContentPolicy,
+  CpmFloor,
+  NowPlaying,
+  OemDashboardFrame,
+  OemHeader,
+  OemMetricsRow,
+  RevenueByRoute,
+  RevenueOverTime,
+} from '@/components/kovio/OemDashboard'
 
 export const metadata = {
-  title: 'Brands · Kovio',
+  title: 'OEMs · Kovio',
   description:
-    'The brand console: run real-world campaigns through real robots. Spend, scans, dwell, attribution — all measured per verified human interaction.',
+    'The fleet operator console: turn every robot into a revenue line item. Watch live campaigns, approve advertisers, set CPM floors and brand safety rules — and withdraw earnings.',
 }
 
-export default function BrandsPage() {
+export default function OemsPage() {
   return (
     <main style={{ background: p.bg, color: p.fg, minHeight: '100vh' }}>
       <Nav />
@@ -35,7 +36,7 @@ export default function BrandsPage() {
         }}
       >
         <Tag>
-          <LiveDot /> The Kovio Brand Console
+          <LiveDot /> The Kovio Fleet Operator Console
         </Tag>
         <h1
           style={{
@@ -50,11 +51,11 @@ export default function BrandsPage() {
             maxWidth: 1100,
           }}
         >
-          Buy{' '}
+          Turn every robot you operate into a{' '}
           <span style={{ fontFamily: fonts.serif, fontStyle: 'italic', fontWeight: 400 }}>
-            real-world
-          </span>{' '}
-          attention. Pay per verified interaction.
+            revenue line item
+          </span>
+          .
         </h1>
         <p
           style={{
@@ -65,8 +66,9 @@ export default function BrandsPage() {
             margin: 0,
           }}
         >
-          The console brands log into: launch campaigns, route bids across robot fleets, watch
-          verified humans engage in real time. Below is the same screen DoorDash sees today.
+          The console fleet operators log into: see which campaigns are running on which units,
+          approve or reject advertisers, lock your brand-safety policy, set a CPM floor — and
+          withdraw earnings on demand. Below is the same screen Roamr uses today.
         </p>
         <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
           <Link
@@ -86,7 +88,7 @@ export default function BrandsPage() {
               textDecoration: 'none',
             }}
           >
-            Request a brand seat →
+            Connect a fleet →
           </Link>
           <Link
             href="/docs"
@@ -106,14 +108,14 @@ export default function BrandsPage() {
               border: `1px solid ${p.lineStrong}`,
             }}
           >
-            See the API
+            Read SDK docs
           </Link>
         </div>
       </section>
 
       {/* DASHBOARD SHOWCASE — graphs only.
-          The campaigns table, OEM breakdown, and live activity feed each get
-          their own explained section below, so we don't duplicate them here. */}
+          The live feed, approvals queue, content policy, and CPM floor each
+          get their own explained section below, so we don't duplicate them. */}
       <section
         className="kovio-section"
         style={{
@@ -122,67 +124,71 @@ export default function BrandsPage() {
           padding: '20px 32px 80px',
         }}
       >
-        <DashboardFrame>
-          <DashboardHeader />
-          <MetricsRow />
+        <OemDashboardFrame>
+          <OemHeader />
+          <OemMetricsRow />
           <div className="kovio-row-2" style={{ display: 'flex', gap: 12 }}>
-            <PerformanceChart />
-            <EnvironmentList />
+            <RevenueOverTime />
+            <RevenueByRoute />
           </div>
-        </DashboardFrame>
+        </OemDashboardFrame>
       </section>
 
-      {/* SECTION-BY-SECTION WALKTHROUGH */}
+      {/* SECTION WALKTHROUGH */}
       <DashboardSection
-        kicker="01 / OVERVIEW"
-        title="Six metrics that matter, refreshed every minute."
-        body="Spend, impressions, engagement rate, QR scans, average dwell, cost per thousand views. Every card rolls up the same atomic event stream — no SDK polling, no batch jobs. If a robot interaction happens, you see it within 60 seconds."
+        kicker="01 / EARNINGS"
+        title="See what every robot earned, every period."
+        body="Total earnings, impressions served, active campaigns on your units, fleet utilization, average eCPM, and the number of approvals waiting on you. Six numbers that tell you whether your fleet is monetizing or sitting idle."
         stacked
       >
-        <MetricsRow />
+        <OemMetricsRow />
       </DashboardSection>
 
       <DashboardSection
-        kicker="02 / TIME SERIES"
-        title="Daily spend vs engagement, side by side."
-        body="The line you actually want to see: more spend correlating with more engagement, not just more impressions. Switch the right axis to scans, dwell, or revenue lift at any time. Hover any day for the underlying interaction log."
+        kicker="02 / TREND"
+        title="Six months of revenue at a glance."
+        body="The line that shows your fleet flipping from cost center to revenue line. Roamr's last six months: $2K in December, $56,400 in May — a 32% month-over-month curve as more advertisers came online."
       >
-        <PerformanceChart />
+        <RevenueOverTime />
       </DashboardSection>
 
       <DashboardSection
-        kicker="03 / ENVIRONMENT MIX"
-        title="See where your dollars land."
-        body="Retail aisles, sidewalks, hotel lobbies, home robots, hospitals — each environment is bid for independently. The mix shifts as new fleets come online, and the conversion column tells you which surfaces are actually doing the work."
+        kicker="03 / ROUTES"
+        title="Which zones make you money."
+        body="Revenue ranked by delivery zone — University District is paying for the rest of the fleet. Use it to decide where to expand, where to retire units, and how to price your CPM floor per neighborhood."
         flip
       >
-        <EnvironmentList />
+        <RevenueByRoute />
       </DashboardSection>
 
       <DashboardSection
-        kicker="04 / CAMPAIGN MANAGEMENT"
-        title="Real campaigns. Real status. Real budgets."
-        body="Five campaigns visible at a glance: three live, one paused, one in draft. Status flips in real time as your bids win, your budget caps, or your A/B variant ships. Click any row to drill into the per-unit attribution chain."
+        kicker="04 / LIVE FEED"
+        title="Watch your fleet serve ads in real time."
+        body="Every robot currently running a paid impression — unit ID, campaign, advertiser, creative, route, and when it started. The live feed is the heartbeat: if a unit goes offline, it falls off the list within seconds."
         stacked
       >
-        <CampaignsTable />
+        <NowPlaying />
       </DashboardSection>
 
       <DashboardSection
-        kicker="05 / FLEET BREAKDOWN"
-        title="Which OEM is delivering your reach?"
-        body="One stacked bar across every fleet operator running your creative. Starship, Bear, Pudu — different floors of different cities, all reconciled against one budget. Adjust pacing per operator without touching the others."
-        flip
+        kicker="05 / APPROVALS"
+        title="You decide who runs on your robots."
+        body="Every new campaign lands in your approval queue with the full brief: who, what, when, how much, and what the creative actually looks like. Approve, reject, or flag for review — and Kovio catches policy edge cases like competitor mentions before you do."
+        stacked
       >
-        <OEMBreakdown />
+        <CampaignApprovals />
       </DashboardSection>
 
       <DashboardSection
-        kicker="06 / LIVE EVENTS"
-        title="A verified interaction every few seconds."
-        body="The live activity stream is the heartbeat: a QR scan at Stanford, a 6-second dwell at MIA, a verbal completion in a Le Méridien lobby. Each event is signed by the robot, geo-fenced, and priced. Receipts on every dollar spent."
+        kicker="06 / POLICY & FLOOR"
+        title="Set the rules. The network enforces them."
+        body="Block whole categories with one click — alcohol, political, adult content, gambling — and choose how strictly creatives are screened before going live. Pair it with a CPM floor and Kovio only routes bids that clear your bar."
+        stacked
       >
-        <ActivityFeed />
+        <div className="kovio-row-2" style={{ display: 'flex', gap: 12 }}>
+          <ContentPolicy />
+          <CpmFloor />
+        </div>
       </DashboardSection>
 
       {/* CTA */}
@@ -216,7 +222,7 @@ export default function BrandsPage() {
                 color: 'rgba(241,237,226,0.65)',
               }}
             >
-              FOR BRANDS
+              FOR FLEET OPERATORS
             </span>
             <h3
               style={{
@@ -229,7 +235,7 @@ export default function BrandsPage() {
                 color: p.accentInk,
               }}
             >
-              Ready to run a campaign through every robot you walk past?
+              Your fleet is already on the routes. Now make it earn.
             </h3>
             <p
               style={{
@@ -240,8 +246,8 @@ export default function BrandsPage() {
                 maxWidth: 560,
               }}
             >
-              Brand seats are invite-only while we onboard pilot advertisers. Tell us who you are
-              and we&apos;ll get you a console.
+              The SDK is a drop-in for delivery, sidewalk, humanoid, and indoor fleets. Tell us
+              who you are and we&apos;ll provision a console for your operations team.
             </p>
           </div>
           <div
@@ -265,7 +271,7 @@ export default function BrandsPage() {
                 textDecoration: 'none',
               }}
             >
-              Request access →
+              Connect a fleet →
             </Link>
             <Link
               href="/docs"
@@ -285,7 +291,7 @@ export default function BrandsPage() {
                 border: '1px solid rgba(241,237,226,0.45)',
               }}
             >
-              Read API docs
+              Read SDK docs
             </Link>
           </div>
         </div>
@@ -308,8 +314,6 @@ function DashboardSection({
   title: string
   body: string
   flip?: boolean
-  /** When true, render copy on top and the visual full-width below — for dense visuals
-   *  like the metrics row and the campaigns table that don't fit a side column. */
   stacked?: boolean
   children: React.ReactNode
 }) {
