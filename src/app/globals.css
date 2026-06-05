@@ -57,6 +57,22 @@
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-8px); }
 }
+/* Lively hopping robot — squash on the ground, stretch mid-air, slight tilt. */
+@keyframes kovioBounce {
+  0%   { transform: translateY(0)    scaleX(1)    scaleY(1)    rotate(0deg); }
+  12%  { transform: translateY(0)    scaleX(1.10) scaleY(0.90) rotate(0deg); }
+  32%  { transform: translateY(-22px) scaleX(0.94) scaleY(1.07) rotate(-6deg); }
+  50%  { transform: translateY(-28px) scaleX(1)    scaleY(1)    rotate(4deg); }
+  68%  { transform: translateY(-22px) scaleX(0.96) scaleY(1.05) rotate(-3deg); }
+  86%  { transform: translateY(0)    scaleX(1.10) scaleY(0.90) rotate(0deg); }
+  100% { transform: translateY(0)    scaleX(1)    scaleY(1)    rotate(0deg); }
+}
+/* Ground shadow that shrinks and fades as the robot leaves the ground. */
+@keyframes kovioBounceShadow {
+  0%   { transform: scaleX(1);    opacity: 0.30; }
+  50%  { transform: scaleX(0.55); opacity: 0.12; }
+  100% { transform: scaleX(1);    opacity: 0.30; }
+}
 @keyframes kovioMarquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }

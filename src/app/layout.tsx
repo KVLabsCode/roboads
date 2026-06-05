@@ -3,6 +3,7 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Instrument_Serif } from 'next/font/google'
 import './globals.css'
+import EarlyAccessBubble from '@/components/kovio/EarlyAccessBubble'
 
 const instrumentSerif = Instrument_Serif({
   weight: '400',
@@ -30,7 +31,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${GeistSans.variable} ${GeistMono.variable} ${instrumentSerif.variable}`}
     >
-      <body className="bg-paper text-ink antialiased">{children}</body>
+      <body className="bg-paper text-ink antialiased">
+        {children}
+        <EarlyAccessBubble />
+      </body>
     </html>
   )
 }

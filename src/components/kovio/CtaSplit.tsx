@@ -20,7 +20,7 @@ export default function CtaSplit() {
           title="Buy real-world attention."
           body="Run measurable, geo-fenced campaigns through 12K+ robots across 28 cities. Pay per verified interaction."
           cta="Launch a campaign"
-          primaryHref="/contact"
+          primaryHref="/early-access"
           secondaryHref="/docs"
           accent
         />
