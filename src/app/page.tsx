@@ -67,14 +67,14 @@ export default function HomePage() {
 
       {/* how it works */}
       <div className="px-5 py-[72px] md:px-10">
-        <div className="mb-3 text-[13px] font-bold tracking-[2px] text-[#5C564A]">HOW IT WORKS</div>
+        <div className="mb-3 text-[13px] font-bold tracking-[2px] text-[#4A4438]">HOW IT WORKS</div>
         <h2 className="m-0 mb-10 font-display text-[30px] uppercase tracking-[-1px] min-[900px]:text-[44px]">Stupidly simple.</h2>
         <div className="grid grid-cols-1 gap-5 min-[900px]:grid-cols-3">
           {STEPS.map((s) => (
             <div key={s.n} className="flex flex-col gap-3.5 rounded-2xl border-2 border-[#141414] bg-white p-7">
               <div className="font-display text-[34px] text-[#D97757] [-webkit-text-stroke:1.5px_#141414]">{s.n}</div>
               <div className="text-[20px] font-bold">{s.title}</div>
-              <p className="m-0 text-[15px] leading-normal text-[#55524a]">{s.body}</p>
+              <p className="m-0 text-[15px] leading-normal text-[#33302A]">{s.body}</p>
             </div>
           ))}
         </div>
@@ -96,7 +96,7 @@ export default function HomePage() {
         <div className="flex flex-col gap-4 rounded-[20px] border-2 border-[#141414] bg-[#141414] p-9 text-[#F4F1EA]">
           <div className="text-[12px] font-bold tracking-[2px] text-[#D97757]">FOR OEMS &amp; FLEETS</div>
           <div className="font-display text-[32px] uppercase leading-[1.05]">Your robots, finally earning.</div>
-          <p className="m-0 text-[16px] leading-normal text-[#b9b6ac]">
+          <p className="m-0 text-[16px] leading-normal text-[#D2CEC2]">
             One drop-in SDK turns your whole fleet into revenue. Live OEM partners are already in production, with
             earnings per interaction paid automatically.
           </p>
@@ -119,11 +119,11 @@ export default function HomePage() {
             <h2 className="m-0 font-display text-[30px] uppercase leading-none tracking-[-1px] min-[900px]:text-[48px]">
               Get your brand on a robot.
             </h2>
-            <p className="m-0 max-w-[460px] text-[17px] leading-[1.55] text-[#b9b6ac]">
+            <p className="m-0 max-w-[460px] text-[17px] leading-[1.55] text-[#D2CEC2]">
               Drop your creative, leave your details, and we&apos;ll get your ad on a robot in San Francisco. We&apos;ll
               contact you to set it up. No contracts, no media plan, no nonsense.
             </p>
-            <ul className="m-0 mt-2 flex list-none flex-col gap-3 p-0 text-[15px] text-[#b9b6ac]">
+            <ul className="m-0 mt-2 flex list-none flex-col gap-3 p-0 text-[15px] text-[#D2CEC2]">
               {[
                 'Your creative runs on a real robot in SF',
                 'The robot speaks your ad out loud, too',
@@ -139,7 +139,7 @@ export default function HomePage() {
             <div className="mt-2 flex max-w-[460px] flex-col gap-3.5 rounded-2xl bg-[#2a2a26] px-6 py-5">
               <div className="flex items-center justify-between">
                 <span className="text-[12px] font-bold tracking-[2px] text-[#D97757]">● VOICE AD · DURING THE INTERACTION</span>
-                <span className="text-[12px] font-bold tracking-[1px] text-[#A9A294]">00:07</span>
+                <span className="text-[12px] font-bold tracking-[1px] text-[#C2BDAF]">00:07</span>
               </div>
               <StaticEq heights={[8, 16, 24, 12, 20, 26, 10, 18, 24, 14, 22, 8, 16, 10, 20, 12, 6]} />
               <div className="text-[16px] italic leading-normal text-[#F4F1EA]">

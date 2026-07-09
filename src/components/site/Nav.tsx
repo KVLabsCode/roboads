@@ -44,7 +44,7 @@ export function Nav({ active, cta }: { active: 'home' | 'brands' | 'fleets'; cta
 
 export function Footer({ cta }: { cta: { href: string; label: string } }) {
   return (
-    <footer className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 bg-[#141414] px-5 py-5 text-[13px] tracking-[1px] text-[#b9b6ac] md:px-10 md:py-6">
+    <footer className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 bg-[#141414] px-5 py-5 text-[13px] tracking-[1px] text-[#D2CEC2] md:px-10 md:py-6">
       <Link href="/" className="font-display text-[15px] text-[#F4F1EA] no-underline" aria-label="Kovio home">
         KOVIO
       </Link>

@@ -58,14 +58,14 @@ export default function VoiceCards() {
           <div className="flex min-w-0 flex-1 flex-col gap-1">
             <div className="flex flex-wrap items-baseline gap-x-2.5">
               <span className="text-[17px] font-bold">{v.name}</span>
-              <span className="text-[12px] font-bold tracking-[1.5px] text-[#5C564A]">{v.tag}</span>
+              <span className="text-[12px] font-bold tracking-[1.5px] text-[#4A4438]">{v.tag}</span>
             </div>
-            <div className="text-[14px] italic text-[#55524a]">{v.line}</div>
+            <div className="text-[14px] italic text-[#33302A]">{v.line}</div>
           </div>
           {playing === v.id && <PlayingEq />}
         </div>
       ))}
-      <div className="text-[12.5px] text-[#5C564A]">Sample clips. Your robot gets custom lines written with you.</div>
+      <div className="text-[12.5px] text-[#4A4438]">Sample clips. Your robot gets custom lines written with you.</div>
     </div>
   )
 }

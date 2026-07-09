@@ -56,7 +56,7 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
     return (
       <div role="status" className="flex flex-col items-start gap-3.5 rounded-[20px] bg-[#F4F1EA] p-10 text-[#141414]">
         <div className="font-display text-[34px] uppercase">{kind === 'trial' ? "You're in." : 'Talk soon.'}{' '}<span aria-hidden="true">🤖</span></div>
-        <p className="m-0 text-[16px] leading-normal text-[#55524a]">
+        <p className="m-0 text-[16px] leading-normal text-[#33302A]">
           {kind === 'trial'
             ? 'We got your details — check your inbox for a confirmation. A human (not a robot) will contact you within 48 hours to get your ad on the street.'
             : "We got your details — check your inbox for a confirmation. We'll reach out within 48 hours to talk SDK, revenue share, and a pilot for your fleet."}
@@ -88,36 +88,52 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
       ) : (
         <div className={labelCls}>
           <span>
-            Your creative <span className="font-medium text-[#5C564A]">1024×600 px, shown exactly as it&apos;ll appear on the robot</span>
+            Your creative <span className="font-medium text-[#4A4438]">1024×600 px, shown exactly as it&apos;ll appear on the robot</span>
           </span>
-          <div className="rounded-[14px] border-2 border-[#141414] bg-[#141414] p-2.5">
-            <label className="block h-[250px] w-full cursor-pointer overflow-hidden rounded-lg bg-black">
-              {preview ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={preview} alt="Your creative" className="h-full w-full object-contain" />
-              ) : (
-                <span className="flex h-full w-full items-center justify-center px-4 text-center text-[13px] font-medium text-[#A9A294]">
-                  Upload your creative · 1024×600 px — click to choose
+          <label
+            className={`block w-full cursor-pointer overflow-hidden rounded-[14px] border-2 border-[#141414] transition-colors ${
+              preview ? 'bg-[#141414] p-2.5' : 'border-dashed bg-white hover:bg-[#FBF7EE]'
+            }`}
+          >
+            {preview ? (
+              <div className="h-[250px] w-full overflow-hidden rounded-lg bg-black">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={preview} alt="Your uploaded creative" className="h-full w-full object-contain" />
+              </div>
+            ) : (
+              <span className="flex h-[220px] w-full flex-col items-center justify-center gap-3 px-4 text-center">
+                <span
+                  aria-hidden="true"
+                  className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#141414] bg-[#D97757] shadow-[2px_2px_0_#141414]"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#141414" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 19V6" />
+                    <path d="m5.5 12.5 6.5-6.5 6.5 6.5" />
+                  </svg>
                 </span>
-              )}
-              <input
-                type="file"
-                accept="image/*"
-                aria-label="Upload your ad creative, 1024 by 600 pixels, PNG or JPG"
-                className="sr-only"
-                onChange={(e) => onCreative(e.target.files?.[0] ?? null)}
-              />
-            </label>
-            <div className="mt-2 flex justify-between text-[12px] font-bold tracking-[1.5px] text-[#A9A294]">
-              <span>KOVIO UNIT-G1</span>
+                <span className="text-[16px] font-bold text-[#141414]">Upload your creative</span>
+                <span className="text-[13px] font-medium text-[#4A4438]">PNG or JPG · 1024×600 px · click to choose a file</span>
+              </span>
+            )}
+            <input
+              type="file"
+              accept="image/*"
+              aria-label="Upload your ad creative, 1024 by 600 pixels, PNG or JPG"
+              className="sr-only"
+              onChange={(e) => onCreative(e.target.files?.[0] ?? null)}
+            />
+          </label>
+          {preview && (
+            <div className="flex justify-between text-[12px] font-bold tracking-[1.5px] text-[#4A4438]">
+              <span>SHOWN ON KOVIO UNIT-G1</span>
               <span>1024×600 PX</span>
             </div>
-          </div>
+          )}
         </div>
       )}
 
       {kind === 'trial' && (
-        <div className="text-[13px] leading-normal text-[#55524a]">No creative yet? Send the form anyway. We&apos;ll help you make one.</div>
+        <div className="text-[13px] leading-normal text-[#33302A]">No creative yet? Send the form anyway. We&apos;ll help you make one.</div>
       )}
       {error && (
         <div role="alert" className="text-[14px] font-semibold text-[#9a3E1F]">
@@ -131,7 +147,7 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
       >
         {busy ? 'Sending…' : kind === 'trial' ? 'Claim my free trial →' : 'Talk to us →'}
       </button>
-      <div className="text-center text-[12px] text-[#5C564A]">We&apos;ll contact you within 48h. Zero spam.</div>
+      <div className="text-center text-[12px] text-[#4A4438]">We&apos;ll contact you within 48h. Zero spam.</div>
     </form>
   )
 }

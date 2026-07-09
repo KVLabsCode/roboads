@@ -65,7 +65,7 @@ export default function FleetsPage() {
         <div
           role="img"
           aria-label="Terminal demo: running kovio connect fleet links the SDK to the perception stack, connects the ad exchange, readies the settlement account — the fleet is now earning"
-          className="min-w-0 rounded-[20px] border-2 border-[#141414] bg-[#141414] p-7 font-mono text-[14.5px] leading-loose text-[#b9b6ac] shadow-[8px_8px_0_#D97757]"
+          className="min-w-0 rounded-[20px] border-2 border-[#141414] bg-[#141414] p-7 font-mono text-[14.5px] leading-loose text-[#D2CEC2] shadow-[8px_8px_0_#D97757]"
         >
           <div aria-hidden="true">
           <div className="mb-[18px] flex gap-2">
@@ -74,7 +74,7 @@ export default function FleetsPage() {
             <div className="h-3 w-3 rounded-full bg-[#D97757]" />
           </div>
           <div>
-            <span className="text-[#A9A294]">$</span> kovio connect --fleet
+            <span className="text-[#C2BDAF]">$</span> kovio connect --fleet
           </div>
           <div className="text-[#7ec97e]">✓ SDK linked to perception stack</div>
           <div className="text-[#7ec97e]">✓ Ad exchange connected</div>
@@ -83,7 +83,7 @@ export default function FleetsPage() {
             robot.on(<span className="text-[#D97757]">&apos;qualified_moment&apos;</span>, kovio.serve)
           </div>
           <div className="mt-3">
-            <span className="text-[#A9A294]">→</span> <span className="font-bold text-[#D97757]">fleet is now earning</span>
+            <span className="text-[#C2BDAF]">→</span> <span className="font-bold text-[#D97757]">fleet is now earning</span>
           </div>
           </div>
         </div>
@@ -95,12 +95,12 @@ export default function FleetsPage() {
         <img src="/logos/unitree.png" alt="Unitree" className="h-[22px] w-auto opacity-[.92] invert" />
         <img src="/logos/robot-com.png" alt="Robot.com" className="h-6 w-auto opacity-[.92] invert" />
         <img src="/logos/toborlife.png" alt="Toborlife AI" className="h-6 w-auto opacity-[.92] invert" />
-        <span className="text-[13px] text-[#A9A294] min-[900px]:ml-auto">Multi-OEM ecosystem, in production</span>
+        <span className="text-[13px] text-[#C2BDAF] min-[900px]:ml-auto">Multi-OEM ecosystem, in production</span>
       </div>
 
       {/* how it works */}
       <div id="how" className="px-5 py-[72px] md:px-10">
-        <div className="mb-3 text-[13px] font-bold tracking-[2px] text-[#5C564A]">HOW IT WORKS</div>
+        <div className="mb-3 text-[13px] font-bold tracking-[2px] text-[#4A4438]">HOW IT WORKS</div>
         <h2 className="m-0 mb-10 font-display text-[30px] uppercase tracking-[-1px] min-[900px]:text-[44px]">
           One integration. Every robot earns.
         </h2>
@@ -109,7 +109,7 @@ export default function FleetsPage() {
             <div key={s.n} className="flex flex-col gap-3.5 rounded-2xl border-2 border-[#141414] bg-white p-7">
               <div className="font-display text-[34px] text-[#D97757] [-webkit-text-stroke:1.5px_#141414]">{s.n}</div>
               <div className="text-[20px] font-bold">{s.title}</div>
-              <p className="m-0 text-[15px] leading-normal text-[#55524a]">{s.body}</p>
+              <p className="m-0 text-[15px] leading-normal text-[#33302A]">{s.body}</p>
             </div>
           ))}
         </div>
@@ -133,7 +133,7 @@ export default function FleetsPage() {
             <div className="font-display text-[30px] uppercase leading-[1.05]">
               Earnings from day one. A reason to deploy more robots.
             </div>
-            <p className="m-0 text-[16px] leading-normal text-[#b9b6ac]">
+            <p className="m-0 text-[16px] leading-normal text-[#D2CEC2]">
               Kovio makes every robot revenue-positive on attention it already earns. We&apos;re the neutral exchange:
               you keep your hardware, your customers, and a new revenue line.
             </p>
@@ -156,23 +156,23 @@ export default function FleetsPage() {
                 <div className="h-2.5 w-2.5 rounded-full bg-[#3a3a35]" />
                 <div className="h-2.5 w-2.5 rounded-full bg-[#D97757]" />
               </div>
-              <span className="text-[12px] font-bold tracking-[1px] text-[#A9A294]">KOVIO OPERATOR DASHBOARD</span>
+              <span className="text-[12px] font-bold tracking-[1px] text-[#C2BDAF]">KOVIO OPERATOR DASHBOARD</span>
             </div>
             <div className="flex flex-col gap-3 p-6">
-              <div className="grid grid-cols-[1.5fr_1.1fr_.9fr] items-center border-b-2 border-[#141414] pb-2.5 text-[12px] font-bold tracking-[1.5px] text-[#5C564A]">
+              <div className="grid grid-cols-[1.5fr_1.1fr_.9fr] items-center border-b-2 border-[#141414] pb-2.5 text-[12px] font-bold tracking-[1.5px] text-[#4A4438]">
                 <span>UNIT</span>
                 <span>STATUS</span>
                 <span className="text-right">EARNINGS TODAY</span>
               </div>
               {UNITS.map((u) => (
-                <div key={u.unit} className={`grid grid-cols-[1.5fr_1.1fr_.9fr] items-center text-[14px] font-semibold ${u.live ? '' : 'text-[#5C564A]'}`}>
+                <div key={u.unit} className={`grid grid-cols-[1.5fr_1.1fr_.9fr] items-center text-[14px] font-semibold ${u.live ? '' : 'text-[#4A4438]'}`}>
                   <span>{u.unit}</span>
                   <span
                     className={`inline-flex items-center gap-1.5 justify-self-start rounded-full px-2.5 py-1 text-[12px] font-bold tracking-[1px] ${
-                      u.live ? 'border-[1.5px] border-[#1f6b3a] bg-[#E4F2E4] text-[#1f6b3a]' : 'border-[1.5px] border-[#b9b6ac] bg-[#F0EDE6] text-[#5C564A]'
+                      u.live ? 'border-[1.5px] border-[#1f6b3a] bg-[#E4F2E4] text-[#1f6b3a]' : 'border-[1.5px] border-[#6B6558] bg-[#F0EDE6] text-[#4A4438]'
                     }`}
                   >
-                    <span className={`h-1.5 w-1.5 rounded-full ${u.live ? 'bg-[#1f6b3a]' : 'bg-[#b9b6ac]'}`} />
+                    <span className={`h-1.5 w-1.5 rounded-full ${u.live ? 'bg-[#1f6b3a]' : 'bg-[#6B6558]'}`} />
                     {u.live ? 'LIVE' : 'MATCHING'}
                   </span>
                   <span className="text-right font-display">{u.earn}</span>
@@ -186,7 +186,7 @@ export default function FleetsPage() {
             </div>
           </div>
           <div className="flex min-w-0 flex-col gap-5">
-            <div className="text-[13px] font-bold tracking-[2px] text-[#5C564A]">OPERATOR DASHBOARD</div>
+            <div className="text-[13px] font-bold tracking-[2px] text-[#4A4438]">OPERATOR DASHBOARD</div>
             <h2 className="m-0 font-display text-[30px] uppercase leading-none tracking-[-1px] min-[900px]:text-[44px]">
               See every robot earning.
             </h2>
@@ -212,11 +212,11 @@ export default function FleetsPage() {
             <h2 className="m-0 font-display text-[30px] uppercase leading-none tracking-[-1px] min-[900px]:text-[48px]">
               Let&apos;s get your robots earning.
             </h2>
-            <p className="m-0 max-w-[460px] text-[17px] leading-[1.55] text-[#b9b6ac]">
+            <p className="m-0 max-w-[460px] text-[17px] leading-[1.55] text-[#D2CEC2]">
               Tell us about your fleet and we&apos;ll walk you through the SDK, the revenue share, and a pilot, usually
               within a week.
             </p>
-            <ul className="m-0 mt-2 flex list-none flex-col gap-3 p-0 text-[15px] text-[#b9b6ac]">
+            <ul className="m-0 mt-2 flex list-none flex-col gap-3 p-0 text-[15px] text-[#D2CEC2]">
               {['One SDK, any form factor', 'Revenue share aligned with you', 'Automatic settlement + full reporting'].map((t) => (
                 <li key={t} className="flex gap-2.5">
                   <span aria-hidden="true" className="text-[#D97757]">✦</span>
