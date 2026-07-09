@@ -1,40 +1,38 @@
 import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
-import { Instrument_Serif } from 'next/font/google'
+import { Archivo_Black, Space_Grotesk } from 'next/font/google'
 import './globals.css'
-import EarlyAccessBubble from '@/components/kovio/EarlyAccessBubble'
 
-const instrumentSerif = Instrument_Serif({
+const archivo = Archivo_Black({
   weight: '400',
-  style: ['normal', 'italic'],
   subsets: ['latin'],
-  variable: '--font-serif',
+  variable: '--font-display',
+  display: 'swap',
+})
+
+const grotesk = Space_Grotesk({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-body',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'Kovio · The monetization layer for autonomous robots',
+  metadataBase: new URL('https://www.kovio.dev'),
+  title: 'Kovio — We put ads on robots',
   description:
-    'Kovio is the economic interaction layer for autonomous robots. Every real-world robot moment becomes a measurable, revenue-generating interaction.',
+    "It's a billboard that walks up to you. Says hi. Shows your ad. Hands out a discount code. And proves every single interaction actually happened. Live in San Francisco.",
   openGraph: {
-    title: 'Kovio · The monetization layer for autonomous robots',
+    title: 'Kovio — We put ads on robots',
     description:
-      'The economic infrastructure for physical AI. Activating the robot economy.',
-    url: 'https://kovio.dev',
+      'Unmissable, fully measured advertising on humanoid robots. Live on the streets of San Francisco.',
+    url: 'https://www.kovio.dev',
   },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} ${instrumentSerif.variable}`}
-    >
-      <body className="bg-paper text-ink antialiased">
-        {children}
-        <EarlyAccessBubble />
-      </body>
+    <html lang="en" className={`${archivo.variable} ${grotesk.variable}`}>
+      <body className="bg-[#F4F1EA] text-[#141414] antialiased">{children}</body>
     </html>
   )
 }
