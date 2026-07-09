@@ -1,14 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 
-// Black ticker strip: "LIVE IN SAN FRANCISCO" + brand logos, looping.
+// Black ticker strip: "LIVE IN SAN FRANCISCO" + OEM partner logos, looping.
 // Two identical runs + translateX(-50%) = a seamless marquee.
+// OEM partners only — brand logos stay off the site until confirmed.
 const LOGOS: Array<{ src: string; alt: string; h: number }> = [
-  { src: '/logos/pylon.png', alt: 'Pylon', h: 26 },
-  { src: '/logos/brez.png', alt: 'BRĒZ', h: 24 },
-  { src: '/logos/smallest-ai.png', alt: 'smallest.ai', h: 18 },
-  { src: '/logos/slashy.png', alt: 'Slashy', h: 24 },
-  { src: '/logos/speechmatics.png', alt: 'Speechmatics', h: 17 },
-  { src: '/logos/natively.png', alt: 'NativelyAI', h: 23 },
+  { src: '/logos/unitree.png', alt: 'Unitree', h: 22 },
+  { src: '/logos/robot-com.png', alt: 'Robot.com', h: 24 },
+  { src: '/logos/toborlife.png', alt: 'Toborlife AI', h: 24 },
 ]
 
 function Run() {

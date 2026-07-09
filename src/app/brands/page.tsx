@@ -18,15 +18,6 @@ const TRIAL_STEPS = [
   { n: '04', title: 'You get the proof', body: 'A report of every verified interaction, plus the footage people took.' },
 ]
 
-const LOGOS: Array<{ src: string; alt: string; h: number }> = [
-  { src: '/logos/pylon.png', alt: 'Pylon', h: 30 },
-  { src: '/logos/brez.png', alt: 'BRĒZ', h: 28 },
-  { src: '/logos/smallest-ai.png', alt: 'smallest.ai', h: 21 },
-  { src: '/logos/slashy.png', alt: 'Slashy', h: 28 },
-  { src: '/logos/speechmatics.png', alt: 'Speechmatics', h: 19 },
-  { src: '/logos/natively.png', alt: 'NativelyAI', h: 26 },
-]
-
 export default function BrandsPage() {
   return (
     <div className="mx-auto min-h-screen max-w-[1440px] bg-[#F4F1EA] text-[#141414]">
@@ -215,22 +206,8 @@ export default function BrandsPage() {
         </div>
       </div>
 
-      {/* logos */}
-      <div className="px-5 py-[72px] md:px-10">
-        <div className="flex flex-col gap-6 rounded-2xl border-2 border-[#141414] bg-white px-8 py-7">
-          <span className="self-start rounded-full border-2 border-[#141414] bg-[#D97757] px-3 py-1.5 text-[12px] font-bold tracking-[2px]">
-            BRANDS WE&apos;VE WORKED WITH
-          </span>
-          <div className="flex flex-wrap items-center gap-11">
-            {LOGOS.map((l) => (
-              <img key={l.alt} src={l.src} alt={l.alt} style={{ height: l.h, width: 'auto' }} />
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* trial steps */}
-      <div className="px-5 pb-[72px] md:px-10">
+      <div className="px-5 pb-[72px] pt-[72px] md:px-10">
         <div className="mb-3 text-[13px] font-bold tracking-[2px] text-[#8a8578]">YOUR FREE TRIAL</div>
         <h2 className="m-0 mb-10 font-display text-[30px] uppercase tracking-[-1px] min-[900px]:text-[44px]">Form to street in days.</h2>
         <div className="grid grid-cols-1 gap-5 min-[900px]:grid-cols-4">
