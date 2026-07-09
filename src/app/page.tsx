@@ -30,6 +30,7 @@ export default function HomePage() {
     <div className="mx-auto min-h-screen max-w-[1440px] bg-[#F4F1EA] text-[#141414]">
       <Nav active="home" cta={{ href: '#form', label: 'Free trial →' }} />
 
+      <main id="main">
       {/* hero */}
       <div className="grid grid-cols-1 items-center gap-12 px-5 pb-14 pt-16 min-[900px]:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:px-10">
         <div className="flex min-w-0 flex-col gap-6">
@@ -66,7 +67,7 @@ export default function HomePage() {
 
       {/* how it works */}
       <div className="px-5 py-[72px] md:px-10">
-        <div className="mb-3 text-[13px] font-bold tracking-[2px] text-[#8a8578]">HOW IT WORKS</div>
+        <div className="mb-3 text-[13px] font-bold tracking-[2px] text-[#5C564A]">HOW IT WORKS</div>
         <h2 className="m-0 mb-10 font-display text-[30px] uppercase tracking-[-1px] min-[900px]:text-[44px]">Stupidly simple.</h2>
         <div className="grid grid-cols-1 gap-5 min-[900px]:grid-cols-3">
           {STEPS.map((s) => (
@@ -130,15 +131,15 @@ export default function HomePage() {
                 "Free. We'll set everything up with you",
               ].map((t) => (
                 <li key={t} className="flex gap-2.5">
-                  <span className="text-[#D97757]">✦</span>
+                  <span aria-hidden="true" className="text-[#D97757]">✦</span>
                   {t}
                 </li>
               ))}
             </ul>
             <div className="mt-2 flex max-w-[460px] flex-col gap-3.5 rounded-2xl bg-[#2a2a26] px-6 py-5">
               <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold tracking-[2px] text-[#D97757]">● VOICE AD · DURING THE INTERACTION</span>
-                <span className="text-[11px] font-bold tracking-[1px] text-[#8a8578]">00:07</span>
+                <span className="text-[12px] font-bold tracking-[2px] text-[#D97757]">● VOICE AD · DURING THE INTERACTION</span>
+                <span className="text-[12px] font-bold tracking-[1px] text-[#A9A294]">00:07</span>
               </div>
               <StaticEq heights={[8, 16, 24, 12, 20, 26, 10, 18, 24, 14, 22, 8, 16, 10, 20, 12, 6]} />
               <div className="text-[16px] italic leading-normal text-[#F4F1EA]">
@@ -150,6 +151,7 @@ export default function HomePage() {
         </div>
       </div>
 
+      </main>
       <Footer cta={{ href: '#form', label: 'FREE TRIAL' }} />
     </div>
   )

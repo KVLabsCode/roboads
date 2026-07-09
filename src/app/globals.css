@@ -19,11 +19,38 @@ body {
 
 input::placeholder,
 textarea::placeholder {
-  color: rgba(20, 20, 20, 0.35);
+  color: rgba(20, 20, 20, 0.55);
 }
 
 a:hover {
   opacity: 0.75;
+}
+
+/* Keyboard users always see where they are: a thick, offset, current-color
+   ring works on both the paper and the near-black sections. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+label:focus-within,
+[tabindex]:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Vestibular safety: kill the marquee and equalizer motion on request. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 @keyframes kv-marquee {

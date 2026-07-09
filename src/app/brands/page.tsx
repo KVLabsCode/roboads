@@ -23,6 +23,7 @@ export default function BrandsPage() {
     <div className="mx-auto min-h-screen max-w-[1440px] bg-[#F4F1EA] text-[#141414]">
       <Nav active="brands" cta={{ href: '#form', label: 'Free trial →' }} />
 
+      <main id="main">
       {/* hero */}
       <div className="flex max-w-[900px] flex-col gap-6 px-5 pb-14 pt-[72px] md:px-10">
         <div className="inline-flex self-start rounded-full bg-[#141414] px-3.5 py-[7px] text-[12px] font-bold tracking-[1.5px] text-[#D97757]">
@@ -48,15 +49,15 @@ export default function BrandsPage() {
       {/* comparison */}
       <div className="px-5 pb-[72px] pt-4 md:px-10">
         <div className="grid grid-cols-1 gap-5 min-[900px]:grid-cols-3">
-          <div className="flex flex-col gap-3 rounded-2xl border-2 border-[#141414] bg-white p-7 opacity-60">
-            <div className="text-[12px] font-bold tracking-[2px] text-[#8a8578]">BILLBOARDS</div>
+          <div className="flex flex-col gap-3 rounded-2xl border-2 border-[#8a8578] bg-white p-7">
+            <div className="text-[12px] font-bold tracking-[2px] text-[#5C564A]">BILLBOARDS</div>
             <div className="text-[20px] font-bold">Can&apos;t see. Can&apos;t measure.</div>
             <p className="m-0 text-[15px] leading-normal text-[#55524a]">
               A billboard doesn&apos;t know who walked past, and can&apos;t prove a single sale. You buy it on faith.
             </p>
           </div>
-          <div className="flex flex-col gap-3 rounded-2xl border-2 border-[#141414] bg-white p-7 opacity-60">
-            <div className="text-[12px] font-bold tracking-[2px] text-[#8a8578]">DIGITAL ADS</div>
+          <div className="flex flex-col gap-3 rounded-2xl border-2 border-[#8a8578] bg-white p-7">
+            <div className="text-[12px] font-bold tracking-[2px] text-[#5C564A]">DIGITAL ADS</div>
             <div className="text-[20px] font-bold">Skipped. Blocked. Ignored.</div>
             <p className="m-0 text-[15px] leading-normal text-[#55524a]">
               You pay more every year for attention that&apos;s worth less. Everyone&apos;s tuned out.
@@ -82,7 +83,7 @@ export default function BrandsPage() {
             <div className="flex h-[150px] items-center justify-center rounded-[10px] border border-[#3a3a35] bg-black">
               <div className="flex flex-col gap-1.5 text-center">
                 <div className="font-display text-[18px] text-[#F4F1EA]">YOUR AD HERE</div>
-                <div className="text-[11px] tracking-[1.5px] text-[#8a8578]">1024×600 · SCAN FOR 10% OFF</div>
+                <div className="text-[12px] tracking-[1.5px] text-[#A9A294]">1024×600 · SCAN FOR 10% OFF</div>
               </div>
             </div>
             <p className="m-0 text-[15px] leading-normal text-[#b9b6ac]">
@@ -102,7 +103,7 @@ export default function BrandsPage() {
           <div className="flex flex-col gap-4 rounded-2xl bg-[#2a2a26] p-6">
             <div className="text-[12px] font-bold tracking-[2px] text-[#D97757]">03 · PROOF</div>
             <div className="flex h-[150px] flex-col gap-[9px] rounded-[10px] border border-[#3a3a35] bg-black px-[18px] py-4 text-[12px] tracking-[.5px]">
-              <div className="flex justify-between text-[#8a8578]">
+              <div className="flex justify-between text-[#A9A294]">
                 <span>INTERACTION</span>
                 <span>VERIFIED</span>
               </div>
@@ -124,7 +125,7 @@ export default function BrandsPage() {
       <div className="px-5 pt-[72px] md:px-10">
         <div className="grid grid-cols-1 items-center gap-12 min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
           <div className="flex min-w-0 flex-col gap-5">
-            <div className="text-[13px] font-bold tracking-[2px] text-[#8a8578]">VOICE PERSONALITY</div>
+            <div className="text-[13px] font-bold tracking-[2px] text-[#5C564A]">VOICE PERSONALITY</div>
             <h2 className="m-0 font-display text-[30px] uppercase leading-none tracking-[-1px] min-[900px]:text-[44px]">
               Your robot. Your brand&apos;s voice.
             </h2>
@@ -133,7 +134,7 @@ export default function BrandsPage() {
               one that sounds exactly like your brand. Hit play to hear them.
             </p>
             <div className="inline-flex items-center gap-2.5 self-start rounded-full bg-[#141414] px-[22px] py-3 text-[13px] font-bold tracking-[1.5px] text-[#F4F1EA]">
-              <span className="text-[#D97757]">●</span> HEAR THE VOICES
+              <span aria-hidden="true" className="text-[#D97757]">●</span> HEAR THE VOICES
             </div>
           </div>
           <VoiceCards />
@@ -144,7 +145,7 @@ export default function BrandsPage() {
       <div className="px-5 pt-[72px] md:px-10">
         <div className="grid grid-cols-1 items-center gap-12 min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
           <div className="flex min-w-0 flex-col gap-5">
-            <div className="text-[13px] font-bold tracking-[2px] text-[#8a8578]">YOUR DASHBOARD</div>
+            <div className="text-[13px] font-bold tracking-[2px] text-[#5C564A]">YOUR DASHBOARD</div>
             <h2 className="m-0 font-display text-[30px] uppercase leading-none tracking-[-1px] min-[900px]:text-[44px]">
               Run it like a digital campaign.
             </h2>
@@ -156,25 +157,30 @@ export default function BrandsPage() {
               href="#form"
               className="inline-flex items-center gap-2.5 self-start rounded-full bg-[#141414] px-6 py-[13px] text-[14px] font-bold text-[#F4F1EA] no-underline"
             >
-              <span className="text-[#D97757]">●</span> DASHBOARD INCLUDED · LIVE TODAY
+              <span aria-hidden="true" className="text-[#D97757]">●</span> DASHBOARD INCLUDED · LIVE TODAY
             </a>
           </div>
-          <div className="min-w-0 overflow-hidden rounded-2xl border-2 border-[#141414] bg-white shadow-[8px_8px_0_#D97757]">
+          <div
+            role="img"
+            aria-label="Kovio dashboard preview: campaign Summer Drop on Market Street, live, with a rising interaction chart, 1,284 verified interactions, 312 codes scanned, and 41 cents average cost per interaction"
+            className="min-w-0 overflow-hidden rounded-2xl border-2 border-[#141414] bg-white shadow-[8px_8px_0_#D97757]"
+          >
+            <div aria-hidden="true">
             <div className="flex items-center gap-2.5 bg-[#141414] px-[18px] py-3">
               <div className="flex gap-1.5">
                 <div className="h-2.5 w-2.5 rounded-full bg-[#3a3a35]" />
                 <div className="h-2.5 w-2.5 rounded-full bg-[#3a3a35]" />
                 <div className="h-2.5 w-2.5 rounded-full bg-[#D97757]" />
               </div>
-              <span className="text-[12px] font-bold tracking-[1px] text-[#8a8578]">KOVIO DASHBOARD</span>
+              <span className="text-[12px] font-bold tracking-[1px] text-[#A9A294]">KOVIO DASHBOARD</span>
             </div>
             <div className="flex flex-col gap-[18px] p-6">
               <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-[3px]">
                   <span className="text-[15px] font-bold">Summer Drop · Market St</span>
-                  <span className="text-[12px] font-bold tracking-[1px] text-[#8a8578]">CAMPAIGN · UNIT G1</span>
+                  <span className="text-[12px] font-bold tracking-[1px] text-[#5C564A]">CAMPAIGN · UNIT G1</span>
                 </div>
-                <span className="rounded-full bg-[#141414] px-3 py-1.5 text-[11px] font-bold tracking-[1.5px] text-[#7ec97e]">● LIVE</span>
+                <span className="rounded-full bg-[#141414] px-3 py-1.5 text-[12px] font-bold tracking-[1.5px] text-[#7ec97e]">● LIVE</span>
               </div>
               <div className="flex h-[90px] items-end gap-2 border-b-2 border-[#141414]">
                 {[
@@ -197,10 +203,11 @@ export default function BrandsPage() {
                 ].map(([v, l]) => (
                   <div key={l} className="flex flex-col gap-0.5">
                     <span className="font-display text-[22px]">{v}</span>
-                    <span className="text-[11px] font-bold tracking-[1px] text-[#8a8578]">{l}</span>
+                    <span className="text-[12px] font-bold tracking-[1px] text-[#5C564A]">{l}</span>
                   </div>
                 ))}
               </div>
+            </div>
             </div>
           </div>
         </div>
@@ -208,7 +215,7 @@ export default function BrandsPage() {
 
       {/* trial steps */}
       <div className="px-5 pb-[72px] pt-[72px] md:px-10">
-        <div className="mb-3 text-[13px] font-bold tracking-[2px] text-[#8a8578]">YOUR FREE TRIAL</div>
+        <div className="mb-3 text-[13px] font-bold tracking-[2px] text-[#5C564A]">YOUR FREE TRIAL</div>
         <h2 className="m-0 mb-10 font-display text-[30px] uppercase tracking-[-1px] min-[900px]:text-[44px]">Form to street in days.</h2>
         <div className="grid grid-cols-1 gap-5 min-[900px]:grid-cols-4">
           {TRIAL_STEPS.map((s) => (
@@ -241,6 +248,7 @@ export default function BrandsPage() {
         </div>
       </div>
 
+      </main>
       <Footer cta={{ href: '#form', label: 'FREE TRIAL' }} />
     </div>
   )

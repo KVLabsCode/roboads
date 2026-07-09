@@ -3,8 +3,8 @@
 import { useState } from 'react'
 
 const inputCls =
-  'rounded-xl border-2 border-[#141414] bg-white px-4 py-3.5 text-[16px] text-[#141414] outline-none font-[inherit]'
-const labelCls = 'flex flex-col gap-[7px] text-[13px] font-bold'
+  'rounded-xl border-2 border-[#141414] bg-white px-4 py-3.5 text-[16px] text-[#141414] font-[inherit]'
+const labelCls = 'flex flex-col gap-[7px] text-[14px] font-bold'
 
 // The site's one lead capture: `trial` (landing + /brands, with a 1024×600
 // creative upload) or `fleet` (/fleets, with a fleet-size field). Posts
@@ -54,8 +54,8 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
 
   if (sub) {
     return (
-      <div className="flex flex-col items-start gap-3.5 rounded-[20px] bg-[#F4F1EA] p-10 text-[#141414]">
-        <div className="font-display text-[34px] uppercase">{kind === 'trial' ? "You're in. 🤖" : 'Talk soon. 🤖'}</div>
+      <div role="status" className="flex flex-col items-start gap-3.5 rounded-[20px] bg-[#F4F1EA] p-10 text-[#141414]">
+        <div className="font-display text-[34px] uppercase">{kind === 'trial' ? "You're in." : 'Talk soon.'}{' '}<span aria-hidden="true">🤖</span></div>
         <p className="m-0 text-[16px] leading-normal text-[#55524a]">
           {kind === 'trial'
             ? 'We got your details — check your inbox for a confirmation. A human (not a robot) will contact you within 48 hours to get your ad on the street.'
@@ -88,7 +88,7 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
       ) : (
         <div className={labelCls}>
           <span>
-            Your creative <span className="font-medium text-[#8a8578]">1024×600 px, shown exactly as it&apos;ll appear on the robot</span>
+            Your creative <span className="font-medium text-[#5C564A]">1024×600 px, shown exactly as it&apos;ll appear on the robot</span>
           </span>
           <div className="rounded-[14px] border-2 border-[#141414] bg-[#141414] p-2.5">
             <label className="block h-[250px] w-full cursor-pointer overflow-hidden rounded-lg bg-black">
@@ -96,18 +96,19 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={preview} alt="Your creative" className="h-full w-full object-contain" />
               ) : (
-                <span className="flex h-full w-full items-center justify-center px-4 text-center text-[13px] font-medium text-[#8a8578]">
+                <span className="flex h-full w-full items-center justify-center px-4 text-center text-[13px] font-medium text-[#A9A294]">
                   Upload your creative · 1024×600 px — click to choose
                 </span>
               )}
               <input
                 type="file"
                 accept="image/*"
-                className="hidden"
+                aria-label="Upload your ad creative, 1024 by 600 pixels, PNG or JPG"
+                className="sr-only"
                 onChange={(e) => onCreative(e.target.files?.[0] ?? null)}
               />
             </label>
-            <div className="mt-2 flex justify-between text-[10px] font-bold tracking-[1.5px] text-[#8a8578]">
+            <div className="mt-2 flex justify-between text-[12px] font-bold tracking-[1.5px] text-[#A9A294]">
               <span>KOVIO UNIT-G1</span>
               <span>1024×600 PX</span>
             </div>
@@ -118,7 +119,11 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
       {kind === 'trial' && (
         <div className="text-[13px] leading-normal text-[#55524a]">No creative yet? Send the form anyway. We&apos;ll help you make one.</div>
       )}
-      {error && <div className="text-[13px] font-semibold text-[#b4532a]">{error}</div>}
+      {error && (
+        <div role="alert" className="text-[14px] font-semibold text-[#9a3E1F]">
+          {error}
+        </div>
+      )}
       <button
         type="submit"
         disabled={busy}
@@ -126,7 +131,7 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
       >
         {busy ? 'Sending…' : kind === 'trial' ? 'Claim my free trial →' : 'Talk to us →'}
       </button>
-      <div className="text-center text-[12px] text-[#8a8578]">We&apos;ll contact you within 48h. Zero spam.</div>
+      <div className="text-center text-[12px] text-[#5C564A]">We&apos;ll contact you within 48h. Zero spam.</div>
     </form>
   )
 }

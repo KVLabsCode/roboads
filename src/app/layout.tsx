@@ -32,7 +32,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${archivo.variable} ${grotesk.variable}`}>
-      <body className="bg-[#F4F1EA] text-[#141414] antialiased">{children}</body>
+      <body className="bg-[#F4F1EA] text-[#141414] antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:border-2 focus:border-[#141414] focus:bg-[#D97757] focus:px-5 focus:py-3 focus:text-[16px] focus:font-bold focus:text-[#141414]"
+        >
+          Skip to main content
+        </a>
+        {children}
+      </body>
     </html>
   )
 }
