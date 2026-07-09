@@ -36,11 +36,11 @@ const UNITS = [
 export default function FleetsPage() {
   return (
     <div className="mx-auto min-h-screen max-w-[1440px] bg-[#F4F1EA] text-[#141414]">
-      <Nav active="fleets" cta={{ href: '#contact', label: 'Talk to us →' }} />
+      <Nav active="fleets" />
 
       <main id="main">
       {/* hero */}
-      <div className="grid grid-cols-1 items-center gap-12 px-5 pb-16 pt-[72px] min-[900px]:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:px-10">
+      <div className="grid grid-cols-1 items-center gap-12 px-5 pb-10 pt-10 md:pb-16 md:pt-[72px] min-[900px]:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:px-10">
         <div className="flex min-w-0 flex-col gap-6">
           <div className="inline-flex self-start rounded-full bg-[#141414] px-3.5 py-[7px] text-[12px] font-bold tracking-[1.5px] text-[#D97757]">
             FOR OEMS &amp; FLEET OPERATORS
@@ -53,10 +53,10 @@ export default function FleetsPage() {
             interaction into revenue, paid out automatically.
           </p>
           <div className="flex flex-wrap gap-3.5">
-            <a href="#contact" className="rounded-full bg-[#141414] px-[30px] py-4 text-[16px] font-bold text-[#F4F1EA] no-underline">
+            <a href="#contact" className="rounded-full bg-[#141414] px-[30px] py-4 text-center text-[16px] font-bold text-[#F4F1EA] no-underline max-md:w-full">
               Connect my fleet →
             </a>
-            <a href="#how" className="rounded-full border-2 border-[#141414] px-7 py-3.5 text-[16px] font-bold no-underline">
+            <a href="#how" className="rounded-full border-2 border-[#141414] px-7 py-3.5 text-center text-[16px] font-bold no-underline max-md:w-full">
               How it works
             </a>
           </div>
@@ -65,7 +65,7 @@ export default function FleetsPage() {
         <div
           role="img"
           aria-label="Terminal demo: running kovio connect fleet links the SDK to the perception stack, connects the ad exchange, readies the settlement account — the fleet is now earning"
-          className="min-w-0 rounded-[20px] border-2 border-[#141414] bg-[#141414] p-7 font-mono text-[14.5px] leading-loose text-[#F4F1EA] shadow-[8px_8px_0_#D97757]"
+          className="min-w-0 rounded-[20px] border-2 border-[#141414] bg-[#141414] p-5 font-mono text-[13px] leading-loose text-[#F4F1EA] shadow-[8px_8px_0_#D97757] [overflow-wrap:anywhere] md:p-7 md:text-[14.5px]"
         >
           <div aria-hidden="true">
           <div className="mb-[18px] flex gap-2">
@@ -99,7 +99,7 @@ export default function FleetsPage() {
       </div>
 
       {/* how it works */}
-      <div id="how" className="px-5 py-[72px] md:px-10">
+      <div id="how" className="px-5 py-12 md:px-10 md:py-[72px]">
         <div className="mb-3 text-[13px] font-bold tracking-[2px] text-[#141414]">HOW IT WORKS</div>
         <h2 className="m-0 mb-10 font-display text-[30px] uppercase tracking-[-1px] min-[900px]:text-[44px]">
           One integration. Every robot earns.
@@ -116,9 +116,9 @@ export default function FleetsPage() {
       </div>
 
       {/* why */}
-      <div className="px-5 pb-[72px] md:px-10">
+      <div className="px-5 pb-12 md:px-10 md:pb-[72px]">
         <div className="grid grid-cols-1 items-stretch gap-5 min-[900px]:grid-cols-2">
-          <div className="flex flex-col gap-4 rounded-[20px] border-2 border-[#141414] bg-[#D97757] p-9">
+          <div className="flex flex-col gap-4 rounded-[20px] border-2 border-[#141414] bg-[#D97757] p-6 md:p-9">
             <div className="text-[12px] font-bold tracking-[2px]">THE PROBLEM</div>
             <div className="font-display text-[30px] uppercase leading-[1.05]">
               Robots are expensive. Attention is free money you&apos;re leaving out.
@@ -128,7 +128,7 @@ export default function FleetsPage() {
               generates a dollar. That&apos;s inventory with no economic layer behind it.
             </p>
           </div>
-          <div className="flex flex-col gap-4 rounded-[20px] border-2 border-[#141414] bg-[#141414] p-9 text-[#F4F1EA]">
+          <div className="flex flex-col gap-4 rounded-[20px] border-2 border-[#141414] bg-[#141414] p-6 md:p-9 text-[#F4F1EA]">
             <div className="text-[12px] font-bold tracking-[2px] text-[#D97757]">WITH KOVIO</div>
             <div className="font-display text-[30px] uppercase leading-[1.05]">
               Earnings from day one. A reason to deploy more robots.
@@ -142,7 +142,7 @@ export default function FleetsPage() {
       </div>
 
       {/* operator dashboard */}
-      <div className="px-5 pb-[72px] md:px-10">
+      <div className="px-5 pb-12 md:px-10 md:pb-[72px]">
         <div className="grid grid-cols-1 items-center gap-12 min-[900px]:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
           <div
             role="img"

@@ -28,11 +28,11 @@ const STEPS = [
 export default function HomePage() {
   return (
     <div className="mx-auto min-h-screen max-w-[1440px] bg-[#F4F1EA] text-[#141414]">
-      <Nav active="home" cta={{ href: '#form', label: 'Free trial →' }} />
+      <Nav active="home" />
 
       <main id="main">
       {/* hero */}
-      <div className="grid grid-cols-1 items-center gap-12 px-5 pb-14 pt-16 min-[900px]:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:px-10">
+      <div className="grid grid-cols-1 items-center gap-12 px-5 pb-10 pt-10 md:pb-14 md:pt-16 min-[900px]:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:px-10">
         <div className="flex min-w-0 flex-col gap-6">
           <div className="inline-flex items-center gap-2 self-start rounded-full bg-[#141414] px-3.5 py-[7px] text-[12px] font-bold tracking-[1.5px] text-[#D97757]">
             ● LIVE ON THE STREETS OF SF
@@ -45,10 +45,10 @@ export default function HomePage() {
             every single interaction actually happened.
           </p>
           <div className="flex flex-wrap gap-3.5">
-            <a href="#form" className="rounded-full bg-[#141414] px-[30px] py-4 text-[16px] font-bold text-[#F4F1EA] no-underline">
+            <a href="#form" className="rounded-full bg-[#141414] px-[30px] py-4 text-center text-[16px] font-bold text-[#F4F1EA] no-underline max-md:w-full">
               Put my ad on a robot →
             </a>
-            <Link href="/fleets" className="rounded-full border-2 border-[#141414] px-7 py-3.5 text-[16px] font-bold no-underline">
+            <Link href="/fleets" className="rounded-full border-2 border-[#141414] px-7 py-3.5 text-center text-[16px] font-bold no-underline max-md:w-full">
               Robotic fleets →
             </Link>
           </div>
@@ -66,7 +66,7 @@ export default function HomePage() {
       <Marquee />
 
       {/* how it works */}
-      <div className="px-5 py-[72px] md:px-10">
+      <div className="px-5 py-12 md:px-10 md:py-[72px]">
         <div className="mb-3 text-[13px] font-bold tracking-[2px] text-[#141414]">HOW IT WORKS</div>
         <h2 className="m-0 mb-10 font-display text-[30px] uppercase tracking-[-1px] min-[900px]:text-[44px]">Stupidly simple.</h2>
         <div className="grid grid-cols-1 gap-5 min-[900px]:grid-cols-3">
@@ -82,7 +82,7 @@ export default function HomePage() {
 
       {/* two audiences */}
       <div className="grid grid-cols-1 gap-5 px-5 pb-[72px] min-[900px]:grid-cols-2 md:px-10">
-        <div className="flex flex-col gap-4 rounded-[20px] border-2 border-[#141414] bg-[#D97757] p-9">
+        <div className="flex flex-col gap-4 rounded-[20px] border-2 border-[#141414] bg-[#D97757] p-6 md:p-9">
           <div className="text-[12px] font-bold tracking-[2px]">FOR BRANDS</div>
           <div className="font-display text-[32px] uppercase leading-[1.05]">Buy attention nobody can skip.</div>
           <p className="m-0 text-[16px] leading-normal text-[#141414]">
@@ -93,7 +93,7 @@ export default function HomePage() {
             For brands →
           </Link>
         </div>
-        <div className="flex flex-col gap-4 rounded-[20px] border-2 border-[#141414] bg-[#141414] p-9 text-[#F4F1EA]">
+        <div className="flex flex-col gap-4 rounded-[20px] border-2 border-[#141414] bg-[#141414] p-6 md:p-9 text-[#F4F1EA]">
           <div className="text-[12px] font-bold tracking-[2px] text-[#D97757]">FOR OEMS &amp; FLEETS</div>
           <div className="font-display text-[32px] uppercase leading-[1.05]">Your robots, finally earning.</div>
           <p className="m-0 text-[16px] leading-normal text-[#F4F1EA]">

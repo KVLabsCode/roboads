@@ -54,7 +54,7 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
 
   if (sub) {
     return (
-      <div role="status" className="flex flex-col items-start gap-3.5 rounded-[20px] bg-[#F4F1EA] p-10 text-[#141414]">
+      <div role="status" className="flex flex-col items-start gap-3.5 rounded-[20px] bg-[#F4F1EA] p-6 text-[#141414] md:p-10">
         <div className="font-display text-[34px] uppercase">{kind === 'trial' ? "You're in." : 'Talk soon.'}{' '}<span aria-hidden="true">🤖</span></div>
         <p className="m-0 text-[16px] leading-normal text-[#141414]">
           {kind === 'trial'
@@ -66,7 +66,7 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
   }
 
   return (
-    <form onSubmit={submit} className="flex flex-col gap-4 rounded-[20px] bg-[#F4F1EA] p-8 text-[#141414]">
+    <form onSubmit={submit} className="flex flex-col gap-4 rounded-[20px] bg-[#F4F1EA] p-5 text-[#141414] md:p-8">
       <label className={labelCls}>
         Name
         <input name="name" required placeholder="Ada Kovio" className={inputCls} />

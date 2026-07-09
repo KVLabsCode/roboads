@@ -1,21 +1,21 @@
 import Link from 'next/link'
 
 // Shared top nav + footer for the 3-page site. Active page gets the amber
-// underline (plus aria-current for screen readers); the CTA pill anchors to
-// the page's own form.
-export function Nav({ active, cta }: { active: 'home' | 'brands' | 'fleets'; cta: { href: string; label: string } }) {
+// underline (plus aria-current for screen readers). No CTA pill in the nav —
+// it wrapped awkwardly on phones; each page's hero and form carry the CTAs.
+export function Nav({ active }: { active: 'home' | 'brands' | 'fleets' }) {
   const link = 'no-underline font-semibold'
   const activeCls = 'border-b-[3px] border-[#D97757] pb-[2px]'
   return (
     <header>
       <nav
         aria-label="Main"
-        className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 border-b-2 border-[#141414] px-5 py-4 md:px-10 md:py-5"
+        className="flex items-center justify-between gap-x-4 border-b-2 border-[#141414] px-5 py-4 md:px-10 md:py-5"
       >
-        <Link href="/" className="font-display text-[22px] tracking-[-0.5px] no-underline" aria-label="Kovio home">
+        <Link href="/" className="font-display text-[20px] tracking-[-0.5px] no-underline md:text-[22px]" aria-label="Kovio home">
           KOVIO<span className="align-super text-[12px]" aria-hidden="true">®</span>
         </Link>
-        <div className="flex gap-7 text-[15px]">
+        <div className="flex gap-5 text-[15px] md:gap-7">
           <Link
             href="/brands"
             aria-current={active === 'brands' ? 'page' : undefined}
@@ -31,12 +31,6 @@ export function Nav({ active, cta }: { active: 'home' | 'brands' | 'fleets'; cta
             Robotic fleets
           </Link>
         </div>
-        <a
-          href={cta.href}
-          className="rounded-full border-2 border-[#141414] bg-[#D97757] px-[22px] py-[10px] text-[15px] font-bold no-underline shadow-[3px_3px_0_#141414]"
-        >
-          {cta.label}
-        </a>
       </nav>
     </header>
   )

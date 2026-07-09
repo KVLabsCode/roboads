@@ -21,11 +21,11 @@ const TRIAL_STEPS = [
 export default function BrandsPage() {
   return (
     <div className="mx-auto min-h-screen max-w-[1440px] bg-[#F4F1EA] text-[#141414]">
-      <Nav active="brands" cta={{ href: '#form', label: 'Free trial →' }} />
+      <Nav active="brands" />
 
       <main id="main">
       {/* hero */}
-      <div className="flex max-w-[900px] flex-col gap-6 px-5 pb-14 pt-[72px] md:px-10">
+      <div className="flex max-w-[900px] flex-col gap-6 px-5 pb-10 pt-10 md:pb-14 md:pt-12 md:px-10 md:pt-[72px]">
         <div className="inline-flex self-start rounded-full bg-[#141414] px-3.5 py-[7px] text-[12px] font-bold tracking-[1.5px] text-[#D97757]">
           FOR BRANDS
         </div>
@@ -37,17 +37,17 @@ export default function BrandsPage() {
           screen and out loud, and you only pay when someone actually engages.
         </p>
         <div className="flex flex-wrap gap-3.5">
-          <a href="#form" className="rounded-full bg-[#141414] px-[30px] py-4 text-[16px] font-bold text-[#F4F1EA] no-underline">
+          <a href="#form" className="rounded-full bg-[#141414] px-[30px] py-4 text-center text-[16px] font-bold text-[#F4F1EA] no-underline max-md:w-full">
             Start a free trial →
           </a>
-          <a href="#what-you-get" className="rounded-full border-2 border-[#141414] px-7 py-3.5 text-[16px] font-bold no-underline">
+          <a href="#what-you-get" className="rounded-full border-2 border-[#141414] px-7 py-3.5 text-center text-[16px] font-bold no-underline max-md:w-full">
             What you get
           </a>
         </div>
       </div>
 
       {/* comparison */}
-      <div className="px-5 pb-[72px] pt-4 md:px-10">
+      <div className="px-5 pb-12 pt-2 md:pb-[72px] md:pt-4 md:px-10">
         <div className="grid grid-cols-1 gap-5 min-[900px]:grid-cols-3">
           <div className="flex flex-col gap-3 rounded-2xl border-2 border-[#8a8578] bg-white p-7">
             <div className="text-[12px] font-bold tracking-[2px] text-[#141414]">BILLBOARDS</div>
@@ -122,7 +122,7 @@ export default function BrandsPage() {
       </div>
 
       {/* voice personalities */}
-      <div className="px-5 pt-[72px] md:px-10">
+      <div className="px-5 pt-12 md:px-10 md:pt-[72px]">
         <div className="grid grid-cols-1 items-center gap-12 min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
           <div className="flex min-w-0 flex-col gap-5">
             <div className="text-[13px] font-bold tracking-[2px] text-[#141414]">VOICE PERSONALITY</div>
@@ -142,7 +142,7 @@ export default function BrandsPage() {
       </div>
 
       {/* dashboard */}
-      <div className="px-5 pt-[72px] md:px-10">
+      <div className="px-5 pt-12 md:px-10 md:pt-[72px]">
         <div className="grid grid-cols-1 items-center gap-12 min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
           <div className="flex min-w-0 flex-col gap-5">
             <div className="text-[13px] font-bold tracking-[2px] text-[#141414]">YOUR DASHBOARD</div>
@@ -214,7 +214,7 @@ export default function BrandsPage() {
       </div>
 
       {/* trial steps */}
-      <div className="px-5 pb-[72px] pt-[72px] md:px-10">
+      <div className="px-5 pb-[72px] pt-12 md:px-10 md:pt-[72px]">
         <div className="mb-3 text-[13px] font-bold tracking-[2px] text-[#141414]">YOUR FREE TRIAL</div>
         <h2 className="m-0 mb-10 font-display text-[30px] uppercase tracking-[-1px] min-[900px]:text-[44px]">Form to street in days.</h2>
         <div className="grid grid-cols-1 gap-5 min-[900px]:grid-cols-4">
