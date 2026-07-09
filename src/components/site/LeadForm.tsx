@@ -56,7 +56,7 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
     return (
       <div role="status" className="flex flex-col items-start gap-3.5 rounded-[20px] bg-[#F4F1EA] p-10 text-[#141414]">
         <div className="font-display text-[34px] uppercase">{kind === 'trial' ? "You're in." : 'Talk soon.'}{' '}<span aria-hidden="true">🤖</span></div>
-        <p className="m-0 text-[16px] leading-normal text-[#33302A]">
+        <p className="m-0 text-[16px] leading-normal text-[#141414]">
           {kind === 'trial'
             ? 'We got your details — check your inbox for a confirmation. A human (not a robot) will contact you within 48 hours to get your ad on the street.'
             : "We got your details — check your inbox for a confirmation. We'll reach out within 48 hours to talk SDK, revenue share, and a pilot for your fleet."}
@@ -88,7 +88,7 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
       ) : (
         <div className={labelCls}>
           <span>
-            Your creative <span className="font-medium text-[#4A4438]">1024×600 px, shown exactly as it&apos;ll appear on the robot</span>
+            Your creative <span className="font-medium text-[#141414]">1024×600 px, shown exactly as it&apos;ll appear on the robot</span>
           </span>
           <label
             className={`block w-full cursor-pointer overflow-hidden rounded-[14px] border-2 border-[#141414] transition-colors ${
@@ -112,7 +112,7 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
                   </svg>
                 </span>
                 <span className="text-[16px] font-bold text-[#141414]">Upload your creative</span>
-                <span className="text-[13px] font-medium text-[#4A4438]">PNG or JPG · 1024×600 px · click to choose a file</span>
+                <span className="text-[14px] font-medium text-[#141414]">PNG or JPG · 1024×600 px · click to choose a file</span>
               </span>
             )}
             <input
@@ -124,7 +124,7 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
             />
           </label>
           {preview && (
-            <div className="flex justify-between text-[12px] font-bold tracking-[1.5px] text-[#4A4438]">
+            <div className="flex justify-between text-[12px] font-bold tracking-[1.5px] text-[#141414]">
               <span>SHOWN ON KOVIO UNIT-G1</span>
               <span>1024×600 PX</span>
             </div>
@@ -133,7 +133,7 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
       )}
 
       {kind === 'trial' && (
-        <div className="text-[13px] leading-normal text-[#33302A]">No creative yet? Send the form anyway. We&apos;ll help you make one.</div>
+        <div className="text-[14px] leading-normal text-[#141414]">No creative yet? Send the form anyway. We&apos;ll help you make one.</div>
       )}
       {error && (
         <div role="alert" className="text-[14px] font-semibold text-[#9a3E1F]">
@@ -147,7 +147,7 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
       >
         {busy ? 'Sending…' : kind === 'trial' ? 'Claim my free trial →' : 'Talk to us →'}
       </button>
-      <div className="text-center text-[12px] text-[#4A4438]">We&apos;ll contact you within 48h. Zero spam.</div>
+      <div className="text-center text-[12px] text-[#141414]">We&apos;ll contact you within 48h. Zero spam.</div>
     </form>
   )
 }
