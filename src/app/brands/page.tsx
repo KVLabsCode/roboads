@@ -21,7 +21,7 @@ const TRIAL_STEPS = [
 export default function BrandsPage() {
   return (
     <div className="mx-auto min-h-screen max-w-[1440px] bg-[#F4F1EA] text-[#141414]">
-      <Nav active="brands" cta={{ href: \'#form\', label: \'Free trial →\' }} />
+      <Nav active="brands" cta={{ href: '#form', label: 'Free trial →' }} />
 
       <main id="main">
       {/* hero */}

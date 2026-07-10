@@ -36,7 +36,7 @@ const UNITS = [
 export default function FleetsPage() {
   return (
     <div className="mx-auto min-h-screen max-w-[1440px] bg-[#F4F1EA] text-[#141414]">
-      <Nav active="fleets" cta={{ href: \'#contact\', label: \'Talk to us →\' }} />
+      <Nav active="fleets" cta={{ href: '#contact', label: 'Talk to us →' }} />
 
       <main id="main">
       {/* hero */}
