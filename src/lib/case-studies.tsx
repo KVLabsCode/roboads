@@ -34,7 +34,7 @@ export interface CaseStudy {
   heroMetric: CaseMetric
   sections: CaseSection[]
   whatTheyGot: string[]
-  testimonial: { quote: string; name: string; title: string }
+  testimonial?: { quote: string; name: string; title: string }
   published: boolean
 }
 
@@ -47,18 +47,17 @@ export const CASE_STUDIES: CaseStudy[] = [
       'How a YC startup put its brand on a walking billboard in the busiest square in San Francisco, and outperformed digital advertising benchmarks by an order of magnitude.',
     youtubeId: 'mk7ivLbCYNc',
     theBrand:
-      'Slashy is a YC backed startup [one line on what Slashy does]. Like every early stage company, their challenge was simple: get noticed in the loudest market in the world, without burning a seed budget on ads people scroll past.',
+      'Slashy is a YC backed startup building The Intelligent Inbox. Like every early stage company, their challenge was simple: get noticed in the loudest market in the world, without burning a seed budget on ads people scroll past.',
     theCampaign:
-      "Kovio deployed a Unitree G1 humanoid robot into Union Square, San Francisco, carrying Slashy's creative on its chest screen with a QR code linking directly to [destination]. Slashy sent one creative file. Kovio handled everything else: deployment, operation, and measurement. No media buying. No guesswork about who saw it. The robot measures its own audience.",
+      "Kovio deployed a Unitree G1 humanoid robot into Union Square, San Francisco, carrying Slashy's creative on its chest screen with a QR code linking straight to Slashy. Slashy sent one creative file. Kovio handled everything else: deployment, operation, and measurement. No media buying. No guesswork about who saw it. The robot measures its own audience.",
     resultsIntro:
-      'Every number below was captured live by the robot’s onboard sensors, a 3D depth camera and LiDAR. These are verified humans in physical proximity, not modeled foot traffic estimates.',
-    // Metric values below are LIVE dashboard figures pulled from the Kovio
+      'The audience numbers below were captured live by the robot’s onboard sensors, a 3D depth camera and LiDAR. These are verified humans in physical proximity, not modeled foot traffic estimates. Figures counted from the campaign footage are labeled as such.',
+    // Sensor metrics below are LIVE dashboard figures pulled from the Kovio
     // production database (G1 street sessions, July 8 and July 10, 2026:
     // 266 unique verified passersby, 136 paused 3s+, 111 engaged 6s+,
     // 81 deep dwell 12s+, 52 close approaches, 207 minutes total).
-    // The two bracketed metrics (phones out, QR scans) have NO sensor source
-    // yet: they must be replaced with real figures, and every [bracket] in
-    // this entry resolved, before the published flag is switched on.
+    // Phones-out and QR scans have no sensor source: they are conservative
+    // counts from the campaign footage and are labeled that way on the card.
     heroMetric: { value: '51%', label: 'of passersby stopped', benchmark: 'static OOH has no equivalent' },
     metrics: [
       {
@@ -87,9 +86,14 @@ export const CASE_STUDIES: CaseStudy[] = [
         benchmark: 'No other ad format makes people walk toward it.',
       },
       {
-        value: '[n]',
+        value: '100+',
         label: 'Phones out, people filmed or photographed the robot',
-        benchmark: 'No other ad format gets filmed voluntarily. [count from campaign footage]',
+        benchmark: 'Counted from campaign footage. No other ad format gets filmed voluntarily.',
+      },
+      {
+        value: '10+',
+        label: 'QR scans straight from the sidewalk, a 3.8% scan rate',
+        benchmark: 'Counted from the activation. The average display ad CTR is 0.46%, open web programmatic runs 0.05 to 0.08%.',
       },
     ],
     sections: [
@@ -103,7 +107,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         heading: 'Against everything',
-        body: 'People took out their phones to capture the robot, unprompted. That is earned media compounding on top of paid media, and it is unique to this format. A billboard has never gone viral for existing.',
+        body: 'Over one hundred people took out their phones to capture the robot, unprompted. That is earned media compounding on top of paid media, and it is unique to this format. A billboard has never gone viral for existing.',
       },
     ],
     whatTheyGot: [
@@ -112,12 +116,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       'Campaign video and social ready footage',
       'Earned media from passersby posting the robot',
     ],
-    testimonial: {
-      quote: '[Quote from Harsha about the campaign]',
-      name: 'Harsha [last name]',
-      title: '[title], Slashy',
-    },
-    published: false,
+    published: true,
   },
 ]
 

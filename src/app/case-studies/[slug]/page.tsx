@@ -112,9 +112,9 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
         {/* what they got + testimonial */}
         <div className="grid grid-cols-1 gap-5 px-5 pb-12 min-[900px]:grid-cols-2 md:px-10 md:pb-[72px]">
-          <div className="flex flex-col gap-5 rounded-[20px] border-2 border-[#141414] bg-white p-7 md:p-9">
+          <div className={`flex flex-col gap-5 rounded-[20px] border-2 border-[#141414] bg-white p-7 md:p-9 ${c.testimonial ? '' : 'min-[900px]:col-span-2'}`}>
             <div className="text-[13px] font-bold tracking-[2px]">WHAT {c.brand.toUpperCase()} GOT</div>
-            <ul className="m-0 flex list-none flex-col gap-3.5 p-0 text-[16px]">
+            <ul className={`m-0 grid list-none gap-3.5 p-0 text-[16px] ${c.testimonial ? '' : 'min-[900px]:grid-cols-2'}`}>
               {c.whatTheyGot.map((t) => (
                 <li key={t} className="flex gap-3">
                   <span aria-hidden="true" className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full border-2 border-[#141414] bg-[#D97757] text-[12px] font-bold">
@@ -125,15 +125,17 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               ))}
             </ul>
           </div>
-          <figure className="m-0 flex flex-col justify-between gap-6 rounded-[20px] border-2 border-[#141414] bg-[#141414] p-7 text-[#F4F1EA] md:p-9">
-            <blockquote className="m-0 text-[20px] font-medium leading-[1.5] md:text-[22px]">
-              “{withPlaceholders(c.testimonial.quote)}”
-            </blockquote>
-            <figcaption className="text-[15px]">
-              <span className="font-bold">{withPlaceholders(c.testimonial.name)}</span>
-              <span className="text-[#F4F1EA] opacity-80"> · {withPlaceholders(c.testimonial.title)}</span>
-            </figcaption>
-          </figure>
+          {c.testimonial && (
+            <figure className="m-0 flex flex-col justify-between gap-6 rounded-[20px] border-2 border-[#141414] bg-[#141414] p-7 text-[#F4F1EA] md:p-9">
+              <blockquote className="m-0 text-[20px] font-medium leading-[1.5] md:text-[22px]">
+                “{withPlaceholders(c.testimonial.quote)}”
+              </blockquote>
+              <figcaption className="text-[15px]">
+                <span className="font-bold">{withPlaceholders(c.testimonial.name)}</span>
+                <span className="text-[#F4F1EA] opacity-80"> · {withPlaceholders(c.testimonial.title)}</span>
+              </figcaption>
+            </figure>
+          )}
         </div>
 
         {/* closing CTA */}
