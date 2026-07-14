@@ -86,9 +86,9 @@ export const CASE_STUDIES: CaseStudy[] = [
         benchmark: 'Try touching a billboard.',
       },
       {
-        value: '14',
-        label: 'QR scans from the sidewalk, 2.1% of verified viewers',
-        benchmark: 'The average display ad CTR is 0.46%, open web programmatic runs 0.05 to 0.08%.',
+        value: '110',
+        label: 'Engagements, real interactions with the robot',
+        benchmark: 'Waves, conversations, scans and selfies. The average display ad earns a 0.46% click rate and zero conversations.',
       },
     ],
     sections: [
