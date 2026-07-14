@@ -49,7 +49,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     theBrand:
       'Slashy is a YC backed startup building The Intelligent Inbox. Like every early stage company, their challenge was simple: get noticed in the loudest market in the world, without burning a seed budget on ads people scroll past.',
     theCampaign:
-      "Kovio deployed a Unitree G1 humanoid robot into Union Square, San Francisco, carrying Slashy's creative on its chest screen with a QR code linking straight to Slashy. Slashy sent one creative file. Kovio handled everything else: deployment, operation, and measurement. No media buying. No guesswork about who saw it. The robot measures its own audience.",
+      "Kovio deployed a Unitree G1 humanoid robot into Union Square, San Francisco, carrying Slashy's creative on its chest screen. Slashy sent one creative file. Kovio handled everything else: deployment, operation, and measurement. No media buying. No guesswork about who saw it. The robot measures its own audience.",
     resultsIntro:
       'Every number below was detected live by the Kovio SDK running on the robot, fusing its 3D depth camera and LiDAR. Verified humans in physical proximity, streamed straight to the campaign dashboard, not modeled foot traffic estimates.',
     // Metric values below are the LIVE figures from Slashy's campaign
