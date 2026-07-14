@@ -51,49 +51,44 @@ export const CASE_STUDIES: CaseStudy[] = [
     theCampaign:
       "Kovio deployed a Unitree G1 humanoid robot into Union Square, San Francisco, carrying Slashy's creative on its chest screen with a QR code linking straight to Slashy. Slashy sent one creative file. Kovio handled everything else: deployment, operation, and measurement. No media buying. No guesswork about who saw it. The robot measures its own audience.",
     resultsIntro:
-      'The audience numbers below were captured live by the robot’s onboard sensors, a 3D depth camera and LiDAR. These are verified humans in physical proximity, not modeled foot traffic estimates. Figures counted from the campaign footage are labeled as such.',
-    // Sensor metrics below are LIVE dashboard figures pulled from the Kovio
-    // production database (G1 street sessions, July 8 and July 10, 2026:
-    // 266 unique verified passersby, 136 paused 3s+, 111 engaged 6s+,
-    // 81 deep dwell 12s+, 52 close approaches, 207 minutes total).
-    // Phones-out and QR scans have no sensor source: they are conservative
-    // counts from the campaign footage and are labeled that way on the card.
-    heroMetric: { value: '51%', label: 'of passersby stopped', benchmark: 'static OOH has no equivalent' },
+      'Every number below comes from the campaign dashboard, captured live by the robot’s onboard sensors, a 3D depth camera and LiDAR. These are verified humans in physical proximity, not modeled foot traffic estimates.',
+    // Metric values below are the LIVE figures from Slashy's campaign
+    // dashboard in the Kovio production database (showcase "Slashy 1st
+    // Campaign", Union Square SF, 2 hours: 6,567 impressions, 660 attended,
+    // 413 views, 151 approaches, 110 engagements, 63 captures, 38 touches,
+    // 14 QR scans, 528 foot traffic per hour). Same numbers Slashy sees on
+    // their own dashboard.
+    heroMetric: { value: '6,567', label: 'verified impressions in 2 hours', benchmark: 'billboards estimate, robots count' },
     metrics: [
       {
-        value: '266',
-        label: 'Verified impressions in 3.5 hours',
-        benchmark: 'Billboards estimate. Robots count every real person with LiDAR and depth vision.',
+        value: '6,567',
+        label: 'Verified impressions in 2 hours',
+        benchmark: 'Billboards estimate. The robot counts every real person with LiDAR and depth vision, 528 people per hour walked through its zone.',
       },
       {
-        value: '51%',
-        label: 'Stop rate, 136 of 266 passersby paused',
-        benchmark: 'Static OOH has no equivalent. Nobody stops for a billboard.',
+        value: '660',
+        label: 'Verified looks, a 10% attention rate',
+        benchmark: 'On device vision confirmed 660 people actually looked. The average display ad gets glanced at for under one second.',
       },
       {
-        value: '12.1s',
-        label: 'Average deep dwell, 81 people held 12 seconds or more',
-        benchmark: '5.32 seconds is considered exceptional for place based OOH (Limited Space eye tracking study).',
+        value: '151',
+        label: 'Approaches, people walked toward the robot',
+        benchmark: 'No other ad format makes people move toward it. Static OOH has no equivalent.',
       },
       {
-        value: '111',
-        label: 'Engaged viewers, locked in for 6 seconds or more',
-        benchmark: 'The average display ad gets glanced at for under one second.',
-      },
-      {
-        value: '52',
-        label: 'Close approaches, people walked up within arm’s reach',
-        benchmark: 'No other ad format makes people walk toward it.',
-      },
-      {
-        value: '100+',
+        value: '63',
         label: 'Phones out, people filmed or photographed the robot',
-        benchmark: 'Counted from campaign footage. No other ad format gets filmed voluntarily.',
+        benchmark: 'No other ad format gets filmed voluntarily. Every post extended the campaign for free.',
       },
       {
-        value: '10+',
-        label: 'QR scans straight from the sidewalk, a 3.8% scan rate',
-        benchmark: 'Counted from the activation. The average display ad CTR is 0.46%, open web programmatic runs 0.05 to 0.08%.',
+        value: '38',
+        label: 'Touches, people physically interacted with the robot',
+        benchmark: 'Try touching a billboard.',
+      },
+      {
+        value: '14',
+        label: 'QR scans from the sidewalk, 2.1% of verified viewers',
+        benchmark: 'The average display ad CTR is 0.46%, open web programmatic runs 0.05 to 0.08%.',
       },
     ],
     sections: [
@@ -107,7 +102,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         heading: 'Against everything',
-        body: 'Over one hundred people took out their phones to capture the robot, unprompted. That is earned media compounding on top of paid media, and it is unique to this format. A billboard has never gone viral for existing.',
+        body: 'Sixty three people took out their phones to capture the robot, unprompted, and 38 walked up and touched it. That is earned media compounding on top of paid media, and it is unique to this format. A billboard has never gone viral for existing.',
       },
     ],
     whatTheyGot: [
