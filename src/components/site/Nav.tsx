@@ -8,7 +8,7 @@ export function Nav({
   active,
   cta,
 }: {
-  active: 'home' | 'brands' | 'fleets'
+  active: 'home' | 'brands' | 'fleets' | 'cases'
   cta?: { href: string; label: string }
 }) {
   const link = 'no-underline font-semibold'
@@ -22,7 +22,7 @@ export function Nav({
         <Link href="/" className="font-display text-[20px] tracking-[-0.5px] no-underline md:text-[22px]" aria-label="Kovio home">
           KOVIO<span className="align-super text-[12px]" aria-hidden="true">®</span>
         </Link>
-        <div className="flex gap-5 text-[15px] md:gap-7">
+        <div className="flex flex-wrap gap-x-4 gap-y-1 text-[14px] md:gap-7 md:text-[15px]">
           <Link
             href="/brands"
             aria-current={active === 'brands' ? 'page' : undefined}
@@ -36,6 +36,13 @@ export function Nav({
             className={`${link} ${active === 'fleets' ? activeCls : ''}`}
           >
             Robotic fleets
+          </Link>
+          <Link
+            href="/case-studies"
+            aria-current={active === 'cases' ? 'page' : undefined}
+            className={`${link} ${active === 'cases' ? activeCls : ''}`}
+          >
+            Case studies
           </Link>
         </div>
         {cta && (
@@ -63,6 +70,9 @@ export function Footer({ cta }: { cta: { href: string; label: string } }) {
         </Link>
         <Link href="/fleets" className="text-[#F4F1EA] no-underline">
           ROBOTIC FLEETS
+        </Link>
+        <Link href="/case-studies" className="text-[#F4F1EA] no-underline">
+          CASE STUDIES
         </Link>
         <a href={cta.href} className="text-[#E9A184] no-underline">
           {cta.label}
