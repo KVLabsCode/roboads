@@ -51,7 +51,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     theCampaign:
       "Kovio deployed a Unitree G1 humanoid robot into Union Square, San Francisco, carrying Slashy's creative on its chest screen with a QR code linking straight to Slashy. Slashy sent one creative file. Kovio handled everything else: deployment, operation, and measurement. No media buying. No guesswork about who saw it. The robot measures its own audience.",
     resultsIntro:
-      'Every number below comes from the campaign dashboard, captured live by the robot’s onboard sensors, a 3D depth camera and LiDAR. These are verified humans in physical proximity, not modeled foot traffic estimates.',
+      'Every number below was detected live by the Kovio SDK running on the robot, fusing its 3D depth camera and LiDAR. Verified humans in physical proximity, streamed straight to the campaign dashboard, not modeled foot traffic estimates.',
     // Metric values below are the LIVE figures from Slashy's campaign
     // dashboard in the Kovio production database (showcase "Slashy 1st
     // Campaign", Union Square SF, 2 hours: 6,567 impressions, 660 attended,
@@ -63,12 +63,12 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         value: '6,567',
         label: 'Verified impressions in 2 hours',
-        benchmark: 'Billboards estimate. The robot counts every real person with LiDAR and depth vision, 528 people per hour walked through its zone.',
+        benchmark: 'Billboards estimate. The Kovio SDK counts every real person with LiDAR and depth vision, 528 people per hour walked through its zone.',
       },
       {
         value: '660',
         label: 'Verified looks, a 10% attention rate',
-        benchmark: 'On device vision confirmed 660 people actually looked. The average display ad gets glanced at for under one second.',
+        benchmark: 'The SDK’s on device vision confirmed 660 people actually looked. The average display ad gets glanced at for under one second.',
       },
       {
         value: '151',
