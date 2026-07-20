@@ -113,6 +113,79 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     published: true,
   },
+  {
+    slug: 'smallest-ai-union-square',
+    brand: 'Smallest AI',
+    headline: 'Smallest AI x Kovio: A voice AI brand walks into Union Square',
+    subhead:
+      'How a voice AI startup put its brand on a humanoid robot in the heart of San Francisco, and turned two hours of foot traffic into thousands of verified impressions.',
+    youtubeId: 'Uu4avB_IulY',
+    theBrand:
+      'Smallest AI is a voice AI startup building hyper realistic, low latency speech models. Their product is a voice, so the usual playbook of silent banner ads was never going to fit. They needed a format people could actually stop, watch, and hear.',
+    theCampaign:
+      "Kovio deployed a Unitree G1 humanoid robot into Union Square, San Francisco, carrying Smallest AI's creative on its chest screen. Smallest AI sent one creative file. Kovio handled everything else: deployment, operation, and measurement. No media buying. No guesswork about who saw it. The robot measures its own audience.",
+    resultsIntro:
+      'Every number below was detected live by the Kovio SDK running on the robot, fusing its 3D depth camera and LiDAR. Verified humans in physical proximity, streamed straight to the campaign dashboard, not modeled foot traffic estimates.',
+    // Metric values below are the LIVE figures from Smallest AI's campaign
+    // dashboard in the Kovio production database (showcase "Smallest AI",
+    // Union Square SF, 2 hours: 5,666 impressions, 413 attended, 73 captures,
+    // 46 approaches, 45 touches, 37 engagements, 19 QR scans, 493 foot
+    // traffic per hour). Same numbers Smallest AI sees on their dashboard.
+    heroMetric: { value: '5,666', label: 'verified impressions in 2 hours', benchmark: 'billboards estimate, robots count' },
+    metrics: [
+      {
+        value: '5,666',
+        label: 'Verified impressions in 2 hours',
+        benchmark: 'Billboards estimate. The Kovio SDK counts every real person with LiDAR and depth vision, 493 people per hour walked through its zone.',
+      },
+      {
+        value: '413',
+        label: 'Verified looks, a 7.3% attention rate',
+        benchmark: 'The SDK’s on device vision confirmed 413 people actually looked. The average display ad gets glanced at for under one second.',
+      },
+      {
+        value: '73',
+        label: 'Phones out, people filmed or photographed the robot',
+        benchmark: 'No other ad format gets filmed voluntarily. Every post extended the campaign for free.',
+      },
+      {
+        value: '46',
+        label: 'Approaches, people walked toward the robot',
+        benchmark: 'No other ad format makes people move toward it. Static OOH has no equivalent.',
+      },
+      {
+        value: '45',
+        label: 'Touches, people physically interacted with the robot',
+        benchmark: 'Try touching a billboard.',
+      },
+      {
+        value: '37',
+        label: 'Engagements, real interactions with the robot',
+        benchmark: 'Waves, conversations and selfies. The average display ad earns a 0.46% click rate and zero conversations.',
+      },
+    ],
+    sections: [
+      {
+        heading: 'Against digital ads',
+        body: 'The average display ad earns a 0.46% click rate, and most of the open web performs far worse, 0.05 to 0.08% for programmatic. Consumers have trained themselves to not see banners. Nobody has trained themselves to ignore a humanoid robot walking through Union Square.',
+      },
+      {
+        heading: 'Against billboards',
+        body: 'Out of home already wins on attention. Nielsen research puts OOH brand recall at 47% versus 35% for digital media. A robot inherits that recall advantage, then adds three things a billboard will never have: it moves to where the audience is, it counts every real impression with its own sensors, and it gets filmed. Every person who posted the robot extended Smallest AI’s campaign into feeds Kovio never paid for.',
+      },
+      {
+        heading: 'Against everything',
+        body: 'Seventy three people took out their phones to capture the robot, unprompted, and 45 walked up and touched it. That is earned media compounding on top of paid media, and it is unique to this format. A billboard has never gone viral for existing.',
+      },
+    ],
+    whatTheyGot: [
+      'A live activation in premium San Francisco foot traffic',
+      'Sensor verified metrics in a real time dashboard',
+      'Campaign video and social ready footage',
+      'Earned media from passersby posting the robot',
+    ],
+    published: true,
+  },
 ]
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
