@@ -10,7 +10,7 @@ const labelCls = 'flex flex-col gap-[7px] text-[14px] font-bold'
 // creative upload) or `fleet` (/fleets, with a fleet-size field). Posts
 // multipart to /api/lead, which stores the lead, uploads the creative, and
 // sends the acknowledgment + internal notification emails.
-export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; source: string }) {
+export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet' | 'agency'; source: string }) {
   const [sub, setSub] = useState(false)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
@@ -59,7 +59,9 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
         <p className="m-0 text-[16px] leading-normal text-[#141414]">
           {kind === 'trial'
             ? 'We got your details — check your inbox for a confirmation. A human (not a robot) will contact you within 48 hours to get your ad on the street.'
-            : "We got your details — check your inbox for a confirmation. We'll reach out within 48 hours to talk SDK, revenue share, and a pilot for your fleet."}
+            : kind === 'agency'
+              ? "We got your details — check your inbox for a confirmation. We'll come back within 48 hours with availability, specs and partner terms for your clients."
+              : "We got your details — check your inbox for a confirmation. We'll reach out within 48 hours to talk SDK, revenue share, and a pilot for your fleet."}
         </p>
       </div>
     )
@@ -73,14 +75,19 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet'; so
       </label>
       <label className={labelCls}>
         Work email
-        <input name="email" type="email" required placeholder={kind === 'trial' ? 'ada@brand.com' : 'robin@oem.com'} className={inputCls} />
+        <input name="email" type="email" required placeholder={kind === 'trial' ? 'ada@brand.com' : kind === 'agency' ? 'sam@agency.com' : 'robin@oem.com'} className={inputCls} />
       </label>
       <label className={labelCls}>
         Company
-        <input name="company" required placeholder={kind === 'trial' ? 'Your brand' : 'Your robotics company'} className={inputCls} />
+        <input name="company" required placeholder={kind === 'trial' ? 'Your brand' : kind === 'agency' ? 'Your agency' : 'Your robotics company'} className={inputCls} />
       </label>
 
-      {kind === 'fleet' ? (
+      {kind === 'agency' ? (
+        <label className={labelCls}>
+          Client or campaign brief
+          <input name="fleet" required placeholder="e.g. retail client, 2 week SF activation in Q4" className={inputCls} />
+        </label>
+      ) : kind === 'fleet' ? (
         <label className={labelCls}>
           Fleet size &amp; type
           <input name="fleet" required placeholder="e.g. 40 humanoids, 200 delivery bots" className={inputCls} />

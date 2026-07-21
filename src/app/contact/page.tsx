@@ -3,13 +3,13 @@ import { Nav, Footer } from '@/components/site/Nav'
 import ContactSwitcher from '@/components/site/ContactSwitcher'
 
 export const metadata: Metadata = {
-  title: 'Contact Kovio: Brands and robot fleets',
+  title: 'Contact Kovio: Brands, robot fleets and OOH agencies',
   description:
-    'Talk to Kovio. Brands get their creative on a real robot in San Francisco, fleets get the SDK and a revenue share. We reply within 48 hours.',
+    'Talk to Kovio. Brands get their creative on a real robot in San Francisco, fleets get the SDK and a revenue share, agencies get new OOH inventory. We reply within 48 hours.',
 }
 
 export default function ContactPage({ searchParams }: { searchParams: { type?: string } }) {
-  const initial = searchParams.type === 'fleet' ? 'fleet' : 'brand'
+  const initial = searchParams.type === 'fleet' ? 'fleet' : searchParams.type === 'agency' ? 'agency' : 'brand'
 
   return (
     <div className="mx-auto min-h-screen max-w-[1440px] bg-[#F4F1EA] text-[#141414]">

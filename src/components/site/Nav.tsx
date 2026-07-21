@@ -8,7 +8,7 @@ export function Nav({
   active,
   cta,
 }: {
-  active: 'home' | 'brands' | 'fleets' | 'cases'
+  active: 'home' | 'brands' | 'fleets' | 'cases' | 'agencies'
   cta?: { href: string; label: string }
 }) {
   const link = 'no-underline font-semibold'
@@ -36,6 +36,13 @@ export function Nav({
             className={`${link} ${active === 'fleets' ? activeCls : ''}`}
           >
             Robotic fleets
+          </Link>
+          <Link
+            href="/agencies"
+            aria-current={active === 'agencies' ? 'page' : undefined}
+            className={`${link} ${active === 'agencies' ? activeCls : ''}`}
+          >
+            Agencies
           </Link>
           <Link
             href="/case-studies"
@@ -70,6 +77,9 @@ export function Footer({ cta }: { cta: { href: string; label: string } }) {
         </Link>
         <Link href="/fleets" className="text-[#F4F1EA] no-underline">
           ROBOTIC FLEETS
+        </Link>
+        <Link href="/agencies" className="text-[#F4F1EA] no-underline">
+          AGENCIES
         </Link>
         <Link href="/case-studies" className="text-[#F4F1EA] no-underline">
           CASE STUDIES

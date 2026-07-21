@@ -42,16 +42,20 @@ function shell(inner: string) {
 </div>`
 }
 
-function ackHtml(kind: 'trial' | 'fleet', name: string) {
+function ackHtml(kind: 'trial' | 'fleet' | 'agency', name: string) {
   const first = esc(name.split(' ')[0] || name)
   const headline =
     kind === 'trial'
       ? 'THANKS FOR SIGNING UP FOR THE FREE TRIAL — WE&rsquo;LL KEEP YOU UPDATED!'
-      : 'WE GOT YOUR FLEET DETAILS — TALK SOON!'
+      : kind === 'agency'
+        ? 'WE GOT YOUR BRIEF — LET&rsquo;S PUT YOUR CLIENTS ON ROBOTS!'
+        : 'WE GOT YOUR FLEET DETAILS — TALK SOON!'
   const body =
     kind === 'trial'
       ? `Hey ${first} — your spot is locked in. A human (not a robot) will contact you within 48 hours to fit your creative to the robot, write the voice line with you, and get your ad on the streets of San Francisco.`
-      : `Hey ${first} — we received your fleet details. We&rsquo;ll reach out within 48 hours to walk you through the SDK, the revenue share, and a pilot for your fleet.`
+      : kind === 'agency'
+        ? `Hey ${first} — we received your details. We&rsquo;ll come back within 48 hours with availability, creative specs, sensor verified measurement reporting, and partner terms for your clients.`
+        : `Hey ${first} — we received your fleet details. We&rsquo;ll reach out within 48 hours to walk you through the SDK, the revenue share, and a pilot for your fleet.`
   return shell(`
       <tr><td style="font-weight:900;font-size:20px;letter-spacing:-0.5px;color:#141414;padding-bottom:20px">KOVIO<span style="font-size:10px;vertical-align:super">&reg;</span></td></tr>
       <tr><td style="font-size:24px;line-height:1.25;font-weight:800;color:#141414;text-transform:uppercase;padding-bottom:14px">${headline}</td></tr>
@@ -70,7 +74,7 @@ function notifyHtml(kind: string, fields: Array<[string, string]>) {
     )
     .join('')
   return shell(`
-      <tr><td style="font-weight:900;font-size:18px;color:#141414;padding-bottom:16px">🔥 New ${kind === 'trial' ? 'FREE-TRIAL' : 'FLEET'} lead</td></tr>
+      <tr><td style="font-weight:900;font-size:18px;color:#141414;padding-bottom:16px">🔥 New ${kind === 'trial' ? 'FREE-TRIAL' : kind === 'agency' ? 'OOH AGENCY' : 'FLEET'} lead</td></tr>
       <tr><td><table role="presentation" cellpadding="0" cellspacing="0">${rows}</table></td></tr>
       <tr><td style="padding-top:20px;font-size:12px;color:#8a8578">Full list: app.kovio.dev/admin &middot; they got the acknowledgment email automatically.</td></tr>`)
 }
@@ -83,7 +87,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Bad request.' }, { status: 400 })
   }
 
-  const kind = fd.get('kind') === 'fleet' ? 'fleet' : 'trial'
+  const raw = fd.get('kind')
+  const kind = raw === 'fleet' ? 'fleet' : raw === 'agency' ? 'agency' : 'trial'
   const name = String(fd.get('name') ?? '').trim()
   const email = String(fd.get('email') ?? '').trim()
   const company = String(fd.get('company') ?? '').trim()
@@ -146,17 +151,17 @@ export async function POST(request: Request) {
   await Promise.all([
     sendEmail(
       email,
-      kind === 'trial' ? 'You’re in — Kovio free trial 🤖' : 'We got your fleet details — Kovio',
+      kind === 'trial' ? 'You’re in — Kovio free trial 🤖' : kind === 'agency' ? 'Robots for your clients — Kovio' : 'We got your fleet details — Kovio',
       ackHtml(kind, name)
     ),
     sendEmail(
       NOTIFY_TO,
-      `🔥 New ${kind === 'trial' ? 'free-trial' : 'fleet'} lead — ${company}`,
+      `🔥 New ${kind === 'trial' ? 'free-trial' : kind === 'agency' ? 'AGENCY' : 'fleet'} lead — ${company}`,
       notifyHtml(kind, [
         ['Name', name],
         ['Email', email],
         ['Company', company],
-        ['Fleet', fleet],
+        [kind === 'agency' ? 'Brief' : 'Fleet', fleet],
         ['Creative', creativeUrl],
         ['Page', source],
       ])
