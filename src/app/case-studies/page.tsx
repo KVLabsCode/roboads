@@ -45,7 +45,7 @@ export default function CaseStudiesPage() {
 
   return (
     <div className="mx-auto min-h-screen max-w-[1440px] bg-[#F4F1EA] text-[#141414]">
-      <Nav active="cases" cta={{ href: '/#form', label: 'Free trial →' }} />
+      <Nav active="cases" cta={{ href: '/contact', label: 'Contact us →' }} />
 
       <main id="main">
         <div className="flex max-w-[900px] flex-col gap-6 px-5 pb-10 pt-10 md:px-10 md:pb-14 md:pt-[72px]">
@@ -76,7 +76,7 @@ export default function CaseStudiesPage() {
         </div>
       </main>
 
-      <Footer cta={{ href: '/#form', label: 'FREE TRIAL' }} />
+      <Footer cta={{ href: '/contact', label: 'CONTACT US' }} />
     </div>
   )
 }

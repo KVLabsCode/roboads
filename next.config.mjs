@@ -8,7 +8,6 @@ const nextConfig = {
       { source: '/oem', destination: '/fleets', permanent: true },
       { source: '/platform', destination: '/', permanent: true },
       { source: '/docs', destination: '/', permanent: true },
-      { source: '/contact', destination: '/', permanent: true },
       { source: '/early-access', destination: '/', permanent: true },
     ]
   },

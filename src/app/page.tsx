@@ -28,7 +28,7 @@ const STEPS = [
 export default function HomePage() {
   return (
     <div className="mx-auto min-h-screen max-w-[1440px] bg-[#F4F1EA] text-[#141414]">
-      <Nav active="home" cta={{ href: '#form', label: 'Free trial →' }} />
+      <Nav active="home" cta={{ href: '/contact', label: 'Contact us →' }} />
 
       <main id="main">
       {/* hero */}
@@ -152,7 +152,7 @@ export default function HomePage() {
       </div>
 
       </main>
-      <Footer cta={{ href: '#form', label: 'FREE TRIAL' }} />
+      <Footer cta={{ href: '/contact', label: 'CONTACT US' }} />
     </div>
   )
 }
