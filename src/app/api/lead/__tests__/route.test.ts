@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { POST } from '../route'
+import { resetRateLimiter } from '@/lib/rate-limit'
 
 const realFetch = global.fetch
 const fetchMock = vi.fn()
@@ -27,6 +28,8 @@ function req(fields: Record<string, string>, headers: Record<string, string> = {
 }
 
 beforeEach(() => {
+  // The limiter is module-level state; each test starts with a clean window.
+  resetRateLimiter()
   fetchMock.mockReset()
   global.fetch = fetchMock as unknown as typeof fetch
   // RPC success by default.

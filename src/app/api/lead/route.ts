@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { sendEmail, emailStatus, type EmailStatus } from '@/lib/email'
+import { checkRateLimit, clientIp } from '@/lib/rate-limit'
 
 // Lead capture for the marketing site. Pipeline:
 //   1. optional creative image → Supabase storage (creatives/leads/*, an
@@ -104,6 +105,17 @@ function notifyHtml(kind: string, fields: Array<[string, string]>) {
 export async function POST(request: Request) {
   if (!isSameSite(request)) {
     return NextResponse.json({ error: 'Forbidden.' }, { status: 403 })
+  }
+
+  // App-layer rate limit: 5 submissions per IP per hour (per instance — see
+  // src/lib/rate-limit.ts for the honest limitation). The DB function
+  // rate-limits too; this stops floods before they cost an RPC round-trip.
+  const limit = checkRateLimit(clientIp(request))
+  if (!limit.allowed) {
+    return NextResponse.json(
+      { error: 'Too many submissions from your network — try again later.' },
+      { status: 429, headers: { 'retry-after': String(limit.retryAfterSeconds) } }
+    )
   }
 
   let fd: FormData
