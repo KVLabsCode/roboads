@@ -27,8 +27,8 @@ jobs:
         run: npm run build
       - name: Type check
         run: npx tsc --noEmit
-
-  # NO TEST STEP: this repo has no tests and no test runner (inventory 01 §4).
-  # Stated rather than silently omitted. First test added here should add the
-  # step; the lead-capture route in src/app/api/lead/route.ts is the place to
-  # start - it is public, unauthenticated, and writes to production.
+      - name: Test
+        # First tests landed 2026-08-28: vitest covering the lead-capture
+        # route's abuse defenses (honeypot, same-site check, length caps,
+        # happy path) in src/app/api/lead/__tests__/route.test.ts.
+        run: npm test
