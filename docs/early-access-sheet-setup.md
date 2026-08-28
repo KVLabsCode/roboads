@@ -1,3 +1,9 @@
+> **SUPERSEDED (2026-08-28).** This document describes the retired Web3Forms +
+> Google Sheets lead pipeline. Lead capture now posts to `/api/lead`, which
+> stores leads via the Supabase `kovio_submit_lead` RPC and sends emails
+> through Resend — see `src/app/api/lead/route.ts` and `.env.example`.
+> Kept for historical reference only; nothing below is wired up anymore.
+
 # Early Access → Google Sheet + confirmation email (no Google Cloud project)
 
 Each `/early-access` submission is sent **from the browser** to a **Google Apps
