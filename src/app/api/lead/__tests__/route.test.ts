@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { POST } from '../route'
+import { resetRateLimiter } from '@/lib/rate-limit'
 
 const realFetch = global.fetch
 const fetchMock = vi.fn()
@@ -27,6 +28,8 @@ function req(fields: Record<string, string>, headers: Record<string, string> = {
 }
 
 beforeEach(() => {
+  // The limiter is module-level state; each test starts with a clean window.
+  resetRateLimiter()
   fetchMock.mockReset()
   global.fetch = fetchMock as unknown as typeof fetch
   // RPC success by default.
@@ -42,7 +45,15 @@ describe('POST /api/lead', () => {
   it('silently succeeds on a filled honeypot without touching the DB or email', async () => {
     const res = await POST(req({ ...validFields, website: 'https://spam.biz' }))
     expect(res.status).toBe(200)
-    expect(await res.json()).toEqual({ ok: true })
+    // Decoy mirrors the real no-key response so bots can't spot the trap.
+    expect(await res.json()).toEqual({ ok: true, email: 'skipped' })
+    expect(fetchMock).not.toHaveBeenCalled()
+  })
+
+  it('honeypot decoy reports "sent" when email is configured, like a real submission', async () => {
+    process.env.RESEND_API_KEY = 'test-key'
+    const res = await POST(req({ ...validFields, website: 'https://spam.biz' }))
+    expect(await res.json()).toEqual({ ok: true, email: 'sent' })
     expect(fetchMock).not.toHaveBeenCalled()
   })
 
@@ -84,7 +95,7 @@ describe('POST /api/lead', () => {
   it('happy path stores the lead via kovio_submit_lead with the right args', async () => {
     const res = await POST(req(validFields, { origin: 'https://kovio.dev' }))
     expect(res.status).toBe(200)
-    expect(await res.json()).toEqual({ ok: true })
+    expect(await res.json()).toEqual({ ok: true, email: 'skipped' })
     // No creative and no RESEND_API_KEY → exactly one fetch: the RPC.
     expect(fetchMock).toHaveBeenCalledTimes(1)
     const [url, init] = fetchMock.mock.calls[0]
@@ -100,11 +111,43 @@ describe('POST /api/lead', () => {
     })
   })
 
-  it('sends the two best-effort emails when RESEND_API_KEY is set', async () => {
+  it('sends the two best-effort emails when RESEND_API_KEY is set and reports "sent"', async () => {
     process.env.RESEND_API_KEY = 'test-key'
-    await POST(req(validFields))
+    fetchMock.mockImplementation(async (url: unknown) =>
+      String(url).includes('api.resend.com')
+        ? new Response('{"id":"em_1"}', { status: 200 })
+        : new Response('null', { status: 200 })
+    )
+    const res = await POST(req(validFields))
+    expect(await res.json()).toEqual({ ok: true, email: 'sent' })
     const resendCalls = fetchMock.mock.calls.filter(([u]) => String(u).includes('api.resend.com'))
     expect(resendCalls).toHaveLength(2)
+    // The team notification is replyable straight to the lead.
+    const bodies = resendCalls.map(([, init]) => JSON.parse((init as RequestInit).body as string))
+    const notify = bodies.find((b) => b.to[0] !== 'ada@brand.com')
+    expect(notify.reply_to).toBe('ada@brand.com')
+    const ack = bodies.find((b) => b.to[0] === 'ada@brand.com')
+    expect(ack.reply_to).toBeUndefined()
+  })
+
+  it('reports email:"skipped" without RESEND_API_KEY — the lead still lands', async () => {
+    const res = await POST(req(validFields))
+    expect(res.status).toBe(200)
+    expect(await res.json()).toEqual({ ok: true, email: 'skipped' })
+    // Only the RPC fetch; no resend traffic without a key.
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+  })
+
+  it('reports email:"error" when Resend fails, without failing the submission', async () => {
+    process.env.RESEND_API_KEY = 'test-key'
+    fetchMock.mockImplementation(async (url: unknown) =>
+      String(url).includes('api.resend.com')
+        ? new Response('boom', { status: 500 })
+        : new Response('null', { status: 200 })
+    )
+    const res = await POST(req(validFields))
+    expect(res.status).toBe(200)
+    expect(await res.json()).toEqual({ ok: true, email: 'error' })
   })
 
   it('maps a rate-limited RPC to a friendly 422', async () => {

@@ -1,13 +1,18 @@
 import { NextResponse } from 'next/server'
+import { sendEmail, emailStatus, type EmailStatus } from '@/lib/email'
+import { checkRateLimit, clientIp } from '@/lib/rate-limit'
 
 // Lead capture for the marketing site. Pipeline:
 //   1. optional creative image → Supabase storage (creatives/leads/*, an
 //      anon-INSERT-scoped prefix — the anon key is public by design)
 //   2. kovio_submit_lead RPC → marketing_leads table (validates + rate-limits
 //      server-side; readable in the app.kovio.dev admin panel)
-//   3. Resend: branded acknowledgment to the lead + notification to the team
+//   3. Resend (via the shared src/lib/email module): branded acknowledgment to
+//      the lead + notification to the team
 // Emails are best-effort: without RESEND_API_KEY the lead still lands in the
-// table and the submission succeeds.
+// table and the submission succeeds — but the outcome is surfaced as
+// {email: "sent"|"skipped"|"error"} in the response so email death is at
+// least observable.
 // Supabase creds come from env so they can be rotated without a code change.
 // The hardcoded values are the CURRENT production ones, kept as fallbacks so
 // nothing breaks before the Vercel env is set (the anon key is public by
@@ -18,7 +23,6 @@ const SUPABASE_ANON =
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFjdWdocWFla3drbmZvd2xudGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2MDEyOTUsImV4cCI6MjA5NzE3NzI5NX0.RXcnjN5erOwowfJ37tlIwRhk8VTPEpaiANxFGbHOD7c'
 const NOTIFY_TO = 'supportkovio@gmail.com'
-const FROM = 'Kovio <notifications@kovio.dev>'
 
 // Server-side length caps — the DB function validates too, but its body lives
 // only in prod Supabase, so the app layer must enforce its own bounds.
@@ -44,20 +48,6 @@ function isSameSite(request: Request): boolean {
     return new URL(src).host === host
   } catch {
     return false
-  }
-}
-
-async function sendEmail(to: string, subject: string, html: string) {
-  const key = process.env.RESEND_API_KEY
-  if (!key) return
-  try {
-    await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from: FROM, to: [to], subject, html }),
-    })
-  } catch {
-    // best-effort
   }
 }
 
@@ -117,6 +107,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Forbidden.' }, { status: 403 })
   }
 
+  // App-layer rate limit: 5 submissions per IP per hour (per instance — see
+  // src/lib/rate-limit.ts for the honest limitation). The DB function
+  // rate-limits too; this stops floods before they cost an RPC round-trip.
+  const limit = checkRateLimit(clientIp(request))
+  if (!limit.allowed) {
+    return NextResponse.json(
+      { error: 'Too many submissions from your network — try again later.' },
+      { status: 429, headers: { 'retry-after': String(limit.retryAfterSeconds) } }
+    )
+  }
+
   let fd: FormData
   try {
     fd = await request.formData()
@@ -126,9 +127,12 @@ export async function POST(request: Request) {
 
   // Honeypot: LeadForm renders a visually-hidden "website" field no human ever
   // fills. Bots that do get a silent success — no DB write, no emails — so
-  // they can't tell they were caught and don't adapt.
+  // they can't tell they were caught and don't adapt. The email field mimics
+  // what a real submission would have reported in this deployment, so the
+  // decoy response stays indistinguishable from the genuine one.
   if (String(fd.get('website') ?? '').trim()) {
-    return NextResponse.json({ ok: true })
+    const decoy: EmailStatus = process.env.RESEND_API_KEY ? 'sent' : 'skipped'
+    return NextResponse.json({ ok: true, email: decoy })
   }
 
   const raw = fd.get('kind')
@@ -199,26 +203,30 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: friendly }, { status: 422 })
   }
 
-  // 3. emails (best-effort)
-  await Promise.all([
-    sendEmail(
-      email,
-      kind === 'trial' ? 'You’re in — Kovio free trial 🤖' : kind === 'agency' ? 'Robots for your clients — Kovio' : 'We got your fleet details — Kovio',
-      ackHtml(kind, name)
-    ),
-    sendEmail(
-      NOTIFY_TO,
-      `🔥 New ${kind === 'trial' ? 'free-trial' : kind === 'agency' ? 'AGENCY' : 'fleet'} lead — ${company}`,
-      notifyHtml(kind, [
+  // 3. emails (best-effort — the submission already succeeded; the combined
+  // outcome travels back as response metadata instead of dying silently)
+  const results = await Promise.all([
+    sendEmail({
+      to: email,
+      subject:
+        kind === 'trial' ? 'You’re in — Kovio free trial 🤖' : kind === 'agency' ? 'Robots for your clients — Kovio' : 'We got your fleet details — Kovio',
+      html: ackHtml(kind, name),
+    }),
+    sendEmail({
+      to: NOTIFY_TO,
+      subject: `🔥 New ${kind === 'trial' ? 'free-trial' : kind === 'agency' ? 'AGENCY' : 'fleet'} lead — ${company}`,
+      html: notifyHtml(kind, [
         ['Name', name],
         ['Email', email],
         ['Company', company],
         [kind === 'agency' ? 'Brief' : 'Fleet', fleet],
         ['Creative', creativeUrl],
         ['Page', source],
-      ])
-    ),
+      ]),
+      // Reply on the team notification goes straight to the lead.
+      replyTo: email,
+    }),
   ])
 
-  return NextResponse.json({ ok: true })
+  return NextResponse.json({ ok: true, email: emailStatus(results) })
 }
