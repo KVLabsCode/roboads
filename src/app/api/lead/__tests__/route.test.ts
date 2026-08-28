@@ -63,7 +63,7 @@ describe('POST /api/lead', () => {
   })
 
   it('422s when a field exceeds its length cap', async () => {
-    const cases = [
+    const cases: Record<string, string>[] = [
       { name: 'x'.repeat(201) },
       { company: 'x'.repeat(201) },
       { email: `${'x'.repeat(320)}@a.io` },
