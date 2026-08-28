@@ -69,6 +69,16 @@ export default function LeadForm({ kind, source }: { kind: 'trial' | 'fleet' | '
 
   return (
     <form onSubmit={submit} className="flex flex-col gap-4 rounded-[20px] bg-[#F4F1EA] p-5 text-[#141414] md:p-8">
+      {/* Honeypot — humans never see or fill this; bots that do get a silent
+          success from /api/lead. Off-screen (not display:none) so naive bots
+          still "see" it, with tabIndex/autoComplete off so people can't land
+          in it by keyboard or autofill. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+        <label>
+          Website
+          <input name="website" type="text" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
       <label className={labelCls}>
         Name
         <input name="name" required placeholder="Ada Kovio" className={inputCls} />

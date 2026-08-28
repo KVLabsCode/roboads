@@ -1,0 +1,34 @@
+name: pr
+on:
+  pull_request:
+  push: { branches: [main] }
+
+concurrency:
+  group: pr-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - name: Build
+        # Also the type check: next build fails on type errors here (no
+        # ignoreBuildErrors), and it generates the gitignored next-env.d.ts
+        # that a standalone tsc run needs.
+        run: npm run build
+      - name: Type check
+        run: npx tsc --noEmit
+      - name: Test
+        # First tests landed 2026-08-28: vitest covering the lead-capture
+        # route's abuse defenses (honeypot, same-site check, length caps,
+        # happy path) in src/app/api/lead/__tests__/route.test.ts.
+        run: npm test

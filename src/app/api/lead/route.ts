@@ -8,11 +8,44 @@ import { NextResponse } from 'next/server'
 //   3. Resend: branded acknowledgment to the lead + notification to the team
 // Emails are best-effort: without RESEND_API_KEY the lead still lands in the
 // table and the submission succeeds.
-const SUPABASE_URL = 'https://acughqaekwknfowlntcl.supabase.co'
+// Supabase creds come from env so they can be rotated without a code change.
+// The hardcoded values are the CURRENT production ones, kept as fallbacks so
+// nothing breaks before the Vercel env is set (the anon key is public by
+// design — it ships to browsers; this is operational hygiene, not secrecy).
+const SUPABASE_URL =
+  process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://acughqaekwknfowlntcl.supabase.co'
 const SUPABASE_ANON =
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFjdWdocWFla3drbmZvd2xudGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2MDEyOTUsImV4cCI6MjA5NzE3NzI5NX0.RXcnjN5erOwowfJ37tlIwRhk8VTPEpaiANxFGbHOD7c'
 const NOTIFY_TO = 'supportkovio@gmail.com'
 const FROM = 'Kovio <notifications@kovio.dev>'
+
+// Server-side length caps — the DB function validates too, but its body lives
+// only in prod Supabase, so the app layer must enforce its own bounds.
+const MAX_NAME = 200
+const MAX_COMPANY = 200
+const MAX_EMAIL = 320 // RFC 3696 upper bound
+const MAX_FLEET = 2000
+const MAX_SOURCE = 200
+
+// Same-site check: a cross-site browser POST (Origin or Referer naming another
+// host) is rejected. A request with NEITHER header is allowed — legitimate
+// non-browser clients (curl, health checks, some privacy proxies) send none,
+// and every real browser form POST carries Origin, so requiring the header
+// would break correct non-browser traffic while stopping no attacker who can
+// simply omit it. This is one cheap layer on top of the honeypot and the DB
+// rate limit, not the whole defense.
+function isSameSite(request: Request): boolean {
+  const src = request.headers.get('origin') ?? request.headers.get('referer')
+  if (!src) return true
+  const host = request.headers.get('x-forwarded-host') ?? request.headers.get('host')
+  if (!host) return true
+  try {
+    return new URL(src).host === host
+  } catch {
+    return false
+  }
+}
 
 async function sendEmail(to: string, subject: string, html: string) {
   const key = process.env.RESEND_API_KEY
@@ -80,11 +113,22 @@ function notifyHtml(kind: string, fields: Array<[string, string]>) {
 }
 
 export async function POST(request: Request) {
+  if (!isSameSite(request)) {
+    return NextResponse.json({ error: 'Forbidden.' }, { status: 403 })
+  }
+
   let fd: FormData
   try {
     fd = await request.formData()
   } catch {
     return NextResponse.json({ error: 'Bad request.' }, { status: 400 })
+  }
+
+  // Honeypot: LeadForm renders a visually-hidden "website" field no human ever
+  // fills. Bots that do get a silent success — no DB write, no emails — so
+  // they can't tell they were caught and don't adapt.
+  if (String(fd.get('website') ?? '').trim()) {
+    return NextResponse.json({ ok: true })
   }
 
   const raw = fd.get('kind')
@@ -93,9 +137,17 @@ export async function POST(request: Request) {
   const email = String(fd.get('email') ?? '').trim()
   const company = String(fd.get('company') ?? '').trim()
   const fleet = String(fd.get('fleet') ?? '').trim()
-  const source = String(fd.get('source') ?? '').trim()
+  const source = String(fd.get('source') ?? '').trim().slice(0, MAX_SOURCE)
   if (!name || !email || !company) {
     return NextResponse.json({ error: 'Name, email and company are required.' }, { status: 422 })
+  }
+  if (
+    name.length > MAX_NAME ||
+    company.length > MAX_COMPANY ||
+    email.length > MAX_EMAIL ||
+    fleet.length > MAX_FLEET
+  ) {
+    return NextResponse.json({ error: 'One of the fields is too long.' }, { status: 422 })
   }
 
   // 1. creative upload (optional, images only, ≤10MB)
