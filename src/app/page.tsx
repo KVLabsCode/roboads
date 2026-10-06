@@ -51,7 +51,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="relative min-w-0">
-          <div className="h-[380px] w-full overflow-hidden rounded-[20px] border-2 border-[#141414] shadow-[8px_8px_0_#D97757] min-[900px]:h-[560px]">
+          <div className="aspect-[3/4] w-full overflow-hidden rounded-[20px] border-2 border-[#141414] shadow-[8px_8px_0_#D97757]">
             <Image src={heroPhoto} alt="Kovio robot displaying an ad outside Madison Square Garden" priority className="h-full w-full object-cover" />
           </div>
           <div className="pointer-events-none absolute -top-[18px] right-2 rotate-6 rounded-full border-2 border-[#141414] bg-[#D97757] px-[18px] py-3 font-display text-[14px] min-[900px]:-right-3.5">
