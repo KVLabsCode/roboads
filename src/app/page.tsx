@@ -5,7 +5,7 @@ import { Nav, Footer } from '@/components/site/Nav'
 import Marquee from '@/components/site/Marquee'
 import LeadForm from '@/components/site/LeadForm'
 import { StaticEq } from '@/components/site/EqBars'
-import heroPhoto from '../../public/photos/hero-robot.webp'
+import heroPhoto from '../../public/photos/hero-robot.png'
 
 const STEPS = [
   {
@@ -34,9 +34,6 @@ export default function HomePage() {
       {/* hero */}
       <div className="grid grid-cols-1 items-center gap-12 px-5 pb-10 pt-10 md:pb-14 md:pt-16 min-[900px]:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:px-10">
         <div className="flex min-w-0 flex-col gap-6">
-          <div className="inline-flex items-center gap-2 self-start rounded-full bg-[#141414] px-3.5 py-[7px] text-[12px] font-bold tracking-[1.5px] text-[#D97757]">
-            ● LIVE ON THE STREETS OF SF
-          </div>
           <h1 className="m-0 font-display text-[44px] uppercase leading-[.94] tracking-[-1px] min-[900px]:text-[92px] min-[900px]:tracking-[-2px]">
             We put ads on robots.
           </h1>
@@ -55,7 +52,7 @@ export default function HomePage() {
         </div>
         <div className="relative min-w-0">
           <div className="h-[380px] w-full overflow-hidden rounded-[20px] border-2 border-[#141414] shadow-[8px_8px_0_#D97757] min-[900px]:h-[560px]">
-            <Image src={heroPhoto} alt="Kovio robot showing an ad to a crowd in San Francisco" priority className="h-full w-full object-cover" />
+            <Image src={heroPhoto} alt="Kovio robot displaying an ad outside Madison Square Garden" priority className="h-full w-full object-cover" />
           </div>
           <div className="pointer-events-none absolute -top-[18px] right-2 rotate-6 rounded-full border-2 border-[#141414] bg-[#D97757] px-[18px] py-3 font-display text-[14px] min-[900px]:-right-3.5">
             100% UNSKIPPABLE
