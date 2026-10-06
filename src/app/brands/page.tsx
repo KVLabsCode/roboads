@@ -241,7 +241,7 @@ export default function BrandsPage() {
               contracts, no media plan, no nonsense.
             </p>
             <div className="mt-2 min-h-[300px] flex-1 overflow-hidden rounded-2xl">
-              <img src="/photos/hero-robot.webp" alt="Kovio robot with a crowd in San Francisco" className="h-full max-h-[420px] w-full rounded-2xl object-cover" />
+              <img src="/photos/trial-collage.png" alt="Collage of the Kovio robot interacting with crowds in Times Square and outside Madison Square Garden" className="h-full max-h-[420px] w-full rounded-2xl object-cover" />
             </div>
           </div>
           <LeadForm kind="trial" source="brands" />
