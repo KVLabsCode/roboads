@@ -8,13 +8,13 @@ import { StaticEq } from '@/components/site/EqBars'
 export const metadata: Metadata = {
   title: 'Kovio for Brands — Buy attention nobody can skip',
   description:
-    'Your ad on a robot: on screen and out loud, at the moment attention is locked in. Every interaction verified down to the purchase. Free trial in San Francisco.',
+    'Your ad on a robot: on screen and out loud, at the moment attention is locked in. Every interaction verified down to the purchase. Free trial across the USA.',
 }
 
 const TRIAL_STEPS = [
   { n: '01', title: 'Send the form', body: 'Name, email, company, creative. Two minutes, tops.' },
   { n: '02', title: 'We set it up together', body: "We'll contact you, fit your creative to the robot, and write the voice line with you." },
-  { n: '03', title: 'The robot hits the street', body: 'Your campaign runs live in San Francisco. Crowds included.' },
+  { n: '03', title: 'The robot hits the street', body: 'Your campaign runs live, across the USA. Crowds included.' },
   { n: '04', title: 'You get the proof', body: 'A report of every verified interaction, plus the footage people took.' },
 ]
 
@@ -237,7 +237,7 @@ export default function BrandsPage() {
               Get your brand on a robot.
             </h2>
             <p className="m-0 max-w-[460px] text-[17px] leading-[1.55] text-[#F4F1EA]">
-              Drop your creative, leave your details, and we&apos;ll get your ad on a robot in San Francisco. No
+              Drop your creative, leave your details, and we&apos;ll get your ad on a robot across the USA. No
               contracts, no media plan, no nonsense.
             </p>
             <div className="mt-2 min-h-[300px] flex-1 overflow-hidden rounded-2xl">

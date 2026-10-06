@@ -75,7 +75,7 @@ function ackHtml(kind: 'trial' | 'fleet' | 'agency', name: string) {
         : 'WE GOT YOUR FLEET DETAILS — TALK SOON!'
   const body =
     kind === 'trial'
-      ? `Hey ${first} — your spot is locked in. A human (not a robot) will contact you within 48 hours to fit your creative to the robot, write the voice line with you, and get your ad on the streets of San Francisco.`
+      ? `Hey ${first} — your spot is locked in. A human (not a robot) will contact you within 48 hours to fit your creative to the robot, write the voice line with you, and get your ad on a robot across the USA.`
       : kind === 'agency'
         ? `Hey ${first} — we received your details. We&rsquo;ll come back within 48 hours with availability, creative specs, sensor verified measurement reporting, and partner terms for your clients.`
         : `Hey ${first} — we received your fleet details. We&rsquo;ll reach out within 48 hours to walk you through the SDK, the revenue share, and a pilot for your fleet.`
@@ -85,7 +85,7 @@ function ackHtml(kind: 'trial' | 'fleet' | 'agency', name: string) {
       <tr><td style="font-size:15px;line-height:1.6;color:#3a3a35;padding-bottom:24px">${body}</td></tr>
       <tr><td><span style="display:inline-block;background:#D97757;border:2px solid #141414;border-radius:999px;padding:10px 20px;font-size:13px;font-weight:700;color:#141414">100% UNSKIPPABLE</span></td></tr>
       <tr><td style="padding-top:28px;border-top:2px solid #141414;margin-top:24px;font-size:14px;font-weight:700;color:#141414">— TEAM KOVIO</td></tr>
-      <tr><td style="padding-top:6px;font-size:12px;color:#8a8578">Live on the streets of San Francisco &middot; kovio.dev</td></tr>`)
+      <tr><td style="padding-top:6px;font-size:12px;color:#8a8578">Live across the USA &middot; kovio.dev</td></tr>`)
 }
 
 function notifyHtml(kind: string, fields: Array<[string, string]>) {

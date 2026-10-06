@@ -6,7 +6,7 @@ import { publishedCaseStudies, draftCaseStudies, type CaseStudy } from '@/lib/ca
 export const metadata: Metadata = {
   title: 'Kovio Case Studies: Real campaigns, sensor verified',
   description:
-    'Real brand activations on real robots, measured by the robots themselves. See what happens when your ad walks through San Francisco.',
+    'Real brand activations on real robots, measured by the robots themselves. See what happens when your ad walks through the USA.',
 }
 
 function CaseCard({ c, draft }: { c: CaseStudy; draft?: boolean }) {

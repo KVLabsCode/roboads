@@ -6,7 +6,7 @@ import LeadForm from '@/components/site/LeadForm'
 export const metadata: Metadata = {
   title: 'Kovio for OOH Agencies: Inventory your clients have never seen',
   description:
-    'Add humanoid robots to your OOH portfolio. Sensor verified impressions, premium San Francisco placement, campaign reporting your clients can actually audit.',
+    'Add humanoid robots to your OOH portfolio. Sensor verified impressions, premium USA placement, campaign reporting your clients can actually audit.',
 }
 
 const PILLARS = [
@@ -42,7 +42,7 @@ export default function AgenciesPage() {
             Inventory your clients have never seen.
           </h1>
           <p className="m-0 max-w-[640px] text-[20px] leading-normal">
-            Add humanoid robots to your OOH portfolio. Premium San Francisco placement, sensor verified impressions,
+            Add humanoid robots to your OOH portfolio. Premium USA placement, sensor verified impressions,
             and a format that earns social coverage on top of the buy.
           </p>
           <div className="flex flex-wrap gap-3.5">

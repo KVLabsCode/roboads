@@ -5,7 +5,7 @@ import ContactSwitcher from '@/components/site/ContactSwitcher'
 export const metadata: Metadata = {
   title: 'Contact Kovio: Brands, robot fleets and OOH agencies',
   description:
-    'Talk to Kovio. Brands get their creative on a real robot in San Francisco, fleets get the SDK and a revenue share, agencies get new OOH inventory. We reply within 48 hours.',
+    'Talk to Kovio. Brands get their creative on a real robot across the USA, fleets get the SDK and a revenue share, agencies get new OOH inventory. We reply within 48 hours.',
 }
 
 export default function ContactPage({ searchParams }: { searchParams: { type?: string } }) {
@@ -30,7 +30,7 @@ export default function ContactPage({ searchParams }: { searchParams: { type?: s
             </p>
             <ul className="m-0 mt-2 flex list-none flex-col gap-3 p-0 text-[16px]">
               {[
-                'Brands: your creative on a real robot in San Francisco, first campaign can be a free trial',
+                'Brands: your creative on a real robot across the USA, first campaign can be a free trial',
                 'Fleets: one drop-in SDK, revenue share, automatic settlement',
                 'Every campaign measured by the robot itself, verified humans, not estimates',
               ].map((t) => (

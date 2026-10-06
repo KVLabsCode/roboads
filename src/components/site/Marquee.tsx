@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
-// Black ticker strip: "LIVE IN SAN FRANCISCO" + OEM partner logos, looping.
+// Black ticker strip: "LIVE ACROSS THE USA" + OEM partner logos, looping.
 // Two identical runs + translateX(-50%) = a seamless marquee.
 // OEM partners only — brand logos stay off the site until confirmed.
 // A11y: the whole strip is one labelled image; the animated runs (and their
@@ -15,7 +15,7 @@ const LOGOS: Array<{ src: string; alt: string; h: number }> = [
 function Run() {
   return (
     <div className="flex items-center gap-[38px] pr-[38px]">
-      <span className="font-display text-[17px] tracking-[1px]">LIVE IN SAN FRANCISCO</span>
+      <span className="font-display text-[17px] tracking-[1px]">LIVE ACROSS THE USA</span>
       <span className="text-[15px]">✦</span>
       {LOGOS.map((l) => (
         <span key={l.alt} className="flex items-center gap-[38px]">
@@ -31,7 +31,7 @@ export default function Marquee() {
   return (
     <div
       role="img"
-      aria-label="Live in San Francisco with OEM partners Unitree, Robot.com, and Toborlife AI"
+      aria-label="Live across the USA with OEM partners Unitree, Robot.com, and Toborlife AI"
       className="overflow-hidden border-y-2 border-[#141414] bg-[#141414] py-[14px] text-[#D97757]"
     >
       <div aria-hidden="true" className="flex w-max whitespace-nowrap [animation:kv-marquee_28s_linear_infinite]">

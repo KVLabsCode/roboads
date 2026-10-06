@@ -145,7 +145,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               Your brand could be next.
             </h2>
             <p className="m-0 max-w-[680px] text-[18px] leading-[1.6]">
-              Kovio is the advertising exchange for commercial robots, with humanoids live in San Francisco and 1,000+
+              Kovio is the advertising exchange for commercial robots, with humanoids live across the USA and 1,000+
               robots onboarded through partners like Robot.com. One creative file gets your brand on the fleet.
             </p>
             <Link

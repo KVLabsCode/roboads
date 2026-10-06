@@ -20,11 +20,11 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.kovio.dev'),
   title: 'Kovio — We put ads on robots',
   description:
-    "It's a billboard that walks up to you. Says hi. Shows your ad. Hands out a discount code. And proves every single interaction actually happened. Live in San Francisco.",
+    "It's a billboard that walks up to you. Says hi. Shows your ad. Hands out a discount code. And proves every single interaction actually happened. Live across the USA.",
   openGraph: {
     title: 'Kovio — We put ads on robots',
     description:
-      'Unmissable, fully measured advertising on humanoid robots. Live on the streets of San Francisco.',
+      'Unmissable, fully measured advertising on humanoid robots. Live across the USA.',
     url: 'https://www.kovio.dev',
   },
 }

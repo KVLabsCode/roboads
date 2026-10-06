@@ -117,7 +117,7 @@ export default function HomePage() {
               Get your brand on a robot.
             </h2>
             <p className="m-0 max-w-[460px] text-[17px] leading-[1.55] text-[#F4F1EA]">
-              Drop your creative, leave your details, and we&apos;ll get your ad on a robot in San Francisco. We&apos;ll
+              Drop your creative, leave your details, and we&apos;ll get your ad on a robot across the USA. We&apos;ll
               contact you to set it up. No contracts, no media plan, no nonsense.
             </p>
             <ul className="m-0 mt-2 flex list-none flex-col gap-3 p-0 text-[15px] text-[#F4F1EA]">
