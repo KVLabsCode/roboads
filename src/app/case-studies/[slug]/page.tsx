@@ -13,7 +13,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const c = getCaseStudy(params.slug)
   if (!c) return {}
   return {
-    title: `${c.brand} x Kovio, a Kovio case study`,
+    title: c.brand.toLowerCase() === 'kovio' ? `${c.headline} · Kovio case study` : `${c.brand} x Kovio, a Kovio case study`,
     description: c.subhead,
     // Draft entries stay out of search indexes until published.
     robots: c.published ? undefined : { index: false, follow: false },
@@ -51,8 +51,12 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
         {/* video */}
         <div className="px-5 pb-12 md:px-10">
-          <div className="mx-auto max-w-[980px]">
-            <LazyVideo youtubeId={c.youtubeId} title={`${c.brand} x Kovio campaign video`} />
+          <div className={`mx-auto ${c.video ? 'max-w-[420px]' : 'max-w-[980px]'}`}>
+            {c.video ? (
+              <LazyVideo src={c.video.src} poster={c.video.poster} title={`${c.brand} x Kovio campaign video`} />
+            ) : (
+              <LazyVideo youtubeId={c.youtubeId!} title={`${c.brand} x Kovio campaign video`} />
+            )}
           </div>
         </div>
 

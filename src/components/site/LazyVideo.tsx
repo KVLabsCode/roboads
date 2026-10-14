@@ -3,22 +3,32 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from 'react'
 
-// Click-to-load YouTube facade: renders the thumbnail plus a play button and
-// only injects the iframe (and all of YouTube's JS) after the user clicks.
-// Keeps the case-study pages fast on mobile.
-export default function LazyVideo({ youtubeId, title }: { youtubeId: string; title: string }) {
+type LazyVideoProps =
+  | { youtubeId: string; title: string; aspect?: string; src?: undefined; poster?: undefined }
+  | { src: string; poster: string; title: string; aspect?: string; youtubeId?: undefined }
+
+// Click-to-load video facade: renders a thumbnail plus a play button and only
+// injects the real player (YouTube iframe, or a <video> for self-hosted
+// clips) after the user clicks. Keeps the case-study pages fast on mobile.
+export default function LazyVideo({ title, aspect, ...source }: LazyVideoProps) {
   const [play, setPlay] = useState(false)
+  const box = aspect ?? (source.youtubeId ? 'aspect-video' : 'aspect-[9/16]')
+  const thumbnail = source.youtubeId ? `https://i.ytimg.com/vi/${source.youtubeId}/hqdefault.jpg` : source.poster
 
   if (play) {
     return (
-      <div className="aspect-video w-full overflow-hidden rounded-[20px] border-2 border-[#141414] bg-black shadow-[8px_8px_0_#D97757]">
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0`}
-          title={title}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          className="h-full w-full"
-        />
+      <div className={`${box} w-full overflow-hidden rounded-[20px] border-2 border-[#141414] bg-black shadow-[8px_8px_0_#D97757]`}>
+        {source.youtubeId ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${source.youtubeId}?autoplay=1&rel=0`}
+            title={title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="h-full w-full"
+          />
+        ) : (
+          <video src={source.src} poster={source.poster} controls autoPlay playsInline className="h-full w-full object-contain" />
+        )}
       </div>
     )
   }
@@ -28,10 +38,10 @@ export default function LazyVideo({ youtubeId, title }: { youtubeId: string; tit
       type="button"
       onClick={() => setPlay(true)}
       aria-label={`Play video: ${title}`}
-      className="group relative block aspect-video w-full cursor-pointer overflow-hidden rounded-[20px] border-2 border-[#141414] bg-black shadow-[8px_8px_0_#D97757]"
+      className={`group relative block ${box} w-full cursor-pointer overflow-hidden rounded-[20px] border-2 border-[#141414] bg-black shadow-[8px_8px_0_#D97757]`}
     >
       <img
-        src={`https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`}
+        src={thumbnail}
         alt=""
         loading="lazy"
         className="h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
