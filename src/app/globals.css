@@ -26,15 +26,18 @@ a:hover {
   opacity: 0.75;
 }
 
-/* Keyboard users always see where they are: a thick, offset, current-color
-   ring works on both the paper and the near-black sections. */
+/* Keyboard users always see where they are: a thick amber ring, visible on
+   both the paper and the near-black sections. Fixed amber rather than
+   currentColor — on ink-colored, already-bordered elements (inputs, which
+   use border-2 border-[#141414]) a black-on-black ring reads as a stray
+   duplicate line instead of a focus state. */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 label:focus-within,
 [tabindex]:focus-visible {
-  outline: 3px solid currentColor;
+  outline: 3px solid #D97757;
   outline-offset: 3px;
   border-radius: 4px;
 }
