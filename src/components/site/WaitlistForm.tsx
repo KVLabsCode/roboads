@@ -72,7 +72,7 @@ export default function WaitlistForm() {
         disabled={busy}
         className="cursor-pointer rounded-full border-2 border-[#141414] bg-[#D97757] px-[26px] py-4 font-[inherit] text-[16px] font-bold shadow-[3px_3px_0_#141414] disabled:opacity-60"
       >
-        {busy ? 'Joining…' : 'Join the waitlist →'}
+        {busy ? 'Sending…' : 'Get in touch →'}
       </button>
     </form>
   )

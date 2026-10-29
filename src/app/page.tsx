@@ -19,6 +19,7 @@ export default function HomePage() {
             Kovio Robotics
           </h1>
           <p className="m-0 text-[19px] leading-normal text-[#141414] md:text-[21px]">Something new is coming.</p>
+          <p className="m-0 text-[14px] font-bold tracking-[1.5px] text-[#D97757]">ACTIVATING THE ROBOT ECONOMY</p>
         </div>
         <WaitlistForm />
       </main>
