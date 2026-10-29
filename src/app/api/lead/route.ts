@@ -65,27 +65,36 @@ function shell(inner: string) {
 </div>`
 }
 
-function ackHtml(kind: 'trial' | 'fleet' | 'agency', name: string) {
+function ackHtml(kind: 'trial' | 'fleet' | 'agency' | 'waitlist', name: string) {
   const first = esc(name.split(' ')[0] || name)
   const headline =
     kind === 'trial'
       ? 'THANKS FOR SIGNING UP FOR THE FREE TRIAL — WE&rsquo;LL KEEP YOU UPDATED!'
       : kind === 'agency'
         ? 'WE GOT YOUR BRIEF — LET&rsquo;S PUT YOUR CLIENTS ON ROBOTS!'
-        : 'WE GOT YOUR FLEET DETAILS — TALK SOON!'
+        : kind === 'waitlist'
+          ? 'YOU&rsquo;RE ON THE LIST!'
+          : 'WE GOT YOUR FLEET DETAILS — TALK SOON!'
   const body =
     kind === 'trial'
       ? `Hey ${first} — your spot is locked in. A human (not a robot) will contact you within 48 hours to fit your creative to the robot, write the voice line with you, and get your ad on a robot across the USA.`
       : kind === 'agency'
         ? `Hey ${first} — we received your details. We&rsquo;ll come back within 48 hours with availability, creative specs, sensor verified measurement reporting, and partner terms for your clients.`
-        : `Hey ${first} — we received your fleet details. We&rsquo;ll reach out within 48 hours to walk you through the SDK, the revenue share, and a pilot for your fleet.`
+        : kind === 'waitlist'
+          ? `Hey ${first} — thanks for your interest in Kovio Robotics. We&rsquo;ll be in touch.`
+          : `Hey ${first} — we received your fleet details. We&rsquo;ll reach out within 48 hours to walk you through the SDK, the revenue share, and a pilot for your fleet.`
+  const footer = kind === 'waitlist' ? 'kovio.dev' : 'Live across the USA &middot; kovio.dev'
+  const badge =
+    kind === 'waitlist'
+      ? ''
+      : '<tr><td><span style="display:inline-block;background:#D97757;border:2px solid #141414;border-radius:999px;padding:10px 20px;font-size:13px;font-weight:700;color:#141414">100% UNSKIPPABLE</span></td></tr>'
   return shell(`
       <tr><td style="font-weight:900;font-size:20px;letter-spacing:-0.5px;color:#141414;padding-bottom:20px">KOVIO<span style="font-size:10px;vertical-align:super">&reg;</span></td></tr>
       <tr><td style="font-size:24px;line-height:1.25;font-weight:800;color:#141414;text-transform:uppercase;padding-bottom:14px">${headline}</td></tr>
       <tr><td style="font-size:15px;line-height:1.6;color:#3a3a35;padding-bottom:24px">${body}</td></tr>
-      <tr><td><span style="display:inline-block;background:#D97757;border:2px solid #141414;border-radius:999px;padding:10px 20px;font-size:13px;font-weight:700;color:#141414">100% UNSKIPPABLE</span></td></tr>
+      ${badge}
       <tr><td style="padding-top:28px;border-top:2px solid #141414;margin-top:24px;font-size:14px;font-weight:700;color:#141414">— TEAM KOVIO</td></tr>
-      <tr><td style="padding-top:6px;font-size:12px;color:#8a8578">Live across the USA &middot; kovio.dev</td></tr>`)
+      <tr><td style="padding-top:6px;font-size:12px;color:#8a8578">${footer}</td></tr>`)
 }
 
 function notifyHtml(kind: string, fields: Array<[string, string]>) {
@@ -96,8 +105,9 @@ function notifyHtml(kind: string, fields: Array<[string, string]>) {
         `<tr><td style="padding:6px 12px 6px 0;font-size:12px;font-weight:700;letter-spacing:1px;color:#8a8578;vertical-align:top">${k.toUpperCase()}</td><td style="padding:6px 0;font-size:14px;color:#141414">${esc(v)}</td></tr>`
     )
     .join('')
+  const label = kind === 'trial' ? 'FREE-TRIAL' : kind === 'agency' ? 'OOH AGENCY' : kind === 'waitlist' ? 'ROBOTICS WAITLIST' : 'FLEET'
   return shell(`
-      <tr><td style="font-weight:900;font-size:18px;color:#141414;padding-bottom:16px">🔥 New ${kind === 'trial' ? 'FREE-TRIAL' : kind === 'agency' ? 'OOH AGENCY' : 'FLEET'} lead</td></tr>
+      <tr><td style="font-weight:900;font-size:18px;color:#141414;padding-bottom:16px">🔥 New ${label} lead</td></tr>
       <tr><td><table role="presentation" cellpadding="0" cellspacing="0">${rows}</table></td></tr>
       <tr><td style="padding-top:20px;font-size:12px;color:#8a8578">Full list: app.kovio.dev/admin &middot; they got the acknowledgment email automatically.</td></tr>`)
 }
@@ -136,14 +146,17 @@ export async function POST(request: Request) {
   }
 
   const raw = fd.get('kind')
-  const kind = raw === 'fleet' ? 'fleet' : raw === 'agency' ? 'agency' : 'trial'
+  const kind = raw === 'fleet' ? 'fleet' : raw === 'agency' ? 'agency' : raw === 'waitlist' ? 'waitlist' : 'trial'
   const name = String(fd.get('name') ?? '').trim()
   const email = String(fd.get('email') ?? '').trim()
-  const company = String(fd.get('company') ?? '').trim()
+  // The waitlist form only asks for name + email; the DB still requires a
+  // non-empty company, so fill it with a fixed label rather than exposing
+  // the field to the user.
+  const company = kind === 'waitlist' ? 'Kovio Robotics waitlist' : String(fd.get('company') ?? '').trim()
   const fleet = String(fd.get('fleet') ?? '').trim()
   const source = String(fd.get('source') ?? '').trim().slice(0, MAX_SOURCE)
   if (!name || !email || !company) {
-    return NextResponse.json({ error: 'Name, email and company are required.' }, { status: 422 })
+    return NextResponse.json({ error: 'Name and email are required.' }, { status: 422 })
   }
   if (
     name.length > MAX_NAME ||
@@ -209,17 +222,26 @@ export async function POST(request: Request) {
     sendEmail({
       to: email,
       subject:
-        kind === 'trial' ? 'You’re in — Kovio free trial 🤖' : kind === 'agency' ? 'Robots for your clients — Kovio' : 'We got your fleet details — Kovio',
+        kind === 'trial'
+          ? 'You’re in — Kovio free trial 🤖'
+          : kind === 'agency'
+            ? 'Robots for your clients — Kovio'
+            : kind === 'waitlist'
+              ? 'You’re on the list — Kovio Robotics'
+              : 'We got your fleet details — Kovio',
       html: ackHtml(kind, name),
     }),
     sendEmail({
       to: NOTIFY_TO,
-      subject: `🔥 New ${kind === 'trial' ? 'free-trial' : kind === 'agency' ? 'AGENCY' : 'fleet'} lead — ${company}`,
+      subject:
+        kind === 'waitlist'
+          ? `🔥 New robotics waitlist sign-up — ${name}`
+          : `🔥 New ${kind === 'trial' ? 'free-trial' : kind === 'agency' ? 'AGENCY' : 'fleet'} lead — ${company}`,
       html: notifyHtml(kind, [
         ['Name', name],
         ['Email', email],
-        ['Company', company],
-        [kind === 'agency' ? 'Brief' : 'Fleet', fleet],
+        [kind === 'waitlist' ? '' : 'Company', kind === 'waitlist' ? '' : company],
+        [kind === 'agency' ? 'Brief' : 'Fleet', kind === 'waitlist' ? '' : fleet],
         ['Creative', creativeUrl],
         ['Page', source],
       ]),

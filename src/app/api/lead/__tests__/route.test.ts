@@ -111,6 +111,22 @@ describe('POST /api/lead', () => {
     })
   })
 
+  it('waitlist: name + email alone is enough, company is auto-filled', async () => {
+    const res = await POST(req({ kind: 'waitlist', name: 'Ada Kovio', email: 'ada@brand.com', source: 'home' }, { origin: 'https://kovio.dev' }))
+    expect(res.status).toBe(200)
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+    const [, init] = fetchMock.mock.calls[0]
+    expect(JSON.parse((init as RequestInit).body as string)).toEqual({
+      p_kind: 'waitlist',
+      p_name: 'Ada Kovio',
+      p_email: 'ada@brand.com',
+      p_company: 'Kovio Robotics waitlist',
+      p_fleet: null,
+      p_creative_url: null,
+      p_source: 'home',
+    })
+  })
+
   it('sends the two best-effort emails when RESEND_API_KEY is set and reports "sent"', async () => {
     process.env.RESEND_API_KEY = 'test-key'
     fetchMock.mockImplementation(async (url: unknown) =>
