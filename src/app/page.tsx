@@ -4,6 +4,7 @@ import Link from "next/link";
 import BillboardSection from "@/components/blitz/BillboardSection";
 import HeadSection from "@/components/blitz/HeadSection";
 import Hero from "@/components/blitz/Hero";
+import Sprite from "@/components/blitz/Sprite";
 import "./home.css";
 
 export const metadata: Metadata = {
@@ -58,11 +59,11 @@ export default function Home() {
         </div>
         <div className="hm-moves-figs">
           <figure>
-            <div className="kv-sp kv-sp-arena hm-sprite" role="img" aria-label="Blitz walking toward the camera through an arena concourse" />
+            <Sprite className="kv-sp kv-sp-arena hm-sprite" label="Blitz walking toward the camera through an arena concourse" />
             <figcaption>Walks</figcaption>
           </figure>
           <figure>
-            <div className="kv-sp kv-sp-mall hm-sprite" role="img" aria-label="Blitz dancing on the spot in a shopping mall while shoppers watch" />
+            <Sprite className="kv-sp kv-sp-mall hm-sprite" label="Blitz dancing on the spot in a shopping mall while shoppers watch" />
             <figcaption>Dances</figcaption>
           </figure>
         </div>

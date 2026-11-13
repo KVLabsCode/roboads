@@ -169,9 +169,3 @@
 .ms-cta {
   gap: 24px;
 }
-.kv-btn-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-}

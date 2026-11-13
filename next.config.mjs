@@ -8,6 +8,8 @@ const nextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   poweredByHeader: false,
+  // Keep <title> and <meta> in the <head> on dynamic pages instead of streaming them into the body.
+  htmlLimitedBots: /.*/,
 };
 
 export default nextConfig;

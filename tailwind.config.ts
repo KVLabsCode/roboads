@@ -12,7 +12,7 @@ const config: Config = {
         rule: "#8C897F",
         line: "#D5D3CC",
         gold: "#F2B632",
-        orange: "#C2541F",
+        orange: "#B34A1A",
       },
       fontFamily: {
         sans: ["var(--font-geist)", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
