@@ -1,0 +1,254 @@
+import { NextResponse } from 'next/server'
+import { sendEmail, emailStatus, type EmailStatus } from '@/lib/email'
+import { checkRateLimit, clientIp } from '@/lib/rate-limit'
+
+// Lead capture for the marketing site. Pipeline:
+//   1. optional creative image → Supabase storage (creatives/leads/*, an
+//      anon-INSERT-scoped prefix — the anon key is public by design)
+//   2. kovio_submit_lead RPC → marketing_leads table (validates + rate-limits
+//      server-side; readable in the app.kovio.dev admin panel)
+//   3. Resend (via the shared src/lib/email module): branded acknowledgment to
+//      the lead + notification to the team
+// Emails are best-effort: without RESEND_API_KEY the lead still lands in the
+// table and the submission succeeds — but the outcome is surfaced as
+// {email: "sent"|"skipped"|"error"} in the response so email death is at
+// least observable.
+// Supabase creds come from env so they can be rotated without a code change.
+// The hardcoded values are the CURRENT production ones, kept as fallbacks so
+// nothing breaks before the Vercel env is set (the anon key is public by
+// design — it ships to browsers; this is operational hygiene, not secrecy).
+const SUPABASE_URL =
+  process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://acughqaekwknfowlntcl.supabase.co'
+const SUPABASE_ANON =
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFjdWdocWFla3drbmZvd2xudGNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2MDEyOTUsImV4cCI6MjA5NzE3NzI5NX0.RXcnjN5erOwowfJ37tlIwRhk8VTPEpaiANxFGbHOD7c'
+const NOTIFY_TO = 'supportkovio@gmail.com'
+
+// Server-side length caps — the DB function validates too, but its body lives
+// only in prod Supabase, so the app layer must enforce its own bounds.
+const MAX_NAME = 200
+const MAX_COMPANY = 200
+const MAX_EMAIL = 320 // RFC 3696 upper bound
+const MAX_FLEET = 2000
+const MAX_SOURCE = 200
+
+// Same-site check: a cross-site browser POST (Origin or Referer naming another
+// host) is rejected. A request with NEITHER header is allowed — legitimate
+// non-browser clients (curl, health checks, some privacy proxies) send none,
+// and every real browser form POST carries Origin, so requiring the header
+// would break correct non-browser traffic while stopping no attacker who can
+// simply omit it. This is one cheap layer on top of the honeypot and the DB
+// rate limit, not the whole defense.
+function isSameSite(request: Request): boolean {
+  const src = request.headers.get('origin') ?? request.headers.get('referer')
+  if (!src) return true
+  const host = request.headers.get('x-forwarded-host') ?? request.headers.get('host')
+  if (!host) return true
+  try {
+    return new URL(src).host === host
+  } catch {
+    return false
+  }
+}
+
+function esc(s: string) {
+  return s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c] as string)
+}
+
+function shell(inner: string) {
+  return `<div style="background:#F4F1EA;padding:32px 0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
+    <table role="presentation" width="540" cellpadding="0" cellspacing="0" style="max-width:540px;background:#F4F1EA;border:2px solid #141414;border-radius:16px;padding:36px 38px">
+      ${inner}
+    </table>
+  </td></tr></table>
+</div>`
+}
+
+function ackHtml(kind: 'trial' | 'fleet' | 'agency' | 'waitlist', name: string) {
+  const first = esc(name.split(' ')[0] || name)
+  const headline =
+    kind === 'trial'
+      ? 'THANKS FOR SIGNING UP FOR THE FREE TRIAL — WE&rsquo;LL KEEP YOU UPDATED!'
+      : kind === 'agency'
+        ? 'WE GOT YOUR BRIEF — LET&rsquo;S PUT YOUR CLIENTS ON ROBOTS!'
+        : kind === 'waitlist'
+          ? 'YOU&rsquo;RE ON THE LIST!'
+          : 'WE GOT YOUR FLEET DETAILS — TALK SOON!'
+  const body =
+    kind === 'trial'
+      ? `Hey ${first} — your spot is locked in. A human (not a robot) will contact you within 48 hours to fit your creative to the robot, write the voice line with you, and get your ad on a robot across the USA.`
+      : kind === 'agency'
+        ? `Hey ${first} — we received your details. We&rsquo;ll come back within 48 hours with availability, creative specs, sensor verified measurement reporting, and partner terms for your clients.`
+        : kind === 'waitlist'
+          ? `Hey ${first} — thanks for your interest in Kovio Robotics. We&rsquo;ll be in touch.`
+          : `Hey ${first} — we received your fleet details. We&rsquo;ll reach out within 48 hours to walk you through the SDK, the revenue share, and a pilot for your fleet.`
+  const footer = kind === 'waitlist' ? 'kovio.dev' : 'Live across the USA &middot; kovio.dev'
+  const badge =
+    kind === 'waitlist'
+      ? ''
+      : '<tr><td><span style="display:inline-block;background:#D97757;border:2px solid #141414;border-radius:999px;padding:10px 20px;font-size:13px;font-weight:700;color:#141414">100% UNSKIPPABLE</span></td></tr>'
+  return shell(`
+      <tr><td style="font-weight:900;font-size:20px;letter-spacing:-0.5px;color:#141414;padding-bottom:20px">KOVIO<span style="font-size:10px;vertical-align:super">&reg;</span></td></tr>
+      <tr><td style="font-size:24px;line-height:1.25;font-weight:800;color:#141414;text-transform:uppercase;padding-bottom:14px">${headline}</td></tr>
+      <tr><td style="font-size:15px;line-height:1.6;color:#3a3a35;padding-bottom:24px">${body}</td></tr>
+      ${badge}
+      <tr><td style="padding-top:28px;border-top:2px solid #141414;margin-top:24px;font-size:14px;font-weight:700;color:#141414">— TEAM KOVIO</td></tr>
+      <tr><td style="padding-top:6px;font-size:12px;color:#8a8578">${footer}</td></tr>`)
+}
+
+function notifyHtml(kind: string, fields: Array<[string, string]>) {
+  const rows = fields
+    .filter(([, v]) => v)
+    .map(
+      ([k, v]) =>
+        `<tr><td style="padding:6px 12px 6px 0;font-size:12px;font-weight:700;letter-spacing:1px;color:#8a8578;vertical-align:top">${k.toUpperCase()}</td><td style="padding:6px 0;font-size:14px;color:#141414">${esc(v)}</td></tr>`
+    )
+    .join('')
+  const label = kind === 'trial' ? 'FREE-TRIAL' : kind === 'agency' ? 'OOH AGENCY' : kind === 'waitlist' ? 'ROBOTICS WAITLIST' : 'FLEET'
+  return shell(`
+      <tr><td style="font-weight:900;font-size:18px;color:#141414;padding-bottom:16px">🔥 New ${label} lead</td></tr>
+      <tr><td><table role="presentation" cellpadding="0" cellspacing="0">${rows}</table></td></tr>
+      <tr><td style="padding-top:20px;font-size:12px;color:#8a8578">Full list: app.kovio.dev/admin &middot; they got the acknowledgment email automatically.</td></tr>`)
+}
+
+export async function POST(request: Request) {
+  if (!isSameSite(request)) {
+    return NextResponse.json({ error: 'Forbidden.' }, { status: 403 })
+  }
+
+  // App-layer rate limit: 5 submissions per IP per hour (per instance — see
+  // src/lib/rate-limit.ts for the honest limitation). The DB function
+  // rate-limits too; this stops floods before they cost an RPC round-trip.
+  const limit = checkRateLimit(clientIp(request))
+  if (!limit.allowed) {
+    return NextResponse.json(
+      { error: 'Too many submissions from your network — try again later.' },
+      { status: 429, headers: { 'retry-after': String(limit.retryAfterSeconds) } }
+    )
+  }
+
+  let fd: FormData
+  try {
+    fd = await request.formData()
+  } catch {
+    return NextResponse.json({ error: 'Bad request.' }, { status: 400 })
+  }
+
+  // Honeypot: LeadForm renders a visually-hidden "website" field no human ever
+  // fills. Bots that do get a silent success — no DB write, no emails — so
+  // they can't tell they were caught and don't adapt. The email field mimics
+  // what a real submission would have reported in this deployment, so the
+  // decoy response stays indistinguishable from the genuine one.
+  if (String(fd.get('website') ?? '').trim()) {
+    const decoy: EmailStatus = process.env.RESEND_API_KEY ? 'sent' : 'skipped'
+    return NextResponse.json({ ok: true, email: decoy })
+  }
+
+  const raw = fd.get('kind')
+  const kind = raw === 'fleet' ? 'fleet' : raw === 'agency' ? 'agency' : raw === 'waitlist' ? 'waitlist' : 'trial'
+  const name = String(fd.get('name') ?? '').trim()
+  const email = String(fd.get('email') ?? '').trim()
+  // The waitlist form only asks for name + email; the DB still requires a
+  // non-empty company, so fill it with a fixed label rather than exposing
+  // the field to the user.
+  const company = kind === 'waitlist' ? 'Kovio Robotics waitlist' : String(fd.get('company') ?? '').trim()
+  const fleet = String(fd.get('fleet') ?? '').trim()
+  const source = String(fd.get('source') ?? '').trim().slice(0, MAX_SOURCE)
+  if (!name || !email || !company) {
+    return NextResponse.json({ error: 'Name and email are required.' }, { status: 422 })
+  }
+  if (
+    name.length > MAX_NAME ||
+    company.length > MAX_COMPANY ||
+    email.length > MAX_EMAIL ||
+    fleet.length > MAX_FLEET
+  ) {
+    return NextResponse.json({ error: 'One of the fields is too long.' }, { status: 422 })
+  }
+
+  // 1. creative upload (optional, images only, ≤10MB)
+  let creativeUrl = ''
+  const creative = fd.get('creative')
+  if (creative instanceof File && creative.size > 0) {
+    if (!creative.type.startsWith('image/') || creative.size > 10 * 1024 * 1024) {
+      return NextResponse.json({ error: 'Creative must be an image up to 10 MB.' }, { status: 422 })
+    }
+    const safe = (creative.name || 'creative').replace(/[^a-zA-Z0-9._-]/g, '_')
+    const path = `leads/${Date.now()}-${safe}`
+    const up = await fetch(`${SUPABASE_URL}/storage/v1/object/creatives/${path}`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${SUPABASE_ANON}`,
+        apikey: SUPABASE_ANON,
+        'Content-Type': creative.type,
+      },
+      body: Buffer.from(await creative.arrayBuffer()),
+    })
+    if (up.ok) creativeUrl = `${SUPABASE_URL}/storage/v1/object/public/creatives/${path}`
+  }
+
+  // 2. store the lead
+  const rpc = await fetch(`${SUPABASE_URL}/rest/v1/rpc/kovio_submit_lead`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${SUPABASE_ANON}`,
+      apikey: SUPABASE_ANON,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      p_kind: kind,
+      p_name: name,
+      p_email: email,
+      p_company: company,
+      p_fleet: fleet || null,
+      p_creative_url: creativeUrl || null,
+      p_source: source || null,
+    }),
+  })
+  if (!rpc.ok) {
+    const detail = await rpc.text().catch(() => '')
+    const friendly = detail.includes('invalid_email')
+      ? 'That email address doesn’t look right.'
+      : detail.includes('rate_limited')
+        ? 'Too many submissions — we already have your details.'
+        : 'Could not save your details — try again.'
+    return NextResponse.json({ error: friendly }, { status: 422 })
+  }
+
+  // 3. emails (best-effort — the submission already succeeded; the combined
+  // outcome travels back as response metadata instead of dying silently)
+  const results = await Promise.all([
+    sendEmail({
+      to: email,
+      subject:
+        kind === 'trial'
+          ? 'You’re in — Kovio free trial 🤖'
+          : kind === 'agency'
+            ? 'Robots for your clients — Kovio'
+            : kind === 'waitlist'
+              ? 'You’re on the list — Kovio Robotics'
+              : 'We got your fleet details — Kovio',
+      html: ackHtml(kind, name),
+    }),
+    sendEmail({
+      to: NOTIFY_TO,
+      subject:
+        kind === 'waitlist'
+          ? `🔥 New robotics waitlist sign-up — ${name}`
+          : `🔥 New ${kind === 'trial' ? 'free-trial' : kind === 'agency' ? 'AGENCY' : 'fleet'} lead — ${company}`,
+      html: notifyHtml(kind, [
+        ['Name', name],
+        ['Email', email],
+        [kind === 'waitlist' ? '' : 'Company', kind === 'waitlist' ? '' : company],
+        [kind === 'agency' ? 'Brief' : 'Fleet', kind === 'waitlist' ? '' : fleet],
+        ['Creative', creativeUrl],
+        ['Page', source],
+      ]),
+      // Reply on the team notification goes straight to the lead.
+      replyTo: email,
+    }),
+  ])
+
+  return NextResponse.json({ ok: true, email: emailStatus(results) })
+}

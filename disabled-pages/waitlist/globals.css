@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Kovio neo-brutalist system (Claude Design handoff, 2026-07):
+   paper #F4F1EA · ink #141414 · amber #D97757 · Archivo Black + Space Grotesk */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), sans-serif;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(20, 20, 20, 0.55);
+}
+
+a:hover {
+  opacity: 0.75;
+}
+
+/* Keyboard users always see where they are: a thick amber ring, visible on
+   both the paper and the near-black sections. Fixed amber rather than
+   currentColor — on ink-colored, already-bordered elements (inputs, which
+   use border-2 border-[#141414]) a black-on-black ring reads as a stray
+   duplicate line instead of a focus state. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #D97757;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Vestibular safety: kill the marquee and equalizer motion on request. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@keyframes kv-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes kv-eq {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}

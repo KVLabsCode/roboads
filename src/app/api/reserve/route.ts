@@ -4,10 +4,11 @@ import { choiceLabel, REF_COOKIE } from "@/lib/reserve";
 import { stripe } from "@/lib/server/clients";
 import { logged, notifyFounders } from "@/lib/server/email";
 import { attachSession, createReservation } from "@/lib/server/reservations";
-import { ipHash, isRateLimited, saveSubmission } from "@/lib/server/submissions";
+import { ipHash, isRateLimited, isSameSite, saveSubmission } from "@/lib/server/submissions";
 import { firstError, reserveSchema } from "@/lib/validation";
 
 export async function POST(req: NextRequest) {
+  if (!isSameSite(req)) return NextResponse.json({ error: "Forbidden." }, { status: 403 });
   const parsed = reserveSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: firstError(parsed.error) }, { status: 400 });
   const input = parsed.data;

@@ -28,7 +28,7 @@ export default async function ReservePage({ searchParams }: { searchParams: Prom
 
   return (
     <>
-      <main className="rs-main">
+      <main id="main" className="rs-main">
         <ReserveClient initialChoice={choice} cancelled={sp.cancelled === "1"} sessionId={sessionId} initialStatus={status} />
       </main>
 

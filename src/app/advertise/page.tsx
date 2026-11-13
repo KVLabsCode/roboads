@@ -25,7 +25,7 @@ function slotsLeft() {
 
 export default function AdvertisePage() {
   return (
-    <main>
+    <main id="main">
       <AdvertiseHero />
 
       <section className="kv-section ad-formats">

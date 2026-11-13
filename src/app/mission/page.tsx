@@ -29,7 +29,7 @@ function Arrow({ id, w, h, left, top, d }: { id: string; w: number; h: number; l
 
 export default function MissionPage() {
   return (
-    <main>
+    <main id="main">
       <section className="kv-section kv-center ms-hero">
         <h1>Robots that pay for themselves. Everywhere.</h1>
         <p>Kovio turns robots from a cost into a business.</p>

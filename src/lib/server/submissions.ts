@@ -5,6 +5,20 @@ import { db } from "./clients";
 const WINDOW_MS = 10 * 60_000;
 const MAX_PER_WINDOW = 5;
 
+// Same rule as /api/lead: reject a browser POST whose Origin/Referer names another host.
+// Requests with neither header (curl, health checks) are allowed; this is one layer, not the whole defense.
+export function isSameSite(req: Request): boolean {
+  const src = req.headers.get("origin") ?? req.headers.get("referer");
+  if (!src) return true;
+  const host = req.headers.get("x-forwarded-host") ?? req.headers.get("host");
+  if (!host) return true;
+  try {
+    return new URL(src).host === host;
+  } catch {
+    return false;
+  }
+}
+
 export function ipHash(req: Request): string {
   const fwd = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
   const ip = fwd || req.headers.get("x-real-ip") || "unknown";

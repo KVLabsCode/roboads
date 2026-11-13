@@ -19,13 +19,16 @@ The marketing and reservation site for Blitz, at [kovio.dev](https://kovio.dev).
 | `GET /api/reserve/status` | Checks a Checkout Session; used by the return page while it waits |
 | `POST /api/stripe/webhook` | Marks deposits paid or refunded and sends emails |
 | `POST /api/contact` | Advertise and Careers forms |
+| `POST /api/lead` | Legacy waitlist/lead endpoint, kept working for existing callers (see `CONTRIBUTING.md`) |
+
+Team conventions, CI and repo gotchas are in [`CONTRIBUTING.md`](CONTRIBUTING.md). Retired pages are parked in [`disabled-pages/`](disabled-pages/README.md).
 
 ## Local setup
 
-1. Install dependencies (Node 20 or newer):
+1. Install dependencies (Node 22, see `.nvmrc`):
 
    ```bash
-   npm install
+   nvm use && npm ci
    ```
 
 2. Copy the env file and fill it in (see the sections below for where each value comes from):
@@ -114,7 +117,7 @@ Resend will only send from a domain you have verified.
 ### Deploy to Vercel
 
 1. Import the GitHub repo in Vercel. The defaults for Next.js are right; no build settings need changing.
-2. Project → Settings → Environment Variables: add every variable from `.env.example` for Production (and Preview, with test-mode Stripe keys).
+2. Project → Settings → Environment Variables: add every variable from `.env.example` for Production (and Preview, with test-mode Stripe keys). Redeploy after changing variables; they only apply to new deployments.
 3. Project → Settings → Domains: add `kovio.dev` (and `www.kovio.dev` redirecting to it) and follow Vercel's DNS instructions.
 4. Deploy, then add the Stripe webhook endpoint above and send a test event from the Stripe dashboard to check it returns 200.
 
@@ -124,4 +127,5 @@ Resend will only send from a domain you have verified.
 npm run dev     # local dev server
 npm run build   # production build (type-checks)
 npm run lint    # ESLint
+npm test        # vitest (CI runs lint, build, tsc and tests on every push and PR)
 ```

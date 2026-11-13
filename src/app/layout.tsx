@@ -57,6 +57,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable} ${doto.variable}`}>
       <body>
+        <a href="#main" className="kv-skip">
+          Skip to main content
+        </a>
         <div id="top" className="kv-page">
           <AnnouncementBar initialText={getRevealText()} />
           <Header />

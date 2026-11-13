@@ -1,7 +1,7 @@
 import { after, type NextRequest, NextResponse } from "next/server";
 import FounderNotice from "@/emails/FounderNotice";
 import { logged, notifyFounders } from "@/lib/server/email";
-import { ipHash, isRateLimited, saveSubmission } from "@/lib/server/submissions";
+import { ipHash, isRateLimited, isSameSite, saveSubmission } from "@/lib/server/submissions";
 import { type ContactInput, contactSchema, firstError } from "@/lib/validation";
 
 function notice(input: ContactInput) {
@@ -36,6 +36,7 @@ function notice(input: ContactInput) {
 }
 
 export async function POST(req: NextRequest) {
+  if (!isSameSite(req)) return NextResponse.json({ error: "Forbidden." }, { status: 403 });
   const parsed = contactSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: firstError(parsed.error) }, { status: 400 });
   const { website, ...input } = parsed.data;

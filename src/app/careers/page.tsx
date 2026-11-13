@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function CareersPage() {
   return (
-    <main>
+    <main id="main">
       <section className="kv-section kv-center cr-hero">
         <h1>Build robots that pay for themselves.</h1>
         <p className="kv-lead">A small team in San Francisco. Hands on, on site, shipping robots people walk up to every day.</p>

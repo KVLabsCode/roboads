@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="kv-section kv-section-last kv-center" style={{ gap: 18, minHeight: "50vh", justifyContent: "center" }}>
+    <main id="main" className="kv-section kv-section-last kv-center" style={{ gap: 18, minHeight: "50vh", justifyContent: "center" }}>
       <p className="kv-mono" style={{ margin: 0, fontSize: 13, letterSpacing: "0.08em", color: "var(--kv-muted)" }}>
         404
       </p>

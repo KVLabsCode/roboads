@@ -125,7 +125,11 @@ export async function placeInLine(r: Reservation): Promise<number> {
   ]);
   if (ahead.error) throw new Error(`Counting reservations failed: ${ahead.error.message}`);
   if (referrals.error) throw new Error(`Counting referrals failed: ${referrals.error.message}`);
-  return Math.max(1, (ahead.count ?? 0) + 1 - (referrals.count ?? 0));
+  return placeFromCounts(ahead.count ?? 0, referrals.count ?? 0);
+}
+
+export function placeFromCounts(paidAhead: number, paidReferrals: number): number {
+  return Math.max(1, paidAhead + 1 - paidReferrals);
 }
 
 export async function reservationStatus(sessionId: string): Promise<ReserveStatus> {

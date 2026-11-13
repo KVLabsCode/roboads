@@ -38,7 +38,7 @@ const PLANS = [
 
 export default function Home() {
   return (
-    <main>
+    <main id="main">
       <Hero />
 
       <BillboardSection />
