@@ -13,17 +13,19 @@ export function ipHash(req: Request): string {
 
 // Counts every saved form submission from this IP; fails open so a database hiccup never blocks a real person.
 export async function isRateLimited(hash: string): Promise<boolean> {
-  const since = new Date(Date.now() - WINDOW_MS).toISOString();
-  const { count, error } = await db()
-    .from("submissions")
-    .select("id", { count: "exact", head: true })
-    .eq("ip_hash", hash)
-    .gte("created_at", since);
-  if (error) {
-    console.error("[kovio] rate limit check failed", error);
+  try {
+    const since = new Date(Date.now() - WINDOW_MS).toISOString();
+    const { count, error } = await db()
+      .from("submissions")
+      .select("id", { count: "exact", head: true })
+      .eq("ip_hash", hash)
+      .gte("created_at", since);
+    if (error) throw error;
+    return (count ?? 0) >= MAX_PER_WINDOW;
+  } catch (err) {
+    console.error("[kovio] rate limit check failed", err);
     return false;
   }
-  return (count ?? 0) >= MAX_PER_WINDOW;
 }
 
 export async function saveSubmission(form: string, payload: Record<string, unknown>, hash: string) {

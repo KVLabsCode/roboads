@@ -1,0 +1,218 @@
+.rs-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 64px var(--kv-pad) 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+.rs-main h1 {
+  margin: 0;
+  font-weight: 500;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  text-align: center;
+}
+.rs-sub {
+  margin: 18px auto 0;
+  max-width: 30em;
+  text-align: center;
+}
+.rs-notice {
+  margin: 24px auto 0;
+  max-width: 32em;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: var(--kv-card);
+  box-shadow: inset 0 0 0 1px var(--kv-line);
+  font-size: 15px;
+  text-align: center;
+  color: var(--kv-muted);
+}
+
+.rs-choices {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--kv-line);
+}
+.rs-choice {
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 0;
+  border: 0;
+  border-top: 1px solid var(--kv-line);
+  background: transparent;
+  color: var(--kv-ink);
+  font: inherit;
+  touch-action: manipulation;
+}
+.rs-ring {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 1.5px solid var(--kv-rule);
+  transition: border-width 0.15s ease;
+}
+.rs-choice[aria-checked="true"] .rs-ring {
+  border: 7px solid var(--kv-ink);
+}
+.rs-thumb {
+  flex: 0 0 auto;
+  height: 76px;
+  width: 40px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 8px 8px rgba(17, 17, 16, 0.18));
+}
+.rs-choice-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.rs-choice-title {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.rs-choice-detail {
+  color: var(--kv-muted);
+}
+.rs-choice-price {
+  flex: 0 0 auto;
+  font-weight: 500;
+}
+@media (max-width: 480px) {
+  .rs-choice {
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .rs-choice-text {
+    flex-basis: calc(100% - 22px - 40px - 28px);
+  }
+  .rs-choice-price {
+    margin-left: calc(22px + 40px + 28px);
+    margin-top: -6px;
+    font-size: 15px;
+  }
+}
+
+.rs-form {
+  margin: 48px 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 20px 32px;
+}
+.rs-submit {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.rs-submit > span {
+  font-size: 14px;
+  color: var(--kv-muted);
+}
+
+.rs-done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+}
+.rs-done:focus {
+  outline: none;
+}
+.rs-main .rs-done h1 {
+  font-size: clamp(36px, 4.4vw, 60px);
+  line-height: 1.02;
+}
+.rs-eyebrow {
+  margin: 0;
+  font-family: var(--kv-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--kv-muted);
+}
+.rs-place {
+  margin: 0;
+  font-size: clamp(72px, 10vw, 144px);
+  font-weight: 300;
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+.rs-done h2 {
+  margin: 40px 0 0;
+  font-weight: 500;
+  font-size: clamp(24px, 2.6vw, 34px);
+  letter-spacing: -0.03em;
+}
+.rs-share {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.rs-share-url {
+  flex: 1 1 260px;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+  border-bottom: 1px solid var(--kv-rule);
+  font-family: var(--kv-mono);
+  font-size: 15px;
+  text-align: left;
+  overflow-wrap: anywhere;
+  user-select: all;
+  -webkit-user-select: all;
+}
+.rs-share .kv-btn {
+  min-height: 52px;
+  padding: 0 24px;
+  font-size: 17px;
+}
+.rs-spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2.5px solid var(--kv-line);
+  border-top-color: var(--kv-ink);
+  animation: rs-spin 0.9s linear infinite;
+}
+@keyframes rs-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rs-faq {
+  max-width: 760px;
+}
+.rs-faq h2 {
+  margin: 0 0 24px;
+  font-weight: 500;
+  font-size: clamp(28px, 3vw, 40px);
+  letter-spacing: -0.035em;
+}
+.rs-faq summary {
+  min-height: 56px;
+}
+.rs-faq p {
+  margin: 0 0 18px;
+  color: var(--kv-muted);
+}

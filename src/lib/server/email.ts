@@ -12,8 +12,8 @@ export async function sendEmail({ to, subject, react, replyTo }: Send) {
   if (error) throw new Error(`Resend ${error.name}: ${error.message}`);
 }
 
-export function notifyFounders(subject: string, react: ReactElement, replyTo?: string) {
-  return sendEmail({ to: notifyEmails(), subject, react, replyTo });
+export async function notifyFounders(subject: string, react: ReactElement, replyTo?: string) {
+  await sendEmail({ to: notifyEmails(), subject, react, replyTo });
 }
 
 export async function logged(label: string, task: Promise<unknown>) {
