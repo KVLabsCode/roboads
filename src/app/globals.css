@@ -15,7 +15,7 @@
   --kv-error: #b3261e;
   --kv-pad: clamp(20px, 4vw, 48px);
   --kv-header-h: 64px;
-  --kv-sans: var(--font-geist), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --kv-sans: var(--font-geist-sans), "Helvetica Neue", Helvetica, Arial, sans-serif;
   --kv-mono: var(--font-geist-mono), ui-monospace, Menlo, monospace;
 }
 

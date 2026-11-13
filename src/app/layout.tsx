@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Doto, Geist, Geist_Mono } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import localFont from "next/font/local";
 import AnnouncementBar from "@/components/layout/AnnouncementBar";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
@@ -7,21 +9,10 @@ import { getRevealText } from "@/lib/countdown";
 import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
-const geist = Geist({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-geist",
-});
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-geist-mono",
-});
-
-const doto = Doto({
-  subsets: ["latin"],
-  weight: ["700", "900"],
+// Fonts are self-hosted: next/font/google crashed on Vercel's builder when Google served extensionless font URLs.
+const doto = localFont({
+  src: "./fonts/Doto-latin.woff2",
+  weight: "700 900",
   variable: "--font-doto",
   preload: false,
 });
@@ -55,7 +46,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${doto.variable}`}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${doto.variable}`}>
       <body>
         <a href="#main" className="kv-skip">
           Skip to main content

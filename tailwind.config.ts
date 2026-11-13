@@ -15,7 +15,7 @@ const config: Config = {
         orange: "#B34A1A",
       },
       fontFamily: {
-        sans: ["var(--font-geist)", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
+        sans: ["var(--font-geist-sans)", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "Menlo", "monospace"],
         doto: ["var(--font-doto)", "ui-monospace", "monospace"],
       },
