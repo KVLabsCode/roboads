@@ -280,6 +280,20 @@ summary:focus-visible,
 
 /* ───────── Forms ───────── */
 
+.kv-narrow {
+  max-width: 640px;
+}
+.kv-form-stack {
+  margin: 48px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.kv-form-stack > .kv-btn {
+  align-self: center;
+  margin-top: 16px;
+}
+
 .kv-field {
   display: flex;
   flex-direction: column;
@@ -356,6 +370,7 @@ select.kv-input {
   flex: 0 0 auto;
   width: 10px;
   height: 10px;
+  margin-right: 4px;
   border-right: 1.6px solid var(--kv-muted);
   border-bottom: 1.6px solid var(--kv-muted);
   transform: translateY(-3px) rotate(45deg);
