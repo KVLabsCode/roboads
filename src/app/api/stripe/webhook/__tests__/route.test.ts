@@ -66,6 +66,20 @@ describe('POST /api/stripe/webhook', () => {
     expect(markRefunded).not.toHaveBeenCalled()
   })
 
+  it('ignores checkout sessions that are not Blitz deposits (shared Stripe account)', async () => {
+    const res = await POST(
+      signed({
+        id: 'evt_other_1',
+        type: 'checkout.session.completed',
+        livemode: true,
+        data: { object: { object: 'checkout.session', id: 'cs_other', payment_status: 'paid', client_reference_id: 'adv_42', metadata: { advertiser_id: 'adv_42' } } },
+      }),
+    )
+    expect(res.status).toBe(200)
+    expect(await res.json()).toEqual({ received: true, ignored: true })
+    expect(insert).not.toHaveBeenCalled()
+  })
+
   it('skips an event it has already processed', async () => {
     insert.mockResolvedValue({ error: { code: '23505', message: 'duplicate key' } })
     const res = await POST(signed(refund))

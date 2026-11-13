@@ -6,7 +6,7 @@ import { choiceLabel, choiceTitle } from "@/lib/reserve";
 import { db, stripe } from "@/lib/server/clients";
 import { env } from "@/lib/server/env";
 import { logged, notifyFounders, sendEmail } from "@/lib/server/email";
-import { findByCode, markPaid, markRefunded, placeInLine, shareUrl } from "@/lib/server/reservations";
+import { blitzReservationId, findByCode, markPaid, markRefunded, placeInLine, shareUrl } from "@/lib/server/reservations";
 
 const HANDLED = new Set(["checkout.session.completed", "checkout.session.async_payment_succeeded", "charge.refunded"]);
 
@@ -69,6 +69,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
   if (!HANDLED.has(event.type)) return NextResponse.json({ received: true });
+  if (event.type !== "charge.refunded" && !blitzReservationId(event.data.object as Stripe.Checkout.Session)) {
+    return NextResponse.json({ received: true, ignored: true });
+  }
 
   const claim = await db().from("stripe_events").insert({ id: event.id });
   if (claim.error) {

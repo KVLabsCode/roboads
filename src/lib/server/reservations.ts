@@ -90,8 +90,17 @@ function paymentIntentId(pi: string | Stripe.PaymentIntent | null): string | nul
 }
 
 // Moves a pending reservation to paid. Safe to call from both the webhook and the return page.
+/**
+ * The Stripe account is shared with kovio-api's advertiser checkout, so its sessions reach this site too.
+ * Ours carry the reservation id both as client_reference_id and in metadata.
+ */
+export function blitzReservationId(session: Stripe.Checkout.Session): string | null {
+  const id = session.metadata?.reservation_id;
+  return id && id === session.client_reference_id ? id : null;
+}
+
 export async function markPaid(session: Stripe.Checkout.Session): Promise<Reservation | null> {
-  const id = session.client_reference_id;
+  const id = blitzReservationId(session);
   if (!id) return null;
   const { data, error } = await db()
     .from("reservations")
