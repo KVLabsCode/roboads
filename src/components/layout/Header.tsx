@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { getRevealText } from "@/lib/countdown";
 import { NAV_LINKS } from "@/lib/site";
 
 export default function Header() {
@@ -11,6 +12,22 @@ export default function Header() {
   const toggleRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
+
+  // The sheet grows out of the menu button, wherever it currently sits on screen.
+  const openMenu = () => {
+    const btn = toggleRef.current;
+    const menu = panelRef.current;
+    if (btn && menu) {
+      const r = btn.getBoundingClientRect();
+      const x = r.left + r.width / 2;
+      const y = r.top + r.height / 2;
+      const reach = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+      menu.style.setProperty("--kv-menu-x", `${Math.round(x)}px`);
+      menu.style.setProperty("--kv-menu-y", `${Math.round(y)}px`);
+      menu.style.setProperty("--kv-menu-r", `${Math.ceil(reach) + 2}px`);
+    }
+    setOpen(true);
+  };
 
   // Pinned scroll sections sit just under the header, so expose its real height.
   useEffect(() => {
@@ -89,7 +106,7 @@ export default function Header() {
               aria-label="Open menu"
               aria-expanded={open}
               aria-controls="kv-menu"
-              onClick={() => setOpen(true)}
+              onClick={openMenu}
             >
               <span aria-hidden="true" />
               <span aria-hidden="true" />
@@ -99,35 +116,52 @@ export default function Header() {
       </header>
 
       {/* Sibling of the header: its backdrop-filter would otherwise trap position: fixed inside it. */}
-      <div className={`kv-menu${open ? " is-open" : ""}`} inert={!open}>
-        <div className="kv-menu-backdrop" onClick={() => setOpen(false)} />
-        <div ref={panelRef} id="kv-menu" className="kv-menu-panel" role="dialog" aria-modal="true" aria-label="Menu">
-          <div className="kv-menu-top">
-            <Link href="/" className="kv-logo" aria-label="Kovio home" onClick={() => setOpen(false)}>
-              KOVIO<sup>®</sup>
-            </Link>
-            <button type="button" className="kv-menu-close" aria-label="Close menu" onClick={() => setOpen(false)}>
-              <span aria-hidden="true" />
-              <span aria-hidden="true" />
-            </button>
-          </div>
+      <div
+        ref={panelRef}
+        id="kv-menu"
+        className={`kv-menu${open ? " is-open" : ""}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+        inert={!open}
+      >
+        <div className="kv-menu-top">
+          <Link href="/" className="kv-logo" aria-label="Kovio home" onClick={() => setOpen(false)}>
+            KOVIO<sup>®</sup>
+          </Link>
+          <button type="button" className="kv-menu-close" aria-label="Close menu" onClick={() => setOpen(false)}>
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </button>
+        </div>
+        <div className="kv-menu-body">
           <nav className="kv-menu-links" aria-label="Main">
             {NAV_LINKS.map((l, i) => (
               <Link
                 key={l.href}
                 href={l.href}
+                data-stagger
+                style={{ "--i": i } as React.CSSProperties}
                 aria-current={pathname === l.href ? "page" : undefined}
                 onClick={() => setOpen(false)}
-                style={{ transitionDelay: open ? `${80 + i * 40}ms` : "0ms" }}
               >
                 {l.label}
               </Link>
             ))}
           </nav>
-          <Link href="/reserve" className="kv-btn kv-btn-dark kv-menu-cta" onClick={() => setOpen(false)}>
+          <Link
+            href="/reserve"
+            className="kv-btn kv-btn-dark kv-menu-cta"
+            data-stagger
+            style={{ "--i": NAV_LINKS.length } as React.CSSProperties}
+            onClick={() => setOpen(false)}
+          >
             Reserve Blitz
           </Link>
         </div>
+        <p className="kv-menu-foot" data-stagger style={{ "--i": NAV_LINKS.length + 2 } as React.CSSProperties}>
+          Full reveal Jan 5, 2027 · <span suppressHydrationWarning>{getRevealText().replace(/\.$/, "")}</span>
+        </p>
       </div>
     </>
   );
