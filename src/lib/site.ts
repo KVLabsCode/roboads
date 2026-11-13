@@ -6,5 +6,5 @@ export const NAV_LINKS = [
 ] as const;
 
 export function siteUrl(): string {
-  return (process.env.NEXT_PUBLIC_SITE_URL || "https://kovio.dev").replace(/\/$/, "");
+  return (process.env.NEXT_PUBLIC_SITE_URL || "https://www.kovio.dev").replace(/\/$/, "");
 }

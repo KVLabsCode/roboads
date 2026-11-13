@@ -71,7 +71,7 @@ Team conventions, CI and repo gotchas are in [`CONTRIBUTING.md`](CONTRIBUTING.md
 
 | Name | Where it comes from |
 |---|---|
-| `NEXT_PUBLIC_SITE_URL` | `https://kovio.dev` in production |
+| `NEXT_PUBLIC_SITE_URL` | `https://www.kovio.dev` in production (the canonical host; `kovio.dev` redirects there) |
 | `STRIPE_SECRET_KEY` | Stripe dashboard → Developers → API keys. Use `sk_test_...` until launch. |
 | `STRIPE_WEBHOOK_SECRET` | `stripe listen` locally; the webhook endpoint's signing secret in production |
 | `RESEND_API_KEY` | Resend dashboard → API Keys (sending access is enough) |
@@ -96,7 +96,7 @@ Every form also has a hidden honeypot field and a limit of 5 submissions per IP 
 ### Stripe webhook
 
 1. Stripe dashboard → Developers → Webhooks → **Add endpoint**.
-2. Endpoint URL: `https://kovio.dev/api/stripe/webhook`
+2. Endpoint URL: `https://www.kovio.dev/api/stripe/webhook` (use `www`: `kovio.dev` redirects to it, and Stripe does not follow redirects)
 3. Events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `charge.refunded`.
 4. Copy the endpoint's signing secret into `STRIPE_WEBHOOK_SECRET` in Vercel.
 5. Do this once in test mode for staging and again in live mode at launch. Live mode has its own `sk_live_...` key and its own signing secret.
@@ -118,7 +118,7 @@ Resend will only send from a domain you have verified.
 
 1. Import the GitHub repo in Vercel. The defaults for Next.js are right; no build settings need changing.
 2. Project → Settings → Environment Variables: add every variable from `.env.example` for Production (and Preview, with test-mode Stripe keys). Redeploy after changing variables; they only apply to new deployments.
-3. Project → Settings → Domains: add `kovio.dev` (and `www.kovio.dev` redirecting to it) and follow Vercel's DNS instructions.
+3. Project → Settings → Domains: `www.kovio.dev` is the primary domain and `kovio.dev` redirects to it. Keep it that way, or update `NEXT_PUBLIC_SITE_URL` and the Stripe webhook URL if you swap them.
 4. Deploy, then add the Stripe webhook endpoint above and send a test event from the Stripe dashboard to check it returns 200.
 
 ## Scripts
