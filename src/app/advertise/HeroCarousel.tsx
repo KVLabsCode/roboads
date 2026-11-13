@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import StepDots from "@/components/blitz/StepDots";
 
 const SHOTS = [
   {
@@ -15,6 +16,8 @@ const SHOTS = [
     alt: "A child shaking hands with Blitz while a crowd watches and films, a drink ad on its chest screen",
   },
 ];
+
+const DOT_LABELS = SHOTS.map((_, i) => `Show photo ${i + 1}`);
 
 function HeroPhotos({ index }: { index: number }) {
   return (
@@ -53,11 +56,11 @@ function useHeroCarousel() {
     setIndex(i);
   };
 
-  return { index, pick, count: SHOTS.length };
+  return { index, pick };
 }
 
 export default function AdvertiseHero() {
-  const { index, pick, count } = useHeroCarousel();
+  const { index, pick } = useHeroCarousel();
   return (
     <section className="ad-hero">
       <div className="ad-hero-copy">
@@ -66,20 +69,7 @@ export default function AdvertiseHero() {
         <a className="kv-btn kv-btn-dark" href="#book">
           Book a campaign
         </a>
-        <div className="kv-dots" role="group" aria-label="Choose a photo">
-          {Array.from({ length: count }, (_, i) => (
-            <button
-              key={i}
-              type="button"
-              className="kv-dot"
-              aria-label={`Show photo ${i + 1}`}
-              aria-pressed={i === index}
-              onClick={() => pick(i)}
-            >
-              <span />
-            </button>
-          ))}
-        </div>
+        <StepDots labels={DOT_LABELS} active={index} onPick={pick} groupLabel="Choose a photo" />
       </div>
       <HeroPhotos index={index} />
     </section>
